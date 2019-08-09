@@ -1,0 +1,46 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Docker@1
+  displayName: 'Run an image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+
+    command: 'Run an image'
+
+    imageName: 'jekyll/builder:latest'
+
+    qualifyImageName: false
+
+    volumes: |
+     $(Build.SourcesDirectory):/srv/jekyll
+     $(Build.BinariesDirectory):/srv/jekyll/_site
+     
+
+    workingDirectory: '$(Build.SourcesDirectory):/srv/jekyll'
+
+    containerCommand: 'jekyll build --future'
+
+    runInBackground: false
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(Build.BinariesDirectory)'
+
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: _site'
+  inputs:
+    ArtifactName: '_site'
