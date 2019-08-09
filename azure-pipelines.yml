@@ -22,11 +22,11 @@ steps:
     qualifyImageName: false
 
     volumes: |
-     $(Build.SourcesDirectory):/srv/jekyll
-     $(Build.BinariesDirectory):/srv/jekyll/_site
+     $(Build.SourcesDirectory)/src:/srv/jekyll
+     $(Build.BinariesDirectory)/src:/srv/jekyll/_site
      
 
-    workingDirectory: '$(Build.SourcesDirectory):/srv/jekyll'
+    workingDirectory: '$(Build.SourcesDirectory)/src:/srv/jekyll'
 
     containerCommand: 'jekyll build --future'
 
@@ -35,7 +35,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
   inputs:
-    SourceFolder: '$(Build.BinariesDirectory)'
+    SourceFolder: '$(Build.BinariesDirectory)/src'
 
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
