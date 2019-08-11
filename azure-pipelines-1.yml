@@ -16,19 +16,19 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- task: UseRubyVersion@0
+  displayName: 'Use Ruby >= 2.4'
+
+- script: 'gem install jekyll bundler' 
+  displayName: 'Install jekyll and bundler'
+
 - script: |
     npm install
     npx gulp
   displayName: 'npm install and build'
 
-- task: UseRubyVersion@0
-  displayName: 'Use Ruby >= 2.4'
-
-- script: 'gem install bundler' 
-  displayName: 'Install bundler'
-
-- script: 'bundle install' 
-  displayName: 'Install Jekyll and Dependencies'
+# - script: 'bundle install' 
+#   displayName: 'Install Jekyll and Dependencies'
 
 - script: 'bundle exec jekyll build -d $(Build.ArtifactStagingDirectory)' 
   displayName: 'Build Jekyll Static Site'
