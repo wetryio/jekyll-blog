@@ -2,12 +2,12 @@
 title: WeTry | Just another dev blog
 email: info@wetry.tech
 description: Just another dev blog.
-baseurl: "/jekyll-blog/" # the subpath of your site, e.g. /blog
-url: "https://wetryio.github.io/jekyll-blog/" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://wetry.tech" # the base hostname & protocol for your site
 google_analytics: "UA-XXXXXXXX-X"
 
 # User Settings
-username: Jekflix
+username: WeTry
 user_description: Some text about you.
 disqus_username: disqus_username
 
