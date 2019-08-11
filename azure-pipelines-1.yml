@@ -25,13 +25,13 @@ steps:
 - script: 'bundle install' 
   displayName: 'Install Jekyll and Dependencies'
 
-- script: |
-    npm install
-    npx gulp
-  displayName: 'npm install and build'
+# - script: |
+#     npm install
+#     npx gulp
+#   displayName: 'npm install and build'
 
-# - script: 'bundle exec jekyll build -d $(Build.ArtifactStagingDirectory)' 
-#   displayName: 'Build Jekyll Static Site'
+- script: 'bundle exec jekyll build -d $(Build.ArtifactStagingDirectory)' 
+  displayName: 'Build Jekyll Static Site'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: _site'
