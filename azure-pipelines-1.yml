@@ -30,10 +30,10 @@ steps:
 #     npx gulp
 #   displayName: 'npm install and build'
 
-- script: 'bundle exec jekyll build -d $(Build.ArtifactStagingDirectory)' 
+- script: 'bundle exec jekyll build' 
   displayName: 'Build Jekyll Static Site'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: _site'
   inputs:
-    ArtifactName: '_site'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/_site'
