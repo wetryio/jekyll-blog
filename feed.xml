@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jekflix | A theme for Jekyll</title>
-    <description>Some text about your blog.</description>
-    <link>https://jekflix.rossener.com/</link>
-    <atom:link href="https://jekflix.rossener.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 11 Aug 2019 16:41:18 +0000</pubDate>
-    <lastBuildDate>Sun, 11 Aug 2019 16:41:18 +0000</lastBuildDate>
+    <title>WeTry | Just another dev blog</title>
+    <description>Just another dev blog.</description>
+    <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//</link>
+    <atom:link href="https://wetryio.github.io/jekyll-blog//jekyll-blog//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 11 Aug 2019 17:15:05 +0000</pubDate>
+    <lastBuildDate>Sun, 11 Aug 2019 17:15:05 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>Com sociis natoque penatibus et magnis dis</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Thu, 22 Nov 2018 12:26:40 +0000</pubDate>
-        <link>https://jekflix.rossener.com/com-sociis-natoque-penatibus-et-magnis-dis/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/com-sociis-natoque-penatibus-et-magnis-dis/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//com-sociis-natoque-penatibus-et-magnis-dis/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//com-sociis-natoque-penatibus-et-magnis-dis/</guid>
         
         <category>html</category>
         
@@ -29,8 +29,8 @@
         <title>The quick brown fox jumps over a lazy dog</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Tue, 09 Oct 2018 12:26:40 +0000</pubDate>
-        <link>https://jekflix.rossener.com/the-quick-brown-fox-jumps-over-a-lazy-dog/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/the-quick-brown-fox-jumps-over-a-lazy-dog/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//the-quick-brown-fox-jumps-over-a-lazy-dog/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//the-quick-brown-fox-jumps-over-a-lazy-dog/</guid>
         
         <category>css</category>
         
@@ -45,8 +45,8 @@
         <title>A wonderful serenity has taken possession of my entire soul</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Fri, 20 Jul 2018 12:26:40 +0000</pubDate>
-        <link>https://jekflix.rossener.com/a-wonderful-serenity-has-taken-possession-of-my-entire-soul/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/a-wonderful-serenity-has-taken-possession-of-my-entire-soul/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//a-wonderful-serenity-has-taken-possession-of-my-entire-soul/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//a-wonderful-serenity-has-taken-possession-of-my-entire-soul/</guid>
         
         <category>platform</category>
         
@@ -61,8 +61,8 @@
         <title>Far far away behind the word mountains</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Sat, 21 Apr 2018 12:26:40 +0000</pubDate>
-        <link>https://jekflix.rossener.com/far-far-away-behind-the-word-mountains/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/far-far-away-behind-the-word-mountains/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//far-far-away-behind-the-word-mountains/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//far-far-away-behind-the-word-mountains/</guid>
         
         <category>framework</category>
         
@@ -77,8 +77,8 @@
         <title>Li Europan lingues es membres</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Mon, 12 Mar 2018 12:26:40 +0000</pubDate>
-        <link>https://jekflix.rossener.com/li-europan-lingues-es-membres/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/li-europan-lingues-es-membres/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//li-europan-lingues-es-membres/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//li-europan-lingues-es-membres/</guid>
         
         <category>languages</category>
         
@@ -93,8 +93,8 @@
         <title>Sed ut perspiciatis unde omnis iste natus</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Sat, 03 Feb 2018 12:26:40 +0000</pubDate>
-        <link>https://jekflix.rossener.com/sed-ut-perspiciatis-unde-omnis-iste-natus/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/sed-ut-perspiciatis-unde-omnis-iste-natus/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//sed-ut-perspiciatis-unde-omnis-iste-natus/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//sed-ut-perspiciatis-unde-omnis-iste-natus/</guid>
         
         <category>css</category>
         
@@ -109,8 +109,8 @@
         <title>Como quase cai num golpe no Facebook e como desviar deles</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Sun, 10 Sep 2017 12:26:40 +0000</pubDate>
-        <link>https://jekflix.rossener.com/como-quase-cai-num-golpe-no-facebook-e-como-desviar-deles/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/como-quase-cai-num-golpe-no-facebook-e-como-desviar-deles/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//como-quase-cai-num-golpe-no-facebook-e-como-desviar-deles/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//como-quase-cai-num-golpe-no-facebook-e-como-desviar-deles/</guid>
         
         <category>life</category>
         
@@ -125,8 +125,8 @@
         <title>box-shadow ou filter: drop-shadow?</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Mon, 14 Aug 2017 22:55:45 +0000</pubDate>
-        <link>https://jekflix.rossener.com/box-shadow-ou-filter-drop-shadow/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/box-shadow-ou-filter-drop-shadow/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//box-shadow-ou-filter-drop-shadow/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//box-shadow-ou-filter-drop-shadow/</guid>
         
         <category>css</category>
         
@@ -141,8 +141,8 @@
         <title>Fazendo um formulário de Contato no Jekyll com Vue.js</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Mon, 07 Aug 2017 23:04:08 +0000</pubDate>
-        <link>https://jekflix.rossener.com/fazendo-um-formulario-de-contato-no-jekyll-com-vue.js/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/fazendo-um-formulario-de-contato-no-jekyll-com-vue.js/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//fazendo-um-formulario-de-contato-no-jekyll-com-vue.js/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//fazendo-um-formulario-de-contato-no-jekyll-com-vue.js/</guid>
         
         <category>vuejs</category>
         
@@ -159,8 +159,8 @@
         <title>Como migrar seus posts do Wordpress para o Jekyll de um jeito simples</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Sat, 29 Jul 2017 13:24:49 +0000</pubDate>
-        <link>https://jekflix.rossener.com/como-migrar-seus-posts-do-wordpress-para-o-jekyll/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/como-migrar-seus-posts-do-wordpress-para-o-jekyll/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//como-migrar-seus-posts-do-wordpress-para-o-jekyll/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//como-migrar-seus-posts-do-wordpress-para-o-jekyll/</guid>
         
         <category>jekyll</category>
         
@@ -177,8 +177,8 @@
         <title>Por que o Sketch vale 3 tanques de gasolina?</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Thu, 08 Jun 2017 00:00:00 +0000</pubDate>
-        <link>https://jekflix.rossener.com/por-que-o-sketch-vale-3-tanques-de-gasolina/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/por-que-o-sketch-vale-3-tanques-de-gasolina/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//por-que-o-sketch-vale-3-tanques-de-gasolina/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//por-que-o-sketch-vale-3-tanques-de-gasolina/</guid>
         
         <category>design</category>
         
@@ -193,8 +193,8 @@
         <title>Como fazer um Hello World com Vue.js 2</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Sun, 04 Jun 2017 00:00:00 +0000</pubDate>
-        <link>https://jekflix.rossener.com/como-fazer-um-hello-world-com-vue-js-2/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/como-fazer-um-hello-world-com-vue-js-2/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//como-fazer-um-hello-world-com-vue-js-2/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//como-fazer-um-hello-world-com-vue-js-2/</guid>
         
         <category>vuejs</category>
         
@@ -211,8 +211,8 @@
         <title>Minhas primeiras 5 impressões sobre Django</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Thu, 11 May 2017 00:00:00 +0000</pubDate>
-        <link>https://jekflix.rossener.com/minhas-primeiras-5-impressoes-sobre-django/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/minhas-primeiras-5-impressoes-sobre-django/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//minhas-primeiras-5-impressoes-sobre-django/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//minhas-primeiras-5-impressoes-sobre-django/</guid>
         
         <category>django</category>
         
@@ -225,8 +225,8 @@
         <title>Desafio aceito. Fazendo uma app do Dribbble do zero</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Sun, 06 Sep 2015 00:00:00 +0000</pubDate>
-        <link>https://jekflix.rossener.com/desafio-aceito-fazendo-uma-app-do-dribbble-do-zero/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/desafio-aceito-fazendo-uma-app-do-dribbble-do-zero/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//desafio-aceito-fazendo-uma-app-do-dribbble-do-zero/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//desafio-aceito-fazendo-uma-app-do-dribbble-do-zero/</guid>
         
         <category>app</category>
         
@@ -243,8 +243,8 @@
         <title>Diga olá para o TRCurrencyTextField: Um componente com valor.</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Fri, 08 May 2015 00:00:00 +0000</pubDate>
-        <link>https://jekflix.rossener.com/diga-ola-para-o-trcurrencytextfield-um-componente-com-valor/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/diga-ola-para-o-trcurrencytextfield-um-componente-com-valor/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//diga-ola-para-o-trcurrencytextfield-um-componente-com-valor/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//diga-ola-para-o-trcurrencytextfield-um-componente-com-valor/</guid>
         
         <category>component</category>
         
@@ -261,8 +261,8 @@
         <title>Seja bem-vindo</title>
         <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
         <pubDate>Wed, 10 Oct 2012 00:00:00 +0000</pubDate>
-        <link>https://jekflix.rossener.com/seja-bem-vindo/</link>
-        <guid isPermaLink="true">https://jekflix.rossener.com/seja-bem-vindo/</guid>
+        <link>https://wetryio.github.io/jekyll-blog//jekyll-blog//seja-bem-vindo/</link>
+        <guid isPermaLink="true">https://wetryio.github.io/jekyll-blog//jekyll-blog//seja-bem-vindo/</guid>
         
         
         <category>blog</category>
