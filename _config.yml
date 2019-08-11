@@ -1,9 +1,9 @@
 # Site Settings
-title: Jekflix | A theme for Jekyll
-email: youremail@xyz.com
-description: Some text about your blog.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://jekflix.rossener.com" # the base hostname & protocol for your site
+title: WeTry | Just another dev blog
+email: info@wetry.tech
+description: Just another dev blog.
+baseurl: "/jekyll-blog/" # the subpath of your site, e.g. /blog
+url: "https://wetryio.github.io/jekyll-blog/" # the base hostname & protocol for your site
 google_analytics: "UA-XXXXXXXX-X"
 
 # User Settings
