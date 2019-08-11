@@ -11,16 +11,6 @@ pool:
 
 steps:
 
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npx gulp
-  displayName: 'npm install and build'
-
 - task: UseRubyVersion@0
   displayName: 'Use Ruby >= 2.4'
 
@@ -30,10 +20,10 @@ steps:
 - script: 'bundle install' 
   displayName: 'Install Jekyll and Dependencies'
 
-- script: 'bundle exec jekyll build -d $(Build.ArtifactStagingDirectory)' 
+- script: 'bundle exec jekyll build' 
   displayName: 'Build Jekyll Static Site'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: _site'
   inputs:
-    ArtifactName: '_site'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/_site'
