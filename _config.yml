@@ -38,6 +38,8 @@ plugins:
 links:
   - title: Home
     url: /
+  - title: HITW 2019
+    url: /hitw2019/
   - title: About
     url: /about/
   # - title: Contact
