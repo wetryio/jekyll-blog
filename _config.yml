@@ -4,21 +4,21 @@ email: info@wetry.tech
 description: Just another dev blog.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://wetry.tech" # the base hostname & protocol for your site
-google_analytics: "UA-XXXXXXXX-X"
+google_analytics: "UA-145445435-1"
 
 # User Settings
 username: WeTry
 user_description: Some text about you.
-disqus_username: disqus_username
+disqus_username: wetry
 
 # Social Media
 # Remove the item if you don't need it
-github_username: github_username
-facebook_username: facebook_username
-twitter_username: twitter_username
-instagram_username: instagram_username
-linkedin_username: linkedin_username
-medium_username: medium_username
+github_username: wetryio
+# facebook_username: facebook_username
+# twitter_username: twitter_username
+# instagram_username: instagram_username
+# linkedin_username: linkedin_username
+# medium_username: medium_username
 
 # Build settings
 markdown: kramdown
@@ -40,8 +40,8 @@ links:
     url: /
   - title: About
     url: /about/
-  - title: Contact
-    url: /contact/
+  # - title: Contact
+  #   url: /contact/
 
 # Exclude my node related stuff
 exclude: ['package.json', 'src', 'node_modules']
