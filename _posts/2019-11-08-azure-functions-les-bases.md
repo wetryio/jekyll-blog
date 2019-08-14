@@ -29,3 +29,67 @@ triggers pour s'exécuter
 
 ![placeholder](https://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Azure-Functions-1_zcwjys.png "Azure functions")
 
+## Les triggers
+
+L'un des point fort des Azure Functions, c'est la vaste liste de trigger disponible,
+
+[Doc officiels](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>1.x</th>
+      <th>2.x</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <td>Blob storage</td>
+      <td>V</td>
+      <td>V</td>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <td>Cosmos DB</td>
+      <td>V</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>Event Grid</td>
+      <td>V</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>Event Hubs</td>
+      <td>V</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>HTTP & webhooks</td>
+      <td>V</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>Microsoft Graph events</td>
+      <td>X</td>
+      <td>V</td>
+    </tr>
+     <tr>
+      <td>Queue storage</td>
+      <td>V</td>
+      <td>V</td>
+    </tr>
+     <tr>
+      <td>Service Bus</td>
+      <td>V</td>
+      <td>V</td>
+    </tr>
+    <tr>
+      <td>Timer</td>
+      <td>V</td>
+      <td>V</td>
+    </tr>
+  </tbody>
+</table>
