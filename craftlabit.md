@@ -10,16 +10,16 @@ category: 'presentation'
 
 ![Logo](/images/CraftLabIT/logo.jpeg)
 
-CraftLab IT est une entreprise Tournaisienne (Belgique, Hainaut) qui aide les entreprises à matérialiser des solutions IT, principalement WEB.
+CraftLab IT est une organisation Tournaisienne (Belgique, Hainaut) qui aide les entreprises à matérialiser des solutions IT, principalement WEB.
 
 ## One man job
 
-Je suis Mathieu Scolas, développeur depuis 2014.
-J'écoute les défis des autres entreprises, et propose une solution informatique taillée au problèmes rencontrés.
+Mathieu Scolas, développeur depuis 2014.
+Je suis à l'écoute les défis d'entreprises, et propose une solution informatique taillée au problèmes rencontrés.
 
 ![Mathieu Scolas](/images/CraftLabIT/Profil.jpg)
 
-Je suis principalement orienté web. Les solutions webs offrent ajourd'hui la facilité de déploiement continus, et je mise peronnellement toutes mes formations dans ce domaine.
+Mes expériences variés m'ont orientés vers des applications web PC et mobile. Le web offre ajourd'hui la facilité de déploiement continus, et je mise peronnellement toutes mes formations dans ce domaine.
 
 ## Centré sur les technologies
 
@@ -31,15 +31,15 @@ L'informatique requiert d'être en formation continu. C'est pourquoi je m'inform
 
 Je suis aussi avocat des principes Clean Code et de la méthodologie Agile.
 
-La méthodologie agile assure une compréhension fine des difficultés du terrain, une proximité forte avec vous, et des solutions évolutifs de semaine en semaine. N'hésitez pas à consulter le [manifesto](https://agilemanifesto.org/iso/fr/manifesto.html) et ses [principes](https://agilemanifesto.org/iso/fr/principles.html)
+La méthodologie agile assure une compréhension fine des difficultés du terrain, une proximité forte avec vous, et des applications évolutifs de semaine en semaine. N'hésitez pas à consulter le [manifesto](https://agilemanifesto.org/iso/fr/manifesto.html) et ses [principes](https://agilemanifesto.org/iso/fr/principles.html)
 
-Je vise une excellence technique afin de garantir une évolution longue durée des produits, ainsi qu'une adaptation de chaque solution aux demandes intervenant tard dans le processus de développement.
+Le craftmanship vise une excellence technique afin de garantir une évolution longue durée des produits, ainsi qu'une adaptation de chaque solution aux demandes intervenant tard dans le processus de développement.
 
 Toute les applications livrés sont attachés avec les tests qui certifient le bon comportement des applications.
 
 ## Contact
 
-Vous pouvez me contacter par mail <mathieu.scolas@craftlabit.be> ou par téléphone au <a href="+32476781479">0476 78 14 79</a>
+Vous pouvez me contacter par mail <mathieu.scolas@craftlabit.be> ou par téléphone au <a href="+32476781479">+32476 78 14 79</a>
 
 <section class="share">
     <a href="https://www.twitter.com/worming4" title="Twitter" target="_blank">
