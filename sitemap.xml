@@ -10,6 +10,10 @@
         </url>
     
         <url>
+            <loc>https://wetry.tech/category/azure/</loc>
+        </url>
+    
+        <url>
             <loc>https://wetry.tech/category/blog/</loc>
         </url>
     
@@ -22,11 +26,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.tech/category/css/</loc>
-        </url>
-    
-        <url>
-            <loc>https://wetry.tech/category/django/</loc>
+            <loc>https://wetry.tech/category/events/</loc>
         </url>
     
         <url>
@@ -34,11 +34,11 @@
         </url>
     
         <url>
-            <loc>https://wetry.tech/</loc>
+            <loc>https://wetry.tech/hitw2019/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/category/life/</loc>
+            <loc>https://wetry.tech/</loc>
         </url>
     
         <url>
