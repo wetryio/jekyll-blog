@@ -73,7 +73,7 @@ interface Route {
 Voici une utilisation très simple:
 ```ts
 const routes: Routes = [
-    { path: '', redirectTo: '/home' },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'contact', component: ContactComponent },
     { path: '**', redirectTo: '/home' }
@@ -84,11 +84,60 @@ Vous pouvez remarquer deux path étranges qui sont, en réalité, les seuls obli
 * `''`: représente la racine de l'application. (exemple: `http://localhost:4200/`)
 * `'**'`: représente toutes les urls n'existants pas dans la liste des routes donnée. Celle est en quelque sorte notre page "404". (exemple: `http://localhost/blabla`)
 
+L'option choisie dans cette exemple est de les rediriger vers la page "home" à l'aide de l'attribut `redirectTo`.
+L'attibut `pathMatch` mis à la valeur `full` permet de déterminer que ce cas ne doit être exécuté que si le path complètement vide (soit "/" ou "") mais absolument rien d'autre.
+
 Concentrons nous maintenant sur les path connus ("home" et "contact"). Vous pouvez voir que nous spécifions le composant à afficher dans ces deux cas, mais où vont-ils s'afficher ?
 C'est là que le composant `<router-outlet></router-outlet>` entre en jeux. Ce composant vous permet de choisir où le composant géré par le router s'affichera dans votre application.
 
+### Utilisation de router-outlet imbriqués
 
+Prenons par exemple le fait que nous voulons le même header et le même footer sur toutes les pages de notre application sauf sur la page de connexion. Un premier réflex pourait être d'ajouter ces composant dans l'`AppComponent` au même niveau que notre router-outlet.
+
+*app.component.html :*
+```html
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+```
+Mais comment peux-t'on masquer ces éléments dans le cas où nous nous trouvons sur la page de connexion ? Non nous n'utiliserons pas de <del>`*ngIf`</del>  pour arriver à notre faim. Heureusement Angular nous permet de pouvoir avec plusieurs router-outlet imbriqués.
+
+Créons alors un nouveau composant "container" qui s'occupera d'ajouter le header ainsi que le footer seulement dans certains cas et nettoyons notre AppComponent.
+
+*app.component.html :*
+```html
+<router-outlet></router-outlet>
+```
+
+*container.component.html :*
+```html
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+```
+
+Regardons maintenant comment arriver à remplir plusieurs router-outlet. Cela est possible grâce aux attributs `children` et `loadChildren` <sup>(lazy-loadig)</sup>.
+
+```ts
+const routes: Routes = [
+    { path: '', component: ContainerComponent, children: [
+        { path: 'home', component: HomeComponent },
+        { path: 'contact', component: ContactComponent },
+    ] },
+    { path: 'signin': component: SigninComponent }, 
+    { path: '**', redirectTo: '/home' }
+];
+```
+
+Avec cette configuration nous pourons retrouver dans les router-outlet
+* de `app.component.html`: les éléments de premier niveau (ContainerComponent ou SigninComponent);
+* de `container.component.html`: les éléments de second niveau (HomeComponent, ContactComponent).
+
+### Le lazy-loading
 
 ## Configurations
+
+## Sécurité
+
 
 
