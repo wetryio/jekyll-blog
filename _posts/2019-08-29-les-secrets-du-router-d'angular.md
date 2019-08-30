@@ -156,6 +156,34 @@ const routes: Routes = [
 ];
 ```
 
+### Données statiques
+
+Si vous avez besoin de détarminer des données comme le titre dans la page celon l'url, il n'est pas conseillé de décortiquer l'url afin de comprendre le contexte.
+Pour pouvoir faire cela, nous pourrions directement associer le titre à une route.
+
+Cela est possible à l'aide de l'attribut `data` des routes.
+
+```ts
+const routes: Routes = [
+    { path: '', component: ContainerComponent, children: [
+        { path: 'home', component: HomeComponent, data: { myTitle: 'accueil' } },
+        { path: 'contact', component: ContactComponent, data: { myTitle: 'contact' } },
+    ] },
+    ...
+];
+```
+
+La donnée est récupérable à l'aide de l'`ActivatedRoute`.
+
+```ts
+constructor(private route: ActivatedRoute, private title: Title) {}
+
+ngOnInit() {
+    this.title.setTitle(this.route.snapshot.data.myTitle);
+}
+```
+
+
 ## Configurations
 
 ## Sécurité
