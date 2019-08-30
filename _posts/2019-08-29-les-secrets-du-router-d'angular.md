@@ -124,7 +124,7 @@ const routes: Routes = [
         { path: 'home', component: HomeComponent },
         { path: 'contact', component: ContactComponent },
     ] },
-    { path: 'signin': component: SigninComponent }, 
+    { path: 'signin', component: SigninComponent }, 
     { path: '**', redirectTo: '/home' }
 ];
 ```
@@ -134,6 +134,27 @@ Avec cette configuration nous pourons retrouver dans les router-outlet
 * de `container.component.html`: les éléments de second niveau (HomeComponent, ContactComponent).
 
 ### Le lazy-loading
+
+Le lazy-loading permet de scinder votre "dist" en plusieurs fichiers qui ne seront chargés que si, et quand, une utilisation est nécessaire.
+
+Si vous faite un recherche à ce propos sur google, vous tomberez probablement sur un syntaxe de ce type: `loadChildren: './admin/admin.module#AdminModule'`. Il s'agit d'une syntaxe maintenant dépréciée qui a été créée par Angular afin d'être décortiquée et d'utiliser les informations avec SystemJS.
+
+A partir de la version 8 d'Angular, nous allons éviter SystemJS et utiliser la puissance du mécanisme d'[import de l'ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
+
+Cependant le principe est le même dans les deux cas. Il s'agit de définir:
+* où se trouver le fichier à charger (`import('./admin/admin.module')`),
+* quelle classe du fichier représente le NgModule (`.then(m => m.AdminModule)`).
+
+La nouvelle syntaxe complète est donc la suivante: `loadChildren: import('./admin/admin.module').then(m => m.AdminModule)`.
+*Attention que vous ne pouvez pas modifier cette syntaxe (en ajoutant par exemple plus de code dans le `then`) car le build AOT ne la comprendra pas. Il est donc impératif de la respecter.*
+
+```ts
+const routes: Routes = [
+    ...
+    { path: 'admin', loadChildren: import('./admin/admin.module').then(m => m.AdminModule) },
+    ...
+];
+```
 
 ## Configurations
 
