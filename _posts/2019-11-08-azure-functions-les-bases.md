@@ -6,11 +6,9 @@ image: 'https://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Az
 description: Azure Functions, le cloud serverless simple d'utilisation.
 category: 'tutorial'
 tags:
-
-* azure
-* tutorial
-* serverless
-
+- azure
+- tutorial
+- serverless
 twitter_text: Azure Functions, le cloud serverless simple d'utilisation.
 introduction: Azure Functions, le cloud serverless simple d'utilisation.
 ---
