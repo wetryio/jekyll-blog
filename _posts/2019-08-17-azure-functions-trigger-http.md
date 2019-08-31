@@ -41,3 +41,7 @@ Dans cet article, je vais démystifier le trigger HTTP, mais également montrer 
 ## Dependence d'injection
 
 ## Publier sur Azure
+
+## La sécurité
+
+## Publier ces Functions avec OpenAPI
