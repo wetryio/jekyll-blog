@@ -43,10 +43,15 @@
   
   <script>
     const githubUserInfo = 'https://api.github.com/users/{{ page.github_username }}';
-    fetch(githubUserInfo).then(function(response) { return response.json(); }).then(function(response) {
+    fetch(githubUserInfo).then(function(response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject('');
+      }
+    }).then(function(response) {
       document.getElementById('author-name').innerText = response.name;
       document.getElementById('author-img').src = response.avatar_url;
-      
-    });
+    }, function() {});
   </script>
   

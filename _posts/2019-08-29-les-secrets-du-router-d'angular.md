@@ -325,10 +325,26 @@ Pour éviter de devoir faire cela, nous pouvons appliquer l'option: `onSameUrlNa
 
 #### Scroll
 
+Si vos pages dépassent la hauteur de l'écran vous aurez remarqué un comportement indésirable des SPA: le scroll reste le même d'une page à l'autre.
 
+En effet le comportement d'un site normal voudrait que nous scrollions jusqu'au dessus à chaque changement de page.
+De plus nous l'ancre n'a aucune influence sur ce comportenent du scroll tant que vous ne rafraichissez pas la page.
+
+Vous avez de la chance, deux options sont maintenant disponible pour éviter ces problèmes et leur valeur par défaut va bientot changer.
+
+* `scrollPositionRestoration`: le comportent devient normal une fois mis à `'enabled'`.
+* `anchorScrolling`: le scroll sur les ancres ne fonctionnera que si vous l'activez en lui attribuant la valeur `'enabled'`.
 
 ### Déployement sous dossier
 Si votre url de base de votre site ressemble à `http://mondomaine.com/blog`, vous utilisez un sous dossier (ici "blog").
+
+Angular arrive à s'y retrouver grâce à la balise HTML [base](https://www.w3schools.com/TAGs/tag_base.asp). Ca valeur par défaut est `<base href="/">` ce qui définis qu'il n'y pas de sous dossier.
+
+Vous pouriez directement changer cette valeur dans votre fichier `index.hml`, je préconise d'utiliser une configuration dynamique au moment du build dans votre `package.json`.
+
+```sh
+ng build --base-href=/blog
+```
 
 ## Sécurité
 
