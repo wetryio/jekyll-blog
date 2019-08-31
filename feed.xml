@@ -5,9 +5,27 @@
     <description>Just another dev blog.</description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 31 Aug 2019 13:06:13 +0000</pubDate>
-    <lastBuildDate>Sat, 31 Aug 2019 13:06:13 +0000</lastBuildDate>
+    <pubDate>Sat, 31 Aug 2019 14:53:05 +0000</pubDate>
+    <lastBuildDate>Sat, 31 Aug 2019 14:53:05 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>Azure Functions les bases</title>
+        <description>&lt;h1 id=&quot;azure-functions--les-bases&quot;&gt;Azure Functions : Les bases&lt;/h1&gt; &lt;p&gt;Une Azure functions peut facilement se résumer en quelques points :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;c’est un service de calcul dans le cloud Azure &lt;strong&gt;serverless&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;qui permet &lt;strong&gt;d’exécuter du code à la demande&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;sans avoir à &lt;strong&gt;provisionner d’infrastructure&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;En résumé, on va définir sur le cloud un container, dans lequelle les fonctions seront déployées, ensuite, l’exécution, le scaling, la disponibilité et tout autre problème/considérations qui pourrait être lié à l’infrastructure devient la responsabilité d’Azure, nous ne devons nous occuper de rien.&lt;/p&gt; &lt;p&gt;Une fois le code déployer et disponible, il reste une chose à comprendre, c’est comment...</description>
+        <pubDate>Sun, 11 Aug 2019 18:26:40 +0000</pubDate>
+        <link>/azure-functions-les-bases/</link>
+        <guid isPermaLink="true">/azure-functions-les-bases/</guid>
+        
+        <category>azure</category>
+        
+        <category>tutorial</category>
+        
+        <category>serverless</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
   </channel>
 </rss>
