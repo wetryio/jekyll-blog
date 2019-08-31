@@ -3,7 +3,8 @@ title: WeTry | Just another dev blog
 email: info@wetry.tech
 description: Just another dev blog.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://wetry.tech" # the base hostname & protocol for your site
+# url: "https://wetry.tech" # the base hostname & protocol for your site
+url: ""
 google_analytics: "UA-145445435-1"
 
 # User Settings
@@ -38,6 +39,8 @@ plugins:
 links:
   - title: Home
     url: /
+  - title: HITW 2019
+    url: /hitw2019/
   - title: About
     url: /about/
   # - title: Contact
