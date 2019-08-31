@@ -3,24 +3,24 @@ layout: post
 title: "Les secrets du Router d'Angular"
 date: 2019-08-29 19:22:26
 image: 'https://kodcu.com/wp/wp-content/uploads/2019/06/routing-basics-icon@2x-1.png?fit=660%2C520&ssl=1&w=640'
-description: 
+description: En savoir plus sur le routing d'Angular.
 category: 'documentation'
 tags:
 - angular
 - routing
-twitter_text:
-introduction:
+twitter_text: En savoir plus sur le routing d'Angular.
+introduction: En savoir plus sur le routing d'Angular.
 ---
 
 Le routing est un élément inévitable dans une Application Web.
-Nous allons donc nous concentrer sur cette partie du frawmework Angular.
+Nous allons donc nous concentrer sur cette partie du framework Angular.
 
 ## C'est quoi le routing ?
 
 Le système de routing est la gestion de l'affichage via l'URL dans le navigateur. Le fait d'avoir l'url `/home` affichera des informations différentes de l'url `/contact` par exemple.
 
 Pour que cela fonctionne, il faut que ça soit le JavaScript qui ai la main sur l'url à la place du navigateur. Cela est possible de plusieurs façons:
-* **Path location** *(par défaut)*: utilise la fonction `pushstate` de l'API HTML5 qui permet de changer l'URL sans que le navigateur ne se préocupe d'aller chercher la page sur l'URL. Exemple d'url: `http://localhost:4200/home`.
+* **Path location** *(par défaut)*: utilise la fonction `pushState` de l'API HTML5 qui permet de changer l'URL sans que le navigateur ne se préocupe d'aller chercher la page sur l'URL. Exemple d'url: `http://localhost:4200/home`.
 
     *Gardez à l'esprit qu'il faudra configurer votre server de fichiers statiques pour qu'il ai un fallback non pas sur une page 404 mais sur l'`index.html`. Le serveur ne connaitra pas le dossier `home` en cas de rafraichissement de la page. Vous pouvez trouver les différentes configurations serveur [ici](https://angular.io/guide/deployment#server-configuration).*
 * **Hash location** : utilise les fragments (aussi appellés "ancre") afin d'éviter toute communication des données du routing entre le navigateur et le serveur. Exemple d'url: `http://localhost:4200/#/home`.
@@ -48,7 +48,7 @@ RouterModule.forChild(routes)
 RouterModule
 ```
 
-## Fonctionnement de base des routes
+## Fonctionnement des routes
 
 Concentrons nous sur les éléments les plus utilisés d'une route (l'interface complète peut être retrouvée [ici](https://angular.io/api/router/Route)):
 
@@ -63,7 +63,7 @@ interface Route {
   canLoad?: any[]
   data?: Data
   children?: Routes
-  loadChildren?: LoadChildren,
+  loadChildren?: LoadChildren
   ...
 }
 ```
@@ -132,6 +132,10 @@ const routes: Routes = [
 Avec cette configuration nous pourons retrouver dans les router-outlet
 * de `app.component.html`: les éléments de premier niveau (ContainerComponent ou SigninComponent);
 * de `container.component.html`: les éléments de second niveau (HomeComponent, ContactComponent).
+
+### Paramètres
+
+TODO
 
 ### Le lazy-loading
 
@@ -281,7 +285,45 @@ this.router.navigateByUrl(`/admin/users/1?param1=test1`, { preserveFragment: tru
 
 Les options sont identiques à celles de la fonction `navigate` à l'exception pret que les options modifiants l'url fournie en premier paramètres (comme `queryParams`, `fragment` ou `relativeTo`) ne fonctionneront pas.
 
-## Configurations
+## Configuration
+
+### Globale
+
+La configuration global se fait au niveau de l'utilisation de la fonction statique `forRoot` du `RouterModule`.
+
+Comme pour les routes, concentrons nous sur les options les plus utilisés (l'interface est disponible [ici](https://angular.io/api/router/ExtraOptions)):
+
+```ts
+interface ExtraOptions {
+  useHash?: boolean
+  preloadingStrategy?: PreloadAllModules | NoPreloading
+  onSameUrlNavigation?: 'reload' | 'ignore'
+  scrollPositionRestoration?: 'disabled' | 'enabled' | 'top'
+  anchorScrolling?: 'disabled' | 'enabled'
+  ...
+}
+```
+
+Comme expliqué [précédement](#C'est-quoi-le-routing-?), il est possible de changer la stratégie de routing de l'API HTML5 en ancres, cela est possible via l'option `useHash`.
+
+#### Lazy-load preloading
+
+L'option `preloadingStrategy` permet de changer la stratégie de "préloading" pour les modules qui sont en lazy-loading. Le fait de changer cette option en `PreloadAllModules` ( `NoPreloading` est utilisé par défaut ) chargera tous les modules une fois que l'application sera est fonctionnelle.
+
+#### Rafraichissement
+
+Par défaut, si la route (pas spécialement l'url) source est identique à celle destination, Angular n'effectue aucun rafraichissement. Cela semble logique mais peut ne pas être le comportement voulu surtout pour des routes avec paramètre.
+
+Par défaut nous seront obliger d'écouter nous même les navigations:
+```ts
+this.router.events.pipe(filter(e => e instanceof NavigationEnd).subscribe((e) => { ... });
+```
+
+Pour éviter de devoir faire cela, nous pouvons appliquer l'option: `onSameUrlNavigation: 'reload'`.
+
+#### Scroll
+
+
 
 ### Déployement sous dossier
 Si votre url de base de votre site ressemble à `http://mondomaine.com/blog`, vous utilisez un sous dossier (ici "blog").
