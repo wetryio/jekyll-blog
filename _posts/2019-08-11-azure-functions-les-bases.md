@@ -11,6 +11,8 @@ tags:
 - serverless
 twitter_text: Azure Functions, le cloud serverless simple d'utilisation.
 introduction: Azure Functions, le cloud serverless simple d'utilisation.
+github_username: Hantse
+linkedin_username: patrick-grasseels-a132a381
 ---
 
 # Azure Functions : Les bases
