@@ -11,32 +11,32 @@ image: /images/CraftLabIT/logo.jpeg
 
 ![Logo](/images/CraftLabIT/logo.jpeg)
 
-CraftLab IT est une organisation Tournaisienne (Belgique, Hainaut) qui aide les entreprises à matérialiser des solutions IT, principalement WEB.
+CraftLab IT est une organisation tournaisienne (Belgique, Hainaut) qui aide les entreprises à matérialiser des solutions IT, principalement WEB.
 
 ## One man job
 
 Mathieu Scolas, développeur depuis 2014.
-Je suis à l'écoute les défis d'entreprises, et propose une solution informatique taillée au problèmes rencontrés.
+Je suis à l'écoute les défis d'entreprises, et propose une solution informatique taillée aux problèmes rencontrés.
 
 ![Mathieu Scolas](/images/CraftLabIT/Profil.jpg)
 
-Mes expériences variés m'ont orientés vers des applications web PC et mobile. Le web offre ajourd'hui la facilité de déploiement continus, et je mise peronnellement toutes mes formations dans ce domaine.
+Mes expériences variées m'ont orienté vers des applications web PC et mobile. Le web offre ajourd'hui la facilité de déploiement continu, et je mise peronnellement toutes mes formations dans ce domaine.
 
 ## Centré sur les technologies
 
 Aujourd'hui, la technologie que je privilégie sont les Web Api en C#, ainsi qu'un frontend en Angular.
 
-L'informatique requiert d'être en formation continu. C'est pourquoi je m'informe et m'entraine chaque semaine aux technologies moderne (docker, graphql, database en graph, database orienté document, ...) et d'autres languages (go, F#, node-typescript)
+L'informatique requiert d'être en formation continue. C'est pour cette raison je m'informe et m'entraîne chaque semaine aux technologies modernes (docker, graphql, database en graph, database orienté document, ...) et d'autres languages (go, F#, node-typescript)
 
 ## Méthodologie agile et craftmanship
 
 Je suis aussi avocat des principes Clean Code et de la méthodologie Agile.
 
-La méthodologie agile assure une compréhension fine des difficultés du terrain, une proximité forte avec vous, et des applications évolutifs de semaine en semaine. N'hésitez pas à consulter le [manifesto](https://agilemanifesto.org/iso/fr/manifesto.html) et ses [principes](https://agilemanifesto.org/iso/fr/principles.html)
+La méthodologie agile assure une compréhension fine des difficultés du terrain, une proximité forte avec vous, et des applications évolutives de semaine en semaine. N'hésitez pas à consulter le [manifesto](https://agilemanifesto.org/iso/fr/manifesto.html) et ses [principes](https://agilemanifesto.org/iso/fr/principles.html)
 
 Le craftmanship vise une excellence technique afin de garantir une évolution longue durée des produits, ainsi qu'une adaptation de chaque solution aux demandes intervenant tard dans le processus de développement.
 
-Toute les applications livrés sont attachés avec les tests qui certifient le bon comportement des applications.
+Toutes les applications livrées sont attachées avec les tests qui certifient le bon comportement des applications.
 
 ## Contact
 
