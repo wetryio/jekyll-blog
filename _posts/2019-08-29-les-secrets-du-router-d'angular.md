@@ -10,6 +10,8 @@ tags:
 - routing
 twitter_text: En savoir plus sur le routing d'Angular.
 introduction: En savoir plus sur le routing d'Angular.
+github_username: gilsdav
+linkedin_username: david-gilson-innovate
 ---
 
 Le routing est un élément inévitable dans une Application Web.
