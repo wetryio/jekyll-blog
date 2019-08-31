@@ -1,4 +1,4 @@
 ---
 layout: category
-category: 'django'
+category: 'azure'
 ---
