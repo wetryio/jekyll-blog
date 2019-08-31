@@ -177,3 +177,13 @@ Un autre avantage fondamentale des Azure functions, c'est qu'il est possible de 
   </tbody>
 </table>    
 
+## Conclusion
+
+En conclusion, ene Azure functions c'est :
+
+* c'est un service de calcul dans le cloud Azure **serverless**
+* qui permet **d’exécuter du code à la demande**
+* sans avoir à **provisionner d’infrastructure**
+* multilanguage
+
+D'autres article vont arriver prochainement sur les triggers, comment utiliser les avantages de l'ASP.NET Core dans une Azure Functions (DI, Configuration, etc ...).
