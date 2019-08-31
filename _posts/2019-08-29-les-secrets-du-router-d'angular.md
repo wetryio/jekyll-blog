@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Les secrets du Router d'Angular"
-date: 2019-08-29 19:22:26
-image: 'https://kodcu.com/wp/wp-content/uploads/2019/06/routing-basics-icon@2x-1.png?fit=660%2C520&ssl=1&w=640'
+date: 2019-08-31 15:22:26
+image: '/images/angular-posts/routing.jpg'
 description: En savoir plus sur le routing d'Angular.
 category: 'documentation'
 tags:
