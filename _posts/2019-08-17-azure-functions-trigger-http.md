@@ -27,6 +27,8 @@ Dans cet article, je vais démystifier le trigger HTTP, mais également montrer 
 - Binding du modèle d'entrée
 - Dependence d'injection
 - Publier sur Azure
+- La sécurité
+- Publier ces Functions avec OpenAPI
 
 ## Crée une Azure Functions avec Visual Studio
 
