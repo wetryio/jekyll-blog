@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Les secrets du Router d&#39;Angular",
+      "tags"     : "angular and routing",
+      "categories" : "documentation",
+      "url"      : "/les-secrets-du-router-d'angular/",
+      "date"     : "08/29/2019"
+    } ,
+  
+    {
       "title"    : "Azure Functions les bases",
       "tags"     : "azure, tutorial, and serverless",
       "categories" : "blog",

@@ -2,84 +2,88 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
         <url>
-            <loc>/404.html</loc>
+            <loc>https://wetry.tech/404.html</loc>
         </url>
     
         <url>
-            <loc>/about/</loc>
+            <loc>https://wetry.tech/about/</loc>
         </url>
     
         <url>
-            <loc>/category/azure/</loc>
+            <loc>https://wetry.tech/category/azure/</loc>
         </url>
     
         <url>
-            <loc>/category/blog/</loc>
+            <loc>https://wetry.tech/category/blog/</loc>
         </url>
     
         <url>
-            <loc>/contact/</loc>
+            <loc>https://wetry.tech/contact/</loc>
         </url>
     
         <url>
-            <loc>/craftlab-it/</loc>
+            <loc>https://wetry.tech/craftlab-it/</loc>
         </url>
     
         <url>
-            <loc>/category/events/</loc>
+            <loc>https://wetry.tech/category/events/</loc>
         </url>
     
         <url>
-            <loc>/feed.xml</loc>
+            <loc>https://wetry.tech/feed.xml</loc>
         </url>
     
         <url>
-            <loc>/hitw2019/</loc>
+            <loc>https://wetry.tech/hitw2019/</loc>
         </url>
     
         <url>
-            <loc>/</loc>
+            <loc>https://wetry.tech/</loc>
         </url>
     
         <url>
-            <loc>/category/mobile/</loc>
+            <loc>https://wetry.tech/category/mobile/</loc>
         </url>
     
         <url>
-            <loc>/contact/message-sent/</loc>
+            <loc>https://wetry.tech/contact/message-sent/</loc>
         </url>
     
         <url>
-            <loc>/assets/img/icons/preloader.svg</loc>
+            <loc>https://wetry.tech/assets/img/icons/preloader.svg</loc>
         </url>
     
         <url>
-            <loc>/assets/img/icons/read.svg</loc>
+            <loc>https://wetry.tech/assets/img/icons/read.svg</loc>
         </url>
     
         <url>
-            <loc>/search.json</loc>
+            <loc>https://wetry.tech/search.json</loc>
         </url>
     
         <url>
-            <loc>/sitemap.xml</loc>
+            <loc>https://wetry.tech/sitemap.xml</loc>
         </url>
     
         <url>
-            <loc>/tags/index.html</loc>
+            <loc>https://wetry.tech/tags/index.html</loc>
         </url>
     
         <url>
-            <loc>/category/tutorial/</loc>
+            <loc>https://wetry.tech/category/tutorial/</loc>
         </url>
     
         <url>
-            <loc>/category/webdev/</loc>
+            <loc>https://wetry.tech/category/webdev/</loc>
         </url>
     
     
         <url>
-            <loc>/azure-functions-les-bases/</loc>
+            <loc>https://wetry.tech/les-secrets-du-router-d'angular/</loc>
+        </url>
+  
+        <url>
+            <loc>https://wetry.tech/azure-functions-les-bases/</loc>
         </url>
   
 </urlset>

@@ -14,14 +14,14 @@
     <meta name="twitter:title" content="Azure Functions les bases | WeTry">
     <meta name="twitter:description" content="Azure Functions, le cloud serverless simple d'utilisation.">
     
-    <meta property="twitter:image:src" content="https://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Azure-Functions-1_zcwjys.png">
+    <meta property="twitter:image:src" content="https://wetry.techhttps://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Azure-Functions-1_zcwjys.png">
     
 
     <!-- Social: Facebook / Open Graph -->
-    <meta property="og:url" content="/azure-functions-les-bases/">
+    <meta property="og:url" content="https://wetry.tech/azure-functions-les-bases/">
     <meta property="og:title" content="Azure Functions les bases | WeTry">
     
-    <meta property="og:image" content="https://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Azure-Functions-1_zcwjys.png">
+    <meta property="og:image" content="https://wetry.techhttps://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Azure-Functions-1_zcwjys.png">
     
     <meta property="og:description" content="Azure Functions, le cloud serverless simple d'utilisation.">
     <meta property="og:site_name" content="WeTry | Just another dev blog">
@@ -29,7 +29,7 @@
     <!-- Social: Google+ / Schema.org  -->
     <meta itemprop="name" content="Azure Functions les bases | WeTry"/>
     <meta itemprop="description" content="Azure Functions, le cloud serverless simple d'utilisation.">
-    <meta itemprop="image" content="/assets/img/blog-image.png"/>
+    <meta itemprop="image" content="https://wetry.tech/assets/img/blog-image.png"/>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -60,8 +60,9 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="canonical" href="/azure-functions-les-bases/">
-    <link rel="alternate" type="application/rss+xml" title="WeTry | Just another dev blog" href="/feed.xml" />
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="canonical" href="https://wetry.tech/azure-functions-les-bases/">
+    <link rel="alternate" type="application/rss+xml" title="WeTry | Just another dev blog" href="https://wetry.tech/feed.xml" />
 </head>
 
     <body class="has-push-menu">
@@ -94,15 +95,15 @@
       <h2>Menu</h2>
       <ul>
         
-          <li><a href="/">Home</a></li>
+          <li><a href="https://wetry.tech/">Home</a></li>
         
-          <li><a href="/hitw2019/">HITW 2019</a></li>
+          <li><a href="https://wetry.tech/hitw2019/">HITW 2019</a></li>
         
-          <li><a href="/about/">About</a></li>
+          <li><a href="https://wetry.tech/about/">About</a></li>
         
-          <li><a href="/craftlab-it/">CraftLabIT</a></li>
+          <li><a href="https://wetry.tech/craftlab-it/">CraftLabIT</a></li>
         
-        <li><a class="feed" href="/feed.xml" title="Atom/RSS feed">Feed</a></li>
+        <li><a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a></li>
       </ul>
     </nav>
 </aside>
@@ -329,15 +330,15 @@ Une Azure Functions qui est trigger par du HTTP/Webhook ressemble à ça</p>
 
             <section class="share">
     <h3>Share</h3>
-    <a aria-label="Compartilhar no Twitter" href="https://twitter.com/intent/tweet?text=&quot;Azure Functions, le cloud serverless simple d'utilisation.&quot;%20/azure-functions-les-bases/%20via%20&#64;&hashtags=azure,tutorial,serverless,"
+    <a aria-label="Compartilhar no Twitter" href="https://twitter.com/intent/tweet?text=&quot;Azure Functions, le cloud serverless simple d'utilisation.&quot;%20https://wetry.tech/azure-functions-les-bases/%20via%20&#64;&hashtags=azure,tutorial,serverless,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
-    <a aria-label="Compartilhar no Facebook"href="https://www.facebook.com/sharer/sharer.php?u=/azure-functions-les-bases/"
+    <a aria-label="Compartilhar no Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/azure-functions-les-bases/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
-    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=/azure-functions-les-bases/"
+    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=https://wetry.tech/azure-functions-les-bases/"
     onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
         <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
     </a>
@@ -372,11 +373,16 @@ Une Azure Functions qui est trigger par du HTTP/Webhook ressemble à ça</p>
   
   <script>
     const githubUserInfo = 'https://api.github.com/users/Hantse';
-    fetch(githubUserInfo).then(function(response) { return response.json(); }).then(function(response) {
+    fetch(githubUserInfo).then(function(response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        return Promise.reject('');
+      }
+    }).then(function(response) {
       document.getElementById('author-name').innerText = response.name;
       document.getElementById('author-img').src = response.avatar_url;
-      
-    });
+    }, function() {});
   </script>
   
             <section class="comments">
@@ -421,15 +427,15 @@ Une Azure Functions qui est trigger par du HTTP/Webhook ressemble à ça</p>
     </p>
     <ul>
         
-          <li><a href="/">Home</a></li>
+          <li><a href="https://wetry.tech/">Home</a></li>
         
-          <li><a href="/hitw2019/">HITW 2019</a></li>
+          <li><a href="https://wetry.tech/hitw2019/">HITW 2019</a></li>
         
-          <li><a href="/about/">About</a></li>
+          <li><a href="https://wetry.tech/about/">About</a></li>
         
-          <li><a href="/craftlab-it/">CraftLabIT</a></li>
+          <li><a href="https://wetry.tech/craftlab-it/">CraftLabIT</a></li>
         
-        <li><a class="feed" href="/feed.xml" title="Atom/RSS feed">Feed</a></li>
+        <li><a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a></li>
     </ul>
     <p><span>Jekflix</span> was made with <svg class="love"><use xlink:href="#icon-heart"></use></svg> by <a href="http://www.rossener.com" target="_blank" class="creator">Thiago Rossener</a></p>
 </footer>
