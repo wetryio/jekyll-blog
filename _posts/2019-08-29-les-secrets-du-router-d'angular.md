@@ -230,7 +230,53 @@ Ou gérer notre stratégie de "présevation de données" en cas de changement d'
 
 ### TypeScript
 
+L'API TypeScript pour la navigation ([Router](https://angular.io/api/router/Router)) permet de naviguer dans notre application de deux façons (via deux fonctions):
+* `navigate`: utilisation similaire au routerLink
+* `navigateByUrl`: naviguer à l'aide d'une url déjà construite (exemple: `/admin/users/1?param1=test1`)
+
+Pour avoir accès à cette API, il vous suffit d'injecter `Router`.
+
+```ts
+constructor(private router: Router) {}
+```
+
+#### Navigate
+
+Commençons par reproduire un exemple complet du routerLink avec la fonction navigate.
+```ts
+this.router.navigate(['/admin','users', this.id], {
+    queryParams: {param1: 'test1', param2: 'test2'},
+    queryParamsHandling: 'merge'
+    preserveFragment: true,
+});
+```
+
+Vous remarquerez que l'utilisation est sensiblement la même.
+
+Jetons alors un coup d'oeil sur les paramètres additionels que le navigate nous fournis:
+* `skipLocationChange`: Naviguer vers une page sans que cela n'impact l'URL.
+* `replaceUrl`: Remplacer l'url courante par la nouvelle (l'ancienne url ne sera plus disponible dans l'historique du navigateur).
+* `relativeTo`: Faire une navigation relative à une route.
+
+Il n'y a pas vraiment besoin de plus d'explication pour les deux premières options, mais la dernière demande peut-être un petit exemple:
+> Nous somme sur un utilisateur précis `/admin/users/1` et nous voulons faire un bouton transversal qui permet de remonter le "fil d'ariane" (autrement dit, nous voulons naviguer vers `/admin/users` sans connaite cette url).
+
+Nous alons pouvoir récupérer le parent de l'url active et demander une navigation relative à cette route.
+
+```ts
+constructor(private route: ActivatedRoute, private router: Router) {}
+...
+this.router.navigate(['.'], { relativeTo: this.route.parent });
+```
+
+#### NavigateByUrl
+
+
+
 ## Configurations
+
+### Déployement sous dossier
+Si votre url de base de votre site ressemble à `http://mondomaine.com/blog`, vous utilisez un sous dossier (ici "blog").
 
 ## Sécurité
 
