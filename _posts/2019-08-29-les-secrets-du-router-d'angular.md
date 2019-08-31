@@ -188,7 +188,7 @@ Si vous faite une recherche à ce propos sur google, vous tomberez probablement 
 À partir de la version 8 d'Angular, nous allons éviter SystemJS et utiliser la puissance du mécanisme d'[import de l'ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
 
 Cependant le principe est le même dans les deux cas. Il s'agit de définir:
-* où se trouver le fichier à charger (`import('./admin/admin.module')`),
+* où trouver le fichier à charger (`import('./admin/admin.module')`),
 * quelle classe du fichier représente le NgModule (`.then(m => m.AdminModule)`).
 
 La nouvelle syntaxe complète est donc la suivante: `loadChildren: import('./admin/admin.module').then(m => m.AdminModule)`.
