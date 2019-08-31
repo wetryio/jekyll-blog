@@ -1,51 +1,52 @@
 <section class="author" itemprop="author">
-  <div class="details" itemscope itemtype="http://schema.org/Person">
-    <img id="author-img" itemprop="image" class="img-rounded" src="" alt="{{ page.github_username }} logo">
-    <p class="def">Author</p>
-    <h3 class="name">
-      <a id="author-name" itemprop="name" href="https://github.com/{{ page.github_username }}">{{ page.github_username }}</a>
-    </h3>
-    <p class="desc">{{ page.user_description }}</p>
-    <p>
-      {% if page.github_username %}
-      <a itemprop="github" href="https://github.com/{{ page.github_username }}" title="Github">
-        <svg><use xlink:href="#icon-github"></use></svg>
-      </a>
-      {% endif %}
-      {% if page.facebook_username %}
-      <a itemprop="facebook" href="https://www.facebook.com/{{ page.facebook_username }}" title="Facebook">
-        <svg><use xlink:href="#icon-facebook"></use></svg>
-      </a>
-      {% endif %}
-      {% if page.twitter_username %}
-      <a itemprop="twitter" href="https://twitter.com/{{ page.twitter_username }}" title="Twitter">
-        <svg><use xlink:href="#icon-twitter"></use></svg>
-      </a>
-      {% endif %}
-      {% if page.medium_username %}
-      <a itemprop="medium" href="https://medium.com/@{{ page.medium_username }}" title="Medium">
-        <svg><use xlink:href="#icon-medium"></use></svg>
-      </a>
-      {% endif %}
-      {% if page.instagram_username %}
-      <a itemprop="instagram" href="https://www.instagram.com/{{ page.instagram_username }}" title="Instagram">
-        <svg><use xlink:href="#icon-instagram"></use></svg>
-      </a>
-      {% endif %}
-      {% if page.linkedin_username %}
-      <a itemprop="linkedin" href="https://www.linkedin.com/in/{{ page.linkedin_username }}" title="LinkedIn">
-        <svg><use xlink:href="#icon-linkedin"></use></svg>
-      </a>
-      {% endif %}
-    </p>
-  </div>
-</section>
-
-<script>
-  const githubUserInfo = 'https://api.github.com/users/{{ page.github_username }}';
-  fetch(githubUserInfo).then(function(response) { return response.json(); }).then(function(response) {
-    document.getElementById('author-name').innerText = response.name;
-    document.getElementById('author-img').src = response.avatar_url;
-    
-  });
-</script>
+    <div class="details" itemscope itemtype="http://schema.org/Person">
+      <img id="author-img" itemprop="image" class="img-rounded" src="" alt="{{ page.github_username }} logo">
+      <p class="def">Author</p>
+      <h3 class="name">
+        <a id="author-name" itemprop="name" href="https://github.com/{{ page.github_username }}">{{ page.github_username }}</a>
+      </h3>
+      <p class="desc">{{ page.user_description }}</p>
+      <p>
+        {% if page.github_username %}
+        <a itemprop="github" href="https://github.com/{{ page.github_username }}" title="Github">
+          <svg><use xlink:href="#icon-github"></use></svg>
+        </a>
+        {% endif %}
+        {% if page.facebook_username %}
+        <a itemprop="facebook" href="https://www.facebook.com/{{ page.facebook_username }}" title="Facebook">
+          <svg><use xlink:href="#icon-facebook"></use></svg>
+        </a>
+        {% endif %}
+        {% if page.twitter_username %}
+        <a itemprop="twitter" href="https://twitter.com/{{ page.twitter_username }}" title="Twitter">
+          <svg><use xlink:href="#icon-twitter"></use></svg>
+        </a>
+        {% endif %}
+        {% if page.medium_username %}
+        <a itemprop="medium" href="https://medium.com/@{{ page.medium_username }}" title="Medium">
+          <svg><use xlink:href="#icon-medium"></use></svg>
+        </a>
+        {% endif %}
+        {% if page.instagram_username %}
+        <a itemprop="instagram" href="https://www.instagram.com/{{ page.instagram_username }}" title="Instagram">
+          <svg><use xlink:href="#icon-instagram"></use></svg>
+        </a>
+        {% endif %}
+        {% if page.linkedin_username %}
+        <a itemprop="linkedin" href="https://www.linkedin.com/in/{{ page.linkedin_username }}" title="LinkedIn">
+          <svg><use xlink:href="#icon-linkedin"></use></svg>
+        </a>
+        {% endif %}
+      </p>
+    </div>
+  </section>
+  
+  <script>
+    const githubUserInfo = 'https://api.github.com/users/{{ page.github_username }}';
+    fetch(githubUserInfo).then(function(response) { return response.json(); }).then(function(response) {
+      document.getElementById('author-name').innerText = response.name;
+      document.getElementById('author-img').src = response.avatar_url;
+      
+    });
+  </script>
+  

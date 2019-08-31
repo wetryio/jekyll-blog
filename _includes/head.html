@@ -21,7 +21,9 @@
     <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     <meta property="og:title" content="{% if page.title %}{{ page.title }} | {{ site.username }}{% else %}{{ site.title }}{% endif %}">
     {% if page.image %}
-    <meta property="og:image" content="{{ page.image }}">
+    <meta property="og:image" content="{{ page.image | prepend: site.baseurl | prepend: site.url }}">
+    {% elsif page.absoluteimage %}
+    <meta property="og:image" content="{{ page.absoluteimage }}">
     {% else %}
     <meta property="og:image" content="{{ "/assets/img/blog-image.png" | prepend: site.baseurl | prepend: site.url }}">
     {% endif %}

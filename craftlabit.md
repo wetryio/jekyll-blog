@@ -1,9 +1,10 @@
 ---
 layout: page
 title: CraftLab IT
-description: Page présentation CraftLab IT.
+description: CraftLab IT
 permalink: /craftlab-it/
 category: 'presentation'
+image: /images/CraftLabIT/logo.jpeg
 ---
 
 # CraftLab IT
