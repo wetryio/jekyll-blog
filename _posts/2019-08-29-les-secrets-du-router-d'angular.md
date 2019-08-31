@@ -266,12 +266,20 @@ Nous alons pouvoir récupérer le parent de l'url active et demander une navigat
 ```ts
 constructor(private route: ActivatedRoute, private router: Router) {}
 ...
+// Navigation vers le parent
 this.router.navigate(['.'], { relativeTo: this.route.parent });
+// Navigation vers un autre enfant
+this.router.navigate([otherId], { relativeTo: this.route.parent });
 ```
 
 #### NavigateByUrl
 
+Si vous connaissez déjà l'url de destination (exemple: `/admin/users/1?param1=test1`), utilisez la fonction `navigateByUrl`.
+```ts
+this.router.navigateByUrl(`/admin/users/1?param1=test1`, { preserveFragment: true });
+```
 
+Les options sont identiques à celles de la fonction `navigate` à l'exception pret que les options modifiants l'url fournie en premier paramètres (comme `queryParams`, `fragment` ou `relativeTo`) ne fonctionneront pas.
 
 ## Configurations
 
