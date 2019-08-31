@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Les secrets du Router d'Angular"
-date: 2019-08-31 15:22:26
+date: 2019-08-29 19:22:26
 image: '/images/angular-posts/routing.jpg'
 description: En savoir plus sur le routing d'Angular.
 category: 'documentation'
@@ -16,6 +16,8 @@ linkedin_username: david-gilson-innovate
 
 Le routing est un élément inévitable dans une Application Web.
 Nous allons donc nous concentrer sur cette partie du framework Angular.
+
+Si vous êtes intéressez uniquement pas un point du routing, n'hésitez pas à aller voir la [table des matières](#toc).
 
 ## C'est quoi le routing ?
 
@@ -386,5 +388,71 @@ ng build --base-href=/blog
 
 ## Sécurité
 
+Vous l'avez peut-être remarqué, nous n'avons pas traité tous paramètres de route précédement cité dans l'article.
+La raison et que ces trois paramètres restants méritent de créer une nouvelle section car ils touchent la sécurité de votre application.
 
+Le fait de cacher le lien vers certaines route n'est pas suffisant car les utilisateurs pouraient se partager un lien ou sauver celui-ci en favoris. Il faut donc également bloquer l'accès à ces urls, et c'est là que les derniers paramètres interviennent. 
 
+* `canActivate`: vérifie si l'utilisateur peu accéder à la route.
+* `canDeactivate`: vérifie si l'utilisateur peu quitter à la route. *Cela ne bloque la navigation que dans le contexte de l'application mais n'a aucun impact pour l'accès à un autre site (via le bouton back ou depuis un href par exemple)*.
+* `canLoad`: vérifie si l'utilisateur peu charger un module qui a la stratégie du lazy-loading.
+
+Chacun de ces paramètres attend un tableau de ce qu'on appel des **guards**.
+
+Le rôle d'un gard est de déterminer si, pour lui, l'utilisateur à le droit d'accéder à la ressource demandée.
+
+Un guard est un injectable qui impémente une interface (une interface par type de responsabilité).
+
+```ts
+// canActivate
+@Injectable(providedIn: 'root')
+class CanActivateGuard implements CanActivate {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|boolean {
+        return true;
+    }
+}
+// canDeactivate
+@Injectable(providedIn: 'root')
+class CanDeactivateGuard implements CanDeactivate {
+    canDeactivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|boolean {
+        return true;
+    }
+}
+// canLoad
+@Injectable(providedIn: 'root')
+class CanLoadGuard implements CanLoad {
+    canLoad(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>|boolean {
+        return true;
+    }
+}
+```
+Il est possible de retourner un `boolean` ou un `Observable` de boolean. Cela dépend si vous savez calculer directement la valeur ou si elle nécessite un appel asynchrone.
+
+Il ne nous reste plus qu'à les utiliser dans nos routes.
+```ts
+{
+    path: 'users/:id',
+    component: UserListComponent,
+    canActivate: [CanActivateGuard],
+    canDeactivate: [CanDeactivateGuard]
+},
+{
+    path: 'admin',
+    loadChildren: import('./admin/admin.module').then(m => m.AdminModule),
+    canLoad: [CanLoadGuard]
+},
+```
+
+---
+
+<div class="gratitude">
+    <span>MERCI</span>
+    <p>d'avoir pris le temps de lire cet article</p>
+</div>
+
+---
+
+<div id="toc"></div>
+**Table des matières**
+1. TOC
+{:toc}
