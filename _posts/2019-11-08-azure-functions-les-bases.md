@@ -6,9 +6,11 @@ image: 'https://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Az
 description: Azure Functions, le cloud serverless simple d'utilisation.
 category: 'tutorial'
 tags:
-- azure
-- tutorial
-- serverless
+
+* azure
+* tutorial
+* serverless
+
 twitter_text: Azure Functions, le cloud serverless simple d'utilisation.
 introduction: Azure Functions, le cloud serverless simple d'utilisation.
 ---
@@ -31,9 +33,9 @@ triggers pour s'exécuter
 
 ## Les triggers
 
-L'un des point fort des Azure Functions, c'est la vaste liste de trigger disponible,
+L'un des point fort des Azure Functions, c'est la vaste liste de trigger disponible, qui s'étends d'un simple HTTP/Webhook a des déclencheur sur des DB NoSQL comme CosmosDB.
 
-[Doc officiels](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings
+[Doc officiels](https://docs.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings)
 
 <table>
   <thead>
@@ -43,14 +45,12 @@ L'un des point fort des Azure Functions, c'est la vaste liste de trigger disponi
       <th>2.x</th>
     </tr>
   </thead>
-  <tfoot>
+  <tbody>
     <tr>
       <td>Blob storage</td>
       <td>V</td>
       <td>V</td>
     </tr>
-  </tfoot>
-  <tbody>
     <tr>
       <td>Cosmos DB</td>
       <td>V</td>
@@ -93,3 +93,87 @@ L'un des point fort des Azure Functions, c'est la vaste liste de trigger disponi
     </tr>
   </tbody>
 </table>
+
+## Une function, un code simple
+
+Un autre avantages des Azure Functions, c'est le code minimaliste pour en crée une, les templates fournis par VS ou VS Code font bien le boulot.
+Une Azure Functions qui est trigger par du HTTP/Webhook ressemble à ça
+
+``` csharp
+
+public static class SampleFunction
+{
+    [FunctionName("SampleFunction")]
+    public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log) {
+        
+        log.LogInformation("C# HTTP trigger function processed a request.");
+    
+        string name = req.Query["name"];
+    
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        dynamic data = JsonConvert.DeserializeObject(requestBody);
+        name = name ?? data?.name;
+    
+        return name != null
+            ? (ActionResult)new OkObjectResult($"Hello, {name}")
+            : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+    }
+}
+
+```
+
+Le code reste assez simple et compréhensible. Dans d'autres articles, des exemples de functions plus avancées avec d'autres triggers seront traiter.
+
+## Multi language
+
+Un autre avantage fondamentale des Azure functions, c'est qu'il est possible de les développer en plusieurs languages différents. Les languages suivants sont supportés
+
+[Doc officiels](https://docs.microsoft.com/en-us/azure/azure-functions/supported-languages)
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>1.x</th>
+      <th>2.x</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C#</td>
+      <td>GA (.NET Framework 4.7)</td>
+      <td>GA (.NET Core 2.2)</td>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>GA (Node 6)</td>
+      <td>GA (Node 8 & 10)</td>
+    </tr>
+    <tr>
+      <td>F#</td>
+      <td>GA (.NET Framework 4.7)</td>
+      <td>GA (.NET Core 2.2)</td>
+    </tr>
+    <tr>
+      <td>Java</td>
+      <td>N/A</td>
+      <td>GA (Java 8)</td>
+    </tr>
+    <tr>
+      <td>Powershell</td>
+      <td>Experimental</td>
+      <td>Preview (PowerShell Core 6)</td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td>Experimental</td>
+      <td>Preview (Python 3.6)</td>
+    </tr> 
+    <tr>
+      <td>Typescript</td>
+      <td>Experimental</td>
+      <td>GA (supported through transpiling to JavaScript)</td>
+    </tr>            
+  </tbody>
+</table>    
+
