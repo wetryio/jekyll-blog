@@ -137,7 +137,45 @@ Avec cette configuration nous pourons retrouver dans les router-outlet
 
 ### Paramètres
 
-TODO
+Nous avons jusqu'à présent vu des routes statiques mais comment peut-on rendre une partie de la route dynamique ?
+
+Deux solutions sont possibles:
+* **Path param** pour les paramètres requis (exemple: `/users/12345`)
+* **Query param** pour les paramètres optionels (exemple: `/login?referrer=/profile`)
+
+*Cela respect encore une fois la norme REST.*
+
+#### Path param
+
+Les path params se définissent à l'aide du préfix `:` suivit de son nom.
+
+```ts
+// Paramètre unique
+{ path: 'users/:id', component: UserListComponent }
+// Plusieurs paramètres
+{ path: 'users/:category/:id', component: UserListComponent }
+```
+
+Ce paramètre est alors récupérable via la route active.
+
+```ts
+// Synchrone
+this.id = this.route.snapshot.params['id'];
+// Asynchrone
+this.route.params.subscribe(params => this.id = params['id']);
+```
+
+#### Query param
+
+Dans ce cas, il n'y a rien a spécifier dans la configuration des routes.
+Nous n'avons cas essayer de récupérer le paramètre optionel.
+
+```ts
+// Synchrone
+this.referrer = this.route.snapshot.queryParams['referrer'];
+// Asynchrone
+this.route.queryParams.subscribe(params => this.referrer = params['referrer']);
+```
 
 ### Le lazy-loading
 
@@ -199,13 +237,13 @@ Pour naviguer nous allons utiliser la directive [`routerLink`](https://angular.i
 
 Cette directive devrait être uniquement utilisée sur des balises de lien (`a`) mais elle peut en réalité se mettre sur n'importe quelle balise HTML. Cependant, le fait de le mettre en attribut d'un `a` génère également un `href` afin de pouvoir naviguer même si le JavaScript est désactivé côté client et que vous utilisez Universal.
 
-```ts
+```html
 <a [routerLink]="['/admin','users']">Go to user list</a>
 ```
 
 Nous pouvons utiliser un string ou un tableau de string dans le routerLink (contrairement en TypeScript), cela revient au même résultat mais je préconise le fait de toujours utiliser la même syntaxe et c'est le **tableau** qui se trouve être le plus utile. En effet cela permet de rendre une partie de l'url **dynamique** comme un paramètre.
 
-```ts
+```html
 <a [routerLink]="['/admin','users', id]">Go to user</a>
 ```
 
@@ -217,7 +255,7 @@ Nous pouvons ajouter des élements dans l'url:
 * `queryParams`: permet d'utiliser les query params (exemple: `?param1=test1&param2=test2`)
 * `fragment`: permet d'ajouter une ancre dans l'url (exemple: `#mon-ancre`)
 
-```ts
+```html
 <a [routerLink]="['/admin','users', id]" [queryParams]="{param1: 'test1', param2: 'test2'}" fragment="email" >
     Go to user email
 </a>
@@ -228,7 +266,7 @@ Ou gérer notre stratégie de "présevation de données" en cas de changement d'
 * `mergeQueryParams`: merge les query params actuels et les nouveaux
 * `preserveFragment`: garder le fragment au changement d'url
 
-```ts
+```html
 <a [routerLink]="['/admin','users', otherId]"  preserveQueryParams preserveFragment >
     Go to other user
 </a>
