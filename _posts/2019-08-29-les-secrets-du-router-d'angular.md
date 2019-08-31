@@ -104,7 +104,7 @@ Prenons par exemple le fait que nous voulons le même header et le même footer 
 <router-outlet></router-outlet>
 <app-footer></app-footer>
 ```
-Mais comment peut-on masquer ces éléments dans le cas où nous nous trouvons sur la page de connexion ? Non nous n'utiliserons pas de <del>`*ngIf`</del>  pour arriver à notre faim. Heureusement Angular nous permet de pouvoir avec plusieurs router-outlet imbriqués.
+Mais comment peut-on masquer ces éléments dans le cas où nous nous trouvons sur la page de connexion ? Non nous n'utiliserons pas de <del>`*ngIf`</del>  pour arriver à notre faim. Heureusement Angular nous permet de faire cela avec plusieurs router-outlet imbriqués.
 
 Créons alors un nouveau composant "container" qui s'occupera d'ajouter le header ainsi que le footer seulement dans certains cas et nettoyons notre AppComponent.
 
@@ -120,7 +120,7 @@ Créons alors un nouveau composant "container" qui s'occupera d'ajouter le heade
 <app-footer></app-footer>
 ```
 
-Regardons maintenant comment arriver à remplir plusieurs router-outlet. Cela est possible grâce aux attributs `children` et `loadChildren` <sup>(lazy-loadig)</sup>.
+Regardons maintenant comment arriver à remplir plusieurs router-outlet. Cela est possible grâce aux attributs `children` et `loadChildren` <sup>(lazy-loading)</sup>.
 
 ```ts
 const routes: Routes = [
@@ -139,7 +139,7 @@ Avec cette configuration nous pourrons retrouver dans les router-outlet
 
 ### Paramètres
 
-Nous avons jusqu'à présent vu des routes statiques, mais comment peut-on rendre une partie de la route dynamique ?
+Nous avons, jusqu'à présent, vu des routes statiques, mais comment peut-on rendre une partie de la route dynamique ?
 
 Deux solutions sont possibles:
 * **Path param** pour les paramètres requis (exemple: `/users/12345`)
@@ -293,7 +293,7 @@ Commençons par reproduire un exemple complet du routerLink avec la fonction nav
 this.router.navigate(['/admin','users', this.id], {
     queryParams: {param1: 'test1', param2: 'test2'},
     queryParamsHandling: 'merge'
-    preserveFragment: true,
+    preserveFragment: true
 });
 ```
 
@@ -368,7 +368,7 @@ Pour éviter de devoir faire cela, nous pouvons appliquer l'option: `onSameUrlNa
 Si vos pages dépassent la hauteur de l'écran, vous aurez remarqué un comportement indésirable des SPA: le scroll reste le même d'une page à l'autre.
 
 En effet le comportement d'un site normal voudrait que nous scrollions jusqu'au dessus à chaque changement de page.
-De plus nous l'ancre n'a aucune influence sur ce comportement du scroll tant que vous ne rafraichissez pas la page.
+De plus, l'ancre n'a aucune influence sur le comportement du scroll tant que vous ne rafraichissez pas la page.
 
 Vous avez de la chance, deux options sont maintenant disponibles pour éviter ces problèmes et leur valeur par défaut va bientôt changer.
 
@@ -391,7 +391,7 @@ ng build --base-href=/blog
 Vous l'avez peut-être remarqué, nous n'avons pas traité tous paramètres de route précédemment cité dans l'article.
 La raison et que ces trois paramètres restants méritent de créer une nouvelle section, car ils touchent la sécurité de votre application.
 
-Le fait de cacher le lien vers certaines routes n'est pas suffisant, car les utilisateurs pourraient se partager un lien ou sauver celui-ci en favoris. Il faut donc également bloquer l'accès à ces urls, et c'est là que les derniers paramètres interviennent. 
+Le fait de supprimer le lien vers certaines routes n'est pas suffisant, car les utilisateurs pourraient se partager un lien ou sauver celui-ci en favoris. Il faut donc également bloquer l'accès à ces urls, et c'est là que les derniers paramètres interviennent. 
 
 * `canActivate`: vérifie si l'utilisateur peut accéder à la route.
 * `canDeactivate`: vérifie si l'utilisateur peut quitter à la route. *Cela ne bloque la navigation que dans le contexte de l'application, mais n'a aucun impact pour l'accès à un autre site (via le bouton back ou depuis un href par exemple)*.
