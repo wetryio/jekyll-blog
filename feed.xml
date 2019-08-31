@@ -3,27 +3,11 @@
   <channel>
     <title>WeTry | Just another dev blog</title>
     <description>Just another dev blog.</description>
-    <link>https://wetry.tech/</link>
-    <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 31 Aug 2019 11:19:42 +0000</pubDate>
-    <lastBuildDate>Sat, 31 Aug 2019 11:19:42 +0000</lastBuildDate>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 31 Aug 2019 12:21:40 +0000</pubDate>
+    <lastBuildDate>Sat, 31 Aug 2019 12:21:40 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
-    
-      <item>
-        <title>Com sociis natoque penatibus et magnis dis</title>
-        <description>&lt;p&gt;Cas sociis natoque penatibus et magnis &lt;a href=&quot;#&quot;&gt;dis parturient montes&lt;/a&gt;, nascetur ridiculus mus. &lt;em&gt;Aenean eu leo quam.&lt;/em&gt; Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;Etiam porta &lt;strong&gt;sem malesuada magna&lt;/strong&gt; mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt; &lt;h2 id=&quot;inline-html-elements&quot;&gt;Inline HTML elements&lt;/h2&gt; &lt;p&gt;HTML defines a long list of available inline tags, a complete list of...</description>
-        <pubDate>Thu, 22 Nov 2018 12:26:40 +0000</pubDate>
-        <link>https://wetry.tech/com-sociis-natoque-penatibus-et-magnis-dis/</link>
-        <guid isPermaLink="true">https://wetry.tech/com-sociis-natoque-penatibus-et-magnis-dis/</guid>
-        
-        <category>html</category>
-        
-        <category>tutorial</category>
-        
-        
-        <category>tutorial</category>
-        
-      </item>
     
   </channel>
 </rss>

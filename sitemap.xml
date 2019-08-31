@@ -2,84 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
         <url>
-            <loc>https://wetry.tech/404.html</loc>
+            <loc>/404.html</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/about/</loc>
+            <loc>/about/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/category/azure/</loc>
+            <loc>/category/azure/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/category/blog/</loc>
+            <loc>/category/blog/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/contact/</loc>
+            <loc>/contact/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/craftlab-it/</loc>
+            <loc>/category/events/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/category/events/</loc>
+            <loc>/feed.xml</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/feed.xml</loc>
+            <loc>/hitw2019/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/hitw2019/</loc>
+            <loc>/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/</loc>
+            <loc>/category/mobile/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/category/mobile/</loc>
+            <loc>/contact/message-sent/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/contact/message-sent/</loc>
+            <loc>/assets/img/icons/preloader.svg</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/assets/img/icons/preloader.svg</loc>
+            <loc>/assets/img/icons/read.svg</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/assets/img/icons/read.svg</loc>
+            <loc>/search.json</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/search.json</loc>
+            <loc>/sitemap.xml</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/sitemap.xml</loc>
+            <loc>/tags/index.html</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/tags/index.html</loc>
+            <loc>/category/tutorial/</loc>
         </url>
     
         <url>
-            <loc>https://wetry.tech/category/tutorial/</loc>
-        </url>
-    
-        <url>
-            <loc>https://wetry.tech/category/webdev/</loc>
+            <loc>/category/webdev/</loc>
         </url>
     
     
-        <url>
-            <loc>https://wetry.tech/com-sociis-natoque-penatibus-et-magnis-dis/</loc>
-        </url>
-  
 </urlset>
