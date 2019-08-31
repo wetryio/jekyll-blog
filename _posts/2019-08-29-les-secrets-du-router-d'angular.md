@@ -183,6 +183,17 @@ ngOnInit() {
 }
 ```
 
+## Navigation
+
+Il est possible naviguer aussi bien depuis l'HTML que le TypeScript. Découvrons comment.
+
+### HTML
+
+Pour naviguer nous allons utiliser la directive [`routerLink`](https://angular.io/api/router/RouterLink).
+
+
+
+### TypeScript
 
 ## Configurations
 
