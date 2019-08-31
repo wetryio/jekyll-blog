@@ -191,7 +191,42 @@ Il est possible naviguer aussi bien depuis l'HTML que le TypeScript. Découvrons
 
 Pour naviguer nous allons utiliser la directive [`routerLink`](https://angular.io/api/router/RouterLink).
 
+Cette directive devrait être uniquement utilisée sur des balises de lien (`a`) mais elle peut en réalité se mettre sur n'importe quelle balise HTML. Cependant, le fait de le mettre en attribut d'un `a` génère également un `href` afin de pouvoir naviguer même si le JavaScript est désactivé côté client et que vous utilisez Universal.
 
+```ts
+<a [routerLink]="['/admin','users']">Go to user list</a>
+```
+
+Nous pouvons utiliser un string ou un tableau de string dans le routerLink (contrairement en TypeScript), cela revient au même résultat mais je préconise le fait de toujours utiliser la même syntaxe et c'est le **tableau** qui se trouve être le plus utile. En effet cela permet de rendre une partie de l'url **dynamique** comme un paramètre.
+
+```ts
+<a [routerLink]="['/admin','users', id]">Go to user</a>
+```
+
+#### Paramètres
+
+Les paramètres du routerLink se font via des inputs (attributs) de cette directive.
+
+Nous pouvons ajouter des élements dans l'url:
+* `queryParams`: permet d'utiliser les query params (exemple: `?param1=test1&param2=test2`)
+* `fragment`: permet d'ajouter une ancre dans l'url (exemple: `#mon-ancre`)
+
+```ts
+<a [routerLink]="['/admin','users', id]" [queryParams]="{param1: 'test1', param2: 'test2'}" fragment="email" >
+    Go to user email
+</a>
+```
+
+Ou gérer notre stratégie de "présevation de données" en cas de changement d'url
+* `preserveQueryParams`: préserve les query params actuels (ne tien pas en compte les nouveaux)
+* `mergeQueryParams`: merge les query params actuels et les nouveaux
+* `preserveFragment`: garder le fragment au changement d'url
+
+```ts
+<a [routerLink]="['/admin','users', otherId]"  preserveQueryParams preserveFragment >
+    Go to other user
+</a>
+```
 
 ### TypeScript
 
