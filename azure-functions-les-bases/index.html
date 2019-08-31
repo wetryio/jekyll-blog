@@ -344,28 +344,41 @@ Une Azure Functions qui est trigger par du HTTP/Webhook ressemble à ça</p>
 </section>
 
             <section class="author" itemprop="author">
-  <div class="details" itemscope itemtype="http://schema.org/Person">
-    <img itemprop="image" class="img-rounded" src="http://res.cloudinary.com/dm7h7e8xj/image/upload/c_fill,h_200,w_200/v1504971955/neo_ruqszk.jpg" alt="">
-    <p class="def">Author</p>
-    <h3 class="name">
-      <a itemprop="name" href="https://github.com/wetryio">WeTry</a>
-    </h3>
-    <p class="desc">Some text about you.</p>
-    <p>
+    <div class="details" itemscope itemtype="http://schema.org/Person">
+      <img id="author-img" itemprop="image" class="img-rounded" src="" alt="Hantse logo">
+      <p class="def">Author</p>
+      <h3 class="name">
+        <a id="author-name" itemprop="name" href="https://github.com/Hantse">Hantse</a>
+      </h3>
+      <p class="desc"></p>
+      <p>
+        
+        <a itemprop="github" href="https://github.com/Hantse" title="Github">
+          <svg><use xlink:href="#icon-github"></use></svg>
+        </a>
+        
+        
+        
+        
+        
+        
+        <a itemprop="linkedin" href="https://www.linkedin.com/in/patrick-grasseels-a132a381" title="LinkedIn">
+          <svg><use xlink:href="#icon-linkedin"></use></svg>
+        </a>
+        
+      </p>
+    </div>
+  </section>
+  
+  <script>
+    const githubUserInfo = 'https://api.github.com/users/Hantse';
+    fetch(githubUserInfo).then(function(response) { return response.json(); }).then(function(response) {
+      document.getElementById('author-name').innerText = response.name;
+      document.getElementById('author-img').src = response.avatar_url;
       
-      <a itemprop="github" href="https://github.com/wetryio" title="Github">
-        <svg><use xlink:href="#icon-github"></use></svg>
-      </a>
-      
-      
-      
-      
-      
-      
-    </p>
-  </div>
-</section>
-
+    });
+  </script>
+  
             <section class="comments">
     <h3>Comments</h3>
     <div id="disqus_thread"></div>
