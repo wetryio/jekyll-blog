@@ -39,3 +39,4 @@ Partage les valeurs agiles.
 </small>
 
 ![placeholder](/images/craftlab-it/profil-small.jpg "Mathieu Scolas")
+
