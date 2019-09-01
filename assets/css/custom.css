@@ -20,3 +20,14 @@
     font-size:larger;
     text-align: center;
 }
+
+.post-content > table {
+    width: 100%;
+    max-width: 50rem;
+    border-collapse: collapse;
+}
+
+.post-content > table > td,
+.post-content > table > th {
+    padding:0.5rem;
+}
