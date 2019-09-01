@@ -2,7 +2,7 @@
 layout: post
 title: "Azure Functions les bases"
 date: 2019-08-11 18:26:40
-image: 'https://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Azure-Functions-1_zcwjys.png'
+image: '/images/azure-functions/Azure-Functions.png'
 description: Azure Functions, le cloud serverless simple d'utilisation.
 category: 'blog'
 tags:
@@ -29,7 +29,7 @@ et tout autre problème/considérations qui pourrait être lié à l'infrastruct
 Une fois le code déployer et disponible, il reste une chose à comprendre, c'est comment exécuter ce code. Les Azure Functions utilise des 
 triggers pour s'exécuter
 
-![placeholder](https://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Azure-Functions-1_zcwjys.png "Azure functions")
+![placeholder](/images/azure-functions/Azure-Functions.png "Azure functions")
 
 ## Les triggers
 
