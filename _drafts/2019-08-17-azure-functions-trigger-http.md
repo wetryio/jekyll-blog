@@ -30,6 +30,8 @@ Dans cet article, je vais démystifier le trigger HTTP, mais également montrer 
 - La sécurité
 - Publier ces Functions avec OpenAPI
 
+La use case que nous allons voir ici, est de réaliser un validateur (email, username, etc ...) à l'aide de [Fluent Validation](https://fluentvalidation.net/).
+
 ## Crée une Azure Functions avec Visual Studio
 
 ### Prerequis
@@ -52,6 +54,8 @@ Les images utilisé ici sont tiré de Visual Studio 2019.
 ## Explication du code généré
 
 ## Ecrire sa première Azure Functions
+### Les modèles
+### Les validators
 
 ## Binding du modèle d'entrée
 
