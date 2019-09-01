@@ -30,7 +30,7 @@ L'informatique requiert d'être en formation continu. C'est pourquoi je m'inform
 
 ## Méthodologie agile et craftmanship
 
-Je suis aussi avocat des principes Clean Code et de la méthodologie Agile.
+Je suis aussi défenseur des principes Clean Code et de la méthodologie Agile.
 
 La méthodologie agile assure une compréhension fine des difficultés du terrain, une proximité forte avec vous, et des applications évolutifs de semaine en semaine. N'hésitez pas à consulter le [manifesto](https://agilemanifesto.org/iso/fr/manifesto.html) et ses [principes](https://agilemanifesto.org/iso/fr/principles.html)
 
@@ -43,6 +43,8 @@ Toute les applications livrés sont attachés avec les tests qui certifient le b
 Vous pouvez me contacter par mail <mathieu.scolas@craftlabit.be> ou par téléphone au <a href="+32476781479">+32476 78 14 79</a>
 
 <section class="share">
+    <h3>Follow</h3>
+    <p>Suivez moi sur les réseaux sociaux</p>
     <a href="https://www.twitter.com/worming4" title="Twitter" target="_blank">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>

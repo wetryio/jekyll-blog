@@ -21,7 +21,7 @@ Azure Addict, Microsoft Fan Boy.
 ### David GILSON
 
 Passionné par l'open source.
-Microsoft evangelists.
+Microsoft follower.
 
 <small>
 *Technical Architect & Front-end expert @Afelio (The NRB Group).*
@@ -31,7 +31,7 @@ Microsoft evangelists.
 
 ### Mathieu Scolas
 
-Avocat des méthodes d'extensibilité de code.
+Défenseur des méthodes d'extensibilité de code.
 Partage les valeurs agiles.
 
 <small>
