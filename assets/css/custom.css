@@ -32,3 +32,12 @@
     padding:0.5rem;
 }
 
+.logo {
+    display: inline-block;
+}
+
+.header-action {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
