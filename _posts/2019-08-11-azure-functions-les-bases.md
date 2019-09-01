@@ -177,6 +177,14 @@ Un autre avantage fondamental des Azure functions, c'est qu'il est possible de l
   </tbody>
 </table>    
 
+## Faible cout
+
+L'un des facteurs qui peut souvent jouer dans le fait de tester de nouvelles technologies, c'est l'investissement humain, mais également financier.
+Les Azure Functions proposent un plan gratuit, qui permet vraiment de tester pas mal de choses sans avoir à débourser un euro.
+Pour la suite, la tarification n'est pas très élevée de base.
+
+[Azure Pricing](https://azure.microsoft.com/en-us/pricing/details/functions/)
+
 ## Conclusion
 
 En conclusion, ene Azure functions c'est :
@@ -187,3 +195,17 @@ En conclusion, ene Azure functions c'est :
 * multilanguage
 
 D'autres articles vont arriver prochainement sur les triggers, comment utiliser les avantages de l'ASP.NET Core dans une Azure Functions (DI, Configuration, etc ...).
+
+---
+
+<div class="gratitude">
+    <span>MERCI</span>
+    <p>d'avoir pris le temps de lire cet article</p>
+</div>
+
+---
+
+<div id="toc"></div>
+**Table des matières**
+1. TOC
+{:toc}
