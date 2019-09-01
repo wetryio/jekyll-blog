@@ -41,7 +41,9 @@ Les images utilisé ici sont tiré de Visual Studio 2019.
 
 ![placeholder](/images/azure-functions/create-functions-part1.png "Azure functions")
 
+![placeholder](/images/azure-functions/create-functions-part2.png "Azure functions")
 
+![placeholder](/images/azure-functions/create-functions-part3.png "Azure functions")
 
 ## Explication du code généré
 
