@@ -8,7 +8,7 @@ google_analytics: "UA-145445435-1"
 
 # User Settings
 username: WeTry
-user_description: Some text about you.
+user_description: 3 développeurs passionnés.
 disqus_username: wetry
 
 # Social Media
@@ -36,13 +36,13 @@ plugins:
 # Links to include in menu navigation
 # For external links add external: true
 links:
-  - title: Home
+  - title: Accueil
     url: /
   - title: HITW 2019
     url: /hitw2019/
-  - title: About
+  - title: À propos de nous
     url: /about/
-  - title: CraftLabIT
+  - title: CraftLab-IT
     url: /craftlab-it/
   # - title: Contact
   #   url: /contact/
