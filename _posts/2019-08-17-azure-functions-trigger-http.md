@@ -32,6 +32,17 @@ Dans cet article, je vais démystifier le trigger HTTP, mais également montrer 
 
 ## Crée une Azure Functions avec Visual Studio
 
+### Prerequis
+- Visual Studio 2017 ou Visual Studio 2019
+- [Azure Functions Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs) pour Visual Studio 2017
+- Avoir selectionner les Azure Development dans les feature à installer
+
+Les images utilisé ici sont tiré de Visual Studio 2019.
+
+![placeholder](/images/azure-functions/create-functions-part1.png "Azure functions")
+
+
+
 ## Explication du code généré
 
 ## Ecrire sa première Azure Functions
