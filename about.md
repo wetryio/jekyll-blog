@@ -21,7 +21,7 @@ Azure Addict, Microsoft Fan Boy.
 ### David GILSON
 
 Passionné par l'open source.
-Microsoft evangelists.
+Microsoft follower.
 
 <small>
 *Technical Architect & Front-end expert @Afelio (The NRB Group).*

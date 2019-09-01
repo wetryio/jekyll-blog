@@ -27,3 +27,4 @@ steps:
   displayName: 'Publish Artifact: _site'
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/_site'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
