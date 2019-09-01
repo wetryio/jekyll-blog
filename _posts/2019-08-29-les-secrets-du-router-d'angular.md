@@ -86,10 +86,10 @@ const routes: Routes = [
 
 Vous pouvez remarquer deux paths étranges qui sont, en réalité, les seuls obligatoires pour le bon fonctionnement de notre routing:
 * `''`: représente la racine de l'application. (exemple: `http://localhost:4200/`)
-* `'**'`: représente toutes les urls n'existants pas dans la liste des routes donnée. Celle est en quelque sorte notre page "404". (exemple: `http://localhost/blabla`)
+* `'**'`: représente toutes les urls n'existants pas dans la liste des routes donnée. C'est en quelque sorte notre page "404". (exemple: `http://localhost/blabla`)
 
 L'option choisie dans cet exemple est de les rediriger vers la page "home" à l'aide de l'attribut `redirectTo`.
-L'attribut `pathMatch` mis à la valeur `full` permet de déterminer que ce cas ne doit être exécuté que si le path complètement vide (soit "/" ou ""), mais absolument rien d'autre.
+L'attribut `pathMatch` mis à la valeur `'full'` permet de déterminer que ce cas ne doit être exécuté que si le path est complètement vide (soit "/" ou ""), mais absolument rien d'autre.
 
 Concentrons-nous maintenant sur les paths connus ("home" et "contact"). Vous pouvez voir que nous spécifions le composant à afficher dans ces deux cas, mais où vont-ils s'afficher ?
 C'est là que le composant `<router-outlet></router-outlet>` entre en jeux. Ce composant vous permet de choisir où le composant géré par le router s'affichera dans votre application.
@@ -104,7 +104,7 @@ Prenons par exemple le fait que nous voulons le même header et le même footer 
 <router-outlet></router-outlet>
 <app-footer></app-footer>
 ```
-Mais comment peut-on masquer ces éléments dans le cas où nous nous trouvons sur la page de connexion ? Non nous n'utiliserons pas de <del>`*ngIf`</del>  pour arriver à notre faim. Heureusement Angular nous permet de faire cela avec plusieurs router-outlet imbriqués.
+Mais comment peut-on masquer ces éléments dans le cas où nous nous trouvons sur la page de connexion ? Non nous n'utiliserons pas de <del>`*ngIf`</del>  pour arriver à nos fins. Heureusement Angular nous permet de faire cela avec plusieurs router-outlet imbriqués.
 
 Créons alors un nouveau composant "container" qui s'occupera d'ajouter le header ainsi que le footer seulement dans certains cas et nettoyons notre AppComponent.
 
