@@ -30,7 +30,7 @@ L'informatique requiert d'être en formation continu. C'est pourquoi je m'inform
 
 ## Méthodologie agile et craftmanship
 
-Je suis aussi avocat des principes Clean Code et de la méthodologie Agile.
+Je suis aussi défenseur des principes Clean Code et de la méthodologie Agile.
 
 La méthodologie agile assure une compréhension fine des difficultés du terrain, une proximité forte avec vous, et des applications évolutifs de semaine en semaine. N'hésitez pas à consulter le [manifesto](https://agilemanifesto.org/iso/fr/manifesto.html) et ses [principes](https://agilemanifesto.org/iso/fr/principles.html)
 

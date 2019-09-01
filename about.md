@@ -31,7 +31,7 @@ Microsoft evangelists.
 
 ### Mathieu Scolas
 
-Avocat des méthodes d'extensibilité de code.
+Défenseur des méthodes d'extensibilité de code.
 Partage les valeurs agiles.
 
 <small>
