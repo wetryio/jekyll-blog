@@ -38,4 +38,4 @@ Partage les valeurs agiles.
     *Développeur indépendant depuis 2014*
 </small>
 
-![placeholder](/images/CraftLabIT/ProfilSmall.jpg "Mathieu Scolas")
+![placeholder](/images/craftlab-it/profil-small.jpg "Mathieu Scolas")
