@@ -28,3 +28,14 @@ Microsoft evangelists.
 </small>
 
 ![placeholder](/images/gilsdav.jpg "David GILSON")
+
+### Mathieu Scolas
+
+Avocat des méthodes d'extensibilité de code.
+Partage les valeurs agiles.
+
+<small>
+    *Développeur indépendant depuis 2014*
+</small>
+
+![placeholder](/images/CraftLabIT/ProfilSmall.jpg "Mathieu Scolas")
