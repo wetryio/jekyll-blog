@@ -1,10 +1,13 @@
 ---
-layout: page
+layout: page-author
 title: CraftLab IT
 description: CraftLab IT
 permalink: /craftlab-it/
 category: 'presentation'
 image: /images/craftlab-it/logo.jpeg
+github_username: worming004
+linkedin_username: mathieu-scolas-1a048484
+twitter_username: worming4
 ---
 
 # CraftLab IT
@@ -41,17 +44,3 @@ Toute les applications livrés sont attachés avec les tests qui certifient le b
 ## Contact
 
 Vous pouvez me contacter par mail <mathieu.scolas@craftlabit.be> ou par téléphone au <a href="+32476781479">+32476 78 14 79</a>
-
-<section class="share">
-    <h3>Follow</h3>
-    <p>Suivez moi sur les réseaux sociaux</p>
-    <a href="https://www.twitter.com/worming4" title="Twitter" target="_blank">
-        <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
-    </a>
-    <a href="https://be.linkedin.com/in/mathieu-scolas-1a048484" title="Twitter" target="_blank">
-        <svg class="icon icon-linkedin"><use xlink:href="#icon-linkedin"></use></svg>
-    </a>
-    <a href="https://www.github.com/worming004" title="Twitter" target="_blank">
-        <svg class="icon icon-github"><use xlink:href="#icon-github"></use></svg>
-    </a>
-</section>
