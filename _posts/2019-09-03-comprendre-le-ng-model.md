@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Comprendre le [(ngModel)]"
+title: "Comprendre le ngModel"
 date: 2019-09-03 21:09:24
 image: ''
 description:
@@ -8,7 +8,7 @@ category: 'documentation'
 tags:
 - angular
 - form
-twitter_text:
+twitter_text: Sauriez-vous créer votre propre ngModel ?
 introduction: Sauriez-vous créer votre propre ngModel ?
 github_username: gilsdav
 linkedin_username: david-gilson-innovate
@@ -24,7 +24,7 @@ En angular il y a quatres (3 + l'interpolation) types de bindings:
 - Property binding `[]`: permet de passer une information d'un composant parent à un composant enfant;
 - Event binding `()`: permet d'écouter un évènement javascript ou de passer une information d'un composant enfant à un composant parent (via un évènement);
 - Two way binding `[()]`: permet une synchronisation complete d'une information entre un composant parent et un composant enfant en utilisant les deux types de binding précédement cités;
-- Interpolation `{{}}`: permet d'afficher une donnée dans l'HTML depuis le TypeScript.
+- Interpolation `{{"{{"}}}}`: permet d'afficher une donnée dans l'HTML depuis le TypeScript.
 
 Vous aurrez vite fait le lien entre le Two way binding et le sujet qui nous intéresse ici, le `[(ngModel)]`.
 
