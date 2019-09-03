@@ -4,7 +4,7 @@ title: "Azure Functions les bases"
 date: 2019-08-11 18:26:40
 image: '/images/azure-functions/Azure-Functions.png'
 description: Azure Functions, le cloud serverless simple d'utilisation.
-category: 'blog'
+category: 'documentation'
 tags:
 - azure
 - tutorial

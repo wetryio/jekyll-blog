@@ -4,7 +4,7 @@ title: "Azure Functions démystifions le trigger HTTP"
 date: 2019-08-17 14:12:19
 image: 'https://res.cloudinary.com/wetry/image/upload/v1565693870/wetry/azure/Azure-Functions-1_zcwjys.png'
 description: Azure Functions, démystifions le trigger HTTP.
-category: 'blog'
+category: 'documentation'
 tags:
 - azure
 - tutorial
