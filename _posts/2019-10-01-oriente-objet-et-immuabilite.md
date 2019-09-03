@@ -1,7 +1,7 @@
 ---
 layout: post
 title: L'immuabilité pour un code sans bug
-date: 2019-08-01 13:00:00
+date: 2019-10-01 13:00:00
 image: '/images/immuabilite-objet/lock.jpg'
 description: On est jamais sur ce que qu'un objet aura comme valeur dans le temps...
 category: 'bonne-pratique'
@@ -208,3 +208,8 @@ Je vous ai cité que cette représentation d'une classe personne est source de r
 * Se lit en un coup d'oeil. La règle des 5 secondes est assurée.
 * Surface minimum du code. Réduire les interfaces à une utilité hyper simpliste facilite la modification de la classe dans le futur.
 * 0 surprises. Tout est initialisé à un seul endroit et n'a pas de responsabilité cachée. Modifier un nom ne fait rien d'autre que ce qui est promis.
+* Objet typé comme règle business. Un objet typé contient lui même ses règles de cohérences. Avec la configuration strictNullChecks, vous êtes sur qu'il ne peut exister une personne avec un nom null. Vous évitez ainsi un état interdit dans votre application.
+
+## Les bonnes pratiques sont pour les développeurs.
+
+Cet article vous expose une façon de designer des objets afin d'éviter les bugs dans un avenir proche et lointain. Souvenez-vous que ce ne sont pas les machines qui causent les bugs, mais les humains. Chaque simplification du code servent à vous-même et à votre prochain.
