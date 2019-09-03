@@ -213,3 +213,17 @@ Je vous ai cité que cette représentation d'une classe personne est source de r
 ## Les bonnes pratiques sont pour les développeurs.
 
 Cet article vous expose une façon de designer des objets afin d'éviter les bugs dans un avenir proche et lointain. Souvenez-vous que ce ne sont pas les machines qui causent les bugs, mais les humains. Chaque simplification du code servent à vous-même et à votre prochain.
+
+---
+
+<div class="gratitude">
+    <span>MERCI</span>
+    <p>d'avoir pris le temps de lire cet article</p>
+</div>
+
+---
+
+<div id="toc"></div>
+**Table des matières**
+1. TOC
+{:toc}
