@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Comprendre le ngModel",
+      "tags"     : "angular and form",
+      "categories" : "documentation",
+      "url"      : "/comprendre-le-ng-model/",
+      "date"     : "09/03/2019"
+    } ,
+  
+    {
       "title"    : "Les secrets du Router d&#39;Angular",
       "tags"     : "angular and routing",
       "categories" : "documentation",
