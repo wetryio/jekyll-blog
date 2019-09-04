@@ -56,6 +56,7 @@ Les images utilisé ici sont tiré de Visual Studio 2019.
 ## Ecrire sa première Azure Functions
 ### Les modèles
 ### Les validators
+On vas définir deux type de validator distinct, le premier sera simplement sur un string, le second sur un object avec plusieurs propriètés.
 
 ## Binding du modèle d'entrée
 
