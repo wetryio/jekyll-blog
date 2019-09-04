@@ -23,13 +23,13 @@ Je suis à l'écoute les défis d'entreprises, et propose une solution informati
 
 ![Mathieu Scolas](/images/craftlab-it/profil.jpg)
 
-Mes expériences variées m'ont orienté vers des applications web PC et mobile. Le web offre aujourd'hui la facilité du déploiement continus, et je mise personnellement toutes mes formations dans ce domaine.
+Mes expériences variées m'ont orienté vers des applications web PC et mobile. Le web offre ajourd'hui la facilité de déploiement continu, et je mise personnellement toutes mes formations dans ce domaine.
 
 ## Centré sur les technologies
 
-Aujourd'hui, la technologie que je privilégie est la Web Api en C#, ainsi qu'un frontend en Angular.
+Aujourd'hui, la technologie que je privilégie sont les Web Api en C#, ainsi qu'un frontend en Angular.
 
-L'informatique requiert d'être en formation continue. C'est pourquoi je m'informe et m'entraine chaque semaine aux technologies moderne (docker, graphql, database en graph, database orienté document, ...) et d'autres languages (go, F#, node-typescript)
+L'informatique requiert d'être en formation continue. C'est pour cette raison je m'informe et m'entraîne chaque semaine aux technologies modernes (docker, graphql, database en graph, database orienté document, ...) et d'autres languages (go, F#, node-typescript)
 
 ## Méthodologie agile et craftmanship
 
@@ -39,7 +39,7 @@ La méthodologie agile assure une compréhension fine des difficultés du terrai
 
 Le craftmanship vise une excellence technique afin de garantir une évolution longue durée des produits, ainsi qu'une adaptation de chaque solution aux demandes intervenant tard dans le processus de développement.
 
-Toute les applications livrées sont attachées avec les tests qui certifient le bon comportement des applications.
+Toutes les applications livrées sont attachées avec les tests qui certifient le bon comportement des applications.
 
 ## Contact
 
