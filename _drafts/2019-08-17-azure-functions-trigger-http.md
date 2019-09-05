@@ -25,10 +25,8 @@ Dans cet article, je vais démystifier le trigger HTTP, mais également montrer 
 - Explication du code généré
 - Modification pour renvoyer une valeur calculée par rapport à ce que la function aura reçu
 - Binding du modèle d'entrée
-- Dependence d'injection
 - Publier sur Azure
 - La sécurité
-- Publier ces Functions avec OpenAPI
 
 La use case que nous allons voir ici, est de réaliser un validateur (email, username, etc ...) à l'aide de [Fluent Validation](https://fluentvalidation.net/).
 
@@ -60,8 +58,6 @@ On vas définir deux type de validator distinct, le premier sera simplement sur 
 
 ## Binding du modèle d'entrée
 
-## Dependence d'injection
-
 ## Publier sur Azure
 
 ## La sécurité
@@ -88,4 +84,3 @@ Si la clé est invalide, c'est une HTTP  401 qui est renvoyer.
 Requière une clé d'authentification, ici la Master key sera nécessaire. La clé master ne peux pas être révoké.
 Si la clé est invalide, c'est une HTTP  401 qui est renvoyer.
 
-## Publier ces Functions avec OpenAPI
