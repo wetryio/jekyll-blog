@@ -52,7 +52,7 @@ Les images utilisé ici sont tiré de Visual Studio 2019.
 ## Explication du code généré
 La code générer a la base ressemble à ceci 
 
-´´´csharp
+```csharp
 public static class Function1
     {
         [FunctionName("Function1")]
@@ -73,7 +73,7 @@ public static class Function1
                 : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
         }
     }
-´´´
+```
 
 ## Ecrire sa première Azure Functions
 ### Les modèles
