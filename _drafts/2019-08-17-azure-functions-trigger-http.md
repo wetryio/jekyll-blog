@@ -25,8 +25,8 @@ Dans cet article, je vais démystifier le trigger HTTP, mais également montrer 
 - Explication du code généré
 - Modification pour renvoyer une valeur calculée par rapport à ce que la function aura reçu
 - Binding du modèle d'entrée
-- Publier sur Azure
 - La sécurité
+- Publier sur Azure
 
 La use case que nous allons voir ici, est de réaliser un validateur (email, username, etc ...) à l'aide de [Fluent Validation](https://fluentvalidation.net/).
 
@@ -74,6 +74,30 @@ public static class Function1
         }
     }
 ```
+Découpons un peu ce code pour en comprendre les bases, commençont par le point d'entrée de la function.
+
+```csharp
+[FunctionName("Function1")]
+public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
+```
+
+
+
+Le reste de la function c'est du code C# comme on peux en faire en ASPNET Core, en Console, etc ... rien de bien sorcier. Mais c'est ce code, qui sera exécuter et qui vas permettre de renvoyer ou non une valeur.
+Dans le sample de base, on attends en query params ou body, une valeur sur la clé name. Ensuite, on renvois soit une HTTP 200 avec le nom concaténer avec Hello, soit une 400 si ni le body, ni la query ne contient de valeur pour Name.
+
+```csharp
+log.LogInformation("C# HTTP trigger function processed a request.");
+string name = req.Query["name"];
+
+string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+dynamic data = JsonConvert.DeserializeObject(requestBody);
+name = name ?? data?.name;
+
+return name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {name}")
+        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+```
 
 ## Ecrire sa première Azure Functions
 ### Les modèles
@@ -81,8 +105,6 @@ public static class Function1
 On vas définir deux type de validator distinct, le premier sera simplement sur un string, le second sur un object avec plusieurs propriètés.
 
 ## Binding du modèle d'entrée
-
-## Publier sur Azure
 
 ## La sécurité
 Niveau sécurité, Azure propose plusieurs niveau d'authentification, un Anonymous qui ne demande rien de plus et 3 autres Function, Admin & System qui nécessitent une clé pour autoriser l'accès à la function.
@@ -108,3 +130,4 @@ Si la clé est invalide, c'est une HTTP  401 qui est renvoyer.
 Requière une clé d'authentification, ici la **Master key** sera nécessaire. La clé master ne peux pas être révoké.
 Si la clé est invalide, c'est une HTTP  401 qui est renvoyer.
 
+## Publier sur Azure
