@@ -121,7 +121,8 @@ return name != null
 ## Ecrire sa première Azure Functions
 Ici, on rentre dans notre use case, comme dis au début nous allons envoyer deux nombre a notre Azure Functions et les multiplier par eux même.
 
-Première étape, on vas modifier le nom de notre function. On vas donc remplacer Function1 par Multipicator. A deux endroit, le nom de la classe et dans l'attribut [FunctionName].
+Première étape, on vas modifier le nom de notre function. On vas donc remplacer Function1 par Multipicator. 
+A deux endroit, le nom de la classe et dans l'attribut [FunctionName]. Et supprimer tout ce qu'on a pas besoin.
 ```csharp
 public static class Multipicator
     {
@@ -131,16 +132,7 @@ public static class Multipicator
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
-
-            string name = req.Query["name"];
-
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-            name = name ?? data?.name;
-
-            return name != null
-                ? (ActionResult)new OkObjectResult($"Hello, {name}")
-                : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+            return (ActionResult)new OkObjectResult(0);
         }
     }
 ```
