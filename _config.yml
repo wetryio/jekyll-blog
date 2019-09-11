@@ -1,7 +1,7 @@
 # Site Settings
-title: WeTry | Just another dev blog
+title: WeTry | Un autre blog de développeur
 email: info@wetry.tech
-description: Just another dev blog.
+description: Un autre blog de développeur.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://wetry.tech" # the base hostname & protocol for your site
 google_analytics: "UA-145445435-1"
