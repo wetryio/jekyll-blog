@@ -74,6 +74,9 @@ Voici encore quelques principes à respecter pour ses documents externes.
 
 ### Keep physically close what is related
 
+![messenger](/images/bonne-documentation/messenger.png)
+_Messenger intégre sa doc dans ses contrôles_
+
 Plus un élément est proche de ses relations, plus les probabilités de le retrouver sont grande.
 
 Imaginez github sans fichier readme. Vous ouvrirez le code, et chercherez pendant de nombreuse heures que fait l'application dans ses grande lignes.
