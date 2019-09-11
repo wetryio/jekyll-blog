@@ -9,6 +9,9 @@ category: 'documentation'
 tags:
 - angular
 - routing
+redirect_from:
+- /les-secrets-du-router-d'angular/
+twitter_text: En savoir plus sur le routing d'Angular.
 introduction: En savoir plus sur le routing d'Angular.
 ---
 
