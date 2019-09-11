@@ -146,15 +146,13 @@ public static class Multipicator
 ```
 
 ### Les modèles
-### Les validators
-On vas définir deux type de validator distinct, le premier sera simplement sur un string, le second sur un object avec plusieurs propriètés.
 
 ## Binding du modèle d'entrée
 
 ## La sécurité
 Niveau sécurité, Azure propose plusieurs niveau d'authentification, un Anonymous qui ne demande rien de plus et 3 autres Function, Admin & System qui nécessitent une clé pour autoriser l'accès à la function.
 
-Il existe deux type de clés :
+Il existe trois type de clés :
 - **Host keys** : Les clés de ce type peuvent s'utiliser de façons cross function dans la même Function App.
 - **Function keys** : Les clés de ce type ne peuvent s'utiliser que sur la function sur laquelle la clé à été définie.
 - **Master key** : Chaque Function App définis une master key (_master) qui donne un accès Admin sur toutes les function de l'app.
