@@ -187,7 +187,7 @@ Pour la suite, la tarification n'est pas très élevée de base.
 
 ## Conclusion
 
-En conclusion, une Azure functions c'est :
+En conclusion, une Azure function c'est :
 
 * c'est un service de calcul dans le cloud Azure **serverless**
 * qui permet **d’exécuter du code à la demande**
