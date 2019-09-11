@@ -27,6 +27,7 @@ permalink: /:title/
 paginate: 12
 paginate_path: "/page/:num/"
 svg_color: "#ff0a16"
+future: false
 
 # Plugins
 plugins:
