@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Une bonne doc est une doc accessible
-date: 2019-09-13 12:00:00
+date: 2019-09-13 07:00:00
 image: '/images/bonne-documentation/default-activity-diagram.png'
 description: Des principles simple s'appliquent aussi à la documentation
 category: 'bonne-pratique'
