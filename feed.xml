@@ -5,9 +5,25 @@
     <description>Just another dev blog.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 12 Sep 2019 19:47:47 +0000</pubDate>
-    <lastBuildDate>Thu, 12 Sep 2019 19:47:47 +0000</lastBuildDate>
+    <pubDate>Fri, 13 Sep 2019 10:42:58 +0000</pubDate>
+    <lastBuildDate>Fri, 13 Sep 2019 10:42:58 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>Une bonne doc est une doc accessible</title>
+        <description>&lt;h1 id=&quot;un-article-réaction&quot;&gt;Un article réaction&lt;/h1&gt; &lt;p&gt;J’adore reddit, et j’adore &lt;a href=&quot;https://www.reddit.com/r/ProgrammerHumor&quot;&gt;r/ProgrammerHumor&lt;/a&gt;. Mais une &lt;a href=&quot;https://www.reddit.com/r/ProgrammerHumor/comments/d29xjn/documentation/&quot;&gt;publication cette semaine&lt;/a&gt; m’a soulevé une réflexion. Est-ce que swagger est une documentation ? Et si oui, est-ce une bonne documentation ?&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://i.redd.it/frm61ch4lsl31.png&quot; alt=&quot;swaggerdoc&quot; /&gt;&lt;/p&gt; &lt;p&gt;De cette réflexion, l’envie de partager des pratiques simples pour une documentation accessibles et sous différentes formes.&lt;/p&gt; &lt;h1 id=&quot;cest-quoi-une-documentation&quot;&gt;C’est quoi une documentation&lt;/h1&gt; &lt;p&gt;Penchons-nous sur la définition de la documentation selon L’association Association française de normalisation (ISO). &lt;em&gt;“la documentation est l’ensemble des techniques permettant le traitement permanent et systématique de documents ou de données, incluant la collecte, le &lt;strong&gt;signalement&lt;/strong&gt;, l’analyse, le stockage,...</description>
+        <pubDate>Fri, 13 Sep 2019 07:00:00 +0000</pubDate>
+        <link>https://wetry.tech/une-bonne-doc-est-une-doc-accessible/</link>
+        <guid isPermaLink="true">https://wetry.tech/une-bonne-doc-est-une-doc-accessible/</guid>
+        
+        <category>documentation</category>
+        
+        <category>bonne pratique</category>
+        
+        
+        <category>bonne-pratique</category>
+        
+      </item>
     
       <item>
         <title>Comprendre le ngModel</title>

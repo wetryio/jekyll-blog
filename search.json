@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Une bonne doc est une doc accessible",
+      "tags"     : "documentation and bonne pratique",
+      "categories" : "bonne-pratique",
+      "url"      : "/une-bonne-doc-est-une-doc-accessible/",
+      "date"     : "09/13/2019"
+    } ,
+  
+    {
       "title"    : "Comprendre le ngModel",
       "tags"     : "angular and form",
       "categories" : "documentation",
