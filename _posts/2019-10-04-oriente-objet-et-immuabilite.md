@@ -20,9 +20,9 @@ twitter_username: worming4
 
 Voilà un titre prétentieux. Je me dois déjà de préciser le contenu qui va suivre.
 
-Seule les bonnes pratiques sont à l'origine de code sans bug et sans surprise. Elles sont nombreuses et toutes agissent sur différentes ficelles. Parfois sur l'extensibilité du code, sur la lisibilité, les performances, ...
+Seules les bonnes pratiques sont à l'origine de code sans bug et sans surprise. Elles sont nombreuses et toutes agissent sur différentes ficelles. Parfois sur l'extensibilité du code, sur la lisibilité, les performances ...
 
-Aujourd'hui la bonne pratique que je vous partage facilite l'évolution des objets dans ses futures itérations.
+Aujourd'hui, la bonne pratique que je vous partage facilite l'évolution des objets dans ses futures itérations.
 
 ## Un exemple
 
@@ -61,7 +61,7 @@ Le développeur a oublié de mettre à jour les initiales lorsque le nom et le p
 
 ### Le piège facile
 
-Ce que j'observe fréquemment est cette solution:
+J'observe souvent chez mes collègues cette solution :
 
 ```ts
     set Nom(value: string) {
@@ -95,7 +95,7 @@ La tentation est forte. Ainsi, le champ privé est tout le temps mis à jour. Ma
 Les initiales sont maintenant composées aussi d'un deuxième prénom. Aucun problème pour cette représentation.
 Mais un bug est introduit dans sa gestion d'état. L'ajout d'une nouvelle propriété ne met pas correctement à jour les données internes.
 
-Ça n'a l'air de rien dans ce petit exemple, mais dans un codebase beaucoup plus large, **l'oubli est fréquent**.
+Ça a l'air de rien dans ce petit exemple, mais dans un codebase beaucoup plus large, **l'oubli est fréquent**.
 
 Il fallait donc appeler initIntitiales dans le setter du DeuxiemePrenom. Ou bien **réécrire**.
 L'immuabilité peut aider de deux manières.
@@ -108,7 +108,7 @@ Note: _Oubliez le deuxième prénom. Il était présent uniquement pour l'exempl
 
 # L'immuabilité par construction
 
-Combien de fois dans votre vie vous changez de nom ? Et quelle est la probabilité que vous changiez de nom au runtime ?
+Combien de fois dans votre vie changez-vous de nom ?
 Vous obtenez votre nom et prénom à la naissance, et celle-ci ne change plus. Voici comment l'exprimer en orienté objet.
 
 ```ts
@@ -146,7 +146,7 @@ Oui, dans des cas particuliers le nom d'une personne peut changer. Mais est-ce v
 
 ## Private et Readonly
 
-Notez que les champs _nom et _prenom sont encore variables. On peut, intérieurement modifier ces deux-ci.
+Notez que les champs _nom et _prenom sont encore variables. On peut intérieurement modifier ces deux-ci. La classe permet encore une modification des champs depuis les méthodes propres à la classe.
 Le mot-clé readonly y remédie facilement.
 
 ```ts
@@ -158,7 +158,7 @@ De cette manière, la classe est certifiée **figée**. Elle ne peut plus être 
 
 # Immuabilité par expression
 
-Une autre manière est d'exprimer en interne les initiales via une expression, et plus un champ. Comme ceci:
+Une autre manière est d'exprimer en interne les initiales par une expression, et plus un champ. Comme ceci:
 
 ```ts
 get Initiales(): string {
@@ -176,7 +176,7 @@ Il y a ici un compromis entre **stabilité du code** et performance (en termes d
 
 # Laquelle choisir ?
 
-Les deux ! Observez la simplicité du résultat:
+Les deux ! Observez la simplicité du résultat :
 
 ```ts
 class Person {
@@ -205,7 +205,7 @@ Je vous ai cité que cette représentation d'une classe personne est source de r
 * La définition du getter _Initiales_ est proche de son expression. Il n'est pas nécessaire de chercher dans le codebase ailleurs.
 * Le nombre de variables sont réduits. À la lecture, il faut retenir moins d'informations.
 * Le design est proche du monde réel. Un prénom et un nom ne changent pas !
-* Se lit en un coup d'oeil. La règle des 5 secondes est assurée.
+* Se lit en un coup d'œil. La règle des 5 secondes est assurée.
 * Surface minimum du code. Réduire les interfaces à une utilité hyper simpliste facilite la modification de la classe dans le futur.
 * 0 surprise. Tout est initialisé à un seul endroit et n'a pas de responsabilité cachée. Modifier un nom ne fait rien d'autre que ce qui est promis.
 * Objet typé comme règle business. Un objet typé contient lui-même ses règles de cohérences. Avec la configuration strictNullChecks, vous êtes sûr qu'il ne peut exister une personne avec un nom null. Vous évitez ainsi un état interdit dans votre application.
