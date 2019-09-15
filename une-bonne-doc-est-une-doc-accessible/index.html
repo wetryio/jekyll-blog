@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Une bonne doc est une doc accessible | WeTry</title>
-    <meta name="description" content="Des principles simple s'appliquent aussi à la documentation">
+    <meta name="description" content="Des principes simples s'appliquent aussi à la documentation">
 
     <!-- Social: Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@">
     <meta name="twitter:title" content="Une bonne doc est une doc accessible | WeTry">
-    <meta name="twitter:description" content="Des principles simple s'appliquent aussi à la documentation">
+    <meta name="twitter:description" content="Des principes simples s'appliquent aussi à la documentation">
     
     <meta property="twitter:image:src" content="https://wetry.tech/images/bonne-documentation/default-activity-diagram.png">
     
@@ -23,12 +23,12 @@
     
     <meta property="og:image" content="https://wetry.tech/images/bonne-documentation/default-activity-diagram.png">
     
-    <meta property="og:description" content="Des principles simple s'appliquent aussi à la documentation">
+    <meta property="og:description" content="Des principes simples s'appliquent aussi à la documentation">
     <meta property="og:site_name" content="WeTry | Just another dev blog">
 
     <!-- Social: Google+ / Schema.org  -->
     <meta itemprop="name" content="Une bonne doc est une doc accessible | WeTry"/>
-    <meta itemprop="description" content="Des principles simple s'appliquent aussi à la documentation">
+    <meta itemprop="description" content="Des principes simples s'appliquent aussi à la documentation">
     <meta itemprop="image" content="https://wetry.tech/assets/img/blog-image-wt.png"/>
 
     <!-- Favicon -->
@@ -138,7 +138,7 @@ September 13, 2019
                     <span>9 min to read</span>
                 </p>
                 <h1 class="post-title" itemprop="name">Une bonne doc est une doc accessible</h1>
-                <p itemprop="description" class="subtitle">Des principles simple s'appliquent aussi à la documentation</p>
+                <p itemprop="description" class="subtitle">Des principes simples s'appliquent aussi à la documentation</p>
 
                 
                     <img src="/images/bonne-documentation/default-activity-diagram.png" alt="Imagem de capa" class="post-cover">
@@ -152,12 +152,12 @@ September 13, 2019
 
 <p>De cette réflexion, l’envie de partager des pratiques simples pour une documentation accessibles et sous différentes formes.</p>
 
-<h1 id="cest-quoi-une-documentation">C’est quoi une documentation</h1>
+<h1 id="quest-ce-quune-documentation-">Qu’est-ce qu’une documentation ?</h1>
 
-<p>Penchons-nous sur la définition de la documentation selon L’association Association française de normalisation (ISO).
+<p>Penchons-nous sur la définition de la documentation selon l’association Association française de normalisation (ISO).
 <em>“la documentation est l’ensemble des techniques permettant le traitement permanent et systématique de documents ou de données, incluant la collecte, le <strong>signalement</strong>, l’analyse, le stockage, la recherche, la <strong>diffusion</strong> de ceux-ci, <strong>pour l’information des usagers</strong>.<sup><a href="#reference1">1</a></sup>“</em></p>
 
-<p>La documentation n’est pas seulement du texte qui décrit votre application. Il est aussi sa manière de le partager, où est-elle situé, etc…
+<p>La documentation n’est pas seulement du texte qui décrit votre application. Il est aussi sa manière de le partager, où est-elle située, etc…
 Un <a href="https://automapper.readthedocs.io/en/latest/Getting-started.html">exemple</a> est une documentation. Une <a href="https://stackoverflow.com/questions/37251043/automapper-throwing-stackoverflowexception-when-calling-projecttot-on-iquery">réponse à une question</a> est une documentation. Une <a href="https://play.golang.org/">sandbox</a> ? Boum, c’est une documentation.</p>
 
 <p>Aujourd’hui je ne vais pas me pencher sur la rédaction de la documentation (=le contenu), ni même du format d’écriture (=texte, UML), mais de sa position et de ses formes.</p>
@@ -166,14 +166,14 @@ Un <a href="https://automapper.readthedocs.io/en/latest/Getting-started.html">ex
 
 <p>Le principe Code as Documentation est uniquement destiné aux développeurs actuel et futur qui améliorent et maintiennent votre application.</p>
 
-<p>Dans le monde réel, la meilleure documentation est un événement lui-même. Un fait n’est pas discutable car il est intrinsèque. Il ne peut être altéré.
+<p>Dans le monde réel, la meilleure documentation est un événement lui-même. Un fait n’est pas discutable, car il est intrinsèque. Il ne peut être altéré.
 En informatique, ça se traduit comment le code se définit lui-même, ou comment la production agit. Le code n’est capable de faire plus ou moins que ce qui est écrit. Il est intrinsèquement vrai.</p>
 
 <p>Un Code as Documentation se doit être lisible. Il est extrêmement important de savoir écrire un code lisible pour faciliter la compréhension <strong>générale et détaillée</strong> de l’application. Pas de code spaghetti, de variable incompréhensible, ni de fonctions kilométriques. Je vous renvoie vers les principes Clean Code et Clean Architecture pour atteindre ces objectifs.</p>
 
 <p>Nous sommes très proches d’un concept comme la Production as Documentation. Nous utilisons l’application réelle, son design, son intégration en production pour connaitre son état et son comportement.</p>
 
-<p>Un exemple concret est <a href="https://github.com/AutoMapper/AutoMapper">Automapper</a>. Que fait cette librairie ? Il mappe automatiquement. Pas besoin d’aller plus loin, le nom de projet est suffisant.</p>
+<p>Un exemple concret est <a href="https://github.com/AutoMapper/AutoMapper">Automapper</a>. Que fait cette librairie ? Elle mappe automatiquement. Pas besoin d’aller plus loin, le nom de projet est suffisant.</p>
 
 <p><em>Tip: à chaque fois qu’une discussion commence par “<strong>si</strong> la production agit ainsi”, il est nécessaire <strong>d’immédiatement</strong> de levé tous les doutes en effectuant un test ou en lisant le code</em></p>
 
@@ -192,7 +192,7 @@ En informatique, ça se traduit comment le code se définit lui-même, ou commen
 <p>Vous l’avez sûrement pointé du doigt, la documentation n’a pas été mis à jour. Peut-on blâmer ce développeur junior ? Absolument pas. Il n’était pas <strong>conscient de l’existence de la documentation</strong>, et personne n’était là pour l’épauler dans cette tâche.
 Au final, nous avons une <strong>documentation mensongère</strong>. L’application a évolué sans sa documentation.</p>
 
-<p>Cet exemple est simplifié. Je suis sur qu’à un moment ou à un autre, vous suiviez un tutorial ou une documentation non maintenue et que malheureusement votre premier exercice se solde par un échec car la librairie que vous testiez à subit un breaking change.</p>
+<p>Cet exemple est simplifié. Je suis sur qu’à un moment ou à un autre, vous suiviez un tutoriel ou une documentation non maintenue et que malheureusement votre premier exercice se solde par un échec, car la librairie que vous testiez a subi un breaking change.</p>
 
 <p>Nous verrons plus tard comment guider ce développeur junior vers la documentation externe.</p>
 
@@ -200,10 +200,10 @@ Au final, nous avons une <strong>documentation mensongère</strong>. L’applica
 
 <p>Le Code as Documentation seul ne peut suffire. Il y a toujours besoin d’expliquer les communications interservices, les fail-over strategy, pourquoi les choix ont été pris, etc…</p>
 
-<p>C’est pourquoi des documents externes au code sont <strong>indispensable</strong>.
+<p>C’est pourquoi des documents externes au code sont <strong>indispensables</strong>.
 Voici encore quelques principes à respecter pour les documents externes.</p>
 
-<h3 id="keep-physically-close-what-are-related">Keep physically close what are related</h3>
+<h3 id="keep-physically-close-what-things-are-related">Keep physically close what things are related</h3>
 
 <p><img src="/images/bonne-documentation/messenger.png" alt="messenger" />
 <em>Messenger intégre sa doc dans ses contrôles</em></p>
@@ -216,7 +216,7 @@ La solution serait une documentation externe. Mais elle ne sera jamais atteinte 
 <p>Heureusement, le readme est là. Il a pour but de:</p>
 
 <ul>
-  <li>Nous expliquer dans les grandes ligne à quoi sert le repository.</li>
+  <li>Nous expliquer dans les grandes lignes à quoi sert le repository.</li>
   <li>Un guide rapide pour compiler ou lancer l’application.</li>
   <li>Nous diriger vers les ressources externes.</li>
 </ul>
@@ -225,7 +225,7 @@ La solution serait une documentation externe. Mais elle ne sera jamais atteinte 
 
 <p>Les projets open source sont des contre-exemples: les moteurs de recherche sont des liens entre la documentation et les librairies. Je pense à la majorité des développeurs qui utilisent google pour rechercher la documentation officielle d’Automapper au lieu de la retrouver depuis le git.</p>
 
-<p><em>Tip: n’hésitez pas à insérer dans votre code un lien vers la documentation qui lui est lié.</em></p>
+<p><em>Tip: n’hésitez pas à insérer dans votre code un lien vers la documentation qui lui est liée.</em></p>
 
 <h4 id="pour-la-petite-histoire">Pour la petite histoire</h4>
 
@@ -237,7 +237,7 @@ Ce n’était pas le cas précédemment où la diffusion était critique pour n�
 <p>Le web offre toute sa puissance au service de la documentation.</p>
 
 <ul>
-  <li>Facile de mise à disposition.</li>
+  <li>Facile à déployer.</li>
   <li>Facile d’accès.
     <ul>
       <li>Au moins 1 navigateur est installé sur un OS moderne. Rien à installer, tout fonctionne.</li>
@@ -246,7 +246,7 @@ Ce n’était pas le cas précédemment où la diffusion était critique pour n�
   <li>Tout le temps à jour.</li>
 </ul>
 
-<p>Terminé la documentation versionnées sur clé USB ou sur mail perdu. La seule source d’autorité est une application web qui n’existe que pour décrire la dernière version de votre app.</p>
+<p>Terminé la documentation versionnée sur clé USB ou sur mail perdu. La seule source d’autorité est une application web qui n’existe que pour décrire la dernière version de votre app.</p>
 
 <h2 id="sandbox-as-documentation">Sandbox as Documentation</h2>
 
@@ -258,7 +258,7 @@ C’est pourquoi une sandbox ou un environnement d’acceptance est une forme de
 <p>Swagger est aujourd’hui populaire pour compléter la documentation sous forme de sandbox. Il est en quelque sorte un excellent mélange de tous les paragraphes précédents.</p>
 
 <ul>
-  <li>Il est proche du code car c’est une instance du code qui délivre un endpoint swagger. <strong>Keep physically close what is related.</strong></li>
+  <li>Il est proche du code, car c’est une instance du code qui délivre un endpoint swagger. <strong>Keep physically close what things are related.</strong></li>
   <li>Il est intégré au code. Il lit votre API pour délivrer une version simple. <strong>Code as Documentation.</strong></li>
   <li>Il est généré depuis votre code. C-à-d que votre code reste l’unique point d’information de votre API. <strong>DRY principle.</strong></li>
   <li>Il est facile d’accès. <strong>Outil web pour la documentation.</strong></li>
@@ -272,7 +272,7 @@ Il est aussi facile à prendre en main, il vous aide via des exemples concrets c
 <h3 id="mais-le-meme-est-faux--swagger-est-la-documentation-ultime-">Mais le meme est faux ? Swagger est la documentation ultime ?</h3>
 
 <p>Pas vraiment. Swagger UI offre une excellente documentation. Mais comme nous l’avons vu précédemment, des ressources plus complètes sont importantes.
-Swagger ne peut pas expliquer explicitement les stratégies d’API que vous mettez en place. Ni ses dépendances. Ou encore n’aide pas franchement à l’utilisation de token d’authentification, de sa stratégie de génération, etc…</p>
+Swagger ne peut pas expliquer explicitement les stratégies d’API que vous mettez en place. Ni ses dépendances. Ou n’aide pas franchement à l’utilisation de token d’authentification, de sa stratégie de génération, etc…</p>
 
 <p>J’aimerais profiter de ce paragraphe pour vous donner un retour d’expérience sur l’API Spotify et de sa <a href="https://developer.spotify.com/console/">console</a>.
 Ce mode remplit les même objectifs que Swagger UI. Mais ça n’est pas tout. Il permet une navigation vers les ressources externes, les descriptions sont complètes, etc…
@@ -287,9 +287,9 @@ Une fois accompli, ce test devient un test de régression. Il assure que les dé
 
 <p>Mais ils sont aussi une source de documentation. Il suffit de <strong>lire les cas d’utilisation pour connaitre les comportements de l’application</strong>.</p>
 
-<p>L’exercice est d’une certaine manière renversée. La doc n’est plus rédigé en réponse aux attentes, mais les décrit. C’est aussi une certaine manière de respecter le principe DRY pour la rédaction de cahier des charges. Un test BDD vert décrira toujours la réalité production.</p>
+<p>L’exercice est d’une certaine manière renversé. La doc n’est plus rédigée en réponse aux attentes, mais les décrit. C’est aussi une certaine manière de respecter le principe DRY pour la rédaction de cahier des charges. Un test BDD vert décrira toujours la réalité production.</p>
 
-<p>Il n’est toutefois pas facile à exploiter en tant que documentation. Il n’y a pas de moyen hyper pragmatique des les classifier, trier, etc … Il n’empêche qu’elles sont une bonne source d’information.</p>
+<p>Il n’est toutefois pas facile à exploiter en tant que documentation. Il n’y a pas de moyen pragmatique de les classifier, trier, etc … Il n’empêche qu’elles sont une bonne source d’information.</p>
 
 <h1 id="la-doc-parfaite-">La doc parfaite ?</h1>
 
@@ -297,7 +297,7 @@ Une fois accompli, ce test devient un test de régression. Il assure que les dé
 
 <p>Le Code as Documentation sert le détail, la sandbox son intégration, les diagrammes et textes ses stratégies, les tests pour les comportements uniques, etc…</p>
 
-<p>En tant que développeur, nous avons la responsabilité d’assurer que la qualité de la documentation soit au niveau de nos utilisateurs.</p>
+<p>En tant que développeurs, nous avons la responsabilité d’assurer que la qualité de la documentation soit à la hauteur de nos utilisateurs.</p>
 
 <hr />
 
@@ -312,13 +312,13 @@ Une fois accompli, ce test devient un test de régression. Il assure que les dé
 <p><strong>Table des matières</strong></p>
 <ol id="markdown-toc">
   <li><a href="#un-article-réaction" id="markdown-toc-un-article-réaction">Un article réaction</a></li>
-  <li><a href="#cest-quoi-une-documentation" id="markdown-toc-cest-quoi-une-documentation">C’est quoi une documentation</a>    <ol>
+  <li><a href="#quest-ce-quune-documentation-" id="markdown-toc-quest-ce-quune-documentation-">Qu’est-ce qu’une documentation ?</a>    <ol>
       <li><a href="#code-as-documentation" id="markdown-toc-code-as-documentation">Code as Documentation</a>        <ol>
           <li><a href="#implémentation-du-dry" id="markdown-toc-implémentation-du-dry">Implémentation du DRY</a></li>
         </ol>
       </li>
       <li><a href="#les-documents-externes-diagrammes-et-textes" id="markdown-toc-les-documents-externes-diagrammes-et-textes">Les documents externes. Diagrammes et textes</a>        <ol>
-          <li><a href="#keep-physically-close-what-are-related" id="markdown-toc-keep-physically-close-what-are-related">Keep physically close what are related</a>            <ol>
+          <li><a href="#keep-physically-close-what-things-are-related" id="markdown-toc-keep-physically-close-what-things-are-related">Keep physically close what things are related</a>            <ol>
               <li><a href="#pour-la-petite-histoire" id="markdown-toc-pour-la-petite-histoire">Pour la petite histoire</a></li>
             </ol>
           </li>
@@ -359,7 +359,7 @@ Une fois accompli, ce test devient un test de régression. Il assure que les dé
 
             <section class="share">
     <h3>Share</h3>
-    <a aria-label="Compartilhar no Twitter" href="https://twitter.com/intent/tweet?text=&quot;Des principles simple s'appliquent aussi à la documentation&quot;%20https://wetry.tech/une-bonne-doc-est-une-doc-accessible/%20via%20&#64;&hashtags=documentation,bonne pratique,"
+    <a aria-label="Compartilhar no Twitter" href="https://twitter.com/intent/tweet?text=&quot;Des principes simples s'appliquent aussi à la documentation&quot;%20https://wetry.tech/une-bonne-doc-est-une-doc-accessible/%20via%20&#64;&hashtags=documentation,bonne pratique,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
