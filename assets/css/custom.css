@@ -1,10 +1,10 @@
 #markdown-toc, #markdown-toc ul, #markdown-toc ol, #markdown-toc li {
     font-size: 1rem;
-    line-height: 0.5rem;
+    line-height: 1rem;
 }
 
 #markdown-toc, #markdown-toc ul, #markdown-toc ol {
-    margin: 1rem auto 0;
+    margin: 0.5rem auto 0;
 }
 
 #markdown-toc {
