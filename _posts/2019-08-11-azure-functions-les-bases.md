@@ -183,6 +183,18 @@ L'un des facteurs qui peut souvent jouer dans le fait de tester de nouvelles tec
 Les Azure Functions proposent un plan gratuit, qui permet vraiment de tester pas mal de choses sans avoir à débourser un euro.
 Pour la suite, la tarification n'est pas très élevée de base.
 
+Le calcul de base pour la tarification et donc savoir ce qui est utilisable gratuitement est le suivant,
+
+* Azure offre 400.000 Gbs
+* 1.000.000 d'exécutions
+
+Si on part du postulat que notre Azure Functions vas utiliser 512 Mo durant 2 secondes.
+
+* 400.000 / 2 ( => 512 * 2 = 1Gb)
+* Ce qui donne 200.000
+* 200.000 / 2
+* Ce qui donne 100.000 exécutions par mois gratuites ce qui est pas mal pour un bout de code qui utilise 512Mo durant 2 secondes !
+
 [Azure Pricing](https://azure.microsoft.com/en-us/pricing/details/functions/)
 
 ## Conclusion
