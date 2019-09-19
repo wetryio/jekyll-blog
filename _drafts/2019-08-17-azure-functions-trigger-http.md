@@ -46,10 +46,10 @@ Les images utilisé ici sont tiré de Visual Studio 2019.
 #### Selectionner Azure Functions, ensuite Next / Suivant.
 ![placeholder](/images/azure-functions/create-functions-part2.png "Azure functions")
 
-#### La, on encode le nom de notre projet, ici SampleFunction, ensuite la Location et pour finir le nom de la solution.
+#### La, il faut encoder le nom du projet, ici SampleFunction, ensuite la Location et pour finir le nom de la solution.
 ![placeholder](/images/azure-functions/create-functions-part3.png "Azure functions")
 
-#### La fenetre suivante est très intéressante, elle vas permettre de paramétrer notre function, pour cet article, c'est un Trigger Http qu'il faut selectionner, en Storage Account le Storage Emulator et en Authorization on peux mettre Anonymous. C'est l'étape principale qui permets de scalfoder les projets. Selon la selection faites, Visual Studio vas ajouter des packages différents. Mais également paramétrer l'entrypoint de notre function différement.
+#### La fenetre suivante est très intéressante, elle vas permettre de paramétrer la function, pour cet article, c'est un Trigger Http qu'il faut selectionner, en Storage Account le Storage Emulator et en Authorization selectionner Anonymous. C'est l'étape principale qui permets de scalffoder les projets. Selon la selection faite, Visual Studio vas ajouter des packages différents. Mais également paramétrer l'entrypoint de la function différement.
 ![placeholder](/images/azure-functions/create-functions-part4.png "Azure functions")
 
 #### Après avoir cliquer sur Create, le projet avec une Azure Functions est générer par Visual Studio.
