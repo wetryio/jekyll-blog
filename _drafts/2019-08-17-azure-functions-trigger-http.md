@@ -131,19 +131,50 @@ Première étape, on vas modifier le nom de notre function. On vas donc remplace
 A deux endroit, le nom de la classe et dans l'attribut [FunctionName]. Et supprimer tout ce qu'on a pas besoin.
 ```csharp
 public static class Multipicator
+{
+    [FunctionName("Multipicator")]
+    public static async Task<IActionResult> Run(
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
-        [FunctionName("Multipicator")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
-        {
-            log.LogInformation("C# HTTP trigger function processed a request.");
-            return (ActionResult)new OkObjectResult(0);
-        }
+        log.LogInformation("C# HTTP trigger function processed a request.");
+        return (ActionResult)new OkObjectResult(0);
     }
+}
 ```
 
-### Les modèles
+Etape suivante, on vas écrire une function (normale) qui vas multiplier deux nombre.
+```csharp
+private static int MultiplyNumber(int a, int b)
+{
+    return a * b;
+}
+```
+
+La prochaine étape sera de tester que la function tourne et renvois bien un résultat attendus.
+```csharp
+public static class Multipicator
+{
+    [FunctionName("Multipicator")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+        return (ActionResult)new OkObjectResult(MultiplyNumber(2, 2));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+```
+
+Pour tester, F5 vas lancer en Debug ou Release selon ce qui est selectionner.
+![placeholder](/images/azure-functions/launch-functions-part.png "Azure functions")
+
+
+
 
 ## Binding du modèle d'entrée
 
