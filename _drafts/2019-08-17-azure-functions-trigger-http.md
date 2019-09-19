@@ -249,6 +249,103 @@ Après la paramètre HttpRequest, deux on été ajouter et permets cette liaison
 [FromRoute]int b
 ```
 
+Dernière étape pour le binding par la route, utiliser les valeurs dans l'appel de la méthode qui multiplie les nombres.
+```csharp
+public static class Multipicator
+{
+    [FunctionName("Multipicator")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Multipicator/{a}/{b}")] HttpRequest req,
+        [FromRoute]int a,
+        [FromRoute]int b,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+        return (ActionResult)new OkObjectResult(MultiplyNumber(a, b));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+```
+
+### Le query params binding
+Il n'existe pas de manière de lier directement un paramètre en Query params à un paramètre de l'Azure functions, pour lire ce type d'input il faut utiliser la request.
+```csharp
+public static class Multipicator
+{
+    [FunctionName("Multipicator")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        int a = int.Parse(req.Query["a"]);
+        int b = int.Parse(req.Query["b"]);
+
+        log.LogInformation("C# HTTP trigger function processed a request.");
+        return (ActionResult)new OkObjectResult(MultiplyNumber(a, b));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+```
+
+Les deux lignes suivantes, lisent le contenus du paramètres de la query selon la clé et sont convertis en Int avec un parse.
+```csharp
+int a = int.Parse(req.Query["a"]);
+int b = int.Parse(req.Query["b"]);
+```
+
+### Le body binding
+Il existe plusieurs moyen de binder sur le Body, ici la méthode la plus simple sera utiliser. Elle conssiste a lire le body de la requête,
+ensuite désérialiser le contenus Json.
+```csharp
+public class InputMultiplicator
+{
+    public int A { get; set; }
+    public int B { get; set; }
+}
+
+public static class Multipicator
+{
+    [FunctionName("Multipicator")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        var model = JsonConvert.DeserializeObject<InputMultiplicator>(requestBody);
+
+        return (ActionResult)new OkObjectResult(MultiplyNumber(model.A, model.B));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+```
+
+Niveau URL, elle sera a nouveau simplifier car le paramètre route est redevenu null
+```
+http://localhost:7071/api/Multipicator
+```
+
+Il faudras cependant passer en POST avec un Body
+```json
+{
+    "a": 10,
+    "b": 2
+}
+```
+
 ## La sécurité
 Niveau sécurité, Azure propose plusieurs niveau d'authentification, un Anonymous qui ne demande rien de plus et 3 autres Function, Admin & System qui nécessitent une clé pour autoriser l'accès à la function.
 
@@ -272,5 +369,3 @@ Si la clé est invalide, c'est une HTTP  401 qui est renvoyer.
 ### System
 Requière une clé d'authentification, ici la **Master key** sera nécessaire. La clé master ne peux pas être révoké.
 Si la clé est invalide, c'est une HTTP  401 qui est renvoyer.
-
-## Publier sur Azure
