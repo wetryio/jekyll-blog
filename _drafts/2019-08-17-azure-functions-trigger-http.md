@@ -25,8 +25,8 @@ Dans cet article, je vais démystifier le trigger HTTP, mais également montrer 
 - Explication du code généré
 - Modification pour renvoyer une valeur calculée par rapport à ce que la function aura reçu
 - Binding du modèle d'entrée
-- La sécurité
 - Publier sur Azure
+- La sécurité
 
 La use case que nous allons voir ici, est de réalisé une function qui prends deux nombre en paramètre et les multiplie par eux même.
 
@@ -345,6 +345,20 @@ Il faudras cependant passer en POST avec un Body
     "b": 2
 }
 ```
+
+## Publier sur Azure
+La dernière étape est de rendre la Azure Function utilisable sur le cloud Azure.
+Pour cela dans Visual Studio, clique droit sur le projet, ensuite Publish.
+
+![placeholder](/images/azure-functions/publish-functions-part1.png "Azure functions")
+
+![placeholder](/images/azure-functions/publish-functions-part2.png "Azure functions")
+
+![placeholder](/images/azure-functions/publish-functions-part3.png "Azure functions")
+
+![placeholder](/images/azure-functions/publish-functions-part4.png "Azure functions")
+
+
 
 ## La sécurité
 Niveau sécurité, Azure propose plusieurs niveau d'authentification, un Anonymous qui ne demande rien de plus et 3 autres Function, Admin & System qui nécessitent une clé pour autoriser l'accès à la function.
