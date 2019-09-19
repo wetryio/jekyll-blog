@@ -184,8 +184,70 @@ Dans mon cas, l'url suivante expose la Azure Functions.
 http://localhost:7071/api/Multipicator
 ```
 
+Si l'url est tester dans un browser, le résultat attendus devrais être le suivant.
+```
+4
+```
 
 ## Binding du modèle d'entrée
+Dans l'étape précédente, les valeurs multiplier étaient connues et static. Dans cette l'étape le but est de binder soit dans la Query, la Route ou le Body(POST).
+
+### Le route binding
+Le binding dans la route permets de lier aisément un paramètre de la route dans un paramètre de la Azure Function.
+Pour cela, il faut modifier le paramètre route de la méthode Run.
+```csharp
+public static class Multipicator
+{
+    [FunctionName("Multipicator")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Multipicator/{a}/{b}")] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+        return (ActionResult)new OkObjectResult(MultiplyNumber(2, 2));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+```
+
+La modification au dessus, vas modifier la route, si la Azure functions est relancer (F5), elle aura une nouvelle URL.
+Dans HttpTrigger, le paramètre Route définis donc le points d'entrée de la function, ajouter des valeurs entre acolade crée des valeurs dynamique.
+```
+http://localhost:7071/api/Multipicator/{a}/{b}
+```
+![placeholder](/images/azure-functions/launch-functions-part4.png "Azure functions")
+
+La prochaine modification, vas permettre de lier les valeurs de la route, a des paramètres de la Azure Functions.
+```csharp
+public static class Multipicator
+{
+    [FunctionName("Multipicator")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Multipicator/{a}/{b}")] HttpRequest req,
+        [FromRoute]int a,
+        [FromRoute]int b,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+        return (ActionResult)new OkObjectResult(MultiplyNumber(2, 2));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+```
+
+Après la paramètre HttpRequest, deux on été ajouter et permets cette liaison.
+```csharp
+[FromRoute]int a
+[FromRoute]int b
+```
 
 ## La sécurité
 Niveau sécurité, Azure propose plusieurs niveau d'authentification, un Anonymous qui ne demande rien de plus et 3 autres Function, Admin & System qui nécessitent une clé pour autoriser l'accès à la function.
