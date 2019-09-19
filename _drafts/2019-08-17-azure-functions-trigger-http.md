@@ -40,7 +40,7 @@ La use case que nous allons voir ici, est de réalisé une function qui prends d
 Les images utilisé ici sont tiré de Visual Studio 2019.
 
 
-Dans la fenetre de création d'un Project de Visual Studio 2019, chercher après Azure Functions.
+#### Dans la fenetre de création d'un Project de Visual Studio 2019, chercher après Azure Functions.
 ![placeholder](/images/azure-functions/create-functions-part1.png "Azure functions")
 
 Selectionner Azure Functions, ensuite Next / Suivant.
