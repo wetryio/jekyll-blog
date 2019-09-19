@@ -170,10 +170,19 @@ public static class Multipicator
 }
 ```
 
-Pour tester, F5 vas lancer en Debug ou Release selon ce qui est selectionner.
+#### Pour tester, F5 vas lancer en Debug ou Release selon ce qui est selectionner. La première fois, il est possible que cela prenne un certains temps, notament pour que le Azure Emulator se lance.
 ![placeholder](/images/azure-functions/launch-functions-part.png "Azure functions")
 
+#### Si tout c'est bien passer, un invite de commande vas se lancer et ressemble à ceci.
+![placeholder](/images/azure-functions/launch-functions-part2.png "Azure functions")
 
+#### Et la partie la plus important se trouve tout en bas.
+![placeholder](/images/azure-functions/launch-functions-part3.png "Azure functions")
+
+Dans mon cas, l'url suivante expose la Azure Functions.
+```
+http://localhost:7071/api/Multipicator
+```
 
 
 ## Binding du modèle d'entrée
