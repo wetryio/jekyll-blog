@@ -1,4 +1,6 @@
 ---
 layout: category
-category: 'bonne-pratique'
+title: Bonne-pratique
+slug: bonne-pratique
+description: Toutes les bonnes pratiques ici
 ---

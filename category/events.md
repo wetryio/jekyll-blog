@@ -1,4 +1,6 @@
 ---
 layout: category
-category: 'events'
+title: Events
+slug: events
+description: nous participons à de nombreux événements
 ---

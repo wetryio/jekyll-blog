@@ -1,52 +1,90 @@
 # Site Settings
-title: WeTry | Encore un autre blog de développeur
-email: info@wetry.tech
+name: WeTry
+title:  WeTry | Encore un autre blog de développeur
 description: Encore un autre blog de développeur.
+tags:
+  - blog
+  - template
+  - jekyll
+  - theme
+  - netlify
+# email: info@wetry.tech # Do not set email to not show 'Contact' in menu
+disqus_username: wetry
+show_hero: true
+
+# Social Media Settings
+# Remove the item if you don't need it
+github_username: github_username
+facebook_username: facebook_username
+twitter_username: twitter_username
+instagram_username: instagram_username
+linkedin_username: linkedin_username
+medium_username: medium_username
+
+
+# Theme Settings
+themeColor: "#ff0a16"
+primaryDark: "#141414"
+accentDark: "#ffffff"
+lightGray: "#f2f2f2"
+texts: "#333333"
+
+
+# Posts Settings
+show_time_bar: false
+show_modal_on_exit: false
+show_modal_on_finish_post: true
+two_columns_layout: false
+
+
+# Advanced Settings
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://wetry.tech" # the base hostname & protocol for your site
 google_analytics: "UA-145445435-1"
+language: "fr"
 
-# User Settings
-username: WeTry
-user_description: 3 développeurs passionnés.
-disqus_username: wetry
-
-# Social Media
-# Remove the item if you don't need it
-github_username: wetryio
-# facebook_username: facebook_username
-# twitter_username: twitter_username
-# instagram_username: instagram_username
-# linkedin_username: linkedin_username
-# medium_username: medium_username
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
 permalink: /:title/
-paginate: 12
+collections:
+  authors:
+    output: true
 paginate_path: "/page/:num/"
-svg_color: "#ff0a16"
-future: false
+
+# Content paginator
+paginate_content:
+  enabled: true
+  debug: false
+  collections:
+    - posts
+  auto: false
+  separator: "--page-break--"
+  permalink: "/:num/"
+  seo_canonical: true
+  properties:
+    part:
+      is_generated: true
+    last:
+      is_generated: true
+    single:
+      is_generated: true
 
 # Plugins
 plugins:
-  - jemoji
   - jekyll-paginate
-
-# Links to include in menu navigation
-# For external links add external: true
-links:
-  - title: Accueil
-    url: /
-  - title: HITW 2019
-    url: /hitw2019/
-  - title: À propos de nous
-    url: /about/
-  - title: CraftLab-IT
-    url: /craftlab-it/
-  # - title: Contact
-  #   url: /contact/
+  - jekyll-paginate-content
 
 # Exclude my node related stuff
-exclude: ['package.json', 'src', 'node_modules']
+exclude: [
+  'package.json',
+  'package-lock.json',
+  'src',
+  'node_modules',
+  'initpost.sh',
+  'Gemfile',
+  'Gemfile.lock',
+  'gulpfile.js',
+  'README.md'
+]

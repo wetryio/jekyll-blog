@@ -1,4 +1,5 @@
 ---
 layout: category
-category: 'webdev'
+title: webdev
+slug: webdev
 ---

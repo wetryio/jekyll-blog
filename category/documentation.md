@@ -1,4 +1,6 @@
 ---
 layout: category
-category: 'documentation'
+title: Documentation
+slug: documentation
+description: Retrouvez nos documents
 ---

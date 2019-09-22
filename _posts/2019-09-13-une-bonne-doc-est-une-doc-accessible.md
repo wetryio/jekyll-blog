@@ -1,4 +1,5 @@
 ---
+author: mscolas
 layout: post
 title: Une bonne doc est une doc accessible
 date: 2019-09-13 07:00:00
@@ -8,11 +9,6 @@ category: 'bonne-pratique'
 tags:
 - documentation
 - bonne pratique
-twitter_text: Des principes simples s'appliquent aussi à la documentation
-introduction: Des principes simples s'appliquent aussi à la documentation
-github_username: worming004
-linkedin_username: mathieu-scolas-1a048484
-twitter_username: worming4
 ---
 
 # Un article réaction

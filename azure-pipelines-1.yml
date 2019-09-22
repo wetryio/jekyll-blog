@@ -17,10 +17,10 @@ steps:
 - script: 'gem install bundler' 
   displayName: 'Install bundler'
 
-- script: 'bundle install' 
+- script: 'bundle install'
   displayName: 'Install Jekyll and Dependencies'
 
-- script: 'JEKYLL_ENV=production jekyll build' 
+- script: 'gulp@1 buildProd'
   displayName: 'Build Jekyll Static Site'
 
 - task: PublishBuildArtifacts@1

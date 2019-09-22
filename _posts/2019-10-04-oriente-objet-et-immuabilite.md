@@ -1,4 +1,5 @@
 ---
+author: mscolas
 layout: post
 title: L'immuabilité pour un code sans bug
 date: 2019-10-04 07:00:00
@@ -9,11 +10,7 @@ tags:
 - bonne pratique
 - test
 - orienté objet
-twitter_text: L'immuabilité pour un code sans bug
 introduction: L'immuabilité pour un code sans bug
-github_username: worming004
-linkedin_username: mathieu-scolas-1a048484
-twitter_username: worming4
 ---
 
 ## Mon premier titre putaclick

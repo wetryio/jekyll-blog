@@ -1,0 +1,12 @@
+name: WeTry
+title:  WeTry | Encore un autre blog de développeur
+description: Encore un autre blog de développeur.
+tags:
+  - blog
+  - template
+  - jekyll
+  - theme
+  - netlify
+# email: info@wetry.tech # Do not set email to not show 'Contact' in menu
+disqus_username: wetry
+show_hero: true
