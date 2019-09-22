@@ -23,7 +23,7 @@ steps:
 - task: Gulp@1
   inputs:
     gulpFile: 'gulpfile.js'
-    targets: 'buildProd'
+    targets: 'build'
     enableCodeCoverage: false
 
 - task: PublishBuildArtifacts@1
