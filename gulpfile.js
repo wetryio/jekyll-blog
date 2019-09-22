@@ -257,4 +257,4 @@ exports.default = gulp.series(gulp.parallel(js, gulp.series(theme, css), images)
  * - Compile the Jekyll site
  */
 exports.build = gulp.series(gulp.parallel(js, gulp.series(theme, css), images), config, jekyll);
-exports.build = gulp.series(gulp.parallel(js, gulp.series(theme, css), images), config, jekyllProd);
+exports.buildProd = gulp.series(gulp.parallel(js, gulp.series(theme, css), images), config, jekyllProd);
