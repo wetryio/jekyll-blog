@@ -20,11 +20,10 @@ steps:
 
 - script: 'bundle install'
   displayName: 'Install Jekyll and Dependencies'
-- task: Gulp@1
-  inputs:
-    gulpFile: 'gulpfile.js'
-    targets: 'build'
-    enableCodeCoverage: false
+
+- script : |
+    npm install
+    JEKYLL_ENV=production gulp build --gulpfile gulpfile.js
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: _site'
