@@ -1,5 +1,5 @@
 ---
-author: pgrasseel
+author: pgrasseels
 layout: post
 title: "Azure Functions les bases"
 date: 2019-08-11 18:26:40
