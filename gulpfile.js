@@ -50,16 +50,7 @@ function jekyll(done) {
   notify('Building Jekyll...');
   let bundle = process.platform === "win32" ? "bundle.bat" : "bundle";
   return cp
-    .spawn(bundle, ['exec', 'jekyll build'], { stdio: 'inherit' })
-    .on('close', done);
-}
-
-
-function jekyllProd(done) {
-  notify('Building Jekyll...');
-  let bundle = process.platform === "win32" ? "bundle.bat" : "bundle";
-  return cp
-    .spawn('JEKYLL_ENV=production ' + bundle, ['exec', 'jekyll build'], { stdio: 'inherit' })
+    .spawn(bundle, ['exec', 'jekyll build --future'], { stdio: 'inherit' })
     .on('close', done);
 }
 
@@ -257,4 +248,3 @@ exports.default = gulp.series(gulp.parallel(js, gulp.series(theme, css), images)
  * - Compile the Jekyll site
  */
 exports.build = gulp.series(gulp.parallel(js, gulp.series(theme, css), images), config, jekyll);
-exports.buildProd = gulp.series(gulp.parallel(js, gulp.series(theme, css), images), config, jekyllProd);
