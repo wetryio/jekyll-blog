@@ -50,7 +50,7 @@ function jekyll(done) {
   notify('Building Jekyll...');
   let bundle = process.platform === "win32" ? "bundle.bat" : "bundle";
   return cp
-    .spawn(bundle, ['exec', 'jekyll build --future'], { stdio: 'inherit' })
+    .spawn(bundle, ['exec', 'jekyll build'], { stdio: 'inherit' })
     .on('close', done);
 }
 
