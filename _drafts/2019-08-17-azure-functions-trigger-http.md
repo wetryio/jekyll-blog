@@ -1,4 +1,5 @@
 ---
+author: pgrasseels
 layout: post
 title: "Azure Functions démystifions le trigger HTTP"
 date: 2019-08-17 14:12:19
@@ -10,10 +11,7 @@ tags:
 - tutorial
 - serverless
 - trigger http
-twitter_text: Azure Functions, démystifions le trigger HTTP.
 introduction: Azure Functions, démystifions le trigger HTTP.
-github_username: Hantse
-linkedin_username: patrick-grasseels-a132a381
 ---
 
 # Azure Functions, démystifions le trigger HTTP

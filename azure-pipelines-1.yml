@@ -1,4 +1,5 @@
 # Starter pipeline
+
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -17,13 +18,15 @@ steps:
 - script: 'gem install bundler' 
   displayName: 'Install bundler'
 
-- script: 'bundle install' 
+- script: 'bundle install'
   displayName: 'Install Jekyll and Dependencies'
 
-- script: 'bundle exec jekyll build' 
-  displayName: 'Build Jekyll Static Site'
+- script : |
+    npm install
+    JEKYLL_ENV=production gulp build --gulpfile gulpfile.js
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: _site'
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/_site'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
