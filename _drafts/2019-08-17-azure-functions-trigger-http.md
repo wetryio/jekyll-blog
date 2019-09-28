@@ -16,7 +16,7 @@ introduction: Azure Functions, démystifions le trigger HTTP.
 
 # Azure Functions, démystifions le trigger HTTP
 
-Dans l'article précédent, j'exposais les bases d'une Azure Functions, si vous ne savez pas du tout ce que c'est, je vous conseil de commencer par là [Azure Functions, les bases](/azure-functions-les-bases/).
+Dans l'article précédent, j'exposais les bases d'une Azure Functions, si vous ne savez pas du tout ce que c'est, je vous conseille de commencer par là [Azure Functions, les bases](/azure-functions-les-bases/).
 
 Dans cet article, je vais démystifier le trigger HTTP, mais également montrer jusqu'où il est possible d'aller en y intégrant des principes très proches de ceux de l'ASP.NET Core. Voici dans les grandes lignes les étapes :
 - Crée une Azure Functions avec Visual Studio
@@ -26,7 +26,7 @@ Dans cet article, je vais démystifier le trigger HTTP, mais également montrer 
 - Publier sur Azure
 - La sécurité
 
-La use case que nous allons voir ici, est de réalisé une function qui prends deux nombre en paramètre et les multiplie par eux même.
+La use case que nous allons voir ici, est de réaliser une function qui prend deux nombres en paramètre et les multiplie par eux-mêmes.
 
 ## Crée une Azure Functions avec Visual Studio
 
@@ -35,26 +35,26 @@ La use case que nous allons voir ici, est de réalisé une function qui prends d
 - [Azure Functions Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs) pour Visual Studio 2017
 - Avoir selectionner les Azure Development dans les feature à installer
 
-Les images utilisé ici sont tiré de Visual Studio 2019.
+Les images utilisées ici sont tirées de Visual Studio 2019.
 
 
-#### Dans la fenetre de création d'un Project de Visual Studio 2019, chercher après Azure Functions.
+#### Dans la fenêtre de création d'un Projet de Visual Studio 2019, chercher après Azure Functions.
 ![placeholder](/images/azure-functions/create-functions-part1.png "Azure functions")
 
 #### Selectionner Azure Functions, ensuite Next / Suivant.
 ![placeholder](/images/azure-functions/create-functions-part2.png "Azure functions")
 
-#### La, il faut encoder le nom du projet, ici SampleFunction, ensuite la Location et pour finir le nom de la solution.
+#### Il faut encoder le nom du projet, ici SampleFunction, ensuite la Location (emplacement sur le disque) et pour finir le nom de la solution.
 ![placeholder](/images/azure-functions/create-functions-part3.png "Azure functions")
 
-#### La fenetre suivante est très intéressante, elle vas permettre de paramétrer la function, pour cet article, c'est un Trigger Http qu'il faut selectionner, en Storage Account le Storage Emulator et en Authorization selectionner Anonymous. C'est l'étape principale qui permets de scalffoder les projets. Selon la selection faite, Visual Studio vas ajouter des packages différents. Mais également paramétrer l'entrypoint de la function différement.
+#### La fenêtre suivante est très intéressante, elle va permettre de paramétrer la function, pour cet article, c'est un Trigger Http qu'il faut selectionner, en Storage Account le Storage Emulator et en Authorization sélectionner Anonymous. C'est l'étape principale qui permet de scalffoder les projets. Selon la sélection faite, Visual Studio va ajouter des packages différents. Mais également paramétrer l'entrypoint de la function différement.
 ![placeholder](/images/azure-functions/create-functions-part4.png "Azure functions")
 
-#### Après avoir cliquer sur Create, le projet avec une Azure Functions est générer par Visual Studio.
+#### Après avoir cliqué sur Create, le projet avec une Azure Functions est générée par Visual Studio.
 ![placeholder](/images/azure-functions/create-functions-part5.png "Azure functions")
 
 ## Explication du code généré
-La code générer a la base ressemble à ceci 
+Le code générer à la base ressemble à ceci 
 
 ```csharp
 public static class Function1
@@ -78,16 +78,23 @@ public static class Function1
         }
     }
 ```
+
 Découpons un peu ce code pour en comprendre les bases, commençont par le point d'entrée de la function.
 
 ```csharp
 [FunctionName("Function1")]
 public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
 ```
+Le point d'entrée, Run à un Attribut FunctionName avec en paramètre le nom de la function.
+Le premier paramètre de Run est le type de trigger, ici c'est un trigger de type HttpTrigger.
+Ce même HttpTrigger, à plusieurs paramètres;
+- AuthorizationLevel.Function : c'est le niveau de sécurité que la Function nécessite, une explication est disponible à ce propos en bas d'article
+- "get", "post" : le type de verb HTTP qui est supporter par la Function
+- Route = null : par défaut, l'URL d'une Functions est https://monhostnameazure/NomDeLaFunction, le paramètre route ici permet de modifier cette règle
 
 
-Le reste de la function c'est du code C# comme on peux en faire en ASPNET Core, en Console, etc ... rien de bien sorcier. Mais c'est ce code, qui sera exécuter et qui vas permettre de renvoyer ou non une valeur.
-Dans le sample de base, on attends en query params ou body, une valeur sur la clé name. Ensuite, on renvois soit une HTTP 200 avec le nom concaténer avec Hello, soit une 400 si ni le body, ni la query ne contient de valeur pour Name.
+Le reste de la function c'est du code C# comme en ASPNET Core, en Console, etc ... Mais c'est ce code, qui sera exécuté et qui vas permettre de renvoyer ou non une valeur.
+Dans le sample de base, la Function attend en query params ou body, une valeur sur la clé Name. Ensuite, elle renvoit soit une HTTP 200 avec le nom concaténer avec Hello, soit une 400 si ni le body, ni la query ne contient de valeur pour Name.
 
 ```csharp
 log.LogInformation("C# HTTP trigger function processed a request.");
@@ -104,7 +111,6 @@ return name != null
 
 
 La partie suivante s'occupe de parser la query / body
-
 ```csharp
 string name = req.Query["name"];
 
