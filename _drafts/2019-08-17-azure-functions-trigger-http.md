@@ -125,12 +125,12 @@ return name != null
 ## Ecrire sa première Azure Functions
 Ici, on rentre dans notre use case, comme dis au début nous allons envoyer deux nombre a notre Azure Functions et les multiplier par eux même.
 
-Première étape, on vas modifier le nom de notre function. On vas donc remplacer Function1 par Multipicator. 
+Première étape, on vas modifier le nom de notre function. On vas donc remplacer Function1 par Multiplicator. 
 A deux endroit, le nom de la classe et dans l'attribut [FunctionName]. Et supprimer tout ce qu'on a pas besoin.
 ```csharp
-public static class Multipicator
+public static class Multiplicator
 {
-    [FunctionName("Multipicator")]
+    [FunctionName("Multiplicator")]
     public static async Task<IActionResult> Run(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
@@ -150,9 +150,9 @@ private static int MultiplyNumber(int a, int b)
 
 La prochaine étape sera de tester que la function tourne et renvois bien un résultat attendus.
 ```csharp
-public static class Multipicator
+public static class Multiplicator
 {
-    [FunctionName("Multipicator")]
+    [FunctionName("Multiplicator")]
     public static async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
         ILogger log)
@@ -179,7 +179,7 @@ public static class Multipicator
 
 Dans mon cas, l'url suivante expose la Azure Functions.
 ```
-http://localhost:7071/api/Multipicator
+http://localhost:7071/api/Multiplicator
 ```
 
 Si l'url est tester dans un browser, le résultat attendus devrais être le suivant.
@@ -194,11 +194,11 @@ Dans l'étape précédente, les valeurs multiplier étaient connues et static. D
 Le binding dans la route permets de lier aisément un paramètre de la route dans un paramètre de la Azure Function.
 Pour cela, il faut modifier le paramètre route de la méthode Run.
 ```csharp
-public static class Multipicator
+public static class Multiplicator
 {
-    [FunctionName("Multipicator")]
+    [FunctionName("Multiplicator")]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Multipicator/{a}/{b}")] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Multiplicator/{a}/{b}")] HttpRequest req,
         ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
@@ -215,17 +215,17 @@ public static class Multipicator
 La modification au dessus, vas modifier la route, si la Azure functions est relancer (F5), elle aura une nouvelle URL.
 Dans HttpTrigger, le paramètre Route définis donc le points d'entrée de la function, ajouter des valeurs entre acolade crée des valeurs dynamique.
 ```
-http://localhost:7071/api/Multipicator/{a}/{b}
+http://localhost:7071/api/Multiplicator/{a}/{b}
 ```
 ![placeholder](/images/azure-functions/launch-functions-part4.png "Azure functions")
 
 La prochaine modification, vas permettre de lier les valeurs de la route, a des paramètres de la Azure Functions.
 ```csharp
-public static class Multipicator
+public static class Multiplicator
 {
-    [FunctionName("Multipicator")]
+    [FunctionName("Multiplicator")]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Multipicator/{a}/{b}")] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Multiplicator/{a}/{b}")] HttpRequest req,
         [FromRoute]int a,
         [FromRoute]int b,
         ILogger log)
@@ -249,11 +249,11 @@ Après la paramètre HttpRequest, deux on été ajouter et permets cette liaison
 
 Dernière étape pour le binding par la route, utiliser les valeurs dans l'appel de la méthode qui multiplie les nombres.
 ```csharp
-public static class Multipicator
+public static class Multiplicator
 {
-    [FunctionName("Multipicator")]
+    [FunctionName("Multiplicator")]
     public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Multipicator/{a}/{b}")] HttpRequest req,
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "Multiplicator/{a}/{b}")] HttpRequest req,
         [FromRoute]int a,
         [FromRoute]int b,
         ILogger log)
@@ -272,9 +272,9 @@ public static class Multipicator
 ### Le query params binding
 Il n'existe pas de manière de lier directement un paramètre en Query params à un paramètre de l'Azure functions, pour lire ce type d'input il faut utiliser la request.
 ```csharp
-public static class Multipicator
+public static class Multiplicator
 {
-    [FunctionName("Multipicator")]
+    [FunctionName("Multiplicator")]
     public static async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
         ILogger log)
@@ -309,9 +309,9 @@ public class InputMultiplicator
     public int B { get; set; }
 }
 
-public static class Multipicator
+public static class Multiplicator
 {
-    [FunctionName("Multipicator")]
+    [FunctionName("Multiplicator")]
     public static async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
         ILogger log)
@@ -333,7 +333,7 @@ public static class Multipicator
 
 Niveau URL, elle sera a nouveau simplifier car le paramètre route est redevenu null
 ```
-http://localhost:7071/api/Multipicator
+http://localhost:7071/api/Multiplicator
 ```
 
 Il faudras cependant passer en POST avec un Body
