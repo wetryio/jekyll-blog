@@ -1,15 +1,15 @@
 ---
 layout: author
-photo: /assets/img/uploads/profile.png
+photo: /images/authors/dgilson.png
 name: dgilson
-display_name: David Gilson
-position: Developpeur
+display_name: David Gilson<br/>(Gilsdav)
+position: Développeur
 # bio: Just a developer.
-# github_username: thiagorossener
+github_username: gilsdav
 # facebook_username: thiagorossener
-# twitter_username: thiagorossener
+twitter_username: gilsondavid5
 # instagram_username: thiagorossener
-# linkedin_username: thiagorossener
+linkedin_username: david-gilson-innovate
 # medium_username: thiagorossener
 ---
 
