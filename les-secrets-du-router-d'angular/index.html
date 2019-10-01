@@ -1,66 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="http://schema.org/BlogPosting">
+<html lang="fr">
     <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
     <title>Les secrets du Router d'Angular | WeTry</title>
     <meta name="description" content="En savoir plus sur le routing d'Angular.">
+    
+        <meta name="keywords" content="angular, routing">
+    
 
     <!-- Social: Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@">
     <meta name="twitter:title" content="Les secrets du Router d'Angular | WeTry">
     <meta name="twitter:description" content="En savoir plus sur le routing d'Angular.">
-    
-    <meta property="twitter:image:src" content="https://wetry.tech/images/angular-posts/routing.jpg">
+    <meta property="twitter:image:src" content="/images/angular-posts/routing.jpg">
     
 
     <!-- Social: Facebook / Open Graph -->
     <meta property="og:url" content="https://wetry.tech/les-secrets-du-router-d'angular/">
     <meta property="og:title" content="Les secrets du Router d'Angular | WeTry">
-    
-    <meta property="og:image" content="https://wetry.tech/images/angular-posts/routing.jpg">
-    
+    <meta property="og:image" content="/images/angular-posts/routing.jpg">
     <meta property="og:description" content="En savoir plus sur le routing d'Angular.">
     <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
-
-    <!-- Social: Google+ / Schema.org  -->
-    <meta itemprop="name" content="Les secrets du Router d'Angular | WeTry"/>
-    <meta itemprop="description" content="En savoir plus sur le routing d'Angular.">
-    <meta itemprop="image" content="https://wetry.tech/assets/img/blog-image-wt.png"/>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     
     <!-- Apple Touch Icons -->
-    <link rel="apple-touch-icon" href="/assets/img/icons/apple-icon.png" />
-    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/icons/apple-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/icons/apple-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/icons/apple-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/icons/apple-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/icons/apple-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/icons/apple-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/icons/apple-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/icons/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/icons/apple-touch-icon-152x152.png" />
 
     <!-- Windows 8 Tile Icons -->
-    <meta name="application-name" content="WeTry Blog">
-    <meta name="msapplication-TileColor" content="#0562DC">
+    <meta name="application-name" content="WeTry">
+    <meta name="msapplication-TileColor" content="#ff0a16">
     <meta name="msapplication-square70x70logo" content="smalltile.png" />
     <meta name="msapplication-square150x150logo" content="mediumtile.png" />
     <meta name="msapplication-wide310x150logo" content="widetile.png" />
     <meta name="msapplication-square310x310logo" content="largetile.png" />
     
     <!-- Android Lolipop Theme Color -->
-    <meta name="theme-color" content="">
+    <meta name="theme-color" content="#ff0a16">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
     <link rel="canonical" href="https://wetry.tech/les-secrets-du-router-d'angular/">
     <link rel="alternate" type="application/rss+xml" title="WeTry | Encore un autre blog de développeur" href="https://wetry.tech/feed.xml" />
 </head>
@@ -72,14 +77,11 @@
 
 
 
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1"><defs><symbol id="icon-menu" viewBox="0 0 1024 1024"><path class="path1" d="M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"/></symbol><symbol id="icon-search" viewBox="0 0 951 1024"><path class="path1" d="M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"/></symbol><symbol id="icon-close" viewBox="0 0 1000 1000"><path d="M969.8,870.3c27,27.7,27,71.8,0,99.1C955.7,983,937.9,990,920,990c-17.9,0-35.7-7-49.7-20.7L500,599L129.6,969.4C115.6,983,97.8,990,79.9,990s-35.7-7-49.7-20.7c-27-27.3-27-71.4,0-99.1L400.9,500L30.3,129.3c-27-27.3-27-71.4,0-99.1c27.3-27,71.8-27,99.4,0L500,400.9L870.4,30.2c27.7-27,71.8-27,99.4,0c27,27.7,27,71.8,0,99.1L599.1,500L969.8,870.3z"/></symbol><symbol id="icon-twitter" viewBox="0 0 951 1024"><path class="path1" d="M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"/></symbol><symbol id="icon-facebook" viewBox="0 0 585 1024"><path class="path1" d="M548 6.857v150.857h-89.714q-49.143 0-66.286 20.571t-17.143 61.714v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571q0-106.286 59.429-164.857t158.286-58.571q84 0 130.286 6.857z"/></symbol><symbol id="icon-google-plus" viewBox="0 0 951 1024"><path class="path1" d="M420 454.857q0 20.571 18.286 40.286t44.286 38.857 51.714 42 44 59.429 18.286 81.143q0 51.429-27.429 98.857-41.143 69.714-120.571 102.571t-170.286 32.857q-75.429 0-140.857-23.714t-98-78.571q-21.143-34.286-21.143-74.857 0-46.286 25.429-85.714t67.714-65.714q74.857-46.857 230.857-57.143-18.286-24-27.143-42.286t-8.857-41.714q0-20.571 12-48.571-26.286 2.286-38.857 2.286-84.571 0-142.571-55.143t-58-139.714q0-46.857 20.571-90.857t56.571-74.857q44-37.714 104.286-56t124.286-18.286h238.857l-78.857 50.286h-74.857q42.286 36 64 76t21.714 91.429q0 41.143-14 74t-33.714 53.143-39.714 37.143-34 35.143-14 37.714zM336.571 400q21.714 0 44.571-9.429t37.714-24.857q30.286-32.571 30.286-90.857 0-33.143-9.714-71.429t-27.714-74-48.286-59.143-66.857-23.429q-24 0-47.143 11.143t-37.429 30q-26.857 33.714-26.857 91.429 0 26.286 5.714 55.714t18 58.857 29.714 52.857 42.857 38.286 55.143 14.857zM337.714 898.857q33.143 0 63.714-7.429t56.571-22.286 41.714-41.714 15.714-62.286q0-14.286-4-28t-8.286-24-15.429-23.714-16.857-20-22-19.714-20.857-16.571-23.714-17.143-20.857-14.857q-9.143-1.143-27.429-1.143-30.286 0-60 4t-61.429 14.286-55.429 26.286-39.143 42.571-15.429 60.286q0 40 20 70.571t52.286 47.429 68 25.143 72.857 8.286zM800.571 398.286h121.714v61.714h-121.714v125.143h-60v-125.143h-121.143v-61.714h121.143v-124h60v124z"/></symbol><symbol id="icon-clock" viewBox="0 0 1000 1000"><path d="M500,10C229.8,10,10,229.8,10,500c0,270.2,219.8,490,490,490c270.2,0,490-219.8,490-490C990,229.8,770.2,10,500,10z M500,910.2c-226.2,0-410.2-184-410.2-410.2c0-226.2,184-410.2,410.2-410.2c226.2,0,410.2,184,410.2,410.2C910.2,726.1,726.2,910.2,500,910.2z M753.1,374c8.2,11.9,5.2,28.1-6.6,36.3L509.9,573.7c-4.4,3.1-9.6,4.6-14.8,4.6c-4.1,0-8.3-1-12.1-3c-8.6-4.5-14-13.4-14-23.1V202.5c0-14.4,11.7-26.1,26.1-26.1c14.4,0,26.1,11.7,26.1,26.1v300l195.6-135.1C728.7,359.2,744.9,362.1,753.1,374z"/></symbol><symbol id="icon-calendar" viewBox="0 0 1000 1000"><path d="M920,500v420H80V500H920 M990,430H10v490c0,38.7,31.3,70,70,70h840c38.7,0,70-31.3,70-70V430L990,430z"/><path d="M850,80v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80H360v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80C72.8,80,10,142.7,10,220v140h980V220C990,142.7,927.2,80,850,80z"/><path d="M255,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C290,25.8,274.3,10,255,10z"/><path d="M745,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C780,25.8,764.3,10,745,10z"/></symbol><symbol id="icon-github" viewBox="0 0 12 14"><path d="M6 1q1.633 0 3.012 0.805t2.184 2.184 0.805 3.012q0 1.961-1.145 3.527t-2.957 2.168q-0.211 0.039-0.312-0.055t-0.102-0.234q0-0.023 0.004-0.598t0.004-1.051q0-0.758-0.406-1.109 0.445-0.047 0.801-0.141t0.734-0.305 0.633-0.52 0.414-0.82 0.16-1.176q0-0.93-0.617-1.609 0.289-0.711-0.062-1.594-0.219-0.070-0.633 0.086t-0.719 0.344l-0.297 0.187q-0.727-0.203-1.5-0.203t-1.5 0.203q-0.125-0.086-0.332-0.211t-0.652-0.301-0.664-0.105q-0.352 0.883-0.062 1.594-0.617 0.68-0.617 1.609 0 0.664 0.16 1.172t0.41 0.82 0.629 0.523 0.734 0.305 0.801 0.141q-0.305 0.281-0.383 0.805-0.164 0.078-0.352 0.117t-0.445 0.039-0.512-0.168-0.434-0.488q-0.148-0.25-0.379-0.406t-0.387-0.187l-0.156-0.023q-0.164 0-0.227 0.035t-0.039 0.090 0.070 0.109 0.102 0.094l0.055 0.039q0.172 0.078 0.34 0.297t0.246 0.398l0.078 0.18q0.102 0.297 0.344 0.48t0.523 0.234 0.543 0.055 0.434-0.027l0.18-0.031q0 0.297 0.004 0.691t0.004 0.426q0 0.141-0.102 0.234t-0.312 0.055q-1.812-0.602-2.957-2.168t-1.145-3.527q0-1.633 0.805-3.012t2.184-2.184 3.012-0.805zM2.273 9.617q0.023-0.055-0.055-0.094-0.078-0.023-0.102 0.016-0.023 0.055 0.055 0.094 0.070 0.047 0.102-0.016zM2.516 9.883q0.055-0.039-0.016-0.125-0.078-0.070-0.125-0.023-0.055 0.039 0.016 0.125 0.078 0.078 0.125 0.023zM2.75 10.234q0.070-0.055 0-0.148-0.062-0.102-0.133-0.047-0.070 0.039 0 0.141t0.133 0.055zM3.078 10.562q0.062-0.062-0.031-0.148-0.094-0.094-0.156-0.023-0.070 0.062 0.031 0.148 0.094 0.094 0.156 0.023zM3.523 10.758q0.023-0.086-0.102-0.125-0.117-0.031-0.148 0.055t0.102 0.117q0.117 0.047 0.148-0.047zM4.016 10.797q0-0.102-0.133-0.086-0.125 0-0.125 0.086 0 0.102 0.133 0.086 0.125 0 0.125-0.086zM4.469 10.719q-0.016-0.086-0.141-0.070-0.125 0.023-0.109 0.117t0.141 0.062 0.109-0.109z"></path></symbol><symbol id="icon-medium" viewBox="0 0 1000 1000"><path d="M336.5,240.2v641.5c0,9.1-2.3,16.9-6.8,23.2s-11.2,9.6-20,9.6c-6.2,0-12.2-1.5-18-4.4L37.3,782.7c-7.7-3.6-14.1-9.8-19.4-18.3S10,747.4,10,739V115.5c0-7.3,1.8-13.5,5.5-18.6c3.6-5.1,8.9-7.7,15.9-7.7c5.1,0,13.1,2.7,24.1,8.2l279.5,140C335.9,238.6,336.5,239.5,336.5,240.2L336.5,240.2z M371.5,295.5l292,473.6l-292-145.5V295.5z M990,305.3v576.4c0,9.1-2.6,16.5-7.7,22.1c-5.1,5.7-12,8.5-20.8,8.5s-17.3-2.4-25.7-7.1L694.7,784.9L990,305.3z M988.4,239.7c0,1.1-46.8,77.6-140.3,229.4C754.6,621,699.8,709.8,683.8,735.7L470.5,389l177.2-288.2c6.2-10.2,15.7-15.3,28.4-15.3c5.1,0,9.8,1.1,14.2,3.3l295.9,147.7C987.6,237.1,988.4,238.2,988.4,239.7L988.4,239.7z"/></symbol><symbol id="icon-instagram" viewBox="0 0 489.84 489.84"><path d="M249.62,50.46c65.4,0,73.14.25,99,1.43C372.47,53,385.44,57,394.07,60.32a75.88,75.88,0,0,1,28.16,18.32,75.88,75.88,0,0,1,18.32,28.16c3.35,8.63,7.34,21.6,8.43,45.48,1.18,25.83,1.43,33.57,1.43,99s-0.25,73.14-1.43,99c-1.09,23.88-5.08,36.85-8.43,45.48a81.11,81.11,0,0,1-46.48,46.48c-8.63,3.35-21.6,7.34-45.48,8.43-25.82,1.18-33.57,1.43-99,1.43s-73.15-.25-99-1.43c-23.88-1.09-36.85-5.08-45.48-8.43A75.88,75.88,0,0,1,77,423.86,75.88,75.88,0,0,1,58.69,395.7c-3.35-8.63-7.34-21.6-8.43-45.48-1.18-25.83-1.43-33.57-1.43-99s0.25-73.14,1.43-99c1.09-23.88,5.08-36.85,8.43-45.48A75.88,75.88,0,0,1,77,78.64a75.88,75.88,0,0,1,28.16-18.32c8.63-3.35,21.6-7.34,45.48-8.43,25.83-1.18,33.57-1.43,99-1.43m0-44.13c-66.52,0-74.86.28-101,1.47s-43.87,5.33-59.45,11.38A120.06,120.06,0,0,0,45.81,47.44,120.06,120.06,0,0,0,17.56,90.82C11.5,106.4,7.36,124.2,6.17,150.27s-1.47,34.46-1.47,101,0.28,74.86,1.47,101,5.33,43.87,11.38,59.45a120.06,120.06,0,0,0,28.25,43.38,120.06,120.06,0,0,0,43.38,28.25c15.58,6.05,33.38,10.19,59.45,11.38s34.46,1.47,101,1.47,74.86-.28,101-1.47,43.87-5.33,59.45-11.38a125.24,125.24,0,0,0,71.63-71.63c6.05-15.58,10.19-33.38,11.38-59.45s1.47-34.46,1.47-101-0.28-74.86-1.47-101-5.33-43.87-11.38-59.45a120.06,120.06,0,0,0-28.25-43.38,120.06,120.06,0,0,0-43.38-28.25C394.47,13.13,376.67,9,350.6,7.8s-34.46-1.47-101-1.47h0Z" transform="translate(-4.7 -6.33)" /><path d="M249.62,125.48A125.77,125.77,0,1,0,375.39,251.25,125.77,125.77,0,0,0,249.62,125.48Zm0,207.41a81.64,81.64,0,1,1,81.64-81.64A81.64,81.64,0,0,1,249.62,332.89Z" transform="translate(-4.7 -6.33)"/><circle cx="375.66" cy="114.18" r="29.39" /></symbol><symbol id="icon-linkedin" viewBox="0 0 12 14"><path d="M2.727 4.883v7.742h-2.578v-7.742h2.578zM2.891 2.492q0.008 0.57-0.395 0.953t-1.059 0.383h-0.016q-0.641 0-1.031-0.383t-0.391-0.953q0-0.578 0.402-0.957t1.051-0.379 1.039 0.379 0.398 0.957zM12 8.187v4.437h-2.57v-4.141q0-0.82-0.316-1.285t-0.988-0.465q-0.492 0-0.824 0.27t-0.496 0.668q-0.086 0.234-0.086 0.633v4.32h-2.57q0.016-3.117 0.016-5.055t-0.008-2.313l-0.008-0.375h2.57v1.125h-0.016q0.156-0.25 0.32-0.438t0.441-0.406 0.68-0.34 0.895-0.121q1.336 0 2.148 0.887t0.813 2.598z"></path></symbol><symbol id="icon-heart" viewBox="0 0 34 30"><path d="M17,29.7 L16.4,29.2 C3.5,18.7 0,15 0,9 C0,4 4,0 9,0 C13.1,0 15.4,2.3 17,4.1 C18.6,2.3 20.9,0 25,0 C30,0 34,4 34,9 C34,15 30.5,18.7 17.6,29.2 L17,29.7 Z M9,2 C5.1,2 2,5.1 2,9 C2,14.1 5.2,17.5 17,27.1 C28.8,17.5 32,14.1 32,9 C32,5.1 28.9,2 25,2 C21.5,2 19.6,4.1 18.1,5.8 L17,7.1 L15.9,5.8 C14.4,4.1 12.5,2 9,2 Z" id="Shape"></path></symbol><symbol id="icon-arrow-right" viewBox="0 0 25.452 25.452"><path d="M4.471,24.929v-2.004l12.409-9.788c0.122-0.101,0.195-0.251,0.195-0.411c0-0.156-0.073-0.31-0.195-0.409L4.471,2.526V0.522c0-0.2,0.115-0.384,0.293-0.469c0.18-0.087,0.396-0.066,0.552,0.061l15.47,12.202c0.123,0.1,0.195,0.253,0.195,0.409c0,0.16-0.072,0.311-0.195,0.411L5.316,25.34c-0.155,0.125-0.372,0.147-0.552,0.061C4.586,25.315,4.471,25.13,4.471,24.929z"/></symbol></defs></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1"><defs><symbol id="icon-menu" viewBox="0 0 1024 1024"><path class="path1" d="M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"/></symbol><symbol id="icon-search" viewBox="0 0 951 1024"><path class="path1" d="M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"/></symbol><symbol id="icon-close" viewBox="0 0 1000 1000"><path d="M969.8,870.3c27,27.7,27,71.8,0,99.1C955.7,983,937.9,990,920,990c-17.9,0-35.7-7-49.7-20.7L500,599L129.6,969.4C115.6,983,97.8,990,79.9,990s-35.7-7-49.7-20.7c-27-27.3-27-71.4,0-99.1L400.9,500L30.3,129.3c-27-27.3-27-71.4,0-99.1c27.3-27,71.8-27,99.4,0L500,400.9L870.4,30.2c27.7-27,71.8-27,99.4,0c27,27.7,27,71.8,0,99.1L599.1,500L969.8,870.3z"/></symbol><symbol id="icon-twitter" viewBox="0 0 951 1024"><path class="path1" d="M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"/></symbol><symbol id="icon-facebook" viewBox="0 0 585 1024"><path class="path1" d="M548 6.857v150.857h-89.714q-49.143 0-66.286 20.571t-17.143 61.714v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571q0-106.286 59.429-164.857t158.286-58.571q84 0 130.286 6.857z"/></symbol><symbol id="icon-clock" viewBox="0 0 1000 1000"><path d="M500,10C229.8,10,10,229.8,10,500c0,270.2,219.8,490,490,490c270.2,0,490-219.8,490-490C990,229.8,770.2,10,500,10z M500,910.2c-226.2,0-410.2-184-410.2-410.2c0-226.2,184-410.2,410.2-410.2c226.2,0,410.2,184,410.2,410.2C910.2,726.1,726.2,910.2,500,910.2z M753.1,374c8.2,11.9,5.2,28.1-6.6,36.3L509.9,573.7c-4.4,3.1-9.6,4.6-14.8,4.6c-4.1,0-8.3-1-12.1-3c-8.6-4.5-14-13.4-14-23.1V202.5c0-14.4,11.7-26.1,26.1-26.1c14.4,0,26.1,11.7,26.1,26.1v300l195.6-135.1C728.7,359.2,744.9,362.1,753.1,374z"/></symbol><symbol id="icon-calendar" viewBox="0 0 1000 1000"><path d="M920,500v420H80V500H920 M990,430H10v490c0,38.7,31.3,70,70,70h840c38.7,0,70-31.3,70-70V430L990,430z"/><path d="M850,80v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80H360v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80C72.8,80,10,142.7,10,220v140h980V220C990,142.7,927.2,80,850,80z"/><path d="M255,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C290,25.8,274.3,10,255,10z"/><path d="M745,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C780,25.8,764.3,10,745,10z"/></symbol><symbol id="icon-github" viewBox="0 0 12 14"><path d="M6 1q1.633 0 3.012 0.805t2.184 2.184 0.805 3.012q0 1.961-1.145 3.527t-2.957 2.168q-0.211 0.039-0.312-0.055t-0.102-0.234q0-0.023 0.004-0.598t0.004-1.051q0-0.758-0.406-1.109 0.445-0.047 0.801-0.141t0.734-0.305 0.633-0.52 0.414-0.82 0.16-1.176q0-0.93-0.617-1.609 0.289-0.711-0.062-1.594-0.219-0.070-0.633 0.086t-0.719 0.344l-0.297 0.187q-0.727-0.203-1.5-0.203t-1.5 0.203q-0.125-0.086-0.332-0.211t-0.652-0.301-0.664-0.105q-0.352 0.883-0.062 1.594-0.617 0.68-0.617 1.609 0 0.664 0.16 1.172t0.41 0.82 0.629 0.523 0.734 0.305 0.801 0.141q-0.305 0.281-0.383 0.805-0.164 0.078-0.352 0.117t-0.445 0.039-0.512-0.168-0.434-0.488q-0.148-0.25-0.379-0.406t-0.387-0.187l-0.156-0.023q-0.164 0-0.227 0.035t-0.039 0.090 0.070 0.109 0.102 0.094l0.055 0.039q0.172 0.078 0.34 0.297t0.246 0.398l0.078 0.18q0.102 0.297 0.344 0.48t0.523 0.234 0.543 0.055 0.434-0.027l0.18-0.031q0 0.297 0.004 0.691t0.004 0.426q0 0.141-0.102 0.234t-0.312 0.055q-1.812-0.602-2.957-2.168t-1.145-3.527q0-1.633 0.805-3.012t2.184-2.184 3.012-0.805zM2.273 9.617q0.023-0.055-0.055-0.094-0.078-0.023-0.102 0.016-0.023 0.055 0.055 0.094 0.070 0.047 0.102-0.016zM2.516 9.883q0.055-0.039-0.016-0.125-0.078-0.070-0.125-0.023-0.055 0.039 0.016 0.125 0.078 0.078 0.125 0.023zM2.75 10.234q0.070-0.055 0-0.148-0.062-0.102-0.133-0.047-0.070 0.039 0 0.141t0.133 0.055zM3.078 10.562q0.062-0.062-0.031-0.148-0.094-0.094-0.156-0.023-0.070 0.062 0.031 0.148 0.094 0.094 0.156 0.023zM3.523 10.758q0.023-0.086-0.102-0.125-0.117-0.031-0.148 0.055t0.102 0.117q0.117 0.047 0.148-0.047zM4.016 10.797q0-0.102-0.133-0.086-0.125 0-0.125 0.086 0 0.102 0.133 0.086 0.125 0 0.125-0.086zM4.469 10.719q-0.016-0.086-0.141-0.070-0.125 0.023-0.109 0.117t0.141 0.062 0.109-0.109z"></path></symbol><symbol id="icon-medium" viewBox="0 0 1000 1000"><path d="M336.5,240.2v641.5c0,9.1-2.3,16.9-6.8,23.2s-11.2,9.6-20,9.6c-6.2,0-12.2-1.5-18-4.4L37.3,782.7c-7.7-3.6-14.1-9.8-19.4-18.3S10,747.4,10,739V115.5c0-7.3,1.8-13.5,5.5-18.6c3.6-5.1,8.9-7.7,15.9-7.7c5.1,0,13.1,2.7,24.1,8.2l279.5,140C335.9,238.6,336.5,239.5,336.5,240.2L336.5,240.2z M371.5,295.5l292,473.6l-292-145.5V295.5z M990,305.3v576.4c0,9.1-2.6,16.5-7.7,22.1c-5.1,5.7-12,8.5-20.8,8.5s-17.3-2.4-25.7-7.1L694.7,784.9L990,305.3z M988.4,239.7c0,1.1-46.8,77.6-140.3,229.4C754.6,621,699.8,709.8,683.8,735.7L470.5,389l177.2-288.2c6.2-10.2,15.7-15.3,28.4-15.3c5.1,0,9.8,1.1,14.2,3.3l295.9,147.7C987.6,237.1,988.4,238.2,988.4,239.7L988.4,239.7z"/></symbol><symbol id="icon-instagram" viewBox="0 0 489.84 489.84"><path d="M249.62,50.46c65.4,0,73.14.25,99,1.43C372.47,53,385.44,57,394.07,60.32a75.88,75.88,0,0,1,28.16,18.32,75.88,75.88,0,0,1,18.32,28.16c3.35,8.63,7.34,21.6,8.43,45.48,1.18,25.83,1.43,33.57,1.43,99s-0.25,73.14-1.43,99c-1.09,23.88-5.08,36.85-8.43,45.48a81.11,81.11,0,0,1-46.48,46.48c-8.63,3.35-21.6,7.34-45.48,8.43-25.82,1.18-33.57,1.43-99,1.43s-73.15-.25-99-1.43c-23.88-1.09-36.85-5.08-45.48-8.43A75.88,75.88,0,0,1,77,423.86,75.88,75.88,0,0,1,58.69,395.7c-3.35-8.63-7.34-21.6-8.43-45.48-1.18-25.83-1.43-33.57-1.43-99s0.25-73.14,1.43-99c1.09-23.88,5.08-36.85,8.43-45.48A75.88,75.88,0,0,1,77,78.64a75.88,75.88,0,0,1,28.16-18.32c8.63-3.35,21.6-7.34,45.48-8.43,25.83-1.18,33.57-1.43,99-1.43m0-44.13c-66.52,0-74.86.28-101,1.47s-43.87,5.33-59.45,11.38A120.06,120.06,0,0,0,45.81,47.44,120.06,120.06,0,0,0,17.56,90.82C11.5,106.4,7.36,124.2,6.17,150.27s-1.47,34.46-1.47,101,0.28,74.86,1.47,101,5.33,43.87,11.38,59.45a120.06,120.06,0,0,0,28.25,43.38,120.06,120.06,0,0,0,43.38,28.25c15.58,6.05,33.38,10.19,59.45,11.38s34.46,1.47,101,1.47,74.86-.28,101-1.47,43.87-5.33,59.45-11.38a125.24,125.24,0,0,0,71.63-71.63c6.05-15.58,10.19-33.38,11.38-59.45s1.47-34.46,1.47-101-0.28-74.86-1.47-101-5.33-43.87-11.38-59.45a120.06,120.06,0,0,0-28.25-43.38,120.06,120.06,0,0,0-43.38-28.25C394.47,13.13,376.67,9,350.6,7.8s-34.46-1.47-101-1.47h0Z" transform="translate(-4.7 -6.33)" /><path d="M249.62,125.48A125.77,125.77,0,1,0,375.39,251.25,125.77,125.77,0,0,0,249.62,125.48Zm0,207.41a81.64,81.64,0,1,1,81.64-81.64A81.64,81.64,0,0,1,249.62,332.89Z" transform="translate(-4.7 -6.33)"/><circle cx="375.66" cy="114.18" r="29.39" /></symbol><symbol id="icon-linkedin" viewBox="0 0 12 14"><path d="M2.727 4.883v7.742h-2.578v-7.742h2.578zM2.891 2.492q0.008 0.57-0.395 0.953t-1.059 0.383h-0.016q-0.641 0-1.031-0.383t-0.391-0.953q0-0.578 0.402-0.957t1.051-0.379 1.039 0.379 0.398 0.957zM12 8.187v4.437h-2.57v-4.141q0-0.82-0.316-1.285t-0.988-0.465q-0.492 0-0.824 0.27t-0.496 0.668q-0.086 0.234-0.086 0.633v4.32h-2.57q0.016-3.117 0.016-5.055t-0.008-2.313l-0.008-0.375h2.57v1.125h-0.016q0.156-0.25 0.32-0.438t0.441-0.406 0.68-0.34 0.895-0.121q1.336 0 2.148 0.887t0.813 2.598z"></path></symbol><symbol id="icon-heart" viewBox="0 0 34 30"><path d="M17,29.7 L16.4,29.2 C3.5,18.7 0,15 0,9 C0,4 4,0 9,0 C13.1,0 15.4,2.3 17,4.1 C18.6,2.3 20.9,0 25,0 C30,0 34,4 34,9 C34,15 30.5,18.7 17.6,29.2 L17,29.7 Z M9,2 C5.1,2 2,5.1 2,9 C2,14.1 5.2,17.5 17,27.1 C28.8,17.5 32,14.1 32,9 C32,5.1 28.9,2 25,2 C21.5,2 19.6,4.1 18.1,5.8 L17,7.1 L15.9,5.8 C14.4,4.1 12.5,2 9,2 Z" id="Shape"></path></symbol><symbol id="icon-arrow-right" viewBox="0 0 25.452 25.452"><path d="M4.471,24.929v-2.004l12.409-9.788c0.122-0.101,0.195-0.251,0.195-0.411c0-0.156-0.073-0.31-0.195-0.409L4.471,2.526V0.522c0-0.2,0.115-0.384,0.293-0.469c0.18-0.087,0.396-0.066,0.552,0.061l15.47,12.202c0.123,0.1,0.195,0.253,0.195,0.409c0,0.16-0.072,0.311-0.195,0.411L5.316,25.34c-0.155,0.125-0.372,0.147-0.552,0.061C4.586,25.315,4.471,25.13,4.471,24.929z"/></symbol></defs></svg>
 
         <header class="bar-header">
-    <a id="menu">
+    <a id="menu" role="button">
         <svg id="open" class="icon-menu"><use xlink:href="#icon-menu"></use></svg>
-    </a>
-    <a id="search" class="dosearch">
-        <svg class="icon-search"><use xlink:href="#icon-search"></use></svg>
     </a>
     <h1 class="logo">
         <a href="/">
@@ -88,26 +90,81 @@
     </h1>
     <a class="header-action" href="https://gitter.im/wetryio/community?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge" target="_blank" style="margin-left: 1rem;">
         <img src="https://badges.gitter.im/wetryio/community.svg" alt="Gitter">
+    <a id="search" class="dosearch" role="button">
+        <svg class="icon-search"><use xlink:href="#icon-search"></use></svg>
     </a>
 </header>
 
 <div id="mask" class="overlay"></div>
 
-<aside id="sidebar">
+<aside class="sidebar" id="sidebar">
     <nav id="navigation">
       <h2>Menu</h2>
       <ul>
-        
-          <li><a href="https://wetry.tech/">Accueil</a></li>
-        
-          <li><a href="https://wetry.tech/hitw2019/">HITW 2019</a></li>
-        
-          <li><a href="https://wetry.tech/about/">À propos de nous</a></li>
-        
-          <li><a href="https://wetry.tech/craftlab-it/">CraftLab-IT</a></li>
-        
-        <li><a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a></li>
-      </ul>
+  <li>
+    <a href="https://wetry.tech/">Home</a>
+  </li>
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/about/">À propos de nous</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/craftlab-it/">CraftLab IT</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/hitw2019/">HITW 2019</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <li>
+    <a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a>
+  </li>
+</ul>
+
     </nav>
 </aside>
 
@@ -120,13 +177,13 @@
 </div>
 
 
-        <section class="post">
 
-            <article role="article" id="post" class="post-content" itemprop="articleBody">
-                <p itemprop="post-info" class="post-info">
+        <section class="post one-column">
+            <article role="article" class="post-content">
+                <p class="post-info">
                     
-                        <svg id="date" class="icon-calendar"><use xlink:href="#icon-calendar"></use></svg>
-                        <time itemprop="datePublished" datetime="2019-08-29T19:22:26+00:00" class="date">
+                        <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
+                        <time class="date" datetime="2019-08-29T19:22:26+00:00">
                             
 
 
@@ -137,12 +194,16 @@ Août 29, 2019
                     <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
                     <span>20 min to read</span>
                 </p>
-                <h1 class="post-title" itemprop="name">Les secrets du Router d'Angular</h1>
-                <p itemprop="description" class="subtitle">En savoir plus sur le routing d'Angular.</p>
+                <h1 class="post-title">Les secrets du Router d'Angular</h1>
+                <p class="post-subtitle"></p>
 
                 
-                    <img src="/images/angular-posts/routing.jpg" alt="Imagem de capa" class="post-cover">
+                    <img src="/images/angular-posts/routing.jpg" alt="Featured image" class="post-cover">
                 
+
+                <!-- Pagination links -->
+
+
 
                 <p>Le routing est un élément inévitable dans une Application Web.
 Nous allons donc nous concentrer sur cette partie du framework Angular.</p>
@@ -628,75 +689,126 @@ La raison et que ces trois paramètres restants méritent de créer une nouvelle
   <li><a href="#sécurité" id="markdown-toc-sécurité">Sécurité</a></li>
 </ol>
 
+
+                <!-- Pagination links -->
+
+
             </article>
 
-            <!-- <div class="progress-bar" data-minutes="20">
-                <span class="time-completed"></span>
-                <span class="time-remaining"></span>
-                <div class="bar">
-                    <span class="completed" style="width:0%;"></span>
-                    <span class="remaining" style="width:100%;"></span>
-                </div>
-            </div> -->
+            
 
-            <section class="share">
+        </section>
+
+        <!-- Add time bar only for pages without pagination -->
+        
+            <div class="time-bar" data-minutes="20">
+    <span class="time-completed"></span>
+    <span class="time-remaining"></span>
+    <div class="bar">
+        <span class="completed" style="width:0%;"></span>
+        <span class="remaining" style="width:100%;"></span>
+    </div>
+</div>
+
+            <div class="recommendation">
+    <div class="message">
+        <strong>Pourquoi ne pas lire autre chose?</strong>
+        <a href="javascript:void(0);">Revenir en haut</a>
+    </div>
+    
+    <a href="/comprendre-le-ng-model/" class="post-preview">
+        <div class="image">
+            
+                <img src="/images/angular-posts/ngmodel.jpg">
+            
+        </div>
+        <h3 class="title">Comprendre le ngModel</h3>
+    </a>
+</div>
+
+        
+
+        <!-- Show modal if the post is the last one -->
+        
+
+        <!-- Show modal before user leaves the page -->
+        
+
+        <section class="share">
     <h3>Share</h3>
-    <a aria-label="Compartilhar no Twitter" href="https://twitter.com/intent/tweet?text=&quot;En savoir plus sur le routing d'Angular.&quot;%20https://wetry.tech/les-secrets-du-router-d'angular/%20via%20&#64;&hashtags=angular,routing,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;En savoir plus sur le routing d'Angular.&quot;%20https://wetry.tech/les-secrets-du-router-d'angular/%20via%20&#64;&hashtags=angular,routing,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
-    <a aria-label="Compartilhar no Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/les-secrets-du-router-d'angular/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/les-secrets-du-router-d'angular/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
-    <a aria-label="Share on Google Plus" href="https://plus.google.com/share?url=https://wetry.tech/les-secrets-du-router-d'angular/"
-    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
-        <svg class="icon icon-google-plus"><use xlink:href="#icon-google-plus"></use></svg>
-    </a>
 </section>
 
-            <section class="author" itemprop="author">
-    <div class="details" itemscope itemtype="http://schema.org/Person">
-      <img id="author-img" itemprop="image" class="img-rounded" src="" alt="gilsdav logo">
+        
+
+  <section class="author">
+    <div class="details">
+      
+        <img class="img-rounded" src="/images/authors/dgilson.png" alt="David Gilson<br/>(Gilsdav)">
+      
       <p class="def">Author</p>
       <h3 class="name">
-        <a id="author-name" itemprop="name" href="https://github.com/gilsdav">gilsdav</a>
+        <a href="/authors/dgilson/">David Gilson<br/>(Gilsdav)</a>
       </h3>
       <p class="desc"></p>
       <p>
         
-        <a itemprop="github" href="https://github.com/gilsdav" title="Github">
-          <svg><use xlink:href="#icon-github"></use></svg>
-        </a>
+          <a href="https://github.com/gilsdav" title="Github">
+            <svg><use xlink:href="#icon-github"></use></svg>
+          </a>
+        
+        
+        
+          <a href="https://twitter.com/gilsondavid5" title="Twitter">
+            <svg><use xlink:href="#icon-twitter"></use></svg>
+          </a>
         
         
         
         
-        
-        
-        <a itemprop="linkedin" href="https://www.linkedin.com/in/david-gilson-innovate" title="LinkedIn">
-          <svg><use xlink:href="#icon-linkedin"></use></svg>
-        </a>
+          <a href="https://www.linkedin.com/in/david-gilson-innovate" title="LinkedIn">
+            <svg><use xlink:href="#icon-linkedin"></use></svg>
+          </a>
         
       </p>
     </div>
   </section>
+
   
-  <script>
-    const githubUserInfo = 'https://api.github.com/users/gilsdav';
-    fetch(githubUserInfo).then(function(response) {
-      if (response.ok) {
-        return response.json();
-      } else {
-        return Promise.reject('');
-      }
-    }).then(function(response) {
-      document.getElementById('author-name').innerText = response.name;
-      document.getElementById('author-img').src = response.avatar_url;
-    }, function() {});
+  
+  
+  
+  
+  
+  
+
+  <script type="application/ld+json">
+  {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "David Gilson<br/>(Gilsdav)",
+      
+      "image": "/images/authors/dgilson.png",
+      
+      "jobTitle": "Développeur",
+      "url": "https://wetry.tech/authors/dgilson/",
+      "sameAs": [
+        "https://github.com/gilsdav","https://twitter.com/gilsondavid5","https://www.linkedin.com/in/david-gilson-innovate"
+      ]
+  }
   </script>
-  
-            <section class="comments">
+
+
+        
+
+<section class="comments">
     <h3>Comments</h3>
     <div id="disqus_thread"></div>
 </section>
@@ -723,34 +835,131 @@ La raison et que ces trois paramètres restants méritent de créer une nouvelle
     };
 </script>
 
-            <footer>
+
+
+        <footer>
     <p>
       
-      <a itemprop="github" href="https://github.com/wetryio" title="Github">
-        <svg><use xlink:href="#icon-github"></use></svg>
-      </a>
+        <a href="https://github.com/wetryio" title="Github">
+          <svg><use xlink:href="#icon-github"></use></svg>
+        </a>
       
+      
+        <a href="https://www.facebook.com/WeTry-103230437736535" title="Facebook">
+          <svg><use xlink:href="#icon-facebook"></use></svg>
+        </a>
       
       
       
       
       
     </p>
+
     <ul>
-        
-          <li><a href="https://wetry.tech/">Accueil</a></li>
-        
-          <li><a href="https://wetry.tech/hitw2019/">HITW 2019</a></li>
-        
-          <li><a href="https://wetry.tech/about/">À propos de nous</a></li>
-        
-          <li><a href="https://wetry.tech/craftlab-it/">CraftLab-IT</a></li>
-        
-        <li><a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a></li>
-    </ul>
-    <p><span>Jekflix</span> was made with <svg class="love"><use xlink:href="#icon-heart"></use></svg> by <a href="http://www.rossener.com" target="_blank" class="creator">Thiago Rossener</a></p>
+  <li>
+    <a href="https://wetry.tech/">Home</a>
+  </li>
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/about/">À propos de nous</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/craftlab-it/">CraftLab IT</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/hitw2019/">HITW 2019</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <li>
+    <a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a>
+  </li>
+</ul>
+
+
+    <p>
+      <span>Jekflix</span> was made with <svg class="love"><use xlink:href="#icon-heart"></use></svg> by <a href="https://rossener.com" target="_blank" class="creator">Thiago Rossener</a>
+    </p>
 </footer>
-<script src="/assets/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "WeTry",
+  "description": "Encore un autre blog de développeur.",
+  "url": "https://wetry.tech/",
+  "logo": {
+      "@type": "ImageObject",
+      "url": "https://wetry.tech/assets/img/icons/mediumtile.png",
+      "width": "600",
+      "height": "315"
+  },
+  "sameAs": [
+    "https://github.com/wetryio","https://www.facebook.com/WeTry-103230437736535"
+  ]
+}
+</script>
+
+<!-- Include the script that allows Netlify CMS login -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- Include the website scripts -->
+<script src="/assets/js/scripts.min.js"></script>
+
+<!-- Include Google Analytics script -->
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -765,6 +974,543 @@ La raison et que ces trois paramètres restants méritent de créer une nouvelle
 
 
 
-        </section>
+
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "name": "Les secrets du Router d'Angular",
+            "headline": "",
+            "description": "En savoir plus sur le routing d'Angular.",
+            "image": "/images/angular-posts/routing.jpg",
+            "url": "https://wetry.tech/les-secrets-du-router-d'angular/",
+            "articleBody": "Le routing est un élément inévitable dans une Application Web.
+Nous allons donc nous concentrer sur cette partie du framework Angular.
+
+Si vous êtes uniquement intéressé pas un point précis du routing, n’hésitez pas à aller voir la table des matières.
+
+C’est quoi le routing ?
+
+Le système de routing est la gestion de l’affichage via l’URL dans le navigateur. Le fait d’avoir l’url /home affichera des informations différentes de l’url /contact par exemple.
+
+Pour que cela fonctionne, il faut que ça soit le JavaScript qui ait la main sur l’url à la place du navigateur. Cela est possible de plusieurs façons:
+
+  
+    Path location (par défaut): utilise la fonction pushState de l’API HTML5 qui permet de changer l’URL sans que le navigateur ne se préoccupe d’aller chercher la page sur l’URL. Exemple d’url: http://localhost:4200/home.
+
+    Gardez à l’esprit qu’il faudra configurer votre serveur de fichiers statiques pour qu’il ai un fallback non pas sur une page 404, mais sur l’index.html. Le serveur ne connaitra pas le dossier home en cas de rafraichissement de la page. Vous pouvez trouver les différentes configurations serveur ici.
+  
+  
+    Hash location : utilise les fragments (aussi appelés “ancre”) afin d’éviter toute communication des données du routing entre le navigateur et le serveur. Exemple d’url: http://localhost:4200/#/home.
+
+    Cela n’est donc pas compatible avec Angular Universal.
+  
+
+
+Les bonnes pratiques pour la création d’urls sont les mêmes que pour la méthode GET des API REST.
+
+Aperçu du module
+
+Le module à utiliser est le RouterModule qu’il faudra importer depuis le package @angular/router.
+
+Ce module contient deux fonctions statiques dont vous commencez probablement à avoir l’habitude:
+
+  forRoot: permet d’initialiser tout (principalement des services) ce qui ne doit être initialisé qu’une seule fois par application. L’initialisation du routing principal se fera également ici. Il faudra donc limiter l’utilisation de cette fonction à l’App(Routing)Module.
+  forChild: permet d’initialiser les routes d’un module chargé en lazy-loading. La découpe du routing en plusieurs fichiers est donc possible.
+
+
+L’utilisation d’aucune de ces fonctions permet d’utiliser le système de route (comme la directive routerLink), dans un module séparé, sans ajouter de configuration supplémentaire.
+
+// AppRoutingModule
+RouterModule.forRoot(routes)
+// FeatureRoutingModule
+RouterModule.forChild(routes)
+// SharedModule
+RouterModule
+
+
+Fonctionnement des routes
+
+Concentrons-nous sur les éléments les plus utilisés d’une route (l’interface complète peut être retrouvée ici):
+
+interface Route {
+  path?: string
+  pathMatch?: string
+  component?: Type&amp;lt;any&amp;gt;
+  redirectTo?: string
+  canActivate?: any[]
+  canDeactivate?: any[]
+  canLoad?: any[]
+  data?: Data
+  children?: Routes
+  loadChildren?: LoadChildren
+  ...
+}
+
+
+Utilisation simple
+
+Voici une utilisation très simple:
+const routes: Routes = [
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
+    { path: 'contact', component: ContactComponent },
+    { path: '**', redirectTo: '/home' }
+];
+
+
+Vous pouvez remarquer deux paths étranges qui sont, en réalité, les seuls obligatoires pour le bon fonctionnement de notre routing:
+
+  '': représente la racine de l’application. (exemple: http://localhost:4200/)
+  '**': représente toutes les urls n’existants pas dans la liste des routes donnée. C’est en quelque sorte notre page “404”. (exemple: http://localhost/blabla)
+
+
+L’option choisie dans cet exemple est de les rediriger vers la page “home” à l’aide de l’attribut redirectTo.
+L’attribut pathMatch mis à la valeur 'full' permet de déterminer que ce cas ne doit être exécuté que si le path est complètement vide (soit “/” ou “”), mais absolument rien d’autre.
+
+Concentrons-nous maintenant sur les paths connus (“home” et “contact”). Vous pouvez voir que nous spécifions le composant à afficher dans ces deux cas, mais où vont-ils s’afficher ?
+C’est là que le composant &amp;lt;router-outlet&amp;gt;&amp;lt;/router-outlet&amp;gt; entre en jeux. Ce composant vous permet de choisir où le composant géré par le router s’affichera dans votre application.
+
+Utilisation de router-outlet imbriqués
+
+Prenons par exemple le fait que nous voulons le même header et le même footer sur toutes les pages de notre application sauf sur la page de connexion. Un premier réflex pourrait être d’ajouter ces composants dans l’AppComponent au même niveau que notre router-outlet.
+
+app.component.html :
+&amp;lt;app-header&amp;gt;&amp;lt;/app-header&amp;gt;
+&amp;lt;router-outlet&amp;gt;&amp;lt;/router-outlet&amp;gt;
+&amp;lt;app-footer&amp;gt;&amp;lt;/app-footer&amp;gt;
+
+Mais comment peut-on masquer ces éléments dans le cas où nous nous trouvons sur la page de connexion ? Non nous n’utiliserons pas de *ngIf  pour arriver à nos fins. Heureusement Angular nous permet de faire cela avec plusieurs router-outlet imbriqués.
+
+Créons alors un nouveau composant “container” qui s’occupera d’ajouter le header ainsi que le footer seulement dans certains cas et nettoyons notre AppComponent.
+
+app.component.html :
+&amp;lt;router-outlet&amp;gt;&amp;lt;/router-outlet&amp;gt;
+
+
+container.component.html :
+&amp;lt;app-header&amp;gt;&amp;lt;/app-header&amp;gt;
+&amp;lt;router-outlet&amp;gt;&amp;lt;/router-outlet&amp;gt;
+&amp;lt;app-footer&amp;gt;&amp;lt;/app-footer&amp;gt;
+
+
+Regardons maintenant comment arriver à remplir plusieurs router-outlet. Cela est possible grâce aux attributs children et loadChildren (lazy-loading).
+
+const routes: Routes = [
+    { path: '', component: ContainerComponent, children: [
+        { path: 'home', component: HomeComponent },
+        { path: 'contact', component: ContactComponent },
+    ] },
+    { path: 'signin', component: SigninComponent }, 
+    { path: '**', redirectTo: '/home' }
+];
+
+
+Avec cette configuration nous pourrons retrouver dans les router-outlet
+
+  de app.component.html: les éléments de premier niveau (ContainerComponent ou SigninComponent);
+  de container.component.html: les éléments de second niveau (HomeComponent, ContactComponent).
+
+
+Paramètres
+
+Nous avons, jusqu’à présent, vu des routes statiques, mais comment peut-on rendre une partie de la route dynamique ?
+
+Deux solutions sont possibles:
+
+  Path param pour les paramètres requis (exemple: /users/12345)
+  Query param pour les paramètres optionels (exemple: /login?referrer=/profile)
+
+
+Cela respecte encore une fois la norme REST.
+
+Path param
+
+Les path params se définissent à l’aide du préfix : suivi de son nom.
+
+// Paramètre unique
+{ path: 'users/:id', component: UserListComponent }
+// Plusieurs paramètres
+{ path: 'users/:category/:id', component: UserListComponent }
+
+
+Ce paramètre est alors récupérable via la route active.
+
+// Synchrone
+this.id = this.route.snapshot.params['id'];
+// Asynchrone
+this.route.params.subscribe(params =&amp;gt; this.id = params['id']);
+
+
+Query param
+
+Dans ce cas, il n’y a rien à spécifier dans la configuration des routes.
+Nous n’avons cas essayer de récupérer le paramètre optionnel.
+
+// Synchrone
+this.referrer = this.route.snapshot.queryParams['referrer'];
+// Asynchrone
+this.route.queryParams.subscribe(params =&amp;gt; this.referrer = params['referrer']);
+
+
+Le lazy-loading
+
+Le lazy-loading permet de scinder votre “dist” en plusieurs fichiers qui ne seront chargés que si, et quand, une utilisation est nécessaire.
+
+Si vous faite une recherche à ce propos sur google, vous tomberez probablement sur un syntaxe de ce type: loadChildren: './admin/admin.module#AdminModule'. Il s’agit d’une syntaxe maintenant dépréciée qui a été créée par Angular afin d’être décortiquée et d’utiliser les informations avec SystemJS.
+
+À partir de la version 8 d’Angular, nous allons éviter SystemJS et utiliser la puissance du mécanisme d’import de l’ES6.
+
+Cependant le principe est le même dans les deux cas. Il s’agit de définir:
+
+  où trouver le fichier à charger (import('./admin/admin.module')),
+  quelle classe du fichier représente le NgModule (.then(m =&amp;gt; m.AdminModule)).
+
+
+La nouvelle syntaxe complète est donc la suivante: loadChildren: import('./admin/admin.module').then(m =&amp;gt; m.AdminModule).
+Attention que vous ne pouvez pas modifier cette syntaxe (en ajoutant par exemple plus de code dans le then), car le build AOT ne la comprendra pas. Il est donc impératif de la respecter.
+
+const routes: Routes = [
+    ...
+    { path: 'admin', loadChildren: import('./admin/admin.module').then(m =&amp;gt; m.AdminModule) },
+    ...
+];
+
+
+Données statiques
+
+Si vous avez besoin de déterminer des données comme le titre dans la page selon l’url, il n’est pas conseillé de décortiquer l’url afin de comprendre le contexte.
+Pour pouvoir faire cela, nous pourrions directement associer le titre à une route.
+
+Cela est possible à l’aide de l’attribut data des routes.
+
+const routes: Routes = [
+    { path: '', component: ContainerComponent, children: [
+        { path: 'home', component: HomeComponent, data: { myTitle: 'accueil' } },
+        { path: 'contact', component: ContactComponent, data: { myTitle: 'contact' } },
+    ] },
+    ...
+];
+
+
+La donnée est récupérable à l’aide de l’ActivatedRoute.
+
+constructor(private route: ActivatedRoute, private title: Title) {}
+
+ngOnInit() {
+    this.title.setTitle(this.route.snapshot.data.myTitle);
+}
+
+
+Navigation
+
+Il est possible naviguer aussi bien depuis l’HTML que le TypeScript. Découvrons comment.
+
+HTML
+
+Pour naviguer, nous allons utiliser la directive routerLink.
+
+Cette directive devrait être uniquement utilisée sur des balises de lien (a), mais elle peut en réalité se mettre sur n’importe quelle balise HTML. Cependant, le fait de le mettre en attribut d’un a génère également un href afin de pouvoir naviguer même si le JavaScript est désactivé côté client et que vous utilisez Universal.
+
+&amp;lt;a [routerLink]=&quot;['/admin','users']&quot;&amp;gt;Go to user list&amp;lt;/a&amp;gt;
+
+
+Nous pouvons utiliser un string ou un tableau de string dans le routerLink (contrairement en TypeScript), cela revient au même résultat, mais je préconise le fait de toujours utiliser la même syntaxe et c’est le tableau qui se trouve être le plus utile. En effet cela permet de rendre une partie de l’url dynamique comme un paramètre.
+
+&amp;lt;a [routerLink]=&quot;['/admin','users', id]&quot;&amp;gt;Go to user&amp;lt;/a&amp;gt;
+
+
+Paramètres
+
+Les paramètres du routerLink se font via des inputs (attributs) de cette directive.
+
+Nous pouvons ajouter des éléments dans l’url:
+
+  queryParams: permet d’utiliser les query params (exemple: ?param1=test1&amp;amp;param2=test2)
+  fragment: permet d’ajouter une ancre dans l’url (exemple: #mon-ancre)
+
+
+&amp;lt;a [routerLink]=&quot;['/admin','users', id]&quot; [queryParams]=&quot;{param1: 'test1', param2: 'test2'}&quot; fragment=&quot;email&quot; &amp;gt;
+    Go to user email
+&amp;lt;/a&amp;gt;
+
+
+Ou gérer notre stratégie de “préservation de données” en cas de changement d’url
+
+  preserveQueryParams: préserve les query params actuels (ne tient pas en compte les nouveaux)
+  mergeQueryParams: merge les query params actuels et les nouveaux
+  preserveFragment: garder le fragment au changement d’url
+
+
+&amp;lt;a [routerLink]=&quot;['/admin','users', otherId]&quot;  preserveQueryParams preserveFragment &amp;gt;
+    Go to other user
+&amp;lt;/a&amp;gt;
+
+
+TypeScript
+
+L’API TypeScript pour la navigation (Router) permet de naviguer dans notre application de deux façons (via deux fonctions):
+
+  navigate: utilisation similaire au routerLink
+  navigateByUrl: naviguer à l’aide d’une url déjà construite (exemple: /admin/users/1?param1=test1)
+
+
+Pour avoir accès à cette API, il vous suffit d’injecter Router.
+
+constructor(private router: Router) {}
+
+
+Navigate
+
+Commençons par reproduire un exemple complet du routerLink avec la fonction navigate.
+this.router.navigate(['/admin','users', this.id], {
+    queryParams: {param1: 'test1', param2: 'test2'},
+    queryParamsHandling: 'merge'
+    preserveFragment: true
+});
+
+
+Vous remarquerez que l’utilisation est sensiblement la même.
+
+Jetons alors un coup d’oeil sur les paramètres additionnels que le navigate nous fournis:
+
+  skipLocationChange: Naviguer vers une page sans que cela n’impact l’URL.
+  replaceUrl: Remplacer l’url courante par la nouvelle (l’ancienne url ne sera plus disponible dans l’historique du navigateur).
+  relativeTo: Faire une navigation relative à une route.
+
+
+Il n’y a pas vraiment besoin de plus d’explication pour les deux premières options, mais la dernière demande peut-être un petit exemple:
+
+  Nous sommes sur un utilisateur précis /admin/users/1 et nous voulons faire un bouton transversal qui permet de remonter le “fil d’ariane” (autrement dit, nous voulons naviguer vers /admin/users sans connaitre cette url).
+
+
+Nous allons pouvoir récupérer le parent de l’url active et demander une navigation relative à cette route.
+
+constructor(private route: ActivatedRoute, private router: Router) {}
+...
+// Navigation vers le parent
+this.router.navigate(['.'], { relativeTo: this.route.parent });
+// Navigation vers un autre enfant
+this.router.navigate([otherId], { relativeTo: this.route.parent });
+
+
+NavigateByUrl
+
+Si vous connaissez déjà l’url de destination (exemple: /admin/users/1?param1=test1), utilisez la fonction navigateByUrl.
+this.router.navigateByUrl(`/admin/users/1?param1=test1`, { preserveFragment: true });
+
+
+Les options sont identiques à celles de la fonction navigate à l’exception prêt que les options modifiants l’url fournie en premier paramètre (comme queryParams, fragment ou relativeTo) ne fonctionneront pas.
+
+Configuration
+
+Globale
+
+La configuration globale se fait au niveau de l’utilisation de la fonction statique forRoot du RouterModule.
+
+Comme pour les routes, concentrons-nous sur les options les plus utilisés (l’interface est disponible ici):
+
+interface ExtraOptions {
+  useHash?: boolean
+  preloadingStrategy?: PreloadAllModules | NoPreloading
+  onSameUrlNavigation?: 'reload' | 'ignore'
+  scrollPositionRestoration?: 'disabled' | 'enabled' | 'top'
+  anchorScrolling?: 'disabled' | 'enabled'
+  ...
+}
+
+
+Comme expliqué précédemment, il est possible de changer la stratégie de routing de l’API HTML5 en ancres, cela est possible via l’option useHash.
+
+Lazy-load preloading
+
+L’option preloadingStrategy permet de changer la stratégie de “préloading” pour les modules qui sont en lazy-loading. Le fait de changer cette option en PreloadAllModules ( NoPreloading est utilisé par défaut ) chargera tous les modules une fois que l’application sera est fonctionnelle.
+
+Rafraichissement
+
+Par défaut, si la route (pas spécialement l’url) source est identique à celle destination, Angular n’effectue aucun rafraichissement. Cela semble logique, mais peut ne pas être le comportement voulu surtout pour des routes avec paramètre.
+
+Par défaut nous serons obligés d’écouter nous-mêmes les navigations:
+this.router.events.pipe(filter(e =&amp;gt; e instanceof NavigationEnd).subscribe((e) =&amp;gt; { ... });
+
+
+Pour éviter de devoir faire cela, nous pouvons appliquer l’option: onSameUrlNavigation: 'reload'.
+
+Scroll
+
+Si vos pages dépassent la hauteur de l’écran, vous aurez remarqué un comportement indésirable des SPA: le scroll reste le même d’une page à l’autre.
+
+En effet le comportement d’un site normal voudrait que nous scrollions jusqu’au dessus à chaque changement de page.
+De plus, l’ancre n’a aucune influence sur le comportement du scroll tant que vous ne rafraichissez pas la page.
+
+Vous avez de la chance, deux options sont maintenant disponibles pour éviter ces problèmes et leur valeur par défaut va bientôt changer.
+
+
+  scrollPositionRestoration: le comportent devient normal une fois mis à 'enabled'.
+  anchorScrolling: le scroll sur les ancres ne fonctionnera que si vous l’activez en lui attribuant la valeur 'enabled'.
+
+
+Déployement sous dossier
+Si votre url de base de votre site ressemble à http://mondomaine.com/blog, vous utilisez un sous-dossier (ici “blog”).
+
+Angular arrive à s’y retrouver grâce à la balise HTML base. Ça valeur par défaut est &amp;lt;base href=&quot;/&quot;&amp;gt; ce qui définit qu’il n’y pas de sous dossier.
+
+Vous pourriez directement changer cette valeur dans votre fichier index.hml, je préconise d’utiliser une configuration dynamique au moment du build dans votre package.json.
+
+ng build --base-href=/blog
+
+
+Sécurité
+
+Vous l’avez peut-être remarqué, nous n’avons pas traité tous paramètres de route précédemment cité dans l’article.
+La raison et que ces trois paramètres restants méritent de créer une nouvelle section, car ils touchent la sécurité de votre application.
+
+Le fait de supprimer le lien vers certaines routes n’est pas suffisant, car les utilisateurs pourraient se partager un lien ou sauver celui-ci en favoris. Il faut donc également bloquer l’accès à ces urls, et c’est là que les derniers paramètres interviennent.
+
+
+  canActivate: vérifie si l’utilisateur peut accéder à la route.
+  canDeactivate: vérifie si l’utilisateur peut quitter à la route. Cela ne bloque la navigation que dans le contexte de l’application, mais n’a aucun impact pour l’accès à un autre site (via le bouton back ou depuis un href par exemple).
+  canLoad: vérifie si l’utilisateur peut charger un module qui a la stratégie du lazy-loading.
+
+
+Chacun de ces paramètres attend un tableau de ce qu’on appelle des guards.
+
+Le rôle d’un gard est de déterminer si, pour lui, l’utilisateur a le droit d’accéder à la ressource demandée.
+
+Un guard est un injectable qui implémente une interface (une interface par type de responsabilité).
+
+// canActivate
+@Injectable(providedIn: 'root')
+class CanActivateGuard implements CanActivate {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable&amp;lt;boolean&amp;gt;|boolean {
+        return true;
+    }
+}
+// canDeactivate
+@Injectable(providedIn: 'root')
+class CanDeactivateGuard implements CanDeactivate {
+    canDeactivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable&amp;lt;boolean&amp;gt;|boolean {
+        return true;
+    }
+}
+// canLoad
+@Injectable(providedIn: 'root')
+class CanLoadGuard implements CanLoad {
+    canLoad(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable&amp;lt;boolean&amp;gt;|boolean {
+        return true;
+    }
+}
+
+Il est possible de retourner un boolean ou un Observable de boolean. Cela dépend si vous savez calculer directement la valeur ou si elle nécessite un appel asynchrone.
+
+Il ne nous reste plus qu’à les utiliser dans nos routes.
+{
+    path: 'users/:id',
+    component: UserListComponent,
+    canActivate: [CanActivateGuard],
+    canDeactivate: [CanDeactivateGuard]
+},
+{
+    path: 'admin',
+    loadChildren: import('./admin/admin.module').then(m =&amp;gt; m.AdminModule),
+    canLoad: [CanLoadGuard]
+},
+
+
+
+
+
+    MERCI
+    d'avoir pris le temps de lire cet article
+
+
+
+
+
+Table des matières
+
+  C’est quoi le routing ?
+  Aperçu du module
+  Fonctionnement des routes    
+      Utilisation simple
+      Utilisation de router-outlet imbriqués
+      Paramètres        
+          Path param
+          Query param
+        
+      
+      Le lazy-loading
+      Données statiques
+    
+  
+  Navigation    
+      HTML        
+          Paramètres
+        
+      
+      TypeScript        
+          Navigate
+          NavigateByUrl
+        
+      
+    
+  
+  Configuration    
+      Globale        
+          Lazy-load preloading
+          Rafraichissement
+          Scroll
+        
+      
+      Déployement sous dossier
+    
+  
+  Sécurité
+
+",
+            "wordcount": "3643",
+            "inLanguage": "fr",
+            "dateCreated": "2019-08-29/",
+            "datePublished": "2019-08-29/",
+            "dateModified": "2019-08-29/",
+            "author": {
+                "@type": "Person",
+                "name": "David Gilson<br/>(Gilsdav)",
+                
+                "image": "/images/authors/dgilson.png",
+                
+                "jobTitle": "Développeur",
+                "url": "https://wetry.tech/authors/dgilson/",
+                "sameAs": [
+                    "https://github.com/gilsdav","https://twitter.com/gilsondavid5","https://www.linkedin.com/in/david-gilson-innovate"
+                ]
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "WeTry",
+                "url": "https://wetry.tech/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://wetry.tech/assets/img/blog-image-wt.png",
+                    "width": "600",
+                    "height": "315"
+                }
+            },
+            "mainEntityOfPage": "True",
+            "genre": "documentation",
+            "articleSection": "documentation",
+            "keywords": ["angular","routing"]
+        }
+        </script>
     </body>
 </html>

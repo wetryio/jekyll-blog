@@ -5,9 +5,9 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 16 Sep 2019 19:04:42 +0000</pubDate>
-    <lastBuildDate>Mon, 16 Sep 2019 19:04:42 +0000</lastBuildDate>
-    <generator>Jekyll v4.0.0</generator>
+    <pubDate>Tue, 01 Oct 2019 04:48:02 +0000</pubDate>
+    <lastBuildDate>Tue, 01 Oct 2019 04:48:02 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>Une bonne doc est une doc accessible</title>
@@ -20,9 +20,7 @@
         
         <category>bonne pratique</category>
         
-        
         <category>bonne-pratique</category>
-        
       </item>
     
       <item>
@@ -36,9 +34,7 @@
         
         <category>form</category>
         
-        
         <category>documentation</category>
-        
       </item>
     
       <item>
@@ -52,9 +48,7 @@
         
         <category>routing</category>
         
-        
         <category>documentation</category>
-        
       </item>
     
       <item>
@@ -70,9 +64,7 @@
         
         <category>serverless</category>
         
-        
         <category>documentation</category>
-        
       </item>
     
   </channel>
