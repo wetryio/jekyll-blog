@@ -1,4 +1,5 @@
 ---
 layout: category
-category: 'azure'
+title: Azure
+slug: 'azure'
 ---

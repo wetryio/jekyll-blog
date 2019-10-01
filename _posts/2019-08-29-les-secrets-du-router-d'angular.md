@@ -1,4 +1,5 @@
 ---
+author: dgilson
 layout: post
 title: "Les secrets du Router d'Angular"
 date: 2019-08-29 19:22:26
@@ -8,10 +9,7 @@ category: 'documentation'
 tags:
 - angular
 - routing
-twitter_text: En savoir plus sur le routing d'Angular.
 introduction: En savoir plus sur le routing d'Angular.
-github_username: gilsdav
-linkedin_username: david-gilson-innovate
 ---
 
 Le routing est un élément inévitable dans une Application Web.

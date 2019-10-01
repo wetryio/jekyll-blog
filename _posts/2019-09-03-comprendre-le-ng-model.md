@@ -1,4 +1,5 @@
 ---
+author: dgilson
 layout: post
 title: "Comprendre le ngModel"
 date: 2019-09-03 21:09:24
@@ -8,10 +9,7 @@ category: 'documentation'
 tags:
 - angular
 - form
-twitter_text: Sauriez-vous créer votre propre ngModel ?
 introduction: Sauriez-vous créer votre propre ngModel ?
-github_username: gilsdav
-linkedin_username: david-gilson-innovate
 ---
 
 Si vous utilisez les formulaires de type "template driven", vous utilisez également le ngModel, mais savez-vous ce qui se cache derrière ? Sauriez-vous créer votre propre ngModel ?

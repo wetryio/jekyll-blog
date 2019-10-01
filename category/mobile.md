@@ -1,4 +1,5 @@
 ---
 layout: category
-category: 'mobile'
+title: mobile
+slug: mobile
 ---
