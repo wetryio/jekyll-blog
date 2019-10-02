@@ -2,7 +2,7 @@
 author: pgrasseels
 layout: post
 title: "Azure Functions démystifions le trigger HTTP"
-date: 2019-08-17 14:12:19
+date: 2019-10-02 12:20:00
 image: '/images/azure-functions/Azure-Functions.png'
 description: Azure Functions, démystifions le trigger HTTP.
 category: 'blog'
