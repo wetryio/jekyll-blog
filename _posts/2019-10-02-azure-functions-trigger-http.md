@@ -2,7 +2,7 @@
 author: pgrasseels
 layout: post
 title: "Azure Functions démystifions le trigger HTTP"
-date: 2019-10-02 12:20:00
+date: 2019-10-02 22:20:00
 image: '/images/azure-functions/Azure-Functions.png'
 description: Azure Functions, démystifions le trigger HTTP.
 category: 'blog'
@@ -33,7 +33,7 @@ La use case que nous allons voir ici, est de réaliser une function qui prend de
 ### Prerequis
 - Visual Studio 2017 ou Visual Studio 2019
 - [Azure Functions Tools](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs) pour Visual Studio 2017
-- Avoir selectionner les Azure Development dans les feature à installer
+- Avoir selectionné les Azure Development dans les feature à installer
 
 Les images utilisées ici sont tirées de Visual Studio 2019.
 
@@ -85,8 +85,8 @@ Découpons un peu ce code pour en comprendre les bases, commençons par le point
 [FunctionName("Function1")]
 public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
 ```
-Le point d'entrée, Run a un attribut FunctionName avec en paramètrer le nom de la function.
-Le premier paramètre de Run est le type de trigger, ici c'est un trigger du type Httptrigger.
+Le point d'entrée, Run a un attribut FunctionName avec en paramètre le nom de la function.
+Le premier paramètre de Run est le type de trigger, ici c'est un trigger du type HttpTrigger.
 Ce même HttpTrigger, à plusieurs paramètres;
 - AuthorizationLevel.Function : c'est le niveau de sécurité que la Function nécessite, une explication est disponible à ce propos en bas d'article
 - "get", "post" : le type de verb HTTP qui est supporter par la Function
@@ -129,7 +129,7 @@ return name != null
 
 
 ## Écrire sa première Azure Functions
-Ici, on rentre dans notre usecase, comme dis au début nous allons envoyer deux nombres à notre Azure Fonction et les multiplier par eux-mêmes.
+Ici, on rentre dans notre use case, comme dis au début nous allons envoyer deux nombres à notre Azure Fonction et les multiplier par eux-mêmes.
 
 Première étape, on va modifier le nom de notre function. On va donc remplacer Function1 par Multiplicator.
 À deux endroits, le nom de la classe est dans l'attribut [FunctionName]. Et supprimer tout ce qu'on n'a pas besoin.
@@ -336,12 +336,12 @@ public static class Multiplicator
 }
 ```
 
-Niveau URL, elle sera à nouveau simplifiée car le paramètre routé est redevenu null
+Niveau URL, elle sera à nouveau simplifiée car le paramètre route est redevenu null.
 ```
 http://localhost:7071/api/Multiplicator
 ```
 
-Il faudras cependant passer en POST avec un Body
+Il faudras cependant passer en POST avec un Body.
 ```json
 {
     "a": 10,
@@ -365,23 +365,23 @@ Pour cela dans Visual Studio, clique droit sur le projet, ensuite Publish.
 #### Les informations du déploiement se font ici.
 ![placeholder](/images/azure-functions/publish-functions-part4.png "Azure functions")
 
-Le bouton Create en bas à droite va créé un profil de publication réutilisable.
+Le bouton Create en bas à droite va créer un profil de publication réutilisable.
 Ensuite, une autre fenêtre va s'ouvrir avec un bouton Publier, en cliquant dessus, Visual Studio, va publier la function sur azure.
 
 ## La sécurité
 Niveau sécurité, Azure propose plusieurs niveaux d'authentification, un Anonymous qui ne demande rien de plus et 3 autres Function, Admin & System qui nécessitent une clé pour autoriser l'accès à la function.
 
-Il existe trois type de clés :
+Il existe trois types de clés :
 - **Host keys** : Les clés de ce type peuvent s'utiliser de façons cross function dans la même Function App.
 - **Function keys** : Les clés de ce type ne peuvent s'utiliser que sur la function sur laquelle la clé à été définie.
-- **Master key** : Chaque Function App définis une master key (_master) qui donne un accès Admin sur toutes les function de l'app.
+- **Master key** : Chaque Function App définit une master key (_master) qui donne un accès Admin sur toutes les function de l'app.
 
 ### Anonymous
-Ne requière aucune authentification, toute requête HTTP valide sera interceptée.
+Ne requière aucune authentification, toute les requêtes HTTP valides seront interceptées.
 
 ### Function
-Requière une clé d'authentification, ici la **Host Key** ou la **Function Key**. 
-Pour la function **Function Key** celle-ci devra être définie sur la function qu'on souhaite appeler. 
+Requière une clé d'authentification, ici la **Host Key** ou la **Function Key**.
+Pour la function **Function Key** celle-ci devra être définie sur la function qu'on souhaite appeler.
 Si la clé est invalide, c'est une HTTP  401 qui est renvoyée.
 
 ### Admin
@@ -391,3 +391,10 @@ Si la clé est invalide, c'est une HTTP  401 qui est renvoyée.
 ### System
 Requière une clé d'authentification, ici la **Master key** sera nécessaire. La clé master ne peut pas être révokée.
 Si la clé est invalide, c'est une HTTP  401 qui est renvoyée.
+
+Dans un prochain article, nous verrons en plusieurs détails la configuration d'Azure.
+
+<div id="toc"></div>
+**Table des matières**
+1. TOC
+{:toc}
