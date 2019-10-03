@@ -17,7 +17,7 @@ J'adore reddit, et j'adore [r/ProgrammerHumor](https://www.reddit.com/r/Programm
 
 ![swaggerdoc](https://i.redd.it/frm61ch4lsl31.png)
 
-De cette réflexion, l'envie de partager des pratiques simples pour une documentation accessibles et sous différentes formes.
+De cette réflexion, l'envie de partager des pratiques simples pour une documentation accessible et sous différentes formes.
 
 # Qu'est-ce qu'une documentation ?
 
@@ -31,18 +31,18 @@ Aujourd'hui je ne vais pas me pencher sur la rédaction de la documentation (=le
 
 ## Code as Documentation
 
-Le principe Code as Documentation est uniquement destiné aux développeurs actuel et futur qui améliorent et maintiennent votre application.
+Le principe Code as Documentation est uniquement destiné aux développeurs actuels et futurs qui améliorent et maintiennent votre application.
 
 Dans le monde réel, la meilleure documentation est un événement lui-même. Un fait n'est pas discutable, car il est intrinsèque. Il ne peut être altéré.
 En informatique, ça se traduit comment le code se définit lui-même, ou comment la production agit. Le code n'est capable de faire plus ou moins que ce qui est écrit. Il est intrinsèquement vrai.
 
-Un Code as Documentation se doit être lisible. Il est extrêmement important de savoir écrire un code lisible pour faciliter la compréhension **générale et détaillée** de l'application. Pas de code spaghetti, de variable incompréhensible, ni de fonctions kilométriques. Je vous renvoie vers les principes Clean Code et Clean Architecture pour atteindre ces objectifs.
+Un Code as Documentation se doit d'être lisible. Il est extrêmement important de savoir écrire un code lisible pour faciliter la compréhension **générale et détaillée** de l'application. Pas de code spaghetti, de variable incompréhensible, ni de fonctions kilométriques. Je vous renvoie vers les principes Clean Code et Clean Architecture pour atteindre ces objectifs.
 
 Nous sommes très proches d'un concept comme la Production as Documentation. Nous utilisons l'application réelle, son design, son intégration en production pour connaitre son état et son comportement.
 
 Un exemple concret est [Automapper](https://github.com/AutoMapper/AutoMapper). Que fait cette librairie ? Elle mappe automatiquement. Pas besoin d'aller plus loin, le nom de projet est suffisant.
 
-_Tip: à chaque fois qu'une discussion commence par "**si** la production agit ainsi", il est nécessaire **d'immédiatement** de levé tous les doutes en effectuant un test ou en lisant le code_
+_Tip: à chaque fois qu'une discussion commence par "**si** la production agit ainsi", il est nécessaire **d'immédiatement** de lever tous les doutes en effectuant un test ou en lisant le code_
 
 ### Implémentation du DRY
 
@@ -54,10 +54,10 @@ Un scénario banal:
 * 2018, le développeur travaille maintenant sur un autre projet.
 * 2019, un développeur junior, ne connaissant pas la documentation, met à jour l'application. Sa mise à jour est sans bug, ce bougre est félicité de son travail.
 
-Vous l'avez sûrement pointé du doigt, la documentation n'a pas été mis à jour. Peut-on blâmer ce développeur junior ? Absolument pas. Il n'était pas **conscient de l'existence de la documentation**, et personne n'était là pour l'épauler dans cette tâche.
+Vous l'avez sûrement pointé du doigt, la documentation n'a pas été mise à jour. Peut-on blâmer ce développeur junior ? Absolument pas. Il n'était pas **conscient de l'existence de la documentation**, et personne n'était là pour l'épauler dans cette tâche.
 Au final, nous avons une **documentation mensongère**. L'application a évolué sans sa documentation.
 
-Cet exemple est simplifié. Je suis sur qu'à un moment ou à un autre, vous suiviez un tutoriel ou une documentation non maintenue et que malheureusement votre premier exercice se solde par un échec, car la librairie que vous testiez a subi un breaking change.
+Cet exemple est simplifié. Je suis sûr qu'à un moment ou à un autre, vous suiviez un tutoriel ou une documentation non maintenue et que malheureusement votre premier exercice se solde par un échec, car la librairie que vous testiez a subi un breaking change.
 
 Nous verrons plus tard comment guider ce développeur junior vers la documentation externe.
 
@@ -71,7 +71,7 @@ Voici encore quelques principes à respecter pour les documents externes.
 ### Keep physically close what things are related
 
 ![messenger](/images/bonne-documentation/messenger.png)
-_Messenger intégre sa doc dans ses contrôles_
+_Messenger intègre sa doc dans ses contrôles_
 
 Plus un élément est proche de ses relations, plus la probabilité de le retrouver est grande.
 
@@ -169,6 +169,6 @@ En tant que développeurs, nous avons la responsabilité d'assurer que la qualit
 1. TOC
 {:toc}
 
-#### References
+#### Références
 
 * <p id="reference1"> Accart, Jean-Philippe, Réthy, Marie-Pierre,Le métier de documentaliste, Paris, Éditions du Cercle de la Librairie, 3e édition, 2008, pages 403</p>
