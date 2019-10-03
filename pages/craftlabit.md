@@ -22,13 +22,13 @@ Je suis à l'écoute des défis d'entreprises et je propose également une solut
 
 ![Mathieu Scolas](/images/craftlab-it/profil.jpg)
 
-Mes expériences variées m'ont orienté vers des applications web PC et mobile. Le web offre ajourd'hui la facilité de déploiement continu, et je mise personnellement toutes mes formations dans ce domaine.
+Mes expériences variées m'ont orienté vers des applications web PC et mobile. Le web offre aujourd'hui la facilité de déploiement continu, et je mise personnellement toutes mes formations dans ce domaine.
 
 ## Centré sur les technologies
 
-Aujourd'hui, la technologie que je privilégie sont les Web Api en C#, ainsi qu'un frontend en Angular.
+Aujourd'hui, les technologies que je privilégie sont les Web Api en C#, ainsi qu'un frontend en Angular.
 
-L'informatique requiert d'être en formation perpetuelle. C'est pour cette raison je m'informe et m'entraîne chaque semaine aux technologies modernes (docker, graphql, database en graph, database orienté document, ...) et d'autres languages (go, F#, node-typescript)
+L'informatique requiert d'être en formation perpétuelle. C'est pour cette raison que je m'informe et m'entraîne chaque semaine aux technologies modernes (docker, graphql, database en graph, database orienté document, ...) et d'autres langages (go, F#, node-typescript)
 
 ## Méthodologie agile et craftmanship
 
