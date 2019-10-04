@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "L&#39;immuabilité pour un code sans bug",
+      "tags"     : "bonne pratique, test, and orienté objet",
+      "categories" : "bonne-pratique",
+      "url"      : "/oriente-objet-et-immuabilite/",
+      "date"     : "10/04/2019"
+    } ,
+  
+    {
       "title"    : "Une bonne doc est une doc accessible",
       "tags"     : "documentation and bonne pratique",
       "categories" : "bonne-pratique",

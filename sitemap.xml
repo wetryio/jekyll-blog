@@ -94,7 +94,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2019-10-03</lastmod>
+                <lastmod>2019-10-04</lastmod>
             
         </url>
     
@@ -170,6 +170,13 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/oriente-objet-et-immuabilite/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2019-10-04</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/une-bonne-doc-est-une-doc-accessible/</loc>
