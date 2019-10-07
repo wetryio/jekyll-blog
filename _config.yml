@@ -75,6 +75,7 @@ paginate_content:
 plugins:
   - jekyll-paginate
   - jekyll-paginate-content
+  - jekyll-redirect-from
 
 # Exclude my node related stuff
 exclude: [
