@@ -4,7 +4,7 @@ layout: post
 title: L'immuabilité pour un code sans bug
 date: 2019-10-04 07:00:00
 image: '/images/immuabilite-objet/lock.jpg'
-description: On est jamais sur ce que qu'un objet aura comme valeur dans le temps...
+description: On est jamais sûr ce que qu'un objet aura comme valeur dans le temps...
 category: 'bonne-pratique'
 tags:
 - bonne pratique
