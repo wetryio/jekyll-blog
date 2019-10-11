@@ -2,10 +2,10 @@
 author: dgilson
 layout: post
 title: "Dockeriser sans limites"
-date: 2019-10-14 13:41:08
+date: 2019-10-14 06:41:08
 image: /images/docker-posts/docker-vs-code.png
 description: Docker, l'outil ultime pour les développeurs.
-category: 'expérimentation'
+category: 'experimentation'
 tags:
 - docker
 - IDE
