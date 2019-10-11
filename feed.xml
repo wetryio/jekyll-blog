@@ -5,9 +5,27 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Oct 2019 10:53:21 +0000</pubDate>
-    <lastBuildDate>Fri, 11 Oct 2019 10:53:21 +0000</lastBuildDate>
+    <pubDate>Fri, 11 Oct 2019 12:13:46 +0000</pubDate>
+    <lastBuildDate>Fri, 11 Oct 2019 12:13:46 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Azure Functions démystifions le trigger HTTP</title>
+        <description>&lt;h1 id=&quot;azure-functions-démystifions-le-trigger-http&quot;&gt;Azure Functions, démystifions le trigger HTTP&lt;/h1&gt; &lt;p&gt;Dans l’article précédent, j’exposais les bases d’une Azure Functions, si vous ne savez pas du tout ce que c’est, je vous conseille de commencer par là &lt;a href=&quot;/azure-functions-les-bases/&quot;&gt;Azure Functions, les bases&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Dans cet article, je vais démystifier le trigger HTTP, mais également montrer jusqu’où il est possible d’aller en y intégrant des principes très proches de ceux de l’ASP.NET Core. Voici dans les grandes lignes les étapes :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Crée une Azure Functions avec Visual Studio&lt;/li&gt; &lt;li&gt;Explication du code généré&lt;/li&gt; &lt;li&gt;Modification pour renvoyer une valeur calculée par rapport à ce que la function...</description>
+        <pubDate>Fri, 11 Oct 2019 11:20:00 +0000</pubDate>
+        <link>https://wetry.tech/azure-functions-trigger-http/</link>
+        <guid isPermaLink="true">https://wetry.tech/azure-functions-trigger-http/</guid>
+        
+        <category>azure</category>
+        
+        <category>tutorial</category>
+        
+        <category>serverless</category>
+        
+        <category>trigger http</category>
+        
+        <category>azure</category>
+      </item>
     
       <item>
         <title>L'immuabilité pour un code sans bug</title>

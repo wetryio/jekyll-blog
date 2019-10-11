@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "Azure Functions démystifions le trigger HTTP",
+      "tags"     : "azure, tutorial, serverless, and trigger http",
+      "categories" : "azure",
+      "url"      : "/azure-functions-trigger-http/",
+      "date"     : "10/11/2019"
+    } ,
+  
+    {
       "title"    : "L&#39;immuabilité pour un code sans bug",
       "tags"     : "bonne pratique, test, and orienté objet",
       "categories" : "bonne-pratique",

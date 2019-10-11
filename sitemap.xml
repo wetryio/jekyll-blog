@@ -188,6 +188,13 @@
     
     
         <url>
+            <loc>https://wetry.tech/azure-functions-trigger-http/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2019-10-11</lastmod>
+        </url>
+    
+        <url>
             <loc>https://wetry.tech/oriente-objet-et-immuabilite/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
