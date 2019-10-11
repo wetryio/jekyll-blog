@@ -102,7 +102,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2019-10-07</lastmod>
+                <lastmod>2019-10-11</lastmod>
             
         </url>
     
@@ -192,6 +192,13 @@
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-10-04</lastmod>
+        </url>
+    
+        <url>
+            <loc>https://wetry.tech/azure-functions-trigger-http/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2019-10-02</lastmod>
         </url>
     
         <url>

@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    <title>Azure Functions démystifions le trigger HTTP | WeTry</title>
+    <meta name="description" content="Azure Functions, démystifions le trigger HTTP.">
+    
+        <meta name="keywords" content="azure, tutorial, serverless, trigger http">
+    
+
+    <!-- Social: Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Azure Functions démystifions le trigger HTTP | WeTry">
+    <meta name="twitter:description" content="Azure Functions, démystifions le trigger HTTP.">
+    <meta property="twitter:image:src" content="/images/azure-functions/Azure-Functions.png">
+    
+
+    <!-- Social: Facebook / Open Graph -->
+    <meta property="og:url" content="https://wetry.tech/azure-functions-trigger-http/">
+    <meta property="og:title" content="Azure Functions démystifions le trigger HTTP | WeTry">
+    <meta property="og:image" content="/images/azure-functions/Azure-Functions.png">
+    <meta property="og:description" content="Azure Functions, démystifions le trigger HTTP.">
+    <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/icons/apple-touch-icon-152x152.png" />
+
+    <!-- Windows 8 Tile Icons -->
+    <meta name="application-name" content="WeTry">
+    <meta name="msapplication-TileColor" content="#ff0a16">
+    <meta name="msapplication-square70x70logo" content="smalltile.png" />
+    <meta name="msapplication-square150x150logo" content="mediumtile.png" />
+    <meta name="msapplication-wide310x150logo" content="widetile.png" />
+    <meta name="msapplication-square310x310logo" content="largetile.png" />
+    
+    <!-- Android Lolipop Theme Color -->
+    <meta name="theme-color" content="#ff0a16">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="canonical" href="https://wetry.tech/azure-functions-trigger-http/">
+    <link rel="alternate" type="application/rss+xml" title="WeTry | Encore un autre blog de développeur" href="https://wetry.tech/feed.xml" />
+</head>
+
+    <body class="has-push-menu">
+        
+
+
+
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1"><defs><symbol id="icon-menu" viewBox="0 0 1024 1024"><path class="path1" d="M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"/></symbol><symbol id="icon-search" viewBox="0 0 951 1024"><path class="path1" d="M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"/></symbol><symbol id="icon-close" viewBox="0 0 1000 1000"><path d="M969.8,870.3c27,27.7,27,71.8,0,99.1C955.7,983,937.9,990,920,990c-17.9,0-35.7-7-49.7-20.7L500,599L129.6,969.4C115.6,983,97.8,990,79.9,990s-35.7-7-49.7-20.7c-27-27.3-27-71.4,0-99.1L400.9,500L30.3,129.3c-27-27.3-27-71.4,0-99.1c27.3-27,71.8-27,99.4,0L500,400.9L870.4,30.2c27.7-27,71.8-27,99.4,0c27,27.7,27,71.8,0,99.1L599.1,500L969.8,870.3z"/></symbol><symbol id="icon-twitter" viewBox="0 0 951 1024"><path class="path1" d="M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"/></symbol><symbol id="icon-facebook" viewBox="0 0 585 1024"><path class="path1" d="M548 6.857v150.857h-89.714q-49.143 0-66.286 20.571t-17.143 61.714v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571q0-106.286 59.429-164.857t158.286-58.571q84 0 130.286 6.857z"/></symbol><symbol id="icon-clock" viewBox="0 0 1000 1000"><path d="M500,10C229.8,10,10,229.8,10,500c0,270.2,219.8,490,490,490c270.2,0,490-219.8,490-490C990,229.8,770.2,10,500,10z M500,910.2c-226.2,0-410.2-184-410.2-410.2c0-226.2,184-410.2,410.2-410.2c226.2,0,410.2,184,410.2,410.2C910.2,726.1,726.2,910.2,500,910.2z M753.1,374c8.2,11.9,5.2,28.1-6.6,36.3L509.9,573.7c-4.4,3.1-9.6,4.6-14.8,4.6c-4.1,0-8.3-1-12.1-3c-8.6-4.5-14-13.4-14-23.1V202.5c0-14.4,11.7-26.1,26.1-26.1c14.4,0,26.1,11.7,26.1,26.1v300l195.6-135.1C728.7,359.2,744.9,362.1,753.1,374z"/></symbol><symbol id="icon-calendar" viewBox="0 0 1000 1000"><path d="M920,500v420H80V500H920 M990,430H10v490c0,38.7,31.3,70,70,70h840c38.7,0,70-31.3,70-70V430L990,430z"/><path d="M850,80v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80H360v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80C72.8,80,10,142.7,10,220v140h980V220C990,142.7,927.2,80,850,80z"/><path d="M255,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C290,25.8,274.3,10,255,10z"/><path d="M745,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C780,25.8,764.3,10,745,10z"/></symbol><symbol id="icon-github" viewBox="0 0 12 14"><path d="M6 1q1.633 0 3.012 0.805t2.184 2.184 0.805 3.012q0 1.961-1.145 3.527t-2.957 2.168q-0.211 0.039-0.312-0.055t-0.102-0.234q0-0.023 0.004-0.598t0.004-1.051q0-0.758-0.406-1.109 0.445-0.047 0.801-0.141t0.734-0.305 0.633-0.52 0.414-0.82 0.16-1.176q0-0.93-0.617-1.609 0.289-0.711-0.062-1.594-0.219-0.070-0.633 0.086t-0.719 0.344l-0.297 0.187q-0.727-0.203-1.5-0.203t-1.5 0.203q-0.125-0.086-0.332-0.211t-0.652-0.301-0.664-0.105q-0.352 0.883-0.062 1.594-0.617 0.68-0.617 1.609 0 0.664 0.16 1.172t0.41 0.82 0.629 0.523 0.734 0.305 0.801 0.141q-0.305 0.281-0.383 0.805-0.164 0.078-0.352 0.117t-0.445 0.039-0.512-0.168-0.434-0.488q-0.148-0.25-0.379-0.406t-0.387-0.187l-0.156-0.023q-0.164 0-0.227 0.035t-0.039 0.090 0.070 0.109 0.102 0.094l0.055 0.039q0.172 0.078 0.34 0.297t0.246 0.398l0.078 0.18q0.102 0.297 0.344 0.48t0.523 0.234 0.543 0.055 0.434-0.027l0.18-0.031q0 0.297 0.004 0.691t0.004 0.426q0 0.141-0.102 0.234t-0.312 0.055q-1.812-0.602-2.957-2.168t-1.145-3.527q0-1.633 0.805-3.012t2.184-2.184 3.012-0.805zM2.273 9.617q0.023-0.055-0.055-0.094-0.078-0.023-0.102 0.016-0.023 0.055 0.055 0.094 0.070 0.047 0.102-0.016zM2.516 9.883q0.055-0.039-0.016-0.125-0.078-0.070-0.125-0.023-0.055 0.039 0.016 0.125 0.078 0.078 0.125 0.023zM2.75 10.234q0.070-0.055 0-0.148-0.062-0.102-0.133-0.047-0.070 0.039 0 0.141t0.133 0.055zM3.078 10.562q0.062-0.062-0.031-0.148-0.094-0.094-0.156-0.023-0.070 0.062 0.031 0.148 0.094 0.094 0.156 0.023zM3.523 10.758q0.023-0.086-0.102-0.125-0.117-0.031-0.148 0.055t0.102 0.117q0.117 0.047 0.148-0.047zM4.016 10.797q0-0.102-0.133-0.086-0.125 0-0.125 0.086 0 0.102 0.133 0.086 0.125 0 0.125-0.086zM4.469 10.719q-0.016-0.086-0.141-0.070-0.125 0.023-0.109 0.117t0.141 0.062 0.109-0.109z"></path></symbol><symbol id="icon-medium" viewBox="0 0 1000 1000"><path d="M336.5,240.2v641.5c0,9.1-2.3,16.9-6.8,23.2s-11.2,9.6-20,9.6c-6.2,0-12.2-1.5-18-4.4L37.3,782.7c-7.7-3.6-14.1-9.8-19.4-18.3S10,747.4,10,739V115.5c0-7.3,1.8-13.5,5.5-18.6c3.6-5.1,8.9-7.7,15.9-7.7c5.1,0,13.1,2.7,24.1,8.2l279.5,140C335.9,238.6,336.5,239.5,336.5,240.2L336.5,240.2z M371.5,295.5l292,473.6l-292-145.5V295.5z M990,305.3v576.4c0,9.1-2.6,16.5-7.7,22.1c-5.1,5.7-12,8.5-20.8,8.5s-17.3-2.4-25.7-7.1L694.7,784.9L990,305.3z M988.4,239.7c0,1.1-46.8,77.6-140.3,229.4C754.6,621,699.8,709.8,683.8,735.7L470.5,389l177.2-288.2c6.2-10.2,15.7-15.3,28.4-15.3c5.1,0,9.8,1.1,14.2,3.3l295.9,147.7C987.6,237.1,988.4,238.2,988.4,239.7L988.4,239.7z"/></symbol><symbol id="icon-instagram" viewBox="0 0 489.84 489.84"><path d="M249.62,50.46c65.4,0,73.14.25,99,1.43C372.47,53,385.44,57,394.07,60.32a75.88,75.88,0,0,1,28.16,18.32,75.88,75.88,0,0,1,18.32,28.16c3.35,8.63,7.34,21.6,8.43,45.48,1.18,25.83,1.43,33.57,1.43,99s-0.25,73.14-1.43,99c-1.09,23.88-5.08,36.85-8.43,45.48a81.11,81.11,0,0,1-46.48,46.48c-8.63,3.35-21.6,7.34-45.48,8.43-25.82,1.18-33.57,1.43-99,1.43s-73.15-.25-99-1.43c-23.88-1.09-36.85-5.08-45.48-8.43A75.88,75.88,0,0,1,77,423.86,75.88,75.88,0,0,1,58.69,395.7c-3.35-8.63-7.34-21.6-8.43-45.48-1.18-25.83-1.43-33.57-1.43-99s0.25-73.14,1.43-99c1.09-23.88,5.08-36.85,8.43-45.48A75.88,75.88,0,0,1,77,78.64a75.88,75.88,0,0,1,28.16-18.32c8.63-3.35,21.6-7.34,45.48-8.43,25.83-1.18,33.57-1.43,99-1.43m0-44.13c-66.52,0-74.86.28-101,1.47s-43.87,5.33-59.45,11.38A120.06,120.06,0,0,0,45.81,47.44,120.06,120.06,0,0,0,17.56,90.82C11.5,106.4,7.36,124.2,6.17,150.27s-1.47,34.46-1.47,101,0.28,74.86,1.47,101,5.33,43.87,11.38,59.45a120.06,120.06,0,0,0,28.25,43.38,120.06,120.06,0,0,0,43.38,28.25c15.58,6.05,33.38,10.19,59.45,11.38s34.46,1.47,101,1.47,74.86-.28,101-1.47,43.87-5.33,59.45-11.38a125.24,125.24,0,0,0,71.63-71.63c6.05-15.58,10.19-33.38,11.38-59.45s1.47-34.46,1.47-101-0.28-74.86-1.47-101-5.33-43.87-11.38-59.45a120.06,120.06,0,0,0-28.25-43.38,120.06,120.06,0,0,0-43.38-28.25C394.47,13.13,376.67,9,350.6,7.8s-34.46-1.47-101-1.47h0Z" transform="translate(-4.7 -6.33)" /><path d="M249.62,125.48A125.77,125.77,0,1,0,375.39,251.25,125.77,125.77,0,0,0,249.62,125.48Zm0,207.41a81.64,81.64,0,1,1,81.64-81.64A81.64,81.64,0,0,1,249.62,332.89Z" transform="translate(-4.7 -6.33)"/><circle cx="375.66" cy="114.18" r="29.39" /></symbol><symbol id="icon-linkedin" viewBox="0 0 12 14"><path d="M2.727 4.883v7.742h-2.578v-7.742h2.578zM2.891 2.492q0.008 0.57-0.395 0.953t-1.059 0.383h-0.016q-0.641 0-1.031-0.383t-0.391-0.953q0-0.578 0.402-0.957t1.051-0.379 1.039 0.379 0.398 0.957zM12 8.187v4.437h-2.57v-4.141q0-0.82-0.316-1.285t-0.988-0.465q-0.492 0-0.824 0.27t-0.496 0.668q-0.086 0.234-0.086 0.633v4.32h-2.57q0.016-3.117 0.016-5.055t-0.008-2.313l-0.008-0.375h2.57v1.125h-0.016q0.156-0.25 0.32-0.438t0.441-0.406 0.68-0.34 0.895-0.121q1.336 0 2.148 0.887t0.813 2.598z"></path></symbol><symbol id="icon-heart" viewBox="0 0 34 30"><path d="M17,29.7 L16.4,29.2 C3.5,18.7 0,15 0,9 C0,4 4,0 9,0 C13.1,0 15.4,2.3 17,4.1 C18.6,2.3 20.9,0 25,0 C30,0 34,4 34,9 C34,15 30.5,18.7 17.6,29.2 L17,29.7 Z M9,2 C5.1,2 2,5.1 2,9 C2,14.1 5.2,17.5 17,27.1 C28.8,17.5 32,14.1 32,9 C32,5.1 28.9,2 25,2 C21.5,2 19.6,4.1 18.1,5.8 L17,7.1 L15.9,5.8 C14.4,4.1 12.5,2 9,2 Z" id="Shape"></path></symbol><symbol id="icon-arrow-right" viewBox="0 0 25.452 25.452"><path d="M4.471,24.929v-2.004l12.409-9.788c0.122-0.101,0.195-0.251,0.195-0.411c0-0.156-0.073-0.31-0.195-0.409L4.471,2.526V0.522c0-0.2,0.115-0.384,0.293-0.469c0.18-0.087,0.396-0.066,0.552,0.061l15.47,12.202c0.123,0.1,0.195,0.253,0.195,0.409c0,0.16-0.072,0.311-0.195,0.411L5.316,25.34c-0.155,0.125-0.372,0.147-0.552,0.061C4.586,25.315,4.471,25.13,4.471,24.929z"/></symbol></defs></svg>
+
+        <header class="bar-header">
+    <a id="menu" role="button">
+        <svg id="open" class="icon-menu"><use xlink:href="#icon-menu"></use></svg>
+    </a>
+    <h1 class="logo">
+        <a href="/">
+            WeTry
+        </a>
+    </h1>
+    <a class="header-action" href="https://gitter.im/wetryio/community?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge" target="_blank" style="margin-left: 1rem;">
+        <img src="https://badges.gitter.im/wetryio/community.svg" alt="Gitter">
+    <a id="search" class="dosearch" role="button">
+        <svg class="icon-search"><use xlink:href="#icon-search"></use></svg>
+    </a>
+</header>
+
+<div id="mask" class="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <nav id="navigation">
+      <h2>Menu</h2>
+      <ul>
+  <li>
+    <a href="https://wetry.tech/">Home</a>
+  </li>
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/about/">À propos de nous</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/craftlab-it/">CraftLab IT</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/hitw2019/">HITW 2019</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <li>
+    <a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a>
+  </li>
+</ul>
+
+    </nav>
+</aside>
+
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" class="search-field" placeholder="Search">
+        <svg class="icon-remove-sign"><use xlink:href="#icon-close"></use></svg>
+        <ul class="search-results search-list"></ul>
+    </div>
+</div>
+
+
+
+        <section class="post one-column">
+            <article role="article" class="post-content">
+                <p class="post-info">
+                    
+                        <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
+                        <time class="date" datetime="2019-10-02T22:20:00+00:00">
+                            
+
+
+Octobre 2, 2019
+
+                        </time>
+                    
+                    <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
+                    <span>19 min to read</span>
+                </p>
+                <h1 class="post-title">Azure Functions démystifions le trigger HTTP</h1>
+                <p class="post-subtitle"></p>
+
+                
+                    <img src="/images/azure-functions/Azure-Functions.png" alt="Featured image" class="post-cover">
+                
+
+                <!-- Pagination links -->
+
+
+
+                <h1 id="azure-functions-démystifions-le-trigger-http">Azure Functions, démystifions le trigger HTTP</h1>
+
+<p>Dans l’article précédent, j’exposais les bases d’une Azure Functions, si vous ne savez pas du tout ce que c’est, je vous conseille de commencer par là <a href="/azure-functions-les-bases/">Azure Functions, les bases</a>.</p>
+
+<p>Dans cet article, je vais démystifier le trigger HTTP, mais également montrer jusqu’où il est possible d’aller en y intégrant des principes très proches de ceux de l’ASP.NET Core. Voici dans les grandes lignes les étapes :</p>
+<ul>
+  <li>Crée une Azure Functions avec Visual Studio</li>
+  <li>Explication du code généré</li>
+  <li>Modification pour renvoyer une valeur calculée par rapport à ce que la function aura reçu</li>
+  <li>Binding du modèle d’entrée</li>
+  <li>Publier sur Azure</li>
+  <li>La sécurité</li>
+</ul>
+
+<p>La use case que nous allons voir ici, est de réaliser une function qui prend deux nombres en paramètre et les multiplie par eux-mêmes.</p>
+
+<h2 id="crée-une-azure-functions-avec-visual-studio">Crée une Azure Functions avec Visual Studio</h2>
+
+<h3 id="prerequis">Prerequis</h3>
+<ul>
+  <li>Visual Studio 2017 ou Visual Studio 2019</li>
+  <li><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs">Azure Functions Tools</a> pour Visual Studio 2017</li>
+  <li>Avoir selectionné les Azure Development dans les feature à installer</li>
+</ul>
+
+<p>Les images utilisées ici sont tirées de Visual Studio 2019.</p>
+
+<h4 id="dans-la-fenêtre-de-création-dun-projet-de-visual-studio-2019-chercher-après-azure-functions">Dans la fenêtre de création d’un Projet de Visual Studio 2019, chercher après Azure Functions.</h4>
+<p><img src="/images/azure-functions/create-functions-part1.png" alt="placeholder" title="Azure functions" /></p>
+
+<h4 id="selectionner-azure-functions-ensuite-next--suivant">Selectionner Azure Functions, ensuite Next / Suivant.</h4>
+<p><img src="/images/azure-functions/create-functions-part2.png" alt="placeholder" title="Azure functions" /></p>
+
+<h4 id="il-faut-encoder-le-nom-du-projet-ici-samplefunction-ensuite-la-location-emplacement-sur-le-disque-et-pour-finir-le-nom-de-la-solution">Il faut encoder le nom du projet, ici SampleFunction, ensuite la Location (emplacement sur le disque) et pour finir le nom de la solution.</h4>
+<p><img src="/images/azure-functions/create-functions-part3.png" alt="placeholder" title="Azure functions" /></p>
+
+<h4 id="la-fenêtre-suivante-est-très-intéressante-elle-va-permettre-de-paramétrer-la-function-pour-cet-article-cest-un-trigger-http-quil-faut-selectionner-en-storage-account-le-storage-emulator-et-en-authorization-sélectionner-anonymous-cest-létape-principale-qui-permet-de-scalffoder-les-projets-selon-la-sélection-faite-visual-studio-va-ajouter-des-packages-différents-mais-également-paramétrer-lentrypoint-de-la-function-différement">La fenêtre suivante est très intéressante, elle va permettre de paramétrer la function, pour cet article, c’est un Trigger Http qu’il faut selectionner, en Storage Account le Storage Emulator et en Authorization sélectionner Anonymous. C’est l’étape principale qui permet de scalffoder les projets. Selon la sélection faite, Visual Studio va ajouter des packages différents. Mais également paramétrer l’entrypoint de la function différement.</h4>
+<p><img src="/images/azure-functions/create-functions-part4.png" alt="placeholder" title="Azure functions" /></p>
+
+<h4 id="après-avoir-cliqué-sur-create-le-projet-avec-une-azure-functions-est-générée-par-visual-studio">Après avoir cliqué sur Create, le projet avec une Azure Functions est générée par Visual Studio.</h4>
+<p><img src="/images/azure-functions/create-functions-part5.png" alt="placeholder" title="Azure functions" /></p>
+
+<h2 id="explication-du-code-généré">Explication du code généré</h2>
+<p>Le code généré à la base ressemble à ceci</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Function1</span>
+    <span class="p">{</span>
+        <span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"Function1"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Run</span><span class="p">(</span>
+            <span class="p">[</span><span class="nf">HttpTrigger</span><span class="p">(</span><span class="n">AuthorizationLevel</span><span class="p">.</span><span class="n">Function</span><span class="p">,</span> <span class="s">"get"</span><span class="p">,</span> <span class="s">"post"</span><span class="p">,</span> <span class="n">Route</span> <span class="p">=</span> <span class="k">null</span><span class="p">)]</span> <span class="n">HttpRequest</span> <span class="n">req</span><span class="p">,</span>
+            <span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"C# HTTP trigger function processed a request."</span><span class="p">);</span>
+
+            <span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="n">req</span><span class="p">.</span><span class="n">Query</span><span class="p">[</span><span class="s">"name"</span><span class="p">];</span>
+
+            <span class="kt">string</span> <span class="n">requestBody</span> <span class="p">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">Body</span><span class="p">).</span><span class="nf">ReadToEndAsync</span><span class="p">();</span>
+            <span class="kt">dynamic</span> <span class="n">data</span> <span class="p">=</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="nf">DeserializeObject</span><span class="p">(</span><span class="n">requestBody</span><span class="p">);</span>
+            <span class="n">name</span> <span class="p">=</span> <span class="n">name</span> <span class="p">??</span> <span class="n">data</span><span class="p">?.</span><span class="n">name</span><span class="p">;</span>
+
+            <span class="k">return</span> <span class="n">name</span> <span class="p">!=</span> <span class="k">null</span>
+                <span class="p">?</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="s">$"Hello, </span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="s">"</span><span class="p">)</span>
+                <span class="p">:</span> <span class="k">new</span> <span class="nf">BadRequestObjectResult</span><span class="p">(</span><span class="s">"Please pass a name on the query string or in the request body"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Découpons un peu ce code pour en comprendre les bases, commençons par le point d’entrée de la function.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"Function1"</span><span class="p">)]</span>
+<span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Run</span><span class="p">([</span><span class="nf">HttpTrigger</span><span class="p">(</span><span class="n">AuthorizationLevel</span><span class="p">.</span><span class="n">Function</span><span class="p">,</span> <span class="s">"get"</span><span class="p">,</span> <span class="s">"post"</span><span class="p">,</span> <span class="n">Route</span> <span class="p">=</span> <span class="k">null</span><span class="p">)]</span> <span class="n">HttpRequest</span> <span class="n">req</span><span class="p">,</span> <span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Le point d’entrée, Run a un attribut FunctionName avec en paramètre le nom de la function.
+Le premier paramètre de Run est le type de trigger, ici c’est un trigger du type HttpTrigger.
+Ce même HttpTrigger, à plusieurs paramètres;</p>
+<ul>
+  <li>AuthorizationLevel.Function : c’est le niveau de sécurité que la Function nécessite, une explication est disponible à ce propos en bas d’article</li>
+  <li>“get”, “post” : le type de verb HTTP qui est supporter par la Function</li>
+  <li>Route = null : par défaut, l’URL d’une Functions est https://monhostnameazure/NomDeLaFunction, le paramètre route ici permet de modifier cette règle</li>
+</ul>
+
+<p>Le reste de la function c’est du code C# comme en ASPNET Core, en Console, etc … Mais c’est ce code, qui sera exécuté et qui vas permettre de renvoyer ou non une valeur.
+Dans le sample de base, la Function attend en query params ou body, une valeur sur la clé Name. Ensuite, elle renvoit soit une HTTP 200 avec le nom concaténer avec Hello, soit une 400 si ni le body, ni la query ne contient de valeur pour Name.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"C# HTTP trigger function processed a request."</span><span class="p">);</span>
+<span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="n">req</span><span class="p">.</span><span class="n">Query</span><span class="p">[</span><span class="s">"name"</span><span class="p">];</span>
+
+<span class="kt">string</span> <span class="n">requestBody</span> <span class="p">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">Body</span><span class="p">).</span><span class="nf">ReadToEndAsync</span><span class="p">();</span>
+<span class="kt">dynamic</span> <span class="n">data</span> <span class="p">=</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="nf">DeserializeObject</span><span class="p">(</span><span class="n">requestBody</span><span class="p">);</span>
+<span class="n">name</span> <span class="p">=</span> <span class="n">name</span> <span class="p">??</span> <span class="n">data</span><span class="p">?.</span><span class="n">name</span><span class="p">;</span>
+
+<span class="k">return</span> <span class="n">name</span> <span class="p">!=</span> <span class="k">null</span>
+        <span class="p">?</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="s">$"Hello, </span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">:</span> <span class="k">new</span> <span class="nf">BadRequestObjectResult</span><span class="p">(</span><span class="s">"Please pass a name on the query string or in the request body"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>La partie suivante s’occupe de parser la query / body</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="n">req</span><span class="p">.</span><span class="n">Query</span><span class="p">[</span><span class="s">"name"</span><span class="p">];</span>
+
+<span class="kt">string</span> <span class="n">requestBody</span> <span class="p">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">Body</span><span class="p">).</span><span class="nf">ReadToEndAsync</span><span class="p">();</span>
+<span class="kt">dynamic</span> <span class="n">data</span> <span class="p">=</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="nf">DeserializeObject</span><span class="p">(</span><span class="n">requestBody</span><span class="p">);</span>
+<span class="n">name</span> <span class="p">=</span> <span class="n">name</span> <span class="p">??</span> <span class="n">data</span><span class="p">?.</span><span class="n">name</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Et cette partie-ci, de renvoyer un résultat au standard HTTP.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="n">name</span> <span class="p">!=</span> <span class="k">null</span>
+        <span class="p">?</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="s">$"Hello, </span><span class="p">{</span><span class="n">name</span><span class="p">}</span><span class="s">"</span><span class="p">)</span>
+        <span class="p">:</span> <span class="k">new</span> <span class="nf">BadRequestObjectResult</span><span class="p">(</span><span class="s">"Please pass a name on the query string or in the request body"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="écrire-sa-première-azure-functions">Écrire sa première Azure Functions</h2>
+<p>Ici, on rentre dans notre use case, comme dis au début nous allons envoyer deux nombres à notre Azure Fonction et les multiplier par eux-mêmes.</p>
+
+<p>Première étape, on va modifier le nom de notre function. On va donc remplacer Function1 par Multiplicator.
+À deux endroits, le nom de la classe est dans l’attribut [FunctionName]. Et supprimer tout ce qu’on n’a pas besoin.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Multiplicator</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"Multiplicator"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Run</span><span class="p">(</span>
+    <span class="p">[</span><span class="nf">HttpTrigger</span><span class="p">(</span><span class="n">AuthorizationLevel</span><span class="p">.</span><span class="n">Function</span><span class="p">,</span> <span class="s">"get"</span><span class="p">,</span> <span class="s">"post"</span><span class="p">,</span> <span class="n">Route</span> <span class="p">=</span> <span class="k">null</span><span class="p">)]</span> <span class="n">HttpRequest</span> <span class="n">req</span><span class="p">,</span> <span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"C# HTTP trigger function processed a request."</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Étape suivante, on va écrire une function (normale) qui va multiplier deux nombres.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">MultiplyNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="p">*</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>La prochaine étape sera de tester que la function tourne et renvois bien un résultat attendus.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Multiplicator</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"Multiplicator"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Run</span><span class="p">(</span>
+        <span class="p">[</span><span class="nf">HttpTrigger</span><span class="p">(</span><span class="n">AuthorizationLevel</span><span class="p">.</span><span class="n">Function</span><span class="p">,</span> <span class="s">"get"</span><span class="p">,</span> <span class="s">"post"</span><span class="p">,</span> <span class="n">Route</span> <span class="p">=</span> <span class="k">null</span><span class="p">)]</span> <span class="n">HttpRequest</span> <span class="n">req</span><span class="p">,</span>
+        <span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"C# HTTP trigger function processed a request."</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="nf">MultiplyNumber</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">MultiplyNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="p">*</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="pour-tester-f5-lance-en-debug-ou-release-selon-ce-qui-est-sélectionné-la-première-fois-il-est-possible-que-cela-prenne-un-certain-temps-notamment-pour-que-lazure-emulator-se-lance">Pour tester, F5 lance en Debug ou Release selon ce qui est sélectionné. La première fois, il est possible que cela prenne un certain temps, notamment pour que l’azure Emulator se lance.</h4>
+<p><img src="/images/azure-functions/launch-functions-part.png" alt="placeholder" title="Azure functions" /></p>
+
+<h4 id="si-tout-cest-bien-passer-un-invite-de-commande-vas-se-lancer-et-ressemble-à-ceci">Si tout c’est bien passer, un invite de commande vas se lancer et ressemble à ceci.</h4>
+<p><img src="/images/azure-functions/launch-functions-part2.png" alt="placeholder" title="Azure functions" /></p>
+
+<h4 id="et-la-partie-la-plus-important-se-trouve-tout-en-bas">Et la partie la plus important se trouve tout en bas.</h4>
+<p><img src="/images/azure-functions/launch-functions-part3.png" alt="placeholder" title="Azure functions" /></p>
+
+<p>L’URL suivante expose la Azure Functions.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:7071/api/Multiplicator
+</code></pre></div></div>
+
+<p>L’URL a testé dans un browser, donnera le résultat suivant.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>4
+</code></pre></div></div>
+
+<h2 id="binding-du-modèle-dentrée">Binding du modèle d’entrée</h2>
+<p>Dans l’étape précédente, les valeurs multipliées étaient connues et statices. Dans cette l’étape le but est de binder soit dans la query, la route ou le body(POST).</p>
+
+<h3 id="le-route-binding">Le route binding</h3>
+<p>Le binding dans la route permet de lier aisément un paramètre de la route dans un paramètre de la Azure Function.
+Pour cela, il faut modifier le paramètre route de la méthode Run.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Multiplicator</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"Multiplicator"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Run</span><span class="p">(</span>
+        <span class="p">[</span><span class="nf">HttpTrigger</span><span class="p">(</span><span class="n">AuthorizationLevel</span><span class="p">.</span><span class="n">Function</span><span class="p">,</span> <span class="s">"get"</span><span class="p">,</span> <span class="s">"post"</span><span class="p">,</span> <span class="n">Route</span> <span class="p">=</span> <span class="s">"Multiplicator/{a}/{b}"</span><span class="p">)]</span> <span class="n">HttpRequest</span> <span class="n">req</span><span class="p">,</span>
+        <span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"C# HTTP trigger function processed a request."</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="nf">MultiplyNumber</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">MultiplyNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="p">*</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>La modification au dessus, vas modifier la route, si la Azure functions est relancer (F5), elle aura une nouvelle URL.
+Dans HttpTrigger, le paramètre Route définis donc le points d’entrée de la function, ajouter des valeurs entre acolade crée des valeurs dynamique.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:7071/api/Multiplicator/{a}/{b}
+</code></pre></div></div>
+<p><img src="/images/azure-functions/launch-functions-part4.png" alt="placeholder" title="Azure functions" /></p>
+
+<p>La prochaine modification, va permettre de lier les valeurs de la route, a des paramètres de la Azure Functions.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Multiplicator</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"Multiplicator"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Run</span><span class="p">(</span>
+        <span class="p">[</span><span class="nf">HttpTrigger</span><span class="p">(</span><span class="n">AuthorizationLevel</span><span class="p">.</span><span class="n">Function</span><span class="p">,</span> <span class="s">"get"</span><span class="p">,</span> <span class="s">"post"</span><span class="p">,</span> <span class="n">Route</span> <span class="p">=</span> <span class="s">"Multiplicator/{a}/{b}"</span><span class="p">)]</span> <span class="n">HttpRequest</span> <span class="n">req</span><span class="p">,</span>
+        <span class="p">[</span><span class="n">FromRoute</span><span class="p">]</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span>
+        <span class="p">[</span><span class="n">FromRoute</span><span class="p">]</span><span class="kt">int</span> <span class="n">b</span><span class="p">,</span>
+        <span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"C# HTTP trigger function processed a request."</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="nf">MultiplyNumber</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">MultiplyNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="p">*</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Après le paramètre HttpRequest, deux autres sont ajoutés et permets cette liaison.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">FromRoute</span><span class="p">]</span><span class="kt">int</span> <span class="n">a</span>
+<span class="p">[</span><span class="n">FromRoute</span><span class="p">]</span><span class="kt">int</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<p>Dernière étape pour le binding par la route, utiliser les valeurs dans l’appel de la méthode qui multiplie les nombres.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Multiplicator</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"Multiplicator"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Run</span><span class="p">(</span>
+        <span class="p">[</span><span class="nf">HttpTrigger</span><span class="p">(</span><span class="n">AuthorizationLevel</span><span class="p">.</span><span class="n">Function</span><span class="p">,</span> <span class="s">"get"</span><span class="p">,</span> <span class="s">"post"</span><span class="p">,</span> <span class="n">Route</span> <span class="p">=</span> <span class="s">"Multiplicator/{a}/{b}"</span><span class="p">)]</span> <span class="n">HttpRequest</span> <span class="n">req</span><span class="p">,</span>
+        <span class="p">[</span><span class="n">FromRoute</span><span class="p">]</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span>
+        <span class="p">[</span><span class="n">FromRoute</span><span class="p">]</span><span class="kt">int</span> <span class="n">b</span><span class="p">,</span>
+        <span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"C# HTTP trigger function processed a request."</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="nf">MultiplyNumber</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">MultiplyNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="p">*</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="le-query-params-binding">Le query params binding</h3>
+<p>Il n’existe pas de manière de lier directement un paramètre en Query params à un paramètre de l’Azure functions, pour lire ce type d’input il faut utiliser la request.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Multiplicator</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"Multiplicator"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Run</span><span class="p">(</span>
+        <span class="p">[</span><span class="nf">HttpTrigger</span><span class="p">(</span><span class="n">AuthorizationLevel</span><span class="p">.</span><span class="n">Function</span><span class="p">,</span> <span class="s">"get"</span><span class="p">,</span> <span class="s">"post"</span><span class="p">,</span> <span class="n">Route</span> <span class="p">=</span> <span class="k">null</span><span class="p">)]</span> <span class="n">HttpRequest</span> <span class="n">req</span><span class="p">,</span>
+        <span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">Query</span><span class="p">[</span><span class="s">"a"</span><span class="p">]);</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">Query</span><span class="p">[</span><span class="s">"b"</span><span class="p">]);</span>
+
+        <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"C# HTTP trigger function processed a request."</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="nf">MultiplyNumber</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">MultiplyNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="p">*</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Les deux lignes suivantes, lisent les contenus du paramètre de la query selon la clé et sont converties en Int avec un parse.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">Query</span><span class="p">[</span><span class="s">"a"</span><span class="p">]);</span>
+<span class="kt">int</span> <span class="n">b</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">Query</span><span class="p">[</span><span class="s">"b"</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<h3 id="le-body-binding">Le body binding</h3>
+<p>Il existe plusieurs moyens de binder sur le body, ici la méthode la plus simple sera utilisée. Elle consiste à lire le body de la requête, ensuite désérialiser les contenus Json.</p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">InputMultiplicator</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">A</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">B</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Multiplicator</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">FunctionName</span><span class="p">(</span><span class="s">"Multiplicator"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Run</span><span class="p">(</span>
+        <span class="p">[</span><span class="nf">HttpTrigger</span><span class="p">(</span><span class="n">AuthorizationLevel</span><span class="p">.</span><span class="n">Function</span><span class="p">,</span> <span class="s">"post"</span><span class="p">,</span> <span class="n">Route</span> <span class="p">=</span> <span class="k">null</span><span class="p">)]</span> <span class="n">HttpRequest</span> <span class="n">req</span><span class="p">,</span>
+        <span class="n">ILogger</span> <span class="n">log</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">log</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"C# HTTP trigger function processed a request."</span><span class="p">);</span>
+
+        <span class="kt">string</span> <span class="n">requestBody</span> <span class="p">=</span> <span class="k">await</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">Body</span><span class="p">).</span><span class="nf">ReadToEndAsync</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="n">DeserializeObject</span><span class="p">&lt;</span><span class="n">InputMultiplicator</span><span class="p">&gt;(</span><span class="n">requestBody</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">ActionResult</span><span class="p">)</span><span class="k">new</span> <span class="nf">OkObjectResult</span><span class="p">(</span><span class="nf">MultiplyNumber</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">A</span><span class="p">,</span> <span class="n">model</span><span class="p">.</span><span class="n">B</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">MultiplyNumber</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="p">*</span> <span class="n">b</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Niveau URL, elle sera à nouveau simplifiée car le paramètre route est redevenu null.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:7071/api/Multiplicator
+</code></pre></div></div>
+
+<p>Il faudras cependant passer en POST avec un Body.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"a"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"b"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="publier-sur-azure">Publier sur Azure</h2>
+<p>La dernière étape est de rendre la Azure Function utilisable sur le cloud Azure.
+Pour cela dans Visual Studio, clique droit sur le projet, ensuite Publish.</p>
+
+<h4 id="clique-droit-sur-le-projet-qui-doit-être-publié">Clique droit sur le projet qui doit être publié.</h4>
+<p><img src="/images/azure-functions/publish-functions-part1.png" alt="placeholder" title="Azure functions" /></p>
+
+<h4 id="une-nouvelle-fenêtre-va-souvrir-le-bouton-start-va-permettre-de-configurer-le-déploiement">Une nouvelle fenêtre va s’ouvrir, le bouton Start va permettre de configurer le déploiement.</h4>
+<p><img src="/images/azure-functions/publish-functions-part2.png" alt="placeholder" title="Azure functions" /></p>
+
+<h4 id="ici-le-déploiement-se-fera-sur-un-consumption-plan-la-fenêtre-suivante-va-permettre-de-configurer-la-région-le-nom-etc-">Ici, le déploiement se fera sur un consumption Plan. La fenêtre suivante va permettre de configurer la région, le nom, etc …</h4>
+<p><img src="/images/azure-functions/publish-functions-part3.png" alt="placeholder" title="Azure functions" /></p>
+
+<h4 id="les-informations-du-déploiement-se-font-ici">Les informations du déploiement se font ici.</h4>
+<p><img src="/images/azure-functions/publish-functions-part4.png" alt="placeholder" title="Azure functions" /></p>
+
+<p>Le bouton Create en bas à droite va créer un profil de publication réutilisable.
+Ensuite, une autre fenêtre va s’ouvrir avec un bouton Publier, en cliquant dessus, Visual Studio, va publier la function sur azure.</p>
+
+<h2 id="la-sécurité">La sécurité</h2>
+<p>Niveau sécurité, Azure propose plusieurs niveaux d’authentification, un Anonymous qui ne demande rien de plus et 3 autres Function, Admin &amp; System qui nécessitent une clé pour autoriser l’accès à la function.</p>
+
+<p>Il existe trois types de clés :</p>
+<ul>
+  <li><strong>Host keys</strong> : Les clés de ce type peuvent s’utiliser de façons cross function dans la même Function App.</li>
+  <li><strong>Function keys</strong> : Les clés de ce type ne peuvent s’utiliser que sur la function sur laquelle la clé à été définie.</li>
+  <li><strong>Master key</strong> : Chaque Function App définit une master key (_master) qui donne un accès Admin sur toutes les function de l’app.</li>
+</ul>
+
+<h3 id="anonymous">Anonymous</h3>
+<p>Ne requière aucune authentification, toute les requêtes HTTP valides seront interceptées.</p>
+
+<h3 id="function">Function</h3>
+<p>Requière une clé d’authentification, ici la <strong>Host Key</strong> ou la <strong>Function Key</strong>.
+Pour la function <strong>Function Key</strong> celle-ci devra être définie sur la function qu’on souhaite appeler.
+Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.</p>
+
+<h3 id="admin">Admin</h3>
+<p>Requière une clé d’authentification, ici la <strong>Host Key</strong> sera nécessaire.
+Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.</p>
+
+<h3 id="system">System</h3>
+<p>Requière une clé d’authentification, ici la <strong>Master key</strong> sera nécessaire. La clé master ne peut pas être révokée.
+Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.</p>
+
+<p>Dans un prochain article, nous verrons en plusieurs détails la configuration d’Azure.</p>
+
+<div id="toc"></div>
+<p><strong>Table des matières</strong></p>
+<ol id="markdown-toc">
+  <li><a href="#azure-functions-démystifions-le-trigger-http" id="markdown-toc-azure-functions-démystifions-le-trigger-http">Azure Functions, démystifions le trigger HTTP</a>    <ol>
+      <li><a href="#crée-une-azure-functions-avec-visual-studio" id="markdown-toc-crée-une-azure-functions-avec-visual-studio">Crée une Azure Functions avec Visual Studio</a>        <ol>
+          <li><a href="#prerequis" id="markdown-toc-prerequis">Prerequis</a>            <ol>
+              <li><a href="#dans-la-fenêtre-de-création-dun-projet-de-visual-studio-2019-chercher-après-azure-functions" id="markdown-toc-dans-la-fenêtre-de-création-dun-projet-de-visual-studio-2019-chercher-après-azure-functions">Dans la fenêtre de création d’un Projet de Visual Studio 2019, chercher après Azure Functions.</a></li>
+              <li><a href="#selectionner-azure-functions-ensuite-next--suivant" id="markdown-toc-selectionner-azure-functions-ensuite-next--suivant">Selectionner Azure Functions, ensuite Next / Suivant.</a></li>
+              <li><a href="#il-faut-encoder-le-nom-du-projet-ici-samplefunction-ensuite-la-location-emplacement-sur-le-disque-et-pour-finir-le-nom-de-la-solution" id="markdown-toc-il-faut-encoder-le-nom-du-projet-ici-samplefunction-ensuite-la-location-emplacement-sur-le-disque-et-pour-finir-le-nom-de-la-solution">Il faut encoder le nom du projet, ici SampleFunction, ensuite la Location (emplacement sur le disque) et pour finir le nom de la solution.</a></li>
+              <li><a href="#la-fenêtre-suivante-est-très-intéressante-elle-va-permettre-de-paramétrer-la-function-pour-cet-article-cest-un-trigger-http-quil-faut-selectionner-en-storage-account-le-storage-emulator-et-en-authorization-sélectionner-anonymous-cest-létape-principale-qui-permet-de-scalffoder-les-projets-selon-la-sélection-faite-visual-studio-va-ajouter-des-packages-différents-mais-également-paramétrer-lentrypoint-de-la-function-différement" id="markdown-toc-la-fenêtre-suivante-est-très-intéressante-elle-va-permettre-de-paramétrer-la-function-pour-cet-article-cest-un-trigger-http-quil-faut-selectionner-en-storage-account-le-storage-emulator-et-en-authorization-sélectionner-anonymous-cest-létape-principale-qui-permet-de-scalffoder-les-projets-selon-la-sélection-faite-visual-studio-va-ajouter-des-packages-différents-mais-également-paramétrer-lentrypoint-de-la-function-différement">La fenêtre suivante est très intéressante, elle va permettre de paramétrer la function, pour cet article, c’est un Trigger Http qu’il faut selectionner, en Storage Account le Storage Emulator et en Authorization sélectionner Anonymous. C’est l’étape principale qui permet de scalffoder les projets. Selon la sélection faite, Visual Studio va ajouter des packages différents. Mais également paramétrer l’entrypoint de la function différement.</a></li>
+              <li><a href="#après-avoir-cliqué-sur-create-le-projet-avec-une-azure-functions-est-générée-par-visual-studio" id="markdown-toc-après-avoir-cliqué-sur-create-le-projet-avec-une-azure-functions-est-générée-par-visual-studio">Après avoir cliqué sur Create, le projet avec une Azure Functions est générée par Visual Studio.</a></li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li><a href="#explication-du-code-généré" id="markdown-toc-explication-du-code-généré">Explication du code généré</a></li>
+      <li><a href="#écrire-sa-première-azure-functions" id="markdown-toc-écrire-sa-première-azure-functions">Écrire sa première Azure Functions</a>        <ol>
+          <li><a href="#pour-tester-f5-lance-en-debug-ou-release-selon-ce-qui-est-sélectionné-la-première-fois-il-est-possible-que-cela-prenne-un-certain-temps-notamment-pour-que-lazure-emulator-se-lance" id="markdown-toc-pour-tester-f5-lance-en-debug-ou-release-selon-ce-qui-est-sélectionné-la-première-fois-il-est-possible-que-cela-prenne-un-certain-temps-notamment-pour-que-lazure-emulator-se-lance">Pour tester, F5 lance en Debug ou Release selon ce qui est sélectionné. La première fois, il est possible que cela prenne un certain temps, notamment pour que l’azure Emulator se lance.</a></li>
+          <li><a href="#si-tout-cest-bien-passer-un-invite-de-commande-vas-se-lancer-et-ressemble-à-ceci" id="markdown-toc-si-tout-cest-bien-passer-un-invite-de-commande-vas-se-lancer-et-ressemble-à-ceci">Si tout c’est bien passer, un invite de commande vas se lancer et ressemble à ceci.</a></li>
+          <li><a href="#et-la-partie-la-plus-important-se-trouve-tout-en-bas" id="markdown-toc-et-la-partie-la-plus-important-se-trouve-tout-en-bas">Et la partie la plus important se trouve tout en bas.</a></li>
+        </ol>
+      </li>
+      <li><a href="#binding-du-modèle-dentrée" id="markdown-toc-binding-du-modèle-dentrée">Binding du modèle d’entrée</a>        <ol>
+          <li><a href="#le-route-binding" id="markdown-toc-le-route-binding">Le route binding</a></li>
+          <li><a href="#le-query-params-binding" id="markdown-toc-le-query-params-binding">Le query params binding</a></li>
+          <li><a href="#le-body-binding" id="markdown-toc-le-body-binding">Le body binding</a></li>
+        </ol>
+      </li>
+      <li><a href="#publier-sur-azure" id="markdown-toc-publier-sur-azure">Publier sur Azure</a>        <ol>
+          <li><a href="#clique-droit-sur-le-projet-qui-doit-être-publié" id="markdown-toc-clique-droit-sur-le-projet-qui-doit-être-publié">Clique droit sur le projet qui doit être publié.</a></li>
+          <li><a href="#une-nouvelle-fenêtre-va-souvrir-le-bouton-start-va-permettre-de-configurer-le-déploiement" id="markdown-toc-une-nouvelle-fenêtre-va-souvrir-le-bouton-start-va-permettre-de-configurer-le-déploiement">Une nouvelle fenêtre va s’ouvrir, le bouton Start va permettre de configurer le déploiement.</a></li>
+          <li><a href="#ici-le-déploiement-se-fera-sur-un-consumption-plan-la-fenêtre-suivante-va-permettre-de-configurer-la-région-le-nom-etc-" id="markdown-toc-ici-le-déploiement-se-fera-sur-un-consumption-plan-la-fenêtre-suivante-va-permettre-de-configurer-la-région-le-nom-etc-">Ici, le déploiement se fera sur un consumption Plan. La fenêtre suivante va permettre de configurer la région, le nom, etc …</a></li>
+          <li><a href="#les-informations-du-déploiement-se-font-ici" id="markdown-toc-les-informations-du-déploiement-se-font-ici">Les informations du déploiement se font ici.</a></li>
+        </ol>
+      </li>
+      <li><a href="#la-sécurité" id="markdown-toc-la-sécurité">La sécurité</a>        <ol>
+          <li><a href="#anonymous" id="markdown-toc-anonymous">Anonymous</a></li>
+          <li><a href="#function" id="markdown-toc-function">Function</a></li>
+          <li><a href="#admin" id="markdown-toc-admin">Admin</a></li>
+          <li><a href="#system" id="markdown-toc-system">System</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+
+                <!-- Pagination links -->
+
+
+            </article>
+
+            
+
+        </section>
+
+        <!-- Add time bar only for pages without pagination -->
+        
+            <div class="time-bar" data-minutes="19">
+    <span class="time-completed"></span>
+    <span class="time-remaining"></span>
+    <div class="bar">
+        <span class="completed" style="width:0%;"></span>
+        <span class="remaining" style="width:100%;"></span>
+    </div>
+</div>
+
+            <div class="recommendation">
+    <div class="message">
+        <strong>Pourquoi ne pas lire autre chose?</strong>
+        <a href="javascript:void(0);">Revenir en haut</a>
+    </div>
+    
+    <a href="/oriente-objet-et-immuabilite/" class="post-preview">
+        <div class="image">
+            
+                <img src="/images/immuabilite-objet/lock.jpg">
+            
+        </div>
+        <h3 class="title">L'immuabilité pour un code sans bug</h3>
+    </a>
+</div>
+
+        
+
+        <!-- Show modal if the post is the last one -->
+        
+
+        <!-- Show modal before user leaves the page -->
+        
+
+        <section class="share">
+    <h3>Share</h3>
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;Azure Functions, démystifions le trigger HTTP.&quot;%20https://wetry.tech/azure-functions-trigger-http/%20via%20&#64;&hashtags=azure,tutorial,serverless,trigger http,"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+        <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
+    </a>
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/azure-functions-trigger-http/"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+        <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
+    </a>
+</section>
+
+        
+
+  <section class="author">
+    <div class="details">
+      
+        <img class="img-rounded" src="/images/authors/pgrasseels.jpg" alt="Patrick Grasseels">
+      
+      <p class="def">Author</p>
+      <h3 class="name">
+        <a href="/authors/pgrasseels/">Patrick Grasseels</a>
+      </h3>
+      <p class="desc"></p>
+      <p>
+        
+          <a href="https://github.com/hantse" title="Github">
+            <svg><use xlink:href="#icon-github"></use></svg>
+          </a>
+        
+        
+        
+          <a href="https://twitter.com/pgrasseels" title="Twitter">
+            <svg><use xlink:href="#icon-twitter"></use></svg>
+          </a>
+        
+        
+        
+        
+      </p>
+    </div>
+  </section>
+
+  
+  
+  
+  
+  
+  
+  
+
+  <script type="application/ld+json">
+  {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Patrick Grasseels",
+      
+      "image": "/images/authors/pgrasseels.jpg",
+      
+      "jobTitle": "Développeur",
+      "url": "https://wetry.tech/authors/pgrasseels/",
+      "sameAs": [
+        "https://github.com/hantse","https://twitter.com/pgrasseels"
+      ]
+  }
+  </script>
+
+
+        
+
+<section class="comments">
+    <h3>Comments</h3>
+    <div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+    var disqus_loaded = false;
+
+    function load_disqus()
+    {
+        disqus_loaded = true;
+        var disqus_shortname = 'wetry';
+        var disqus_title = '';
+        var disqus_url = '/azure-functions-trigger-http/';
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        var ldr = document.getElementById('disqus_loader');
+    };
+    window.onscroll = function(e) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 800)) {
+            //hit bottom of page
+            if (disqus_loaded==false)
+                load_disqus()
+        }
+    };
+</script>
+
+
+
+        <footer>
+    <p>
+      
+        <a href="https://github.com/wetryio" title="Github">
+          <svg><use xlink:href="#icon-github"></use></svg>
+        </a>
+      
+      
+        <a href="https://www.facebook.com/WeTry-103230437736535" title="Facebook">
+          <svg><use xlink:href="#icon-facebook"></use></svg>
+        </a>
+      
+      
+      
+      
+      
+    </p>
+
+    <ul>
+  <li>
+    <a href="https://wetry.tech/">Home</a>
+  </li>
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/about/">À propos de nous</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/craftlab-it/">CraftLab IT</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/hitw2019/">HITW 2019</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <li>
+    <a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a>
+  </li>
+</ul>
+
+
+    <p>
+      <span>Jekflix</span> was made with <svg class="love"><use xlink:href="#icon-heart"></use></svg> by <a href="https://rossener.com" target="_blank" class="creator">Thiago Rossener</a>
+    </p>
+</footer>
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "WeTry",
+  "description": "Encore un autre blog de développeur.",
+  "url": "https://wetry.tech/",
+  "logo": {
+      "@type": "ImageObject",
+      "url": "https://wetry.tech/assets/img/icons/mediumtile.png",
+      "width": "600",
+      "height": "315"
+  },
+  "sameAs": [
+    "https://github.com/wetryio","https://www.facebook.com/WeTry-103230437736535"
+  ]
+}
+</script>
+
+<!-- Include the script that allows Netlify CMS login -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- Include the website scripts -->
+<script src="/assets/js/scripts.min.js"></script>
+
+<!-- Include Google Analytics script -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-145445435-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+
+
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "name": "Azure Functions démystifions le trigger HTTP",
+            "headline": "",
+            "description": "Azure Functions, démystifions le trigger HTTP.",
+            "image": "/images/azure-functions/Azure-Functions.png",
+            "url": "https://wetry.tech/azure-functions-trigger-http/",
+            "articleBody": "Azure Functions, démystifions le trigger HTTP
+
+Dans l’article précédent, j’exposais les bases d’une Azure Functions, si vous ne savez pas du tout ce que c’est, je vous conseille de commencer par là Azure Functions, les bases.
+
+Dans cet article, je vais démystifier le trigger HTTP, mais également montrer jusqu’où il est possible d’aller en y intégrant des principes très proches de ceux de l’ASP.NET Core. Voici dans les grandes lignes les étapes :
+
+  Crée une Azure Functions avec Visual Studio
+  Explication du code généré
+  Modification pour renvoyer une valeur calculée par rapport à ce que la function aura reçu
+  Binding du modèle d’entrée
+  Publier sur Azure
+  La sécurité
+
+
+La use case que nous allons voir ici, est de réaliser une function qui prend deux nombres en paramètre et les multiplie par eux-mêmes.
+
+Crée une Azure Functions avec Visual Studio
+
+Prerequis
+
+  Visual Studio 2017 ou Visual Studio 2019
+  Azure Functions Tools pour Visual Studio 2017
+  Avoir selectionné les Azure Development dans les feature à installer
+
+
+Les images utilisées ici sont tirées de Visual Studio 2019.
+
+Dans la fenêtre de création d’un Projet de Visual Studio 2019, chercher après Azure Functions.
+
+
+Selectionner Azure Functions, ensuite Next / Suivant.
+
+
+Il faut encoder le nom du projet, ici SampleFunction, ensuite la Location (emplacement sur le disque) et pour finir le nom de la solution.
+
+
+La fenêtre suivante est très intéressante, elle va permettre de paramétrer la function, pour cet article, c’est un Trigger Http qu’il faut selectionner, en Storage Account le Storage Emulator et en Authorization sélectionner Anonymous. C’est l’étape principale qui permet de scalffoder les projets. Selon la sélection faite, Visual Studio va ajouter des packages différents. Mais également paramétrer l’entrypoint de la function différement.
+
+
+Après avoir cliqué sur Create, le projet avec une Azure Functions est générée par Visual Studio.
+
+
+Explication du code généré
+Le code généré à la base ressemble à ceci
+
+public static class Function1
+    {
+        [FunctionName(&quot;Function1&quot;)]
+        public static async Task&amp;lt;IActionResult&amp;gt; Run(
+            [HttpTrigger(AuthorizationLevel.Function, &quot;get&quot;, &quot;post&quot;, Route = null)] HttpRequest req,
+            ILogger log)
+        {
+            log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+
+            string name = req.Query[&quot;name&quot;];
+
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+            dynamic data = JsonConvert.DeserializeObject(requestBody);
+            name = name ?? data?.name;
+
+            return name != null
+                ? (ActionResult)new OkObjectResult($&quot;Hello, {name}&quot;)
+                : new BadRequestObjectResult(&quot;Please pass a name on the query string or in the request body&quot;);
+        }
+    }
+
+
+Découpons un peu ce code pour en comprendre les bases, commençons par le point d’entrée de la function.
+
+[FunctionName(&quot;Function1&quot;)]
+public static async Task&amp;lt;IActionResult&amp;gt; Run([HttpTrigger(AuthorizationLevel.Function, &quot;get&quot;, &quot;post&quot;, Route = null)] HttpRequest req, ILogger log)
+
+Le point d’entrée, Run a un attribut FunctionName avec en paramètre le nom de la function.
+Le premier paramètre de Run est le type de trigger, ici c’est un trigger du type HttpTrigger.
+Ce même HttpTrigger, à plusieurs paramètres;
+
+  AuthorizationLevel.Function : c’est le niveau de sécurité que la Function nécessite, une explication est disponible à ce propos en bas d’article
+  “get”, “post” : le type de verb HTTP qui est supporter par la Function
+  Route = null : par défaut, l’URL d’une Functions est https://monhostnameazure/NomDeLaFunction, le paramètre route ici permet de modifier cette règle
+
+
+Le reste de la function c’est du code C# comme en ASPNET Core, en Console, etc … Mais c’est ce code, qui sera exécuté et qui vas permettre de renvoyer ou non une valeur.
+Dans le sample de base, la Function attend en query params ou body, une valeur sur la clé Name. Ensuite, elle renvoit soit une HTTP 200 avec le nom concaténer avec Hello, soit une 400 si ni le body, ni la query ne contient de valeur pour Name.
+
+log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+string name = req.Query[&quot;name&quot;];
+
+string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+dynamic data = JsonConvert.DeserializeObject(requestBody);
+name = name ?? data?.name;
+
+return name != null
+        ? (ActionResult)new OkObjectResult($&quot;Hello, {name}&quot;)
+        : new BadRequestObjectResult(&quot;Please pass a name on the query string or in the request body&quot;);
+
+
+La partie suivante s’occupe de parser la query / body
+string name = req.Query[&quot;name&quot;];
+
+string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+dynamic data = JsonConvert.DeserializeObject(requestBody);
+name = name ?? data?.name;
+
+
+Et cette partie-ci, de renvoyer un résultat au standard HTTP.
+return name != null
+        ? (ActionResult)new OkObjectResult($&quot;Hello, {name}&quot;)
+        : new BadRequestObjectResult(&quot;Please pass a name on the query string or in the request body&quot;);
+
+
+Écrire sa première Azure Functions
+Ici, on rentre dans notre use case, comme dis au début nous allons envoyer deux nombres à notre Azure Fonction et les multiplier par eux-mêmes.
+
+Première étape, on va modifier le nom de notre function. On va donc remplacer Function1 par Multiplicator.
+À deux endroits, le nom de la classe est dans l’attribut [FunctionName]. Et supprimer tout ce qu’on n’a pas besoin.
+public static class Multiplicator
+{
+    [FunctionName(&quot;Multiplicator&quot;)]
+    public static async Task&amp;lt;IActionResult&amp;gt; Run(
+    [HttpTrigger(AuthorizationLevel.Function, &quot;get&quot;, &quot;post&quot;, Route = null)] HttpRequest req, ILogger log)
+    {
+        log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+        return (ActionResult)new OkObjectResult(0);
+    }
+}
+
+
+Étape suivante, on va écrire une function (normale) qui va multiplier deux nombres.
+private static int MultiplyNumber(int a, int b)
+{
+    return a * b;
+}
+
+
+La prochaine étape sera de tester que la function tourne et renvois bien un résultat attendus.
+public static class Multiplicator
+{
+    [FunctionName(&quot;Multiplicator&quot;)]
+    public static async Task&amp;lt;IActionResult&amp;gt; Run(
+        [HttpTrigger(AuthorizationLevel.Function, &quot;get&quot;, &quot;post&quot;, Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+        return (ActionResult)new OkObjectResult(MultiplyNumber(2, 2));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+
+
+Pour tester, F5 lance en Debug ou Release selon ce qui est sélectionné. La première fois, il est possible que cela prenne un certain temps, notamment pour que l’azure Emulator se lance.
+
+
+Si tout c’est bien passer, un invite de commande vas se lancer et ressemble à ceci.
+
+
+Et la partie la plus important se trouve tout en bas.
+
+
+L’URL suivante expose la Azure Functions.
+http://localhost:7071/api/Multiplicator
+
+
+L’URL a testé dans un browser, donnera le résultat suivant.
+4
+
+
+Binding du modèle d’entrée
+Dans l’étape précédente, les valeurs multipliées étaient connues et statices. Dans cette l’étape le but est de binder soit dans la query, la route ou le body(POST).
+
+Le route binding
+Le binding dans la route permet de lier aisément un paramètre de la route dans un paramètre de la Azure Function.
+Pour cela, il faut modifier le paramètre route de la méthode Run.
+public static class Multiplicator
+{
+    [FunctionName(&quot;Multiplicator&quot;)]
+    public static async Task&amp;lt;IActionResult&amp;gt; Run(
+        [HttpTrigger(AuthorizationLevel.Function, &quot;get&quot;, &quot;post&quot;, Route = &quot;Multiplicator/{a}/{b}&quot;)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+        return (ActionResult)new OkObjectResult(MultiplyNumber(2, 2));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+
+
+La modification au dessus, vas modifier la route, si la Azure functions est relancer (F5), elle aura une nouvelle URL.
+Dans HttpTrigger, le paramètre Route définis donc le points d’entrée de la function, ajouter des valeurs entre acolade crée des valeurs dynamique.
+http://localhost:7071/api/Multiplicator/{a}/{b}
+
+
+
+La prochaine modification, va permettre de lier les valeurs de la route, a des paramètres de la Azure Functions.
+public static class Multiplicator
+{
+    [FunctionName(&quot;Multiplicator&quot;)]
+    public static async Task&amp;lt;IActionResult&amp;gt; Run(
+        [HttpTrigger(AuthorizationLevel.Function, &quot;get&quot;, &quot;post&quot;, Route = &quot;Multiplicator/{a}/{b}&quot;)] HttpRequest req,
+        [FromRoute]int a,
+        [FromRoute]int b,
+        ILogger log)
+    {
+        log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+        return (ActionResult)new OkObjectResult(MultiplyNumber(2, 2));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+
+
+Après le paramètre HttpRequest, deux autres sont ajoutés et permets cette liaison.
+[FromRoute]int a
+[FromRoute]int b
+
+
+Dernière étape pour le binding par la route, utiliser les valeurs dans l’appel de la méthode qui multiplie les nombres.
+public static class Multiplicator
+{
+    [FunctionName(&quot;Multiplicator&quot;)]
+    public static async Task&amp;lt;IActionResult&amp;gt; Run(
+        [HttpTrigger(AuthorizationLevel.Function, &quot;get&quot;, &quot;post&quot;, Route = &quot;Multiplicator/{a}/{b}&quot;)] HttpRequest req,
+        [FromRoute]int a,
+        [FromRoute]int b,
+        ILogger log)
+    {
+        log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+        return (ActionResult)new OkObjectResult(MultiplyNumber(a, b));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+
+
+Le query params binding
+Il n’existe pas de manière de lier directement un paramètre en Query params à un paramètre de l’Azure functions, pour lire ce type d’input il faut utiliser la request.
+public static class Multiplicator
+{
+    [FunctionName(&quot;Multiplicator&quot;)]
+    public static async Task&amp;lt;IActionResult&amp;gt; Run(
+        [HttpTrigger(AuthorizationLevel.Function, &quot;get&quot;, &quot;post&quot;, Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        int a = int.Parse(req.Query[&quot;a&quot;]);
+        int b = int.Parse(req.Query[&quot;b&quot;]);
+
+        log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+        return (ActionResult)new OkObjectResult(MultiplyNumber(a, b));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+
+
+Les deux lignes suivantes, lisent les contenus du paramètre de la query selon la clé et sont converties en Int avec un parse.
+int a = int.Parse(req.Query[&quot;a&quot;]);
+int b = int.Parse(req.Query[&quot;b&quot;]);
+
+
+Le body binding
+Il existe plusieurs moyens de binder sur le body, ici la méthode la plus simple sera utilisée. Elle consiste à lire le body de la requête, ensuite désérialiser les contenus Json.
+public class InputMultiplicator
+{
+    public int A { get; set; }
+    public int B { get; set; }
+}
+
+public static class Multiplicator
+{
+    [FunctionName(&quot;Multiplicator&quot;)]
+    public static async Task&amp;lt;IActionResult&amp;gt; Run(
+        [HttpTrigger(AuthorizationLevel.Function, &quot;post&quot;, Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation(&quot;C# HTTP trigger function processed a request.&quot;);
+
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        var model = JsonConvert.DeserializeObject&amp;lt;InputMultiplicator&amp;gt;(requestBody);
+
+        return (ActionResult)new OkObjectResult(MultiplyNumber(model.A, model.B));
+    }
+
+    private static int MultiplyNumber(int a, int b)
+    {
+        return a * b;
+    }
+}
+
+
+Niveau URL, elle sera à nouveau simplifiée car le paramètre route est redevenu null.
+http://localhost:7071/api/Multiplicator
+
+
+Il faudras cependant passer en POST avec un Body.
+{
+    &quot;a&quot;: 10,
+    &quot;b&quot;: 2
+}
+
+
+Publier sur Azure
+La dernière étape est de rendre la Azure Function utilisable sur le cloud Azure.
+Pour cela dans Visual Studio, clique droit sur le projet, ensuite Publish.
+
+Clique droit sur le projet qui doit être publié.
+
+
+Une nouvelle fenêtre va s’ouvrir, le bouton Start va permettre de configurer le déploiement.
+
+
+Ici, le déploiement se fera sur un consumption Plan. La fenêtre suivante va permettre de configurer la région, le nom, etc …
+
+
+Les informations du déploiement se font ici.
+
+
+Le bouton Create en bas à droite va créer un profil de publication réutilisable.
+Ensuite, une autre fenêtre va s’ouvrir avec un bouton Publier, en cliquant dessus, Visual Studio, va publier la function sur azure.
+
+La sécurité
+Niveau sécurité, Azure propose plusieurs niveaux d’authentification, un Anonymous qui ne demande rien de plus et 3 autres Function, Admin &amp;amp; System qui nécessitent une clé pour autoriser l’accès à la function.
+
+Il existe trois types de clés :
+
+  Host keys : Les clés de ce type peuvent s’utiliser de façons cross function dans la même Function App.
+  Function keys : Les clés de ce type ne peuvent s’utiliser que sur la function sur laquelle la clé à été définie.
+  Master key : Chaque Function App définit une master key (_master) qui donne un accès Admin sur toutes les function de l’app.
+
+
+Anonymous
+Ne requière aucune authentification, toute les requêtes HTTP valides seront interceptées.
+
+Function
+Requière une clé d’authentification, ici la Host Key ou la Function Key.
+Pour la function Function Key celle-ci devra être définie sur la function qu’on souhaite appeler.
+Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.
+
+Admin
+Requière une clé d’authentification, ici la Host Key sera nécessaire.
+Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.
+
+System
+Requière une clé d’authentification, ici la Master key sera nécessaire. La clé master ne peut pas être révokée.
+Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.
+
+Dans un prochain article, nous verrons en plusieurs détails la configuration d’Azure.
+
+
+Table des matières
+
+  Azure Functions, démystifions le trigger HTTP    
+      Crée une Azure Functions avec Visual Studio        
+          Prerequis            
+              Dans la fenêtre de création d’un Projet de Visual Studio 2019, chercher après Azure Functions.
+              Selectionner Azure Functions, ensuite Next / Suivant.
+              Il faut encoder le nom du projet, ici SampleFunction, ensuite la Location (emplacement sur le disque) et pour finir le nom de la solution.
+              La fenêtre suivante est très intéressante, elle va permettre de paramétrer la function, pour cet article, c’est un Trigger Http qu’il faut selectionner, en Storage Account le Storage Emulator et en Authorization sélectionner Anonymous. C’est l’étape principale qui permet de scalffoder les projets. Selon la sélection faite, Visual Studio va ajouter des packages différents. Mais également paramétrer l’entrypoint de la function différement.
+              Après avoir cliqué sur Create, le projet avec une Azure Functions est générée par Visual Studio.
+            
+          
+        
+      
+      Explication du code généré
+      Écrire sa première Azure Functions        
+          Pour tester, F5 lance en Debug ou Release selon ce qui est sélectionné. La première fois, il est possible que cela prenne un certain temps, notamment pour que l’azure Emulator se lance.
+          Si tout c’est bien passer, un invite de commande vas se lancer et ressemble à ceci.
+          Et la partie la plus important se trouve tout en bas.
+        
+      
+      Binding du modèle d’entrée        
+          Le route binding
+          Le query params binding
+          Le body binding
+        
+      
+      Publier sur Azure        
+          Clique droit sur le projet qui doit être publié.
+          Une nouvelle fenêtre va s’ouvrir, le bouton Start va permettre de configurer le déploiement.
+          Ici, le déploiement se fera sur un consumption Plan. La fenêtre suivante va permettre de configurer la région, le nom, etc …
+          Les informations du déploiement se font ici.
+        
+      
+      La sécurité        
+          Anonymous
+          Function
+          Admin
+          System
+        
+      
+    
+  
+
+",
+            "wordcount": "3443",
+            "inLanguage": "fr",
+            "dateCreated": "2019-10-02/",
+            "datePublished": "2019-10-02/",
+            "dateModified": "2019-10-02/",
+            "author": {
+                "@type": "Person",
+                "name": "David Gilson<br/>(Gilsdav)",
+                
+                "image": "/images/authors/dgilson.png",
+                
+                "jobTitle": "Développeur",
+                "url": "https://wetry.tech/authors/dgilson/",
+                "sameAs": [
+                    "https://github.com/gilsdav","https://twitter.com/gilsondavid5","https://www.linkedin.com/in/david-gilson-innovate"
+                ]
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "WeTry",
+                "url": "https://wetry.tech/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://wetry.tech/assets/img/blog-image-wt.png",
+                    "width": "600",
+                    "height": "315"
+                }
+            },
+            "mainEntityOfPage": "True",
+            "genre": "blog",
+            "articleSection": "blog",
+            "keywords": ["azure","tutorial","serverless","trigger http"]
+        }
+        </script>
+    </body>
+</html>
