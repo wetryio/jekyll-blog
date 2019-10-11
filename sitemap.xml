@@ -195,13 +195,6 @@
         </url>
     
         <url>
-            <loc>https://wetry.tech/azure-functions-trigger-http/</loc>
-            <changefreq>weekly</changefreq>
-            <priority>0.8</priority>
-            <lastmod>2019-10-02</lastmod>
-        </url>
-    
-        <url>
             <loc>https://wetry.tech/une-bonne-doc-est-une-doc-accessible/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>

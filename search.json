@@ -10,14 +10,6 @@
     } ,
   
     {
-      "title"    : "Azure Functions démystifions le trigger HTTP",
-      "tags"     : "azure, tutorial, serverless, and trigger http",
-      "categories" : "blog",
-      "url"      : "/azure-functions-trigger-http/",
-      "date"     : "10/02/2019"
-    } ,
-  
-    {
       "title"    : "Une bonne doc est une doc accessible",
       "tags"     : "documentation and bonne pratique",
       "categories" : "bonne-pratique",
