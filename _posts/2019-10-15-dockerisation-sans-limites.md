@@ -1,17 +1,18 @@
 ---
 author: dgilson
 layout: post
-title: "Dockeriser sans limites"
+title: "Dockerisation sans limites"
 date: 2019-10-14 06:41:08
 image: /images/docker-posts/docker-vs-code.png
-description: Docker, l'outil ultime pour les développeurs.
+description: Docker, l'outil ultime des développeurs.
 category: 'experimentation'
 tags:
 - docker
 - IDE
+- VS Code
 ---
 
-## Docker l'outil ultime pour les développeurs
+## Docker l'outil ultime des développeurs
 
 Docker s'est démocratisé chez les développeurs, car il nous facilite la vie quand il s'agit de créer un environnement local avec tous les outils nécessaires tel qu'une *base de données*, un *système de message*, un *serveur de mocks*...
 
@@ -19,7 +20,7 @@ Cela permet à toute l'équipe d'avoir un environnement similaire tout en ayant 
 
 Il n'y a finalement qu'un outil que ne dockerisons pas encore: l'**IDE**.
 
-S'il y a bien un endroit où les développeurs ne sont pas toujours d'accord, c'est sur le choix d'un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serais-ce que par rapport au formatage du code.
+S'il y a bien une chose sur laquelle les développeurs ne sont pas toujours d'accord, c'est sur le choix d'un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serais-ce que par rapport au formatage du code.
 
 Alors ne serait-il pas une bonne idée de forcer l'IDE et ces configurations ? Ou encore mieux: avoir un IDE préconfiguré en une seule commande.
 
@@ -29,13 +30,14 @@ Vous l'aurez compris, cet article vise à ouvrir une porte sur la dockerisation 
 
 Un des éditeurs les plus populaires pour le développement web ou .net core est Visual Studio Code (VS Code). Cet éditeur est open-source et complètement écrit en HTML, JavaScript et CSS à l'aide d'[Electron](https://electronjs.org/) (outil qui permet de faire des applications desktop en web comme Cordova le fait pour les smartphones).
 
-Et c'est parce qu'il est fait de technologies web qu'il devient vraiment possible de le dockeriser, car nous pourrions, en théorie, l'utiliser dans un navigateur.
+Et c'est parce qu'il est fait de technologies web qu'il devient possible de le dockeriser. Nous pourrions alors l'utiliser dans un navigateur.
 
-La société [Coder](https://coder.com/) a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc nous concentrer sur leurs outils.
+La companie [Coder](https://coder.com/) a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc pouvoir nous concentrer sur leurs outils.
 
 ## Sur la machine de développement
 
-Pour installer, configurer un Visual Studio Code pour navigateur et sauver les options choisies dans votre repository GIT, rien de plus facile qu'une simple commande Docker:
+Pour démarrer un VS Code sur votre navigateur, rien de plus simple, nous pourions nous contenter d'une commande Docker :
+
 ```sh
 docker run -it -p 127.0.0.1:8080:8080 
     -v "$PWD/code-server:/home/coder/.local/share/code-server"
@@ -43,11 +45,14 @@ docker run -it -p 127.0.0.1:8080:8080
     codercom/code-server:v2
 ```
 
-Super! vous avez VS Code dans votre navigateur.
+Super, on a déjà plus que du concret!
 
-Mais vous allez vite faire face à un problème: le terminal fonctionne, mais il n'y a aucun outil de build disponible comme *npm* ou *maven*.
+![vs code online](/images/docker-posts/vs-code-online.png)
 
-Pas de panique ! Je vous rappelle que c'est du Docker. Nous allons donc simplement pouvoir créer notre propre image qui se base sur celle de fournie (`codercom/code-server:v2`).
+
+Mais nous allons vite faire face à un "problème": le terminal fonctionne, mais il n'y a aucun outil de build disponible comme *npm* ou *maven*.
+
+Pas de panique ! Je vous rappelle qu'il s'agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle de fournie (`codercom/code-server:v2`).
 
 Voici un exemple de **dockerfile** qui installe automatiquement une **extension** et installe **NodeJs**, afin d'avoir un environnement près pour le développement:
 
@@ -68,7 +73,9 @@ RUN sudo apt-get install -y nodejs
 CMD ["code-server", "--allow-http", "--no-auth"]
 ```
 
-Il faudra alors builder notre image:
+J'ai décidé de nommer le dockerfile "`code-server-test`" de façon totalement arbitraire.
+
+Il faudra alors construite (builder) notre image:
 ```sh
 docker build . -t code-server-test
 ```
@@ -82,23 +89,23 @@ Nous pouvons à nouveau remarquer à quel point ces manipulations sont simple gr
 
 ## Sur un serveur
 
-Jusqu'à maintenant, il est toujours nécessaire d'avoir une machine assez puissante et avec la bonne architecture pour faire tourner les outils de développement, mais surtout pour faire Docker.
+Jusqu'à maintenant, il est toujours nécessaire d'avoir une machine assez puissante et avec la bonne architecture pour faire tourner les outils de développement, et surtout pour faire Docker.
 
 Si le container Docker pouvait tourner sur un serveur, il n'y aurait plus besoin d'autre chose qu'un navigateur moderne. Cela veut dire que l'on pourrait également développer sur une tablette ou un smartphone.
 
-Enfin le must, sur un serveur, serait qu'un environnement de développement soit créé dès la récupération du code source (exemple: Github).
+Enfin, le must pour un serveur serait qu'un environnement de développement soit créé dès la récupération du code source (exemple: Github).
 
 ### Via commande
 
 Nous allons maintenant parler d'un autre outil de Coder: [Sail](https://sail.dev).
-<sub>*J'ai placé cet outil uniquement dans la partie "serveur", car certaines fonctionnalités réseau de Docker sont nécessaires, mais non compatibles avec MacOS pour le moment. Il n'en est pas moins intéressant de l'utiliser sur un serveur linux à part.*</sub>
+<sub>*J'ai placé cet outil uniquement dans la partie "serveur", car certaines fonctionnalités réseau de Docker sont nécessaires, mais non compatibles avec MacOS pour le moment. Il n'en est pas moins intéressant de l'utiliser sur un serveur linux.*</sub>
 
-Il s'agit d'un CLI qui nous permet exactement se que l'on veut via une commande:
+Il s'agit d'un CLI qui nous permet exactement ce que l'on veut via une commande:
 ```sh
 sail run --ssh github.com/cdr/sshcode
 ```
 
-Pour cet outil, ce sont des images différentient qui seront utilisées. Je parle au pluriel, car il sera en mesure de détecter les outils nécessaires s'il connait le type de projet (exemples: nodejs, ruby, python...) afin de choisir l'image adéquate. Vous pouvez trouver les outils pris en charge [ici](https://hub.docker.com/search?q=codercom%2Fubuntu-dev&type=image).
+Pour cet outil, ce sont des images différentes qui seront utilisées. Je parle au pluriel, car il sera en mesure de détecter les outils nécessaires s'il connait le type de projet (exemples: nodejs, ruby, python...) afin de choisir l'image adéquate. Vous pouvez trouver la liste des outils pris en charge [ici](https://hub.docker.com/search?q=codercom%2Fubuntu-dev&type=image).
 
 Si votre technologie n'est pas prise en charge ou que vous voulez customiser votre environnement (avec d'autres outils ou des extensions par exemple), cela reste tout à fait possible.
 
@@ -119,7 +126,7 @@ Pour plus d'informations n'hésitez pas à aller voir la [documentation](https:/
 
 ### Via un portail web
 
-Afin d'éviter de devoir se connecter en SSH à chaque récupération de projet, il serait plut confortable d'avoir une page web.
+Afin d'éviter de devoir se connecter en SSH à chaque récupération de projet, il serait plus confortable d'avoir une page web.
 
 Un projet nommé [Sail Hub](https://github.com/gilsdav/sail-hub) à vu le jour dans cette optique.
 
@@ -140,7 +147,7 @@ Et voilà, vous n'avez plus qu'une URL à retenir pour pouvoir développer depui
 
 Cet article n'a pas pour but de vous assurer la stabilité de ces produits, mais de vous montrer la puissance de Docker dans un autre contexte que celui dont nous avons l'habitude.
 
-Cependant je pense que dockeriser la stack complète de développement permet d'éradiquer les problèmes de configuration, peu importe l'OS.
+Cependant je pense que dockeriser la stack complète de développement permet d'éviter les problèmes liés à la configuration, et ce peu importe l'OS.
 
 N'hésitez pas à me communiquer votre avis via un commentaire.
 
