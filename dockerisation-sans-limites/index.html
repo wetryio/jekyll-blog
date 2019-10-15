@@ -198,7 +198,7 @@ Octobre 15, 2019
                         </time>
                     
                     <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
-                    <span>6 min to read</span>
+                    <span>7 min to read</span>
                 </p>
                 <h1 class="post-title">Dockerisation sans limites</h1>
                 <p class="post-subtitle"></p>
@@ -231,17 +231,27 @@ Octobre 15, 2019
 
 <p>Et c’est parce qu’il est fait de technologies web qu’il devient possible de le dockeriser. Nous pourrions alors l’utiliser dans un navigateur.</p>
 
-<p>La companie <a href="https://coder.com/">Coder</a> a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc pouvoir nous concentrer sur leurs outils.</p>
+<p>La compagnie <a href="https://coder.com/">Coder</a> a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc pouvoir nous concentrer sur leurs outils.</p>
 
 <h2 id="sur-la-machine-de-développement">Sur la machine de développement</h2>
 
-<p>Pour démarrer un VS Code sur votre navigateur, rien de plus simple, nous pourions nous contenter d’une commande Docker :</p>
+<p>Pour démarrer un VS Code sur votre navigateur, rien de plus simple, nous pourrions nous contenter d’une commande Docker :</p>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080:8080 
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>code-server
+docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080:8080 
     <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/code-server:/home/coder/.local/share/code-server"</span>
     <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/home/coder/project"</span>
     codercom/code-server:v2
 </code></pre></div></div>
+<p>ou pour windows (powershell):</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir </span>code-server
+docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080:8080 <span class="sb">`</span>
+    <span class="nt">-v</span> <span class="k">${</span><span class="nv">pwd</span><span class="k">}</span>/code-server:/home/coder/.local/share/code-server <span class="sb">`</span>
+    <span class="nt">-v</span> <span class="k">${</span><span class="nv">pwd</span><span class="k">}</span>:/home/coder/project <span class="sb">`</span>
+    codercom/code-server:v2
+</code></pre></div></div>
+
+<p><em>Comme vous l’aurez remarqué, la différence entre linux/MacOs et Windows se fait principalement au niveau du chemin <code class="highlighter-rouge">pwd</code>. Si vous êtes sur <strong>Windows</strong>, il faudra que vous remplaciez les <code class="highlighter-rouge">$PWD</code> par des <code class="highlighter-rouge">${pwd}</code> dans les prochaines commandes.</em></p>
 
 <p>Super, on a déjà plus que du concret!</p>
 
@@ -377,7 +387,7 @@ Octobre 15, 2019
 
         <!-- Add time bar only for pages without pagination -->
         
-            <div class="time-bar" data-minutes="6">
+            <div class="time-bar" data-minutes="7">
     <span class="time-completed"></span>
     <span class="time-remaining"></span>
     <div class="bar">
@@ -696,17 +706,27 @@ Un des éditeurs les plus populaires pour le développement web ou .net core est
 
 Et c’est parce qu’il est fait de technologies web qu’il devient possible de le dockeriser. Nous pourrions alors l’utiliser dans un navigateur.
 
-La companie Coder a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc pouvoir nous concentrer sur leurs outils.
+La compagnie Coder a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc pouvoir nous concentrer sur leurs outils.
 
 Sur la machine de développement
 
-Pour démarrer un VS Code sur votre navigateur, rien de plus simple, nous pourions nous contenter d’une commande Docker :
+Pour démarrer un VS Code sur votre navigateur, rien de plus simple, nous pourrions nous contenter d’une commande Docker :
 
+mkdir code-server
 docker run -it -p 127.0.0.1:8080:8080 
     -v &quot;$PWD/code-server:/home/coder/.local/share/code-server&quot;
     -v &quot;$PWD:/home/coder/project&quot;
     codercom/code-server:v2
 
+ou pour windows (powershell):
+mkdir code-server
+docker run -it -p 127.0.0.1:8080:8080 `
+    -v ${pwd}/code-server:/home/coder/.local/share/code-server `
+    -v ${pwd}:/home/coder/project `
+    codercom/code-server:v2
+
+
+Comme vous l’aurez remarqué, la différence entre linux/MacOs et Windows se fait principalement au niveau du chemin pwd. Si vous êtes sur Windows, il faudra que vous remplaciez les $PWD par des ${pwd} dans les prochaines commandes.
 
 Super, on a déjà plus que du concret!
 
@@ -830,7 +850,7 @@ Table des matières
   Conclusion
 
 ",
-            "wordcount": "1208",
+            "wordcount": "1289",
             "inLanguage": "fr",
             "dateCreated": "2019-10-15/",
             "datePublished": "2019-10-15/",
