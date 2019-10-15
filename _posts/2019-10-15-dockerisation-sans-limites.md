@@ -45,6 +45,13 @@ docker run -it -p 127.0.0.1:8080:8080
     codercom/code-server:v2
 ```
 
+ou pour windows (powershell):
+
+```ps1
+mkdir code-server
+docker run -it -p 127.0.0.1:8080:8080  -v ${pwd}/code-server:/home/coder/.local/share/code-server -v ${pwd}:/home/coder/project codercom/code-server:v2
+```
+
 Super, on a déjà plus que du concret!
 
 ![vs code online](/images/docker-posts/vs-code-online.png)
