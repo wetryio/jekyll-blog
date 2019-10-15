@@ -32,25 +32,29 @@ Un des éditeurs les plus populaires pour le développement web ou .net core est
 
 Et c'est parce qu'il est fait de technologies web qu'il devient possible de le dockeriser. Nous pourrions alors l'utiliser dans un navigateur.
 
-La companie [Coder](https://coder.com/) a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc pouvoir nous concentrer sur leurs outils.
+La compagnie [Coder](https://coder.com/) a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc pouvoir nous concentrer sur leurs outils.
 
 ## Sur la machine de développement
 
-Pour démarrer un VS Code sur votre navigateur, rien de plus simple, nous pourions nous contenter d'une commande Docker :
+Pour démarrer un VS Code sur votre navigateur, rien de plus simple, nous pourrions nous contenter d'une commande Docker :
 
 ```sh
+mkdir code-server
 docker run -it -p 127.0.0.1:8080:8080 
     -v "$PWD/code-server:/home/coder/.local/share/code-server"
     -v "$PWD:/home/coder/project"
     codercom/code-server:v2
 ```
-
 ou pour windows (powershell):
-
-```ps1
+```sh
 mkdir code-server
-docker run -it -p 127.0.0.1:8080:8080  -v ${pwd}/code-server:/home/coder/.local/share/code-server -v ${pwd}:/home/coder/project codercom/code-server:v2
+docker run -it -p 127.0.0.1:8080:8080 `
+    -v ${pwd}/code-server:/home/coder/.local/share/code-server `
+    -v ${pwd}:/home/coder/project `
+    codercom/code-server:v2
 ```
+
+*Comme vous l'aurez remarqué, la différence entre linux/MacOs et Windows se fait principalement au niveau du chemin `pwd`. Si vous êtes sur Windows, il faudra que vous remplaciez les `$PWD` par des `${pwd}` dans les prochaines commandes.*
 
 Super, on a déjà plus que du concret!
 
