@@ -100,7 +100,7 @@ Nous pouvons à nouveau remarquer à quel point ces manipulations sont simple gr
 
 ## Sur un serveur
 
-Jusqu'à maintenant, il est toujours nécessaire d'avoir une machine assez puissante et avec la bonne architecture pour faire tourner les outils de développement, et surtout pour faire Docker.
+Jusqu'à maintenant, il est toujours nécessaire d'avoir une machine assez puissante et avec la bonne architecture pour faire tourner les outils de développement, et surtout pour Docker.
 
 Si le container Docker pouvait tourner sur un serveur, il n'y aurait plus besoin d'autre chose qu'un navigateur moderne. Cela veut dire que l'on pourrait également développer sur une tablette ou un smartphone.
 
