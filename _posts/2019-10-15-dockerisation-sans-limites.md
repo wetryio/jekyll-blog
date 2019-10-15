@@ -18,7 +18,7 @@ Docker s'est démocratisé chez les développeurs, car il nous facilite la vie q
 
 Cela permet à toute l'équipe d'avoir un environnement similaire tout en ayant complément la main dessus sans impacter les autres membres. Et surtout, fini le ***"ça fonctionne sur ma machine"*** !
 
-Il n'y a finalement qu'un outil que ne dockerisons pas encore: l'**IDE**.
+Il n'y a finalement qu'un outil que nous ne dockerisons pas encore: l'**IDE**.
 
 S'il y a bien une chose sur laquelle les développeurs ne sont pas toujours d'accord, c'est sur le choix d'un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serais-ce que par rapport au formatage du code.
 
