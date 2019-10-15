@@ -54,7 +54,7 @@ docker run -it -p 127.0.0.1:8080:8080 `
     codercom/code-server:v2
 ```
 
-*Comme vous l'aurez remarqué, la différence entre linux/MacOs et Windows se fait principalement au niveau du chemin `pwd`. Si vous êtes sur Windows, il faudra que vous remplaciez les `$PWD` par des `${pwd}` dans les prochaines commandes.*
+*Comme vous l'aurez remarqué, la différence entre linux/MacOs et Windows se fait principalement au niveau du chemin `pwd`. Si vous êtes sur **Windows**, il faudra que vous remplaciez les `$PWD` par des `${pwd}` dans les prochaines commandes.*
 
 Super, on a déjà plus que du concret!
 
