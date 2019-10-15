@@ -82,6 +82,14 @@
         </url>
     
         <url>
+            <loc>https://wetry.tech/category/experimentation/</loc>
+            
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            
+        </url>
+    
+        <url>
             <loc>https://wetry.tech/feed.xml</loc>
             
                 <changefreq>monthly</changefreq>
@@ -102,7 +110,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2019-10-11</lastmod>
+                <lastmod>2019-10-15</lastmod>
             
         </url>
     
@@ -186,6 +194,13 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/dockerisation-sans-limites/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2019-10-15</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/azure-functions-trigger-http/</loc>

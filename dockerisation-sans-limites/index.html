@@ -17,24 +17,24 @@
     
     
 
-    <title>Comprendre le ngModel | WeTry</title>
-    <meta name="description" content="Sauriez-vous créer votre propre ngModel ?">
+    <title>Dockerisation sans limites | WeTry</title>
+    <meta name="description" content="Docker, l'outil ultime des développeurs.">
     
-        <meta name="keywords" content="angular, form">
+        <meta name="keywords" content="docker, IDE, VS Code">
     
 
     <!-- Social: Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Comprendre le ngModel | WeTry">
-    <meta name="twitter:description" content="Sauriez-vous créer votre propre ngModel ?">
-    <meta property="twitter:image:src" content="/images/angular-posts/ngmodel.jpg">
+    <meta name="twitter:title" content="Dockerisation sans limites | WeTry">
+    <meta name="twitter:description" content="Docker, l'outil ultime des développeurs.">
+    <meta property="twitter:image:src" content="/images/docker-posts/docker-vs-code.png">
     
 
     <!-- Social: Facebook / Open Graph -->
-    <meta property="og:url" content="https://wetry.tech/comprendre-le-ng-model/">
-    <meta property="og:title" content="Comprendre le ngModel | WeTry">
-    <meta property="og:image" content="/images/angular-posts/ngmodel.jpg">
-    <meta property="og:description" content="Sauriez-vous créer votre propre ngModel ?">
+    <meta property="og:url" content="https://wetry.tech/dockerisation-sans-limites/">
+    <meta property="og:title" content="Dockerisation sans limites | WeTry">
+    <meta property="og:image" content="/images/docker-posts/docker-vs-code.png">
+    <meta property="og:description" content="Docker, l'outil ultime des développeurs.">
     <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
 
     <!-- Favicon -->
@@ -66,7 +66,7 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/css/styles.min.css">
-    <link rel="canonical" href="https://wetry.tech/comprendre-le-ng-model/">
+    <link rel="canonical" href="https://wetry.tech/dockerisation-sans-limites/">
     <link rel="alternate" type="application/rss+xml" title="WeTry | Encore un autre blog de développeur" href="https://wetry.tech/feed.xml" />
 </head>
 
@@ -189,144 +189,158 @@
                 <p class="post-info">
                     
                         <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
-                        <time class="date" datetime="2019-09-03T21:09:24+00:00">
+                        <time class="date" datetime="2019-10-15T15:41:08+00:00">
                             
 
 
-Septembre 3, 2019
+Octobre 15, 2019
 
                         </time>
                     
                     <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
-                    <span>5 min to read</span>
+                    <span>6 min to read</span>
                 </p>
-                <h1 class="post-title">Comprendre le ngModel</h1>
+                <h1 class="post-title">Dockerisation sans limites</h1>
                 <p class="post-subtitle"></p>
 
                 
-                    <img src="/images/angular-posts/ngmodel.jpg" alt="Featured image" class="post-cover">
+                    <img src="/images/docker-posts/docker-vs-code.png" alt="Featured image" class="post-cover">
                 
 
                 <!-- Pagination links -->
 
 
 
-                <p>Si vous utilisez les formulaires de type “template driven”, vous utilisez également le ngModel, mais savez-vous ce qui se cache derrière ? Sauriez-vous créer votre propre ngModel ?</p>
+                <h2 id="docker-loutil-ultime-des-développeurs">Docker l’outil ultime des développeurs</h2>
 
-<p>Dans cet article, nous allons passer en revue sa syntaxe, mais allons également voir qu’il s’agit d’un cas particulier.</p>
+<p>Docker s’est démocratisé chez les développeurs, car il nous facilite la vie quand il s’agit de créer un environnement local avec tous les outils nécessaires tel qu’une <em>base de données</em>, un <em>système de message</em>, un <em>serveur de mocks</em>…</p>
 
-<h2 id="syntaxe">Syntaxe</h2>
+<p>Cela permet à toute l’équipe d’avoir un environnement similaire tout en ayant complément la main dessus sans impacter les autres membres. Et surtout, fini le <strong><em>“ça fonctionne sur ma machine”</em></strong> !</p>
 
-<p>Dans Angular nous trouvons quatre (3 + l’interpolation) types de bindings:</p>
-<ul>
-  <li><strong>Property binding</strong> <code class="highlighter-rouge">[]</code>: permet de passer une information d’un composant parent à un composant enfant;</li>
-  <li><strong>Event binding</strong> <code class="highlighter-rouge">()</code>: permet d’écouter un évènement JavaScript ou de passer une information d’un composant enfant à un composant parent (via un évènement);</li>
-  <li><strong>Two ways binding</strong> <code class="highlighter-rouge">[()]</code>: permet une synchronisation complète d’une information entre un composant parent et un composant enfant en utilisant les deux types de binding précédemment cités;</li>
-  <li><strong>Interpolation</strong> <code class="highlighter-rouge">{{}}</code>: permet d’afficher une donnée dans le HTML depuis le TypeScript.</li>
-</ul>
+<p>Il n’y a finalement qu’un outil que nous ne dockerisons pas encore: l’<strong>IDE</strong>.</p>
 
-<p>Vous aurez vite fait le lien entre le Two ways binding et le sujet qui nous intéresse ici, le <code class="highlighter-rouge">[(ngModel)]</code>.</p>
+<p>S’il y a bien une chose sur laquelle les développeurs ne sont pas toujours d’accord, c’est sur le choix d’un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serais-ce que par rapport au formatage du code.</p>
 
-<p>Il est possible de créer son propre property bindig via un <code class="highlighter-rouge">@Input()</code> comme il est possible de créer son propre event binding via un <code class="highlighter-rouge">@Output()</code>, mais est-il possible de créer un binding Two way ?</p>
+<p>Alors ne serait-il pas une bonne idée de forcer l’IDE et ces configurations ? Ou encore mieux: avoir un IDE préconfiguré en une seule commande.</p>
 
-<p>Tout à fait ! Il s’agit en réalité d’une simple combinaison des deux. En effet il nous faut créer un input ainsi qu’un output, mais en respectant une règle: l’output doit avoir le même nom que l’input suivi du mot <code class="highlighter-rouge">Change</code>. Cela donnera par exemple:</p>
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Input</span><span class="p">()</span> <span class="nx">myData</span><span class="p">:</span> <span class="nx">string</span><span class="p">[];</span>
-<span class="p">@</span><span class="nd">Output</span><span class="p">()</span> <span class="nx">myDataChange</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="o">&lt;</span><span class="nx">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">();</span>
+<p>Vous l’aurez compris, cet article vise à ouvrir une porte sur la dockerisation de l’IDE.</p>
+
+<h2 id="comment-est-il-possible-de-dockeriser-un-ide-">Comment est-il possible de dockeriser un IDE ?</h2>
+
+<p>Un des éditeurs les plus populaires pour le développement web ou .net core est Visual Studio Code (VS Code). Cet éditeur est open-source et complètement écrit en HTML, JavaScript et CSS à l’aide d’<a href="https://electronjs.org/">Electron</a> (outil qui permet de faire des applications desktop en web comme Cordova le fait pour les smartphones).</p>
+
+<p>Et c’est parce qu’il est fait de technologies web qu’il devient possible de le dockeriser. Nous pourrions alors l’utiliser dans un navigateur.</p>
+
+<p>La companie <a href="https://coder.com/">Coder</a> a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc pouvoir nous concentrer sur leurs outils.</p>
+
+<h2 id="sur-la-machine-de-développement">Sur la machine de développement</h2>
+
+<p>Pour démarrer un VS Code sur votre navigateur, rien de plus simple, nous pourions nous contenter d’une commande Docker :</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080:8080 
+    <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/code-server:/home/coder/.local/share/code-server"</span>
+    <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/home/coder/project"</span>
+    codercom/code-server:v2
 </code></pre></div></div>
 
-<p>Il sera alors possible de l’utiliser dans le parent avec cette syntaxe:</p>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;my-component</span> <span class="na">[(myData)]=</span><span class="s">"data"</span><span class="nt">&gt;&lt;/my-component&gt;</span>
+<p>Super, on a déjà plus que du concret!</p>
+
+<p><img src="/images/docker-posts/vs-code-online.png" alt="vs code online" /></p>
+
+<p>Mais nous allons vite faire face à un “problème”: le terminal fonctionne, mais il n’y a aucun outil de build disponible comme <em>npm</em> ou <em>maven</em>.</p>
+
+<p>Pas de panique ! Je vous rappelle qu’il s’agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle de fournie (<code class="highlighter-rouge">codercom/code-server:v2</code>).</p>
+
+<p>Voici un exemple de <strong>dockerfile</strong> qui installe automatiquement une <strong>extension</strong> et installe <strong>NodeJs</strong>, afin d’avoir un environnement près pour le développement:</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> codercom/code-server:v2</span>
+<span class="k">RUN </span><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nt">-y</span> upgrade
+
+<span class="c"># VSCode extensions</span>
+<span class="k">RUN </span><span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> bsdtar curl
+<span class="k">RUN </span><span class="nb">mkdir</span> <span class="nt">-p</span> /home/coder/.local/share/code-server/extensions
+<span class="k">RUN </span>curl <span class="nt">-JL</span> https://github.com/Microsoft/vscode-python/releases/download/2019.2.5558/ms-python-release.vsix | bsdtar <span class="nt">-C</span> /tmp <span class="nt">-xvf</span> - extension
+<span class="k">RUN </span><span class="nb">mv</span> /tmp/extension /home/coder/.local/share/code-server/extensions/ms-python.python-vscode-2.0.3
+
+<span class="c"># Other dev tools</span>
+<span class="k">RUN </span>curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_11.x | <span class="nb">sudo</span> <span class="nt">-E</span> bash -
+<span class="k">RUN </span><span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> nodejs
+
+<span class="k">CMD</span><span class="s"> ["code-server", "--allow-http", "--no-auth"]</span>
 </code></pre></div></div>
 
-<p>Il est évidemment toujours possible d’écouter l’évènement émis par l’output. Tout comme nous pouvons utiliser le <code class="highlighter-rouge">(ngModelChange)</code>.</p>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;my-component</span> <span class="na">[(myData)]=</span><span class="s">"data"</span> <span class="na">(myDataChange)=</span><span class="s">"dataHasChange($event)"</span><span class="nt">&gt;&lt;/my-component&gt;</span>
+<p>J’ai décidé de nommer le dockerfile “<code class="highlighter-rouge">code-server-test</code>” de façon totalement arbitraire.</p>
+
+<p>Il faudra alors construite (builder) notre image:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nb">.</span> <span class="nt">-t</span> code-server-test
 </code></pre></div></div>
 
-<h2 id="utilisation-dans-un-formulaire">Utilisation dans un formulaire</h2>
-
-<p>Comme dit précédemment, le ngModel n’est utile que dans le cas d’un formulaire “template driven”. Pourtant Angular nous laisse le choix d’utiliser <code class="highlighter-rouge">[(ngModel)]</code> ou <code class="highlighter-rouge">formControlName</code> pour arriver au même résultat avec les textarea par exemple.</p>
-
-<p>Cela est possible, car en plus d’être un input/output, le <code class="highlighter-rouge">ngModel</code> est une directive tout comme le <code class="highlighter-rouge">formControlName</code>.</p>
-
-<p>Voyons alors comment créer notre propre <strong>composant de formulaire</strong> en créer par exemple un <code class="highlighter-rouge">YesNoComponent</code>. Nous allons nous concentrer sur la partie TypeScript, car c’est la partie qui nous intéresse vraiment.</p>
-
-<p>Pour être compatibles avec les deux types de formulaires, nous allons devoir implémenter le provider <code class="highlighter-rouge">NG_VALUE_ACCESSOR</code> dans le composant cible.
-La syntaxe est un peu particulière, mais très importante.</p>
-
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
-  <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app-yes-no-component</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./yes-no-component.html</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span> <span class="dl">'</span><span class="s1">./yes-no-component.scss</span><span class="dl">'</span> <span class="p">],</span>
-  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="na">provide</span><span class="p">:</span> <span class="nx">NG_VALUE_ACCESSOR</span><span class="p">,</span>
-      <span class="na">useExisting</span><span class="p">:</span> <span class="nx">forwardRef</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">YesNoComponent</span><span class="p">),</span> <span class="c1">// Bien mettre la classe du composant lié au décorateur</span>
-      <span class="na">multi</span><span class="p">:</span> <span class="kc">true</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">})</span>
-<span class="k">export</span> <span class="kd">class</span> <span class="nx">YesNoComponent</span>
+<p>Enfin, il est possible de l’utiliser à l’aide de cette commande:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080:8080 <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/home/coder/project"</span> code-server-test:latest
 </code></pre></div></div>
 
-<p>Il faut alors que notre composant soit compatible avec ce provider. Pour ce faire, nous devons implémenter l’interface <code class="highlighter-rouge">ControlValueAccessor</code>.</p>
+<p>Nous pouvons à nouveau remarquer à quel point ces manipulations sont simple grâce Docker.</p>
 
-<p>ControlValueAccessor contient 4 fonctions à implémenter:</p>
-<ul>
-  <li><code class="highlighter-rouge">writeValue</code>: nous fournit la valeur connue par le formulaire (IN);</li>
-  <li><code class="highlighter-rouge">registerOnChange</code>: nous fournit le “callback” à appeler en cas de changement de valeur (OUT);</li>
-  <li><code class="highlighter-rouge">registerOnTouched</code>: nous fournit le “callback” à appeler quand le composant doit être considéré comme “touché”;</li>
-  <li><code class="highlighter-rouge">setDisabledState</code> (optionel): permet au formulaire de demander au composant de s’activer ou de se désactiver.</li>
-</ul>
+<h2 id="sur-un-serveur">Sur un serveur</h2>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">YesNoComponent</span> <span class="kr">implements</span> <span class="nx">ControlValueAccessor</span>
+<p>Jusqu’à maintenant, il est toujours nécessaire d’avoir une machine assez puissante et avec la bonne architecture pour faire tourner les outils de développement, et surtout pour faire Docker.</p>
 
-  <span class="nx">items</span><span class="p">:</span> <span class="nx">string</span><span class="p">[];</span>
+<p>Si le container Docker pouvait tourner sur un serveur, il n’y aurait plus besoin d’autre chose qu’un navigateur moderne. Cela veut dire que l’on pourrait également développer sur une tablette ou un smartphone.</p>
 
-  <span class="c1">// Fonction temporaire qui sera remplacée par le callback de changement</span>
-  <span class="nx">onChange</span> <span class="o">=</span> <span class="p">(</span><span class="nx">rating</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+<p>Enfin, le must pour un serveur serait qu’un environnement de développement soit créé dès la récupération du code source (exemple: Github).</p>
 
-  <span class="c1">// Fonction temporaire qui sera remplacée par le callback de touché</span>
-  <span class="nx">onTouched</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+<h3 id="via-commande">Via commande</h3>
 
-  <span class="nx">writeValue</span><span class="p">(</span><span class="nx">data</span><span class="p">:</span> <span class="nx">string</span><span class="p">[]):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
-  <span class="p">}</span>
+<p>Nous allons maintenant parler d’un autre outil de Coder: <a href="https://sail.dev">Sail</a>.
+<sub><em>J’ai placé cet outil uniquement dans la partie “serveur”, car certaines fonctionnalités réseau de Docker sont nécessaires, mais non compatibles avec MacOS pour le moment. Il n’en est pas moins intéressant de l’utiliser sur un serveur linux.</em></sub></p>
 
-  <span class="nx">registerOnChange</span><span class="p">(</span><span class="na">fn</span><span class="p">:</span> <span class="p">(</span><span class="na">data</span><span class="p">:</span> <span class="nx">string</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">onChange</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="nx">registerOnTouched</span><span class="p">(</span><span class="na">fn</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">onTouched</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="nx">setDisabledState</span><span class="p">(</span><span class="na">isDisabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="nx">isDisabled</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<p>Il s’agit d’un CLI qui nous permet exactement ce que l’on veut via une commande:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sail run <span class="nt">--ssh</span> github.com/cdr/sshcode
 </code></pre></div></div>
 
-<p>Et voilà, nous avons créé notre propre “ngModel”.</p>
+<p>Pour cet outil, ce sont des images différentes qui seront utilisées. Je parle au pluriel, car il sera en mesure de détecter les outils nécessaires s’il connait le type de projet (exemples: nodejs, ruby, python…) afin de choisir l’image adéquate. Vous pouvez trouver la liste des outils pris en charge <a href="https://hub.docker.com/search?q=codercom%2Fubuntu-dev&amp;type=image">ici</a>.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app-yes-no-component</span> <span class="na">[(ngModel)]=</span><span class="s">"value"</span><span class="nt">&gt;&lt;/app-yes-no-component&gt;</span>
+<p>Si votre technologie n’est pas prise en charge ou que vous voulez customiser votre environnement (avec d’autres outils ou des extensions par exemple), cela reste tout à fait possible.</p>
+
+<p>Pour cela il faudra créer un dossier <code class="highlighter-rouge">.sail</code>, dans votre repo GIT, dans lequel vous allez mettre votre fichier <code class="highlighter-rouge">Dockerfile</code> (<code class="highlighter-rouge">.sail/Dockerfile</code>) et y ajouter ce que vous souhaitez. Vous devrez, cette fois, partir de l’image <code class="highlighter-rouge">codercom/ubuntu-dev</code>. Exemple:</p>
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> codercom/ubuntu-dev:latest</span>
+<span class="k">RUN </span><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nt">-y</span> upgrade
+
+<span class="c"># VSCode extensions</span>
+<span class="k">RUN </span>installext vscodevim.vim
+
+<span class="c"># Other dev tools</span>
+<span class="k">RUN </span>curl <span class="nt">-sL</span> https://deb.nodesource.com/setup_11.x | <span class="nb">sudo</span> <span class="nt">-E</span> bash -
+<span class="k">RUN </span><span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> nodejs
 </code></pre></div></div>
 
-<p>Mais, en prime, nous pouvons utiliser le reactive from.</p>
+<p>Pour plus d’informations n’hésitez pas à aller voir la <a href="https://sail.dev/docs/introduction/">documentation</a>.</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">[formGroup]=</span><span class="s">"myForm"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;app-yes-no-component</span> <span class="na">formControlName=</span><span class="s">"inputName"</span><span class="nt">&gt;&lt;/app-yes-no-component&gt;</span>
-<span class="nt">&lt;/form&gt;</span>
-</code></pre></div></div>
+<h3 id="via-un-portail-web">Via un portail web</h3>
+
+<p>Afin d’éviter de devoir se connecter en SSH à chaque récupération de projet, il serait plus confortable d’avoir une page web.</p>
+
+<p>Un projet nommé <a href="https://github.com/gilsdav/sail-hub">Sail Hub</a> à vu le jour dans cette optique.</p>
+
+<p>Une fois installé et démarré, il vous suffis d’ajouter un repo:</p>
+
+<p><img src="/images/docker-posts/sail-hub2.png" alt="stail-add-repo" /></p>
+
+<p>Cela vous permettra d’ouvrir un VS Code en ligne en cliquant sur <code class="highlighter-rouge">open</code>:</p>
+
+<p><img src="/images/docker-posts/sail-hub1.png" alt="stail-list" /></p>
+
+<p>Et voilà, vous n’avez plus qu’une URL à retenir pour pouvoir développer depuis n’importe quel device.</p>
+
+<p><strong>Attention</strong> que pour ce portail, <strong>aucune authentification</strong> n’a été mise en place, il est donc nécessaire de mettre en place un <strong>VPN</strong> si vous souhaitez avoir accès à ce serveur depuis n’importe où.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>Angular permet l’utilisation de directives telle que <code class="highlighter-rouge">ngModel</code> ou <code class="highlighter-rouge">formControlName,</code> mais nécessite le service <code class="highlighter-rouge">NG_VALUE_ACCESSOR</code>.</p>
+<p>Cet article n’a pas pour but de vous assurer la stabilité de ces produits, mais de vous montrer la puissance de Docker dans un autre contexte que celui dont nous avons l’habitude.</p>
 
-<p>Ce service a déjà été implémenté par Angular pour tous les types de contrôle (input, textarea, select…) built-in.</p>
+<p>Cependant je pense que dockeriser la stack complète de développement permet d’éviter les problèmes liés à la configuration, et ce peu importe l’OS.</p>
 
-<p>Si nous voulons utiliser ces directives sur un de nos composants, c’est à nous d’implémenter la logique.</p>
-
-<p>Les composants qui implémentent cette logique s’appellent des “<strong>composants formulaire</strong>” (Custom Form Control).</p>
+<p>N’hésitez pas à me communiquer votre avis via un commentaire.</p>
 
 <hr />
 
@@ -340,8 +354,14 @@ La syntaxe est un peu particulière, mais très importante.</p>
 <div id="toc"></div>
 <p><strong>Table des matières</strong></p>
 <ol id="markdown-toc">
-  <li><a href="#syntaxe" id="markdown-toc-syntaxe">Syntaxe</a></li>
-  <li><a href="#utilisation-dans-un-formulaire" id="markdown-toc-utilisation-dans-un-formulaire">Utilisation dans un formulaire</a></li>
+  <li><a href="#docker-loutil-ultime-des-développeurs" id="markdown-toc-docker-loutil-ultime-des-développeurs">Docker l’outil ultime des développeurs</a></li>
+  <li><a href="#comment-est-il-possible-de-dockeriser-un-ide-" id="markdown-toc-comment-est-il-possible-de-dockeriser-un-ide-">Comment est-il possible de dockeriser un IDE ?</a></li>
+  <li><a href="#sur-la-machine-de-développement" id="markdown-toc-sur-la-machine-de-développement">Sur la machine de développement</a></li>
+  <li><a href="#sur-un-serveur" id="markdown-toc-sur-un-serveur">Sur un serveur</a>    <ol>
+      <li><a href="#via-commande" id="markdown-toc-via-commande">Via commande</a></li>
+      <li><a href="#via-un-portail-web" id="markdown-toc-via-un-portail-web">Via un portail web</a></li>
+    </ol>
+  </li>
   <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
 </ol>
 
@@ -357,7 +377,7 @@ La syntaxe est un peu particulière, mais très importante.</p>
 
         <!-- Add time bar only for pages without pagination -->
         
-            <div class="time-bar" data-minutes="5">
+            <div class="time-bar" data-minutes="6">
     <span class="time-completed"></span>
     <span class="time-remaining"></span>
     <div class="bar">
@@ -372,13 +392,13 @@ La syntaxe est un peu particulière, mais très importante.</p>
         <a href="javascript:void(0);">Revenir en haut</a>
     </div>
     
-    <a href="/une-bonne-doc-est-une-doc-accessible/" class="post-preview">
+    <a href="/les-secrets-du-router-d'angular/" class="post-preview">
         <div class="image">
             
-                <img src="/images/bonne-documentation/default-activity-diagram.png">
+                <img src="/images/angular-posts/routing.jpg">
             
         </div>
-        <h3 class="title">Une bonne doc est une doc accessible</h3>
+        <h3 class="title">Les secrets du Router d'Angular</h3>
     </a>
 </div>
 
@@ -392,11 +412,11 @@ La syntaxe est un peu particulière, mais très importante.</p>
 
         <section class="share">
     <h3>Share</h3>
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;Sauriez-vous créer votre propre ngModel ?&quot;%20https://wetry.tech/comprendre-le-ng-model/%20via%20&#64;&hashtags=angular,form,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;Docker, l'outil ultime des développeurs.&quot;%20https://wetry.tech/dockerisation-sans-limites/%20via%20&#64;&hashtags=docker,IDE,VS Code,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/comprendre-le-ng-model/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/dockerisation-sans-limites/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
@@ -476,7 +496,7 @@ La syntaxe est un peu particulière, mais très importante.</p>
         disqus_loaded = true;
         var disqus_shortname = 'wetry';
         var disqus_title = '';
-        var disqus_url = '/comprendre-le-ng-model/';
+        var disqus_url = '/dockerisation-sans-limites/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -651,127 +671,141 @@ La syntaxe est un peu particulière, mais très importante.</p>
         {
             "@context": "http://schema.org",
             "@type": "BlogPosting",
-            "name": "Comprendre le ngModel",
+            "name": "Dockerisation sans limites",
             "headline": "",
-            "description": "Sauriez-vous créer votre propre ngModel ?",
-            "image": "/images/angular-posts/ngmodel.jpg",
-            "url": "https://wetry.tech/comprendre-le-ng-model/",
-            "articleBody": "Si vous utilisez les formulaires de type “template driven”, vous utilisez également le ngModel, mais savez-vous ce qui se cache derrière ? Sauriez-vous créer votre propre ngModel ?
+            "description": "Docker, l'outil ultime des développeurs.",
+            "image": "/images/docker-posts/docker-vs-code.png",
+            "url": "https://wetry.tech/dockerisation-sans-limites/",
+            "articleBody": "Docker l’outil ultime des développeurs
 
-Dans cet article, nous allons passer en revue sa syntaxe, mais allons également voir qu’il s’agit d’un cas particulier.
+Docker s’est démocratisé chez les développeurs, car il nous facilite la vie quand il s’agit de créer un environnement local avec tous les outils nécessaires tel qu’une base de données, un système de message, un serveur de mocks…
 
-Syntaxe
+Cela permet à toute l’équipe d’avoir un environnement similaire tout en ayant complément la main dessus sans impacter les autres membres. Et surtout, fini le “ça fonctionne sur ma machine” !
 
-Dans Angular nous trouvons quatre (3 + l’interpolation) types de bindings:
+Il n’y a finalement qu’un outil que nous ne dockerisons pas encore: l’IDE.
 
-  Property binding []: permet de passer une information d’un composant parent à un composant enfant;
-  Event binding (): permet d’écouter un évènement JavaScript ou de passer une information d’un composant enfant à un composant parent (via un évènement);
-  Two ways binding [()]: permet une synchronisation complète d’une information entre un composant parent et un composant enfant en utilisant les deux types de binding précédemment cités;
-  Interpolation {{}}: permet d’afficher une donnée dans le HTML depuis le TypeScript.
+S’il y a bien une chose sur laquelle les développeurs ne sont pas toujours d’accord, c’est sur le choix d’un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serais-ce que par rapport au formatage du code.
 
+Alors ne serait-il pas une bonne idée de forcer l’IDE et ces configurations ? Ou encore mieux: avoir un IDE préconfiguré en une seule commande.
 
-Vous aurez vite fait le lien entre le Two ways binding et le sujet qui nous intéresse ici, le [(ngModel)].
+Vous l’aurez compris, cet article vise à ouvrir une porte sur la dockerisation de l’IDE.
 
-Il est possible de créer son propre property bindig via un @Input() comme il est possible de créer son propre event binding via un @Output(), mais est-il possible de créer un binding Two way ?
+Comment est-il possible de dockeriser un IDE ?
 
-Tout à fait ! Il s’agit en réalité d’une simple combinaison des deux. En effet il nous faut créer un input ainsi qu’un output, mais en respectant une règle: l’output doit avoir le même nom que l’input suivi du mot Change. Cela donnera par exemple:
-@Input() myData: string[];
-@Output() myDataChange = new EventEmitter&amp;lt;string[]&amp;gt;();
+Un des éditeurs les plus populaires pour le développement web ou .net core est Visual Studio Code (VS Code). Cet éditeur est open-source et complètement écrit en HTML, JavaScript et CSS à l’aide d’Electron (outil qui permet de faire des applications desktop en web comme Cordova le fait pour les smartphones).
 
+Et c’est parce qu’il est fait de technologies web qu’il devient possible de le dockeriser. Nous pourrions alors l’utiliser dans un navigateur.
 
-Il sera alors possible de l’utiliser dans le parent avec cette syntaxe:
-&amp;lt;my-component [(myData)]=&quot;data&quot;&amp;gt;&amp;lt;/my-component&amp;gt;
+La companie Coder a fait un excellent travail et le meilleur est que leur code est open-source. Nous allons donc pouvoir nous concentrer sur leurs outils.
 
+Sur la machine de développement
 
-Il est évidemment toujours possible d’écouter l’évènement émis par l’output. Tout comme nous pouvons utiliser le (ngModelChange).
-&amp;lt;my-component [(myData)]=&quot;data&quot; (myDataChange)=&quot;dataHasChange($event)&quot;&amp;gt;&amp;lt;/my-component&amp;gt;
+Pour démarrer un VS Code sur votre navigateur, rien de plus simple, nous pourions nous contenter d’une commande Docker :
 
-
-Utilisation dans un formulaire
-
-Comme dit précédemment, le ngModel n’est utile que dans le cas d’un formulaire “template driven”. Pourtant Angular nous laisse le choix d’utiliser [(ngModel)] ou formControlName pour arriver au même résultat avec les textarea par exemple.
-
-Cela est possible, car en plus d’être un input/output, le ngModel est une directive tout comme le formControlName.
-
-Voyons alors comment créer notre propre composant de formulaire en créer par exemple un YesNoComponent. Nous allons nous concentrer sur la partie TypeScript, car c’est la partie qui nous intéresse vraiment.
-
-Pour être compatibles avec les deux types de formulaires, nous allons devoir implémenter le provider NG_VALUE_ACCESSOR dans le composant cible.
-La syntaxe est un peu particulière, mais très importante.
-
-@Component({
-  selector: 'app-yes-no-component',
-  templateUrl: './yes-no-component.html',
-  styleUrls: [ './yes-no-component.scss' ],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() =&amp;gt; YesNoComponent), // Bien mettre la classe du composant lié au décorateur
-      multi: true
-    }
-  ]
-})
-export class YesNoComponent
+docker run -it -p 127.0.0.1:8080:8080 
+    -v &quot;$PWD/code-server:/home/coder/.local/share/code-server&quot;
+    -v &quot;$PWD:/home/coder/project&quot;
+    codercom/code-server:v2
 
 
-Il faut alors que notre composant soit compatible avec ce provider. Pour ce faire, nous devons implémenter l’interface ControlValueAccessor.
-
-ControlValueAccessor contient 4 fonctions à implémenter:
-
-  writeValue: nous fournit la valeur connue par le formulaire (IN);
-  registerOnChange: nous fournit le “callback” à appeler en cas de changement de valeur (OUT);
-  registerOnTouched: nous fournit le “callback” à appeler quand le composant doit être considéré comme “touché”;
-  setDisabledState (optionel): permet au formulaire de demander au composant de s’activer ou de se désactiver.
+Super, on a déjà plus que du concret!
 
 
-export class YesNoComponent implements ControlValueAccessor
 
-  items: string[];
+Mais nous allons vite faire face à un “problème”: le terminal fonctionne, mais il n’y a aucun outil de build disponible comme npm ou maven.
 
-  // Fonction temporaire qui sera remplacée par le callback de changement
-  onChange = (rating: number) =&amp;gt; {};
+Pas de panique ! Je vous rappelle qu’il s’agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle de fournie (codercom/code-server:v2).
 
-  // Fonction temporaire qui sera remplacée par le callback de touché
-  onTouched = () =&amp;gt; {};
+Voici un exemple de dockerfile qui installe automatiquement une extension et installe NodeJs, afin d’avoir un environnement près pour le développement:
 
-  writeValue(data: string[]): void {
-    this.items = data;
-  }
+FROM codercom/code-server:v2
+RUN sudo apt-get update &amp;amp;&amp;amp; sudo apt-get -y upgrade
 
-  registerOnChange(fn: (data: string[]) =&amp;gt; void): void {
-    this.onChange = fn;
-  }
+# VSCode extensions
+RUN sudo apt-get install -y bsdtar curl
+RUN mkdir -p /home/coder/.local/share/code-server/extensions
+RUN curl -JL https://github.com/Microsoft/vscode-python/releases/download/2019.2.5558/ms-python-release.vsix | bsdtar -C /tmp -xvf - extension
+RUN mv /tmp/extension /home/coder/.local/share/code-server/extensions/ms-python.python-vscode-2.0.3
 
-  registerOnTouched(fn: () =&amp;gt; void): void {
-    this.onTouched = fn;
-  }
+# Other dev tools
+RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
 
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
-}
+CMD [&quot;code-server&quot;, &quot;--allow-http&quot;, &quot;--no-auth&quot;]
 
 
-Et voilà, nous avons créé notre propre “ngModel”.
+J’ai décidé de nommer le dockerfile “code-server-test” de façon totalement arbitraire.
 
-&amp;lt;app-yes-no-component [(ngModel)]=&quot;value&quot;&amp;gt;&amp;lt;/app-yes-no-component&amp;gt;
+Il faudra alors construite (builder) notre image:
+docker build . -t code-server-test
 
 
-Mais, en prime, nous pouvons utiliser le reactive from.
+Enfin, il est possible de l’utiliser à l’aide de cette commande:
+docker run -it -p 127.0.0.1:8080:8080 -v &quot;$PWD:/home/coder/project&quot; code-server-test:latest
 
-&amp;lt;form [formGroup]=&quot;myForm&quot;&amp;gt;
-    &amp;lt;app-yes-no-component formControlName=&quot;inputName&quot;&amp;gt;&amp;lt;/app-yes-no-component&amp;gt;
-&amp;lt;/form&amp;gt;
 
+Nous pouvons à nouveau remarquer à quel point ces manipulations sont simple grâce Docker.
+
+Sur un serveur
+
+Jusqu’à maintenant, il est toujours nécessaire d’avoir une machine assez puissante et avec la bonne architecture pour faire tourner les outils de développement, et surtout pour faire Docker.
+
+Si le container Docker pouvait tourner sur un serveur, il n’y aurait plus besoin d’autre chose qu’un navigateur moderne. Cela veut dire que l’on pourrait également développer sur une tablette ou un smartphone.
+
+Enfin, le must pour un serveur serait qu’un environnement de développement soit créé dès la récupération du code source (exemple: Github).
+
+Via commande
+
+Nous allons maintenant parler d’un autre outil de Coder: Sail.
+J’ai placé cet outil uniquement dans la partie “serveur”, car certaines fonctionnalités réseau de Docker sont nécessaires, mais non compatibles avec MacOS pour le moment. Il n’en est pas moins intéressant de l’utiliser sur un serveur linux.
+
+Il s’agit d’un CLI qui nous permet exactement ce que l’on veut via une commande:
+sail run --ssh github.com/cdr/sshcode
+
+
+Pour cet outil, ce sont des images différentes qui seront utilisées. Je parle au pluriel, car il sera en mesure de détecter les outils nécessaires s’il connait le type de projet (exemples: nodejs, ruby, python…) afin de choisir l’image adéquate. Vous pouvez trouver la liste des outils pris en charge ici.
+
+Si votre technologie n’est pas prise en charge ou que vous voulez customiser votre environnement (avec d’autres outils ou des extensions par exemple), cela reste tout à fait possible.
+
+Pour cela il faudra créer un dossier .sail, dans votre repo GIT, dans lequel vous allez mettre votre fichier Dockerfile (.sail/Dockerfile) et y ajouter ce que vous souhaitez. Vous devrez, cette fois, partir de l’image codercom/ubuntu-dev. Exemple:
+FROM codercom/ubuntu-dev:latest
+RUN sudo apt-get update &amp;amp;&amp;amp; sudo apt-get -y upgrade
+
+# VSCode extensions
+RUN installext vscodevim.vim
+
+# Other dev tools
+RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs
+
+
+Pour plus d’informations n’hésitez pas à aller voir la documentation.
+
+Via un portail web
+
+Afin d’éviter de devoir se connecter en SSH à chaque récupération de projet, il serait plus confortable d’avoir une page web.
+
+Un projet nommé Sail Hub à vu le jour dans cette optique.
+
+Une fois installé et démarré, il vous suffis d’ajouter un repo:
+
+
+
+Cela vous permettra d’ouvrir un VS Code en ligne en cliquant sur open:
+
+
+
+Et voilà, vous n’avez plus qu’une URL à retenir pour pouvoir développer depuis n’importe quel device.
+
+Attention que pour ce portail, aucune authentification n’a été mise en place, il est donc nécessaire de mettre en place un VPN si vous souhaitez avoir accès à ce serveur depuis n’importe où.
 
 Conclusion
 
-Angular permet l’utilisation de directives telle que ngModel ou formControlName, mais nécessite le service NG_VALUE_ACCESSOR.
+Cet article n’a pas pour but de vous assurer la stabilité de ces produits, mais de vous montrer la puissance de Docker dans un autre contexte que celui dont nous avons l’habitude.
 
-Ce service a déjà été implémenté par Angular pour tous les types de contrôle (input, textarea, select…) built-in.
+Cependant je pense que dockeriser la stack complète de développement permet d’éviter les problèmes liés à la configuration, et ce peu importe l’OS.
 
-Si nous voulons utiliser ces directives sur un de nos composants, c’est à nous d’implémenter la logique.
-
-Les composants qui implémentent cette logique s’appellent des “composants formulaire” (Custom Form Control).
+N’hésitez pas à me communiquer votre avis via un commentaire.
 
 
 
@@ -785,16 +819,22 @@ Les composants qui implémentent cette logique s’appellent des “composants f
 
 Table des matières
 
-  Syntaxe
-  Utilisation dans un formulaire
+  Docker l’outil ultime des développeurs
+  Comment est-il possible de dockeriser un IDE ?
+  Sur la machine de développement
+  Sur un serveur    
+      Via commande
+      Via un portail web
+    
+  
   Conclusion
 
 ",
-            "wordcount": "960",
+            "wordcount": "1208",
             "inLanguage": "fr",
-            "dateCreated": "2019-09-03/",
-            "datePublished": "2019-09-03/",
-            "dateModified": "2019-09-03/",
+            "dateCreated": "2019-10-15/",
+            "datePublished": "2019-10-15/",
+            "dateModified": "2019-10-15/",
             "author": {
                 "@type": "Person",
                 "name": "David Gilson<br/>(Gilsdav)",
@@ -819,9 +859,9 @@ Table des matières
                 }
             },
             "mainEntityOfPage": "True",
-            "genre": "documentation",
-            "articleSection": "documentation",
-            "keywords": ["angular","form"]
+            "genre": "experimentation",
+            "articleSection": "experimentation",
+            "keywords": ["docker","IDE","VS Code"]
         }
         </script>
     </body>

@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "Dockerisation sans limites",
+      "tags"     : "docker, IDE, and VS Code",
+      "categories" : "experimentation",
+      "url"      : "/dockerisation-sans-limites/",
+      "date"     : "10/15/2019"
+    } ,
+  
+    {
       "title"    : "Azure Functions démystifions le trigger HTTP",
       "tags"     : "azure, tutorial, serverless, and trigger http",
       "categories" : "azure",
