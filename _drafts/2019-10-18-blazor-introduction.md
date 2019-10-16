@@ -1,5 +1,5 @@
 
-Ce---
+---
 author: pgrasseels
 layout: post
 title: "Blazor Introduction"
