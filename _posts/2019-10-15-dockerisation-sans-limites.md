@@ -66,7 +66,7 @@ Pas de panique ! Je vous rappelle qu'il s'agit de Docker. Nous allons donc simpl
 
 Voici un exemple de **Dockerfile** qui installe automatiquement une **extension** et installe **NodeJs**, afin d'avoir un environnement près pour le développement:
 
-```Dockerfile
+```dockerfile
 FROM codercom/code-server:v2
 RUN sudo apt-get update && sudo apt-get -y upgrade
 
@@ -121,7 +121,7 @@ Si votre technologie n'est pas prise en charge ou que vous voulez customiser vot
 
 Pour cela il faudra créer un dossier `.sail`, dans votre repo GIT, dans lequel vous allez mettre votre fichier `Dockerfile` (`.sail/Dockerfile`) et y ajouter ce que vous souhaitez. Vous devrez, cette fois, partir de l'image `codercom/ubuntu-dev`. Exemple:
 
-```Dockerfile
+```dockerfile
 FROM codercom/ubuntu-dev:latest
 RUN sudo apt-get update && sudo apt-get -y upgrade
 
