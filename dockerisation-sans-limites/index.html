@@ -215,13 +215,13 @@ Octobre 15, 2019
 
 <p>Docker s’est démocratisé chez les développeurs, car il nous facilite la vie quand il s’agit de créer un environnement local avec tous les outils nécessaires tel qu’une <em>base de données</em>, un <em>système de message</em>, un <em>serveur de mocks</em>…</p>
 
-<p>Cela permet à toute l’équipe d’avoir un environnement similaire tout en ayant complément la main dessus sans impacter les autres membres. Et surtout, fini le <strong><em>“ça fonctionne sur ma machine”</em></strong> !</p>
+<p>Cela permet à toute l’équipe d’avoir un environnement similaire tout en ayant complètement la main dessus sans impacter les autres membres. Et surtout, fini le <strong><em>“ça fonctionne sur ma machine”</em></strong> !</p>
 
 <p>Il n’y a finalement qu’un outil que nous ne dockerisons pas encore: l’<strong>IDE</strong>.</p>
 
-<p>S’il y a bien une chose sur laquelle les développeurs ne sont pas toujours d’accord, c’est sur le choix d’un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serais-ce que par rapport au formatage du code.</p>
+<p>S’il y a bien une chose sur laquelle les développeurs ne sont pas toujours d’accord, c’est sur le choix d’un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serait-ce que par rapport au formatage du code.</p>
 
-<p>Alors ne serait-il pas une bonne idée de forcer l’IDE et ces configurations ? Ou encore mieux: avoir un IDE préconfiguré en une seule commande.</p>
+<p>Alors ne serait-il pas une bonne idée de forcer l’IDE et ses configurations ? Ou encore mieux: avoir un IDE préconfiguré en une seule commande.</p>
 
 <p>Vous l’aurez compris, cet article vise à ouvrir une porte sur la dockerisation de l’IDE.</p>
 
@@ -259,9 +259,9 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
 
 <p>Mais nous allons vite faire face à un “problème”: le terminal fonctionne, mais il n’y a aucun outil de build disponible comme <em>npm</em> ou <em>maven</em>.</p>
 
-<p>Pas de panique ! Je vous rappelle qu’il s’agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle de fournie (<code class="highlighter-rouge">codercom/code-server:v2</code>).</p>
+<p>Pas de panique ! Je vous rappelle qu’il s’agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle fournie (<code class="highlighter-rouge">codercom/code-server:v2</code>).</p>
 
-<p>Voici un exemple de <strong>dockerfile</strong> qui installe automatiquement une <strong>extension</strong> et installe <strong>NodeJs</strong>, afin d’avoir un environnement près pour le développement:</p>
+<p>Voici un exemple de <strong>Dockerfile</strong> qui installe automatiquement une <strong>extension</strong> et installe <strong>NodeJs</strong>, afin d’avoir un environnement près pour le développement:</p>
 
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> codercom/code-server:v2</span>
 <span class="k">RUN </span><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nt">-y</span> upgrade
@@ -279,9 +279,9 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
 <span class="k">CMD</span><span class="s"> ["code-server", "--allow-http", "--no-auth"]</span>
 </code></pre></div></div>
 
-<p>J’ai décidé de nommer le dockerfile “<code class="highlighter-rouge">code-server-test</code>” de façon totalement arbitraire.</p>
+<p>J’ai décidé de nommer le Dockerfile “<code class="highlighter-rouge">code-server-test</code>” de façon totalement arbitraire.</p>
 
-<p>Il faudra alors construite (builder) notre image:</p>
+<p>Il faudra alors construire (builder) notre image:</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nb">.</span> <span class="nt">-t</span> code-server-test
 </code></pre></div></div>
 
@@ -289,7 +289,7 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080:8080 <span class="nt">-v</span> <span class="s2">"</span><span class="nv">$PWD</span><span class="s2">:/home/coder/project"</span> code-server-test:latest
 </code></pre></div></div>
 
-<p>Nous pouvons à nouveau remarquer à quel point ces manipulations sont simple grâce Docker.</p>
+<p>Nous pouvons à nouveau remarquer à quel point ces manipulations sont simples grâce à Docker.</p>
 
 <h2 id="sur-un-serveur">Sur un serveur</h2>
 
@@ -313,6 +313,7 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
 <p>Si votre technologie n’est pas prise en charge ou que vous voulez customiser votre environnement (avec d’autres outils ou des extensions par exemple), cela reste tout à fait possible.</p>
 
 <p>Pour cela il faudra créer un dossier <code class="highlighter-rouge">.sail</code>, dans votre repo GIT, dans lequel vous allez mettre votre fichier <code class="highlighter-rouge">Dockerfile</code> (<code class="highlighter-rouge">.sail/Dockerfile</code>) et y ajouter ce que vous souhaitez. Vous devrez, cette fois, partir de l’image <code class="highlighter-rouge">codercom/ubuntu-dev</code>. Exemple:</p>
+
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> codercom/ubuntu-dev:latest</span>
 <span class="k">RUN </span><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nt">-y</span> upgrade
 
@@ -402,13 +403,13 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
         <a href="javascript:void(0);">Revenir en haut</a>
     </div>
     
-    <a href="/les-secrets-du-router-d'angular/" class="post-preview">
+    <a href="/oriente-objet-et-immuabilite/" class="post-preview">
         <div class="image">
             
-                <img src="/images/angular-posts/routing.jpg">
+                <img src="/images/immuabilite-objet/lock.jpg">
             
         </div>
-        <h3 class="title">Les secrets du Router d'Angular</h3>
+        <h3 class="title">L'immuabilité pour un code sans bug</h3>
     </a>
 </div>
 
@@ -690,13 +691,13 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
 
 Docker s’est démocratisé chez les développeurs, car il nous facilite la vie quand il s’agit de créer un environnement local avec tous les outils nécessaires tel qu’une base de données, un système de message, un serveur de mocks…
 
-Cela permet à toute l’équipe d’avoir un environnement similaire tout en ayant complément la main dessus sans impacter les autres membres. Et surtout, fini le “ça fonctionne sur ma machine” !
+Cela permet à toute l’équipe d’avoir un environnement similaire tout en ayant complètement la main dessus sans impacter les autres membres. Et surtout, fini le “ça fonctionne sur ma machine” !
 
 Il n’y a finalement qu’un outil que nous ne dockerisons pas encore: l’IDE.
 
-S’il y a bien une chose sur laquelle les développeurs ne sont pas toujours d’accord, c’est sur le choix d’un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serais-ce que par rapport au formatage du code.
+S’il y a bien une chose sur laquelle les développeurs ne sont pas toujours d’accord, c’est sur le choix d’un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serait-ce que par rapport au formatage du code.
 
-Alors ne serait-il pas une bonne idée de forcer l’IDE et ces configurations ? Ou encore mieux: avoir un IDE préconfiguré en une seule commande.
+Alors ne serait-il pas une bonne idée de forcer l’IDE et ses configurations ? Ou encore mieux: avoir un IDE préconfiguré en une seule commande.
 
 Vous l’aurez compris, cet article vise à ouvrir une porte sur la dockerisation de l’IDE.
 
@@ -734,9 +735,9 @@ Super, on a déjà plus que du concret!
 
 Mais nous allons vite faire face à un “problème”: le terminal fonctionne, mais il n’y a aucun outil de build disponible comme npm ou maven.
 
-Pas de panique ! Je vous rappelle qu’il s’agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle de fournie (codercom/code-server:v2).
+Pas de panique ! Je vous rappelle qu’il s’agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle fournie (codercom/code-server:v2).
 
-Voici un exemple de dockerfile qui installe automatiquement une extension et installe NodeJs, afin d’avoir un environnement près pour le développement:
+Voici un exemple de Dockerfile qui installe automatiquement une extension et installe NodeJs, afin d’avoir un environnement près pour le développement:
 
 FROM codercom/code-server:v2
 RUN sudo apt-get update &amp;amp;&amp;amp; sudo apt-get -y upgrade
@@ -754,9 +755,9 @@ RUN sudo apt-get install -y nodejs
 CMD [&quot;code-server&quot;, &quot;--allow-http&quot;, &quot;--no-auth&quot;]
 
 
-J’ai décidé de nommer le dockerfile “code-server-test” de façon totalement arbitraire.
+J’ai décidé de nommer le Dockerfile “code-server-test” de façon totalement arbitraire.
 
-Il faudra alors construite (builder) notre image:
+Il faudra alors construire (builder) notre image:
 docker build . -t code-server-test
 
 
@@ -764,7 +765,7 @@ Enfin, il est possible de l’utiliser à l’aide de cette commande:
 docker run -it -p 127.0.0.1:8080:8080 -v &quot;$PWD:/home/coder/project&quot; code-server-test:latest
 
 
-Nous pouvons à nouveau remarquer à quel point ces manipulations sont simple grâce Docker.
+Nous pouvons à nouveau remarquer à quel point ces manipulations sont simples grâce à Docker.
 
 Sur un serveur
 
@@ -788,6 +789,7 @@ Pour cet outil, ce sont des images différentes qui seront utilisées. Je parle 
 Si votre technologie n’est pas prise en charge ou que vous voulez customiser votre environnement (avec d’autres outils ou des extensions par exemple), cela reste tout à fait possible.
 
 Pour cela il faudra créer un dossier .sail, dans votre repo GIT, dans lequel vous allez mettre votre fichier Dockerfile (.sail/Dockerfile) et y ajouter ce que vous souhaitez. Vous devrez, cette fois, partir de l’image codercom/ubuntu-dev. Exemple:
+
 FROM codercom/ubuntu-dev:latest
 RUN sudo apt-get update &amp;amp;&amp;amp; sudo apt-get -y upgrade
 

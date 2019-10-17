@@ -5,13 +5,13 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Oct 2019 19:31:27 +0000</pubDate>
-    <lastBuildDate>Tue, 15 Oct 2019 19:31:27 +0000</lastBuildDate>
+    <pubDate>Thu, 17 Oct 2019 22:40:09 +0000</pubDate>
+    <lastBuildDate>Thu, 17 Oct 2019 22:40:09 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>Dockerisation sans limites</title>
-        <description>&lt;h2 id=&quot;docker-loutil-ultime-des-développeurs&quot;&gt;Docker l’outil ultime des développeurs&lt;/h2&gt; &lt;p&gt;Docker s’est démocratisé chez les développeurs, car il nous facilite la vie quand il s’agit de créer un environnement local avec tous les outils nécessaires tel qu’une &lt;em&gt;base de données&lt;/em&gt;, un &lt;em&gt;système de message&lt;/em&gt;, un &lt;em&gt;serveur de mocks&lt;/em&gt;…&lt;/p&gt; &lt;p&gt;Cela permet à toute l’équipe d’avoir un environnement similaire tout en ayant complément la main dessus sans impacter les autres membres. Et surtout, fini le &lt;strong&gt;&lt;em&gt;“ça fonctionne sur ma machine”&lt;/em&gt;&lt;/strong&gt; !&lt;/p&gt; &lt;p&gt;Il n’y a finalement qu’un outil que nous ne dockerisons pas encore: l’&lt;strong&gt;IDE&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;S’il y a bien une chose sur laquelle les développeurs ne sont...</description>
+        <description>&lt;h2 id=&quot;docker-loutil-ultime-des-développeurs&quot;&gt;Docker l’outil ultime des développeurs&lt;/h2&gt; &lt;p&gt;Docker s’est démocratisé chez les développeurs, car il nous facilite la vie quand il s’agit de créer un environnement local avec tous les outils nécessaires tel qu’une &lt;em&gt;base de données&lt;/em&gt;, un &lt;em&gt;système de message&lt;/em&gt;, un &lt;em&gt;serveur de mocks&lt;/em&gt;…&lt;/p&gt; &lt;p&gt;Cela permet à toute l’équipe d’avoir un environnement similaire tout en ayant complètement la main dessus sans impacter les autres membres. Et surtout, fini le &lt;strong&gt;&lt;em&gt;“ça fonctionne sur ma machine”&lt;/em&gt;&lt;/strong&gt; !&lt;/p&gt; &lt;p&gt;Il n’y a finalement qu’un outil que nous ne dockerisons pas encore: l’&lt;strong&gt;IDE&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;S’il y a bien une chose sur laquelle les développeurs ne sont...</description>
         <pubDate>Tue, 15 Oct 2019 15:41:08 +0000</pubDate>
         <link>https://wetry.tech/dockerisation-sans-limites/</link>
         <guid isPermaLink="true">https://wetry.tech/dockerisation-sans-limites/</guid>
