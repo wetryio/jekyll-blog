@@ -137,7 +137,7 @@ Personnellement, cette solution élégante pour les raisons suivantes:
 
 ### Un peu plus sur la librairie
 
-L'exemple ci-dessus est volontairement léger. Beaucoup d'autres outils intégré à wire permet de gérer différents problèmes récurrents. J'utilise les Sets et Values, je vous invite à lire la documentation officielle.
+L'exemple ci-dessus est volontairement léger. Beaucoup d'autres outils intégrés à wire permettent de gérer différents problèmes récurrents. J'utilise les Sets pour regrouper par package la déclaration des contructeurs par exemple. Je vous invite à lire la documentation officielle à ce sujet.
 
 Retrouvez le code de l'article [ici](https://github.com/worming004/todowireblog).
 
