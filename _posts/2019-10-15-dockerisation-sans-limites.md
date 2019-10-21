@@ -16,13 +16,13 @@ tags:
 
 Docker s'est démocratisé chez les développeurs, car il nous facilite la vie quand il s'agit de créer un environnement local avec tous les outils nécessaires tel qu'une *base de données*, un *système de message*, un *serveur de mocks*...
 
-Cela permet à toute l'équipe d'avoir un environnement similaire tout en ayant complément la main dessus sans impacter les autres membres. Et surtout, fini le ***"ça fonctionne sur ma machine"*** !
+Cela permet à toute l'équipe d'avoir un environnement similaire tout en ayant complètement la main dessus sans impacter les autres membres. Et surtout, fini le ***"ça fonctionne sur ma machine"*** !
 
 Il n'y a finalement qu'un outil que nous ne dockerisons pas encore: l'**IDE**.
 
-S'il y a bien une chose sur laquelle les développeurs ne sont pas toujours d'accord, c'est sur le choix d'un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serais-ce que par rapport au formatage du code.
+S'il y a bien une chose sur laquelle les développeurs ne sont pas toujours d'accord, c'est sur le choix d'un IDE. Et en utiliser plusieurs dans une même équipe peut vite avoir des effets indésirables ne serait-ce que par rapport au formatage du code.
 
-Alors ne serait-il pas une bonne idée de forcer l'IDE et ces configurations ? Ou encore mieux: avoir un IDE préconfiguré en une seule commande.
+Alors ne serait-il pas une bonne idée de forcer l'IDE et ses configurations ? Ou encore mieux: avoir un IDE préconfiguré en une seule commande.
 
 Vous l'aurez compris, cet article vise à ouvrir une porte sur la dockerisation de l'IDE.
 
@@ -60,12 +60,11 @@ Super, on a déjà plus que du concret!
 
 ![vs code online](/images/docker-posts/vs-code-online.png)
 
-
 Mais nous allons vite faire face à un "problème": le terminal fonctionne, mais il n'y a aucun outil de build disponible comme *npm* ou *maven*.
 
-Pas de panique ! Je vous rappelle qu'il s'agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle de fournie (`codercom/code-server:v2`).
+Pas de panique ! Je vous rappelle qu'il s'agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle fournie (`codercom/code-server:v2`).
 
-Voici un exemple de **dockerfile** qui installe automatiquement une **extension** et installe **NodeJs**, afin d'avoir un environnement près pour le développement:
+Voici un exemple de **Dockerfile** qui installe automatiquement une **extension** et installe **NodeJs**, afin d'avoir un environnement près pour le développement:
 
 ```dockerfile
 FROM codercom/code-server:v2
@@ -84,9 +83,9 @@ RUN sudo apt-get install -y nodejs
 CMD ["code-server", "--allow-http", "--no-auth"]
 ```
 
-J'ai décidé de nommer le dockerfile "`code-server-test`" de façon totalement arbitraire.
+J'ai décidé de nommer le Dockerfile "`code-server-test`" de façon totalement arbitraire.
 
-Il faudra alors construite (builder) notre image:
+Il faudra alors construire (builder) notre image:
 ```sh
 docker build . -t code-server-test
 ```
@@ -96,7 +95,7 @@ Enfin, il est possible de l'utiliser à l'aide de cette commande:
 docker run -it -p 127.0.0.1:8080:8080 -v "$PWD:/home/coder/project" code-server-test:latest
 ```
 
-Nous pouvons à nouveau remarquer à quel point ces manipulations sont simple grâce Docker.
+Nous pouvons à nouveau remarquer à quel point ces manipulations sont simples grâce à Docker.
 
 ## Sur un serveur
 
@@ -121,6 +120,7 @@ Pour cet outil, ce sont des images différentes qui seront utilisées. Je parle 
 Si votre technologie n'est pas prise en charge ou que vous voulez customiser votre environnement (avec d'autres outils ou des extensions par exemple), cela reste tout à fait possible.
 
 Pour cela il faudra créer un dossier `.sail`, dans votre repo GIT, dans lequel vous allez mettre votre fichier `Dockerfile` (`.sail/Dockerfile`) et y ajouter ce que vous souhaitez. Vous devrez, cette fois, partir de l'image `codercom/ubuntu-dev`. Exemple:
+
 ```dockerfile
 FROM codercom/ubuntu-dev:latest
 RUN sudo apt-get update && sudo apt-get -y upgrade
@@ -152,7 +152,6 @@ Cela vous permettra d'ouvrir un VS Code en ligne en cliquant sur `open`:
 Et voilà, vous n'avez plus qu'une URL à retenir pour pouvoir développer depuis n'importe quel device.
 
 **Attention** que pour ce portail, **aucune authentification** n'a été mise en place, il est donc nécessaire de mettre en place un **VPN** si vous souhaitez avoir accès à ce serveur depuis n'importe où.
-
 
 ## Conclusion
 
