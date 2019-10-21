@@ -26,7 +26,7 @@ Google Cloud propose une autre solution pour définir le graphe d'injection de d
 L'objectif de cette publication est de montrer une alternative aux méthodes habituelles d'injection de dépendances. Nous n'explorerons pas la librairie Wire en profondeur. Si vous voulez avoir des exemples plus poussés de cette librairie, n'hésitez pas à le demander en commentaire.
 
 ```
-tips: ce post est créé depuis ubuntu avec go 1.13. Il a été testé sur windows 10 avec aussi go 1.13.
+Tip: ce post est créé depuis ubuntu avec go 1.13. Il a été testé sur windows 10 avec aussi go 1.13.
 ```
 
 ## Un exemple simple
@@ -96,7 +96,8 @@ func BuildTodoService() TodoService {
 ```
 
 ```
-N'omettez pas la première ligne //+build wireinject. Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la ligne vide.
+N'omettez pas la première ligne //+build wireinject.
+Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la ligne vide.
 ```
 
 Exécutez la commande `wire`. Un nouveau fichier est créé. Observons le contenu :
