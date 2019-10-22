@@ -1,4 +1,4 @@
----
+ ---
 author: pgrasseels
 layout: post
 title: "Blazor Introduction"
@@ -19,4 +19,21 @@ Ces dernières années le monde du web à beaucoup évoluer, les sites que nous 
 Blazor, c'est un nouveau venu, un peu le challenger dans ce domaine. Blazor, vas tout simplement permettre de développer des SPA en .NET qui tourneront dans votre browser et ce avec peu voir pas du tout de javascript.
 
 ## Blazor WASM Vs Blazor Server Side
-Blazor existe en deux déclinaisons;
+Blazor existe en deux déclinaisons, les deux sont très similaires et la migration de l'un à l'autre n'est pas du tout complexe.
+Il faut savoir qu'actuellement, seul la version Server Side est officiellement release par Microsoft. (.NET Core 3.0 Septembre 2019).
+La version WASM (Client) est toujours en expérimentale.
+
+
+### Blazor Server Side
+La version serveur utilise SignalR à fin de mettre à jour l'UI mais également d'éxécuter les actions qui seront demandées. Par exemple, quand un clique est générer sur un bouton, SignalR envois une commande qui est récupérer par le server side de Blazor et execute l'action lié au click. La version à plusieurs avantages et inconvenients.
+
+Avantages : 
+- Léger (très peu de télécharger pour le client)
+- Tout le framework / packages netstandard / netcore est disponible à l'utilisation
+
+Inconvenients :
+- Nécessite d'avoir une connection en permanance (SignalR)
+- Demande plus de resources niveau server (mais utilisable avec Azure SignalR Services)
+
+### Blazor WASM (Client)
+La version WASM (Client), toute l'application est compiler en Webassembly, télacharger par le navigateur client et interpreter.
