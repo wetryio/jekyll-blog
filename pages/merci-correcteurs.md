@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Merci à nos correcteurs
-description: Wetry c'est aussi nos reviewers qui corrige nos fautes d'orthographe 
+description: Wetry c'est aussi nos relecteurs qui corrigent nos fautes d'orthographe 
 permalink: /merci-correcteurs/
 menu: true
 ---
