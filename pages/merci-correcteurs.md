@@ -6,7 +6,7 @@ permalink: /merci-correcteurs/
 menu: true
 ---
 
-Nous remercions les reviewers qui nous relisent et corrigent nos fautes d'orthographe.
+Nous remercions les relecteurs qui nous relisent et corrigent nos fautes d'orthographe.
 Nos remerciements vont vers
 
 * Hubert Deplus
