@@ -110,7 +110,15 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2019-10-17</lastmod>
+                <lastmod>2019-10-23</lastmod>
+            
+        </url>
+    
+        <url>
+            <loc>https://wetry.tech/merci-correcteurs/</loc>
+            
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
             
         </url>
     
