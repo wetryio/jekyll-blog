@@ -140,7 +140,7 @@ Personnellement, cette solution élégante pour les raisons suivantes :
 
 L'exemple ci-dessus est volontairement léger. Beaucoup d'autres outils intégrés à wire permettent de gérer différents problèmes récurrents. J'utilise les Sets pour regrouper par package la déclaration des contructeurs par exemple. Je vous invite à lire la documentation officielle à ce sujet.
 
-Retrouvez le code de l'article [ici](https://github.com/worming004/todowireblog).
+Retrouvez le code de l'article [ici](https://github.com/wetryio/todowireblog).
 
 ---
 
