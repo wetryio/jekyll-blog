@@ -15,7 +15,7 @@ introduction: L'injection de dépendance au build
 
 # Wire pour créer l'injection de dépendance pendant le build
 
-Le langage go [gagne de la popularité d'année en année.](https://www.benfrederickson.com/ranking-programming-languages-by-github-users/) Avec sa volonté d'être simple, performant et scalable, la communauté de développeurs s'intéresse à ce langage moderne made in Google.
+Le langage go [gagne de la popularité d'année en année.](https://www.tiobe.com/tiobe-index/go/) et a atteint [la pente de l’illumination](https://fr.wikipedia.org/wiki/Cycle_du_hype). Avec sa volonté d'être simple, performant et scalable, la communauté de développeurs s'intéresse à ce langage moderne made in Google.
 
 Pour s'aider dans le principe d'Inversion of Controls, Go a deux librairies populaires qui remplissent le même objectif avec la même méthode: construire un container et le résoudre pendant le runtime. Voyez vous-même [inject de Facebook](https://github.com/facebookarchive/inject) ou bien [dig](https://github.com/uber-go/dig). Cette méthode est aussi populaire dans le monde C#.
 
