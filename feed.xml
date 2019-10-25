@@ -5,9 +5,25 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 24 Oct 2019 18:06:31 +0000</pubDate>
-    <lastBuildDate>Thu, 24 Oct 2019 18:06:31 +0000</lastBuildDate>
+    <pubDate>Fri, 25 Oct 2019 09:37:48 +0000</pubDate>
+    <lastBuildDate>Fri, 25 Oct 2019 09:37:48 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>L'injection de dépendance au build</title>
+        <description>&lt;h1 id=&quot;wire-pour-créer-linjection-de-dépendance-pendant-le-build&quot;&gt;Wire pour créer l’injection de dépendance pendant le build&lt;/h1&gt; &lt;p&gt;Le langage go &lt;a href=&quot;https://www.tiobe.com/tiobe-index/go/&quot;&gt;gagne de la popularité d’année en année.&lt;/a&gt; et a atteint &lt;a href=&quot;https://fr.wikipedia.org/wiki/Cycle_du_hype&quot;&gt;la pente de l’illumination&lt;/a&gt;. Avec sa volonté d’être simple, performant et scalable, la communauté de développeurs s’intéresse à ce langage moderne made in Google.&lt;/p&gt; &lt;p&gt;Pour s’aider dans le principe d’Inversion of Controls, Go a deux librairies populaires qui remplissent le même objectif avec la même méthode: construire un container et le résoudre pendant le runtime. Voyez vous-même &lt;a href=&quot;https://github.com/facebookarchive/inject&quot;&gt;inject de Facebook&lt;/a&gt; ou bien &lt;a href=&quot;https://github.com/uber-go/dig&quot;&gt;dig&lt;/a&gt;. Cette méthode est aussi populaire dans le monde C#.&lt;/p&gt; &lt;p&gt;Google...</description>
+        <pubDate>Fri, 25 Oct 2019 07:00:00 +0000</pubDate>
+        <link>https://wetry.tech/go-wire-injection-dependance-au-build/</link>
+        <guid isPermaLink="true">https://wetry.tech/go-wire-injection-dependance-au-build/</guid>
+        
+        <category>go</category>
+        
+        <category>injection de dépendance</category>
+        
+        <category>wire</category>
+        
+        <category>documentation</category>
+      </item>
     
       <item>
         <title>Dockerisation sans limites</title>

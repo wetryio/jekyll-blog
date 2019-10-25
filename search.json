@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "L&#39;injection de dépendance au build",
+      "tags"     : "go, injection de dépendance, and wire",
+      "categories" : "documentation",
+      "url"      : "/go-wire-injection-dependance-au-build/",
+      "date"     : "10/25/2019"
+    } ,
+  
+    {
       "title"    : "Dockerisation sans limites",
       "tags"     : "docker, IDE, and VS Code",
       "categories" : "experimentation",

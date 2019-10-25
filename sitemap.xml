@@ -110,7 +110,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2019-10-24</lastmod>
+                <lastmod>2019-10-25</lastmod>
             
         </url>
     
@@ -202,6 +202,13 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/go-wire-injection-dependance-au-build/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2019-10-25</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/dockerisation-sans-limites/</loc>
