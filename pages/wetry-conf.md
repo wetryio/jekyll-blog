@@ -10,6 +10,8 @@ menu: true
 
 WeTry a le plaisir de vous inviter à notre rencontre gratuite au sujet du serverless ! Nous et un invité vous assisterons dans un workshop et dans des talks de **16h15 à 21h**. Boissons et pizzas sont offertes !
 
+Réservez vos places gratuitement sur EventBrite [https://www.eventbrite.fr/e/billets-wetryconf-wetry-serverless-avec-vous-78934578449](https://www.eventbrite.fr/e/billets-wetryconf-wetry-serverless-avec-vous-78934578449)
+
 ## Workshop
 
 Venez participer à notre workshop qui mixent les technologies DevOps du moment. Vous apprendrez ce qu’est une Function as a Service et ses qualités Serverless qui lui sont associés. Vous déployerez une FaaS sur la plateforme Azure ainsi qu’en On Premise via Kubernetes et Kubeless. De **16h15 à 18h00**, WeTry vous assistera pour le déploiement et à démystifier toutes les technologies associées.
