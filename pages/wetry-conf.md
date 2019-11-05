@@ -8,7 +8,7 @@ menu: true
 
 # WeTry.Conf
 
-WeTry a le plaisir de vous inviter à notre rencontre gratuite au sujet du serverless ! Nous et un invité vous assisterons dans un workshop et dans des talks de **16h15 à 21h**. Boissons et pizzas sont offertes par [NRB](https://www.nrb.be) !
+WeTry a le plaisir de vous inviter à notre rencontre gratuite au sujet du serverless ! Nous et un invité vous assisterons dans un workshop et dans des talks le **mardi 12/11/2019 de 16h15 à 21h**. Boissons et pizzas sont offertes par [NRB](https://www.nrb.be) !
 
 Réservez vos places gratuitement sur EventBrite [https://www.eventbrite.fr/e/billets-wetryconf-wetry-serverless-avec-vous-78934578449](https://www.eventbrite.fr/e/billets-wetryconf-wetry-serverless-avec-vous-78934578449)
 
