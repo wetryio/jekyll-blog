@@ -20,9 +20,9 @@ Venez participer à notre workshop qui mixent les technologies DevOps du moment.
 
 WeTry et le MVP Adrien Clerbois vous parlerons tour à tour des principes Clean Code, de l’orienté objet avec Go ainsi que du mariage d’Azure Devops et Github. Venez y assister gratuitement de **18h15 à 21h00**
 
-1) Les principes **Clean Code** sont un ensemble de bonnes pratiques simples et faciles à retenir pour améliorer la lisibilité de votre code. Plus votre code est lisible, plus il est maintenable. 
-2) Le **mariage Azure Devops et Github** démontre la simplicité de mise en place d’un environnement CI/CD. Du premier commit au déploiement en production en passant par l’exécution automatique des tests. 
-3) Certains dirons qu'un des principes fondamentaux de l’orienté objet manque au langage **Go**. Mais Google répond sereinement à cette particularité que l’héritage n’est pas nécessaire pour qu’un langage soit orienté objet. Ce à quoi Google répond sereinement; l'héritage n'est pas nécessaire pour qu'un langage soit orienté objet. La philosophie et les particularités de Go seront présentées pour les néophytes.
+1. Les principes **Clean Code** sont un ensemble de bonnes pratiques simples et faciles à retenir pour améliorer la lisibilité de votre code. Plus votre code est lisible, plus il est maintenable.
+2. Le **mariage Azure Devops et Github** démontre la simplicité de mise en place d’un environnement CI/CD. Du premier commit au déploiement en production en passant par l’exécution automatique des tests.
+3. Certains dirons qu'un des principes fondamentaux de l’orienté objet manque au langage **Go**. Mais Google répond sereinement à cette particularité que l’héritage n’est pas nécessaire pour qu’un langage soit orienté objet. Ce à quoi Google répond sereinement; l'héritage n'est pas nécessaire pour qu'un langage soit orienté objet. La philosophie et les particularités de Go seront présentées pour les néophytes.
 
 ## Lunch
 
