@@ -110,7 +110,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2019-10-25</lastmod>
+                <lastmod>2019-11-05</lastmod>
             
         </url>
     
@@ -188,6 +188,14 @@
     
         <url>
             <loc>https://wetry.tech/category/webdev/</loc>
+            
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            
+        </url>
+    
+        <url>
+            <loc>https://wetry.tech/wetry-conf/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
