@@ -98,7 +98,7 @@ Kubeless est un framework FAAS open-source basé sur Kubernetes.
 <ul class="small">
     <li>HTTP​</li>
     <li>Conjob​</li>
-    <li>PubSub​ (Plublication - Souscription)</li>
+    <li>PubSub​ (Publication - Souscription)</li>
     <ul>
         <li>via Kafka​</li>
         <li>via NATS messaging​</li>
