@@ -277,7 +277,7 @@ Il également possible de gérer les "secrets" via une variable d'environnement 
 ## Conclusion
 
 Si vous êtes arrivé jusqu'ici, j'espère vous avoir donné envie de tester le serverless et principalement le FAAS.
-Il s'agit d'un type d'architecture peu couteux en développement, déploiement et extrêmement scallable.
+Il s'agit d'un type d'architecture peu couteux en développement, déploiement et extrêmement scalable.
 
 Cependant, d'après le type de trigger choisit, la difficulté est probablement déplacée au niveau du debugging et de la configuration.
 
