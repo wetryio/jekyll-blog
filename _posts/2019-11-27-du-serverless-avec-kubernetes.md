@@ -56,7 +56,7 @@ Quelques exemples:
 
 #### Faas (Function as a service)
 
-Contrairement au BAAS, le FAAS est une logique serveur **écrite par un développeur​**.
+Contrairement au BAAS, le FAAS est une logique serveur que **vous allez écrire​**.
 Le code est exécuté dans des conteneurs éphémères (eux-mêmes géré par un tiers)​.
 
 Exemples de gestionnaires de fonctions:
@@ -68,7 +68,7 @@ Exemples de gestionnaires de fonctions:
 
 ### Exemple d'architecture serverless
 
-Pour illustrer une exemple, nous allons prendre un cas concret.
+Pour illustrer une exemple, nous allons prendre un cas concret. *([Post original ici](https://twitter.com/manekinekko/status/1145472408071151616))*
 *Wassim CHEGHAM* a imaginé une application qui:
 <ol class="small">
     <li>Prend une <strong>photo</strong> depuis une app angular</li>
@@ -97,7 +97,7 @@ Kubeless est un framework FAAS open-source basé sur Kubernetes.
 
 <ul class="small">
     <li>HTTP​</li>
-    <li>Conjob​</li>
+    <li>Cron job​</li>
     <li>PubSub​ (Publication - Souscription)</li>
     <ul>
         <li>via Kafka​</li>
@@ -122,7 +122,7 @@ Un runtime est un exécuteur de langage. Plusieurs langages sont directement uti
     <li>Java​</li>
     <li>Python​</li>
     <li>Ruby​</li>
-    <li>Bellerina​</li>
+    <li>Ballerina</li>
 </ul>
 
 Tout comme pour les triggers, il est possible de créer votre propre Runtime.
