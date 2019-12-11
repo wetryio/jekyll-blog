@@ -110,7 +110,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2019-11-05</lastmod>
+                <lastmod>2019-12-11</lastmod>
             
         </url>
     
@@ -210,6 +210,13 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/du-serverless-avec-kubernetes/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2019-12-09</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/go-wire-injection-dependance-au-build/</loc>
