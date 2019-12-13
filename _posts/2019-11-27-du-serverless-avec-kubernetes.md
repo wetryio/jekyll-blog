@@ -68,7 +68,7 @@ Exemples de gestionnaires de fonctions:
 
 ### Exemple d'architecture serverless
 
-Pour illustrer une exemple, nous allons prendre un cas concret. *([Post original ici](https://twitter.com/manekinekko/status/1145472408071151616))*
+Pour illustrer un exemple, nous allons prendre un cas concret. *([Post original ici](https://twitter.com/manekinekko/status/1145472408071151616))*
 *Wassim CHEGHAM* a imaginé une application qui:
 <ol class="small">
     <li>Prend une <strong>photo</strong> depuis une app angular</li>
@@ -81,7 +81,7 @@ Pour illustrer une exemple, nous allons prendre un cas concret. *([Post original
 
 Cela est possible en écrivant très peu de ligne de code car nous n'écrivons, en réalité, que le flux entre les services.
 
-Wassim CHEGHAM a décidé d'utiliser les services Azure et donc d'écrire des fonctions en Azure Functions. Mais cela est tout à fait possible via Kubeless.
+Wassim a décidé d'utiliser les services Azure et donc d'écrire des fonctions en Azure Functions. Mais cela est tout à fait possible via Kubeless.
 
 ![serverless-example](/images/kubernetes/servless-example.jpeg)
 
@@ -129,7 +129,11 @@ Tout comme pour les triggers, il est possible de créer votre propre Runtime.
 
 ### Installation
 
-Pour installer Kubeless, il vous faut Kubernetes. La manière la plus simple d'installer un Kubernetes est d'utiliser [Rancher,](https://rancher.com/quick-start/) mais cela est hors scope de cet article, je vais donc partir sur le fait que vous avez déjà un Kubernetes sous la main.
+Pour installer Kubeless, il vous faut Kubernetes. La manière la plus simple d'installer un Kubernetes est d'utiliser [Rancher,](https://rancher.com/quick-start/) mais cela est hors du scope de cet article, je vais donc partir sur le fait que vous avez déjà un Kubernetes sous la main.
+
+<small>
+*Les commandes de l'article sont exécutables sur des serveurs linux. La création de variables se fait différement sur des serveurs Windows.*
+</small>
 
 Installez Kubeless en 4 étapes:
 * Récupération de la version de la dernière release
