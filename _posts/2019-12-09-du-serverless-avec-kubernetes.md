@@ -20,7 +20,7 @@ Du serverless sur un serveur ? Et oui, ça ne veut pas dire sans serveur physiqu
 
 Nous allons donc commencer par voir ce qu'est le serverless. Si vous vous y connaissez déjà, n'hésitez pas à regarder la [table des matières](#toc) pour vous diriger vers les parties intéressantes pour vous de l'article.
 
-Si vous avez déjà fouillé un peu sur le sujet, vous avez remarqué qu'il existe pas mal d'autres frameworks du même genre. Mais si j'ai choisi Kubeless, c'est pour ça simplicité d'utilisation, parce qu'il n'utilise que les éléments natifs de Kubernetes et qu'il ne faut pas passer par un registry Docker comme DockerHub.
+Si vous avez déjà fouillé un peu sur le sujet, vous avez remarqué qu'il existe pas mal d'autres frameworks du même genre. Mais si j'ai choisi Kubeless, c'est pour sa simplicité d'utilisation, parce qu'il n'utilise que les éléments natifs de Kubernetes et qu'il ne faut pas passer par un registry Docker comme DockerHub.
 
 ![kubernetes_serveless_frameworks](/images/kubernetes/comparison_of_serverless_on_kubernetes.png)
 <!-- https://winderresearch.com/a-comparison-of-serverless-frameworks-for-kubernetes-openfaas-openwhisk-fission-kubeless-and-more/ -->
