@@ -5,9 +5,25 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 14 Dec 2019 10:49:28 +0000</pubDate>
-    <lastBuildDate>Sat, 14 Dec 2019 10:49:28 +0000</lastBuildDate>
+    <pubDate>Wed, 25 Dec 2019 19:06:41 +0000</pubDate>
+    <lastBuildDate>Wed, 25 Dec 2019 19:06:41 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Fonctionnement d'Angular: HttpClient</title>
+        <description>&lt;p&gt;Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest&quot;&gt;XMLHttpRequest&lt;/a&gt;, l’API plus récente &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/Fetch_API&quot;&gt;Fetch&lt;/a&gt; ou encore une librairie externe (utilisant une de ces APIs) comme &lt;a href=&quot;https://github.com/axios/axios&quot;&gt;Axios&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpModule&lt;/code&gt;) ayant été dépréciée depuis la...</description>
+        <pubDate>Wed, 25 Dec 2019 18:33:43 +0000</pubDate>
+        <link>https://wetry.tech/fonctionnement-d-angular-httpclient/</link>
+        <guid isPermaLink="true">https://wetry.tech/fonctionnement-d-angular-httpclient/</guid>
+        
+        <category>angular</category>
+        
+        <category>http</category>
+        
+        <category>api</category>
+        
+        <category>demystification</category>
+      </item>
     
       <item>
         <title>Du serverless avec Kubernetes</title>

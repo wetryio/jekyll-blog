@@ -17,24 +17,24 @@
     
     
 
-    <title>L'injection de dépendance au build | WeTry</title>
-    <meta name="description" content="go propose une manière bien à elle de fournir un système d'injection de dépendance">
+    <title>Fonctionnement d'Angular: HttpClient | WeTry</title>
+    <meta name="description" content="Démystification du client http Angular">
     
-        <meta name="keywords" content="go, injection de dépendance, wire">
+        <meta name="keywords" content="angular, http, api">
     
 
     <!-- Social: Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="L'injection de dépendance au build | WeTry">
-    <meta name="twitter:description" content="go propose une manière bien à elle de fournir un système d'injection de dépendance">
-    <meta property="twitter:image:src" content="https://wetry.tech/images/go/go-wire.png">
+    <meta name="twitter:title" content="Fonctionnement d'Angular: HttpClient | WeTry">
+    <meta name="twitter:description" content="Démystification du client http Angular">
+    <meta property="twitter:image:src" content="https://wetry.tech/images/angular-posts/http-client/principal.png">
     
 
     <!-- Social: Facebook / Open Graph -->
-    <meta property="og:url" content="https://wetry.tech/go-wire-injection-dependance-au-build/">
-    <meta property="og:title" content="L'injection de dépendance au build | WeTry">
-    <meta property="og:image" content="https://wetry.tech/images/go/go-wire.png">
-    <meta property="og:description" content="go propose une manière bien à elle de fournir un système d'injection de dépendance">
+    <meta property="og:url" content="https://wetry.tech/fonctionnement-d-angular-httpclient/">
+    <meta property="og:title" content="Fonctionnement d'Angular: HttpClient | WeTry">
+    <meta property="og:image" content="https://wetry.tech/images/angular-posts/http-client/principal.png">
+    <meta property="og:description" content="Démystification du client http Angular">
     <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
 
     <!-- Favicon -->
@@ -66,7 +66,7 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/css/styles.min.css">
-    <link rel="canonical" href="https://wetry.tech/go-wire-injection-dependance-au-build/">
+    <link rel="canonical" href="https://wetry.tech/fonctionnement-d-angular-httpclient/">
     <link rel="alternate" type="application/rss+xml" title="WeTry | Encore un autre blog de développeur" href="https://wetry.tech/feed.xml" />
 </head>
 
@@ -203,155 +203,119 @@
                 <p class="post-info">
                     
                         <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
-                        <time class="date" datetime="2019-10-25T07:00:00+00:00">
+                        <time class="date" datetime="2019-12-25T18:33:43+00:00">
                             
 
 
-Octobre 25, 2019
+Décembre 25, 2019
 
                         </time>
                     
                     <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
-                    <span>5 min to read</span>
+                    <span>4 min to read</span>
                 </p>
-                <h1 class="post-title">L'injection de dépendance au build</h1>
-                <p class="post-subtitle"></p>
+                <h1 class="post-title">Fonctionnement d'Angular: HttpClient</h1>
+                <p class="post-subtitle">Qu'y a-t-il derrière le module HttpClientModule ?</p>
 
                 
-                    <img src="/images/go/go-wire.png" alt="Featured image" class="post-cover">
+                    <img src="/images/angular-posts/http-client/principal.png" alt="Featured image" class="post-cover">
                 
 
                 <!-- Pagination links -->
 
 
 
-                <h1 id="wire-pour-créer-linjection-de-dépendance-pendant-le-build">Wire pour créer l’injection de dépendance pendant le build</h1>
+                <p>Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique <a href="https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a>, l’API plus récente <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API">Fetch</a> ou encore une librairie externe (utilisant une de ces APIs) comme <a href="https://github.com/axios/axios">Axios</a>.</p>
 
-<p>Le langage go <a href="https://www.tiobe.com/tiobe-index/go/">gagne de la popularité d’année en année.</a> et a atteint <a href="https://fr.wikipedia.org/wiki/Cycle_du_hype">la pente de l’illumination</a>. Avec sa volonté d’être simple, performant et scalable, la communauté de développeurs s’intéresse à ce langage moderne made in Google.</p>
+<p>Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (<code class="highlighter-rouge">HttpModule</code>) ayant été dépréciée depuis la venue du <code class="highlighter-rouge">HttpClientModule</code> dans la version 4.3 d’Angular, nous n’allons nous attarder que sur cette dernière.</p>
 
-<p>Pour s’aider dans le principe d’Inversion of Controls, Go a deux librairies populaires qui remplissent le même objectif avec la même méthode: construire un container et le résoudre pendant le runtime. Voyez vous-même <a href="https://github.com/facebookarchive/inject">inject de Facebook</a> ou bien <a href="https://github.com/uber-go/dig">dig</a>. Cette méthode est aussi populaire dans le monde C#.</p>
+<h2 id="architecture">Architecture</h2>
 
-<p>Google Cloud propose une autre solution pour définir le graphe d’injection de dépendance. L’inversion des contrôles se fait pendant ou avant le build. Voici Wire en action.</p>
+<p>Comme d’habitude, HttpClient a été fait de façon très modulaire afin de pouvoir remplacer n’importe quelle partie.</p>
 
-<h2 id="un-article-court">Un article court</h2>
+<p><img src="/images/angular-posts/http-client/http-client-1.png" alt="http-client-architecture-de-base" />
+Les éléments en bleu représentent les “idées” (interfaces) qui sont par défaut implémentées par les éléments en gris.</p>
 
-<p>L’objectif de cette publication est de montrer une alternative aux méthodes habituelles d’injection de dépendances. Nous n’explorerons pas la librairie Wire en profondeur. Si vous voulez avoir des exemples plus poussés de cette librairie, n’hésitez pas à le demander en commentaire.</p>
+<p>Démarrons par le bas du schéma.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tip: ce post est créé depuis ubuntu avec go 1.13. Il a été testé sur windows 10 avec aussi go 1.13.
-</code></pre></div></div>
+<h3 id="requêtesréponses">Requêtes/Réponses</h3>
 
-<h2 id="un-exemple-simple">Un exemple simple</h2>
+<p>Une requête est créée quand vous appelez une méthode du <code class="highlighter-rouge">HttpClient</code> comme <code class="highlighter-rouge">.get(...)</code> ou <code class="highlighter-rouge">.request(...)</code>.</p>
 
-<p>Débutons par un exemple simple, nous verrons par la suite quels sont les avantages de cette librairie.</p>
+<p>La réponse, elle, n’est pas créée par <code class="highlighter-rouge">HttpClient</code> mais par <code class="highlighter-rouge">HttpBackend</code> qui s’occupe notamment de déterminer s’il s’agit d’un succès ou d’une erreur.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">TodoRepository</span> <span class="k">interface</span> <span class="p">{</span>
-    <span class="n">Save</span><span class="p">(</span><span class="n">todo</span> <span class="n">Todo</span><span class="p">)</span> <span class="kt">error</span>
-    <span class="n">Get</span><span class="p">(</span><span class="n">todoName</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="n">Todo</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span>
-<span class="p">}</span>
+<h3 id="httphandler">HttpHandler</h3>
 
-<span class="k">type</span> <span class="n">TodoFileRepository</span> <span class="k">struct</span> <span class="p">{</span>
+<p>L’HttpHandler est la façon de traiter une requête (<code class="highlighter-rouge">HttpRequest</code>) et sa réponse (<code class="highlighter-rouge">HttpResponse</code>).</p>
 
-<span class="p">}</span>
+<p>Le handler principal implémenté par défaut s’appel <code class="highlighter-rouge">HttpInterceptingHandler</code> et comme son nom l’indique, c’est lui qui détermine comment et dans quel ordre exécuter les <strong>intercepteurs</strong> avant l’appel réel (qui lui se fait via l’HttpBackend).</p>
 
-<span class="k">func</span> <span class="n">NewTodoRepository</span><span class="p">()</span> <span class="n">TodoRepository</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">TodoFileRepository</span><span class="p">{}</span>
-<span class="p">}</span>
+<h3 id="httpbackend">HttpBackend</h3>
 
+<p>L’HttpBackend implémente lui aussi HttpHandler mais mérite une section à part.</p>
 
-
-<span class="k">func</span> <span class="p">(</span><span class="n">repo</span> <span class="n">TodoFileRepository</span><span class="p">)</span> <span class="n">Save</span><span class="p">(</span><span class="n">todo</span> <span class="n">Todo</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
-    <span class="c">// [...]</span>
-<span class="p">}</span>
-
-<span class="k">func</span> <span class="p">(</span><span class="n">repo</span> <span class="n">TodoFileRepository</span><span class="p">)</span> <span class="n">Get</span><span class="p">(</span><span class="n">todoName</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="n">Todo</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c">// [...]</span>
-<span class="p">}</span>
-
-<span class="c">// ...</span>
-
-<span class="k">type</span> <span class="n">TodoService</span> <span class="k">struct</span> <span class="p">{</span>
-    <span class="n">repository</span> <span class="n">TodoRepository</span>
-<span class="p">}</span>
-
-<span class="k">func</span> <span class="n">NewTodoService</span><span class="p">(</span><span class="n">repo</span> <span class="n">TodoRepository</span><span class="p">)</span> <span class="n">TodoService</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">TodoService</span><span class="p">{</span><span class="n">repository</span><span class="o">:</span> <span class="n">repo</span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>Rien d’extraordinaire, deux types contenant ses dépendances simples. Et chacun son <em>constructeur</em>.</p>
-
-<h2 id="wire-fait-son-entrée">Wire fait son entrée</h2>
-
-<p>Téléchargez la librairie wire via la commande <code class="highlighter-rouge">go get github.com/google/wire/cmd/wire</code>. Ceci installera une application cli pour créer notre injection de dépendance <strong>avant le build.</strong></p>
-
-<p>Si vous rencontrez des problèmes d’installation, je vous redirige vers <a href="https://github.com/google/wire">le github officiel</a>.</p>
-
-<h3 id="implémentation-du-wire-build">implémentation du wire build</h3>
-
-<p>Dans le même package, ajoutez un fichier <code class="highlighter-rouge">wire.go</code> avec ceci:</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">//+build wireinject</span>
-
-<span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-    <span class="s">"github.com/google/wire"</span>
-<span class="p">)</span>
-
-<span class="k">func</span> <span class="n">BuildTodoService</span><span class="p">()</span> <span class="n">TodoService</span> <span class="p">{</span>
-    <span class="n">wire</span><span class="o">.</span><span class="n">Build</span><span class="p">(</span><span class="n">NewTodoRepository</span><span class="p">,</span> <span class="n">NewTodoService</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">TodoService</span><span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>N'omettez pas la première ligne //+build wireinject.
-Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la ligne vide.
-</code></pre></div></div>
-
-<p>Exécutez la commande <code class="highlighter-rouge">wire</code>. Un nouveau fichier est créé. Observons le contenu :</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Code generated by Wire. DO NOT EDIT.</span>
-
-<span class="c">//go:generate wire</span>
-<span class="c">//+build !wireinject</span>
-
-<span class="k">package</span> <span class="n">main</span>
-
-<span class="c">// Injectors from wire.go:</span>
-
-<span class="k">func</span> <span class="n">BuildTodoService</span><span class="p">()</span> <span class="n">TodoService</span> <span class="p">{</span>
-    <span class="n">todoRepository</span> <span class="o">:=</span> <span class="n">NewTodoRepository</span><span class="p">()</span>
-    <span class="n">todoService</span> <span class="o">:=</span> <span class="n">NewTodoService</span><span class="p">(</span><span class="n">todoRepository</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">todoService</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>Magnifique ! Ce nouveau fichier contient toute la logique pour créer un TodoService avec l’arbre de dépendance en entier. Elle contient une méthode avec la même signature que celle contenue dans <code class="highlighter-rouge">wire.go</code> créé précédemment.</p>
-
-<h2 id="pourquoi-une-autre-manière-dinjecter-les-dépendances-">Pourquoi une autre manière d’injecter les dépendances ?</h2>
-
-<p>Selon les <a href="https://blog.golang.org/wire">avantages avancés par Google</a>, nous recevons :</p>
-
+<p>Le backend par défaut s’appel <code class="highlighter-rouge">HttpXhrBackend</code> et c’est dans celuis-ci que se trouve toute la logique automatique comme:</p>
 <ul>
-  <li>Facilite le debug car le code est straight-forward. Débugguer la résolution de dépendance évaluée au run-time est complexe à suivre.</li>
-  <li>Utilise les types pour évaluer les résolutions. Pas de confusion possible.</li>
-  <li>Appelle le strict nécessaire. L’écriture dans la méthode générée opère un tree-shaking.</li>
-  <li>Ajoute de la clarté dans le code. Ceci permet à certains outils de mieux manier le code.</li>
+  <li>l’ajout du header <code class="highlighter-rouge">Content-Type</code>,</li>
+  <li>la détection d’erreurs cors (retour du statut 0),</li>
+  <li>la création du cas de succès ou d’erreur depuis le statut HTTP (200 &lt;= succès &lt; 300)</li>
+  <li>le parsing du payload en Json</li>
+  <li>…</li>
 </ul>
 
-<p>Personnellement, cette solution élégante pour les raisons suivantes :</p>
+<p>HttpXhrBackend utilise l’élément XhrFactory afin de créer un élément de type <code class="highlighter-rouge">XMLHttpRequest</code>.</p>
 
-<ul>
-  <li>Nous conservons la facilité d’écrire de nouvelles injections avec peu de code. Pour chaque nouvelle dépendance, peu de nouvelles lignes de code est nécessaire.</li>
-  <li>Le résultat a une lecture fabuleuse : la méthode générée contient tout le l’essentiel pour connaitre toutes les dépendances.</li>
-  <li>L’évolution des dépendances est lisible à travers le temps. Regardez l’historique git du fichier généré et vous aurez toutes les informations nécessaires à vos besoins sans devoir compiler et exécuter.</li>
-</ul>
+<h3 id="xhrfactory">XhrFactory</h3>
 
-<h3 id="un-peu-plus-sur-la-librairie">Un peu plus sur la librairie</h3>
+<p>L’XhrFactory ne fait pas grand-chose, mais vous comprendrez l’importance du découplage de cette logique quand nous parlerons du SSR (server-side rendering).</p>
 
-<p>L’exemple ci-dessus est volontairement léger. Beaucoup d’autres outils intégrés à wire permettent de gérer différents problèmes récurrents. J’utilise les Sets pour regrouper par package la déclaration des contructeurs par exemple. Je vous invite à lire la documentation officielle à ce sujet.</p>
+<p>Son implémentation par défaut est le <code class="highlighter-rouge">BrowserXhr</code> et ne fait rien de plus que:</p>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">()</span>
+</code></pre></div></div>
 
-<p>Retrouvez le code de l’article <a href="https://github.com/wetryio/todowireblog">ici</a>.</p>
+<h2 id="ssr-angular-universal">SSR (Angular Universal)</h2>
+
+<p>NodeJS n’étant pas pourvu de l’API pour créer un élément XMLHttpRequest, le module <code class="highlighter-rouge">ServerModule</code> nous fournit une autre implémentation de XhrFactory qui utilise la librairie <a href="https://github.com/pwnall/node-xhr2">xhr2</a>.</p>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">new</span> <span class="nx">xhr2</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p><img src="/images/angular-posts/http-client/http-client-2.png" alt="http-client-architecture-ssr" /></p>
+
+<h2 id="testing">Testing</h2>
+
+<p>Un des avantages d’utiliser la solution d’Angular est bien entendu son écosystème pour les tests unitaires.</p>
+
+<p>Vous utilisez probablement déjà le module <code class="highlighter-rouge">HttpClientTestingModule,</code> mais quel est l’impact sur l’architecture du <code class="highlighter-rouge">HttpClientModule</code> ?</p>
+
+<p>Première chose bonne à savoir: il est inutile d’importer <code class="highlighter-rouge">HttpClientModule</code> en même temps, car <code class="highlighter-rouge">HttpClientTestingModule</code> le fait déjà.</p>
+
+<p>Le testing module n’utilise pas <code class="highlighter-rouge">HttpXhrBackend</code> mais sa propre implémentation du backend: <code class="highlighter-rouge">HttpClientTestingBackend</code>.</p>
+
+<p>Vous l’aurez deviné, sa logique est bien différente. Il stocke les différents appels dans un tableau afin de pouvoir vérifier s’ils ont bien tous été gérés dans le test, le cas contraire indique que nous ne nous attendons pas à ce qu’il y ait un appel à ce moment-là.</p>
+
+<p>Ce module redéfinis également le type <code class="highlighter-rouge">Request</code> afin de pouvoir retourner une valeur nous-mêmes via une méthode <code class="highlighter-rouge">.flush(...)</code>.</p>
+
+<p><img src="/images/angular-posts/http-client/http-client-3.png" alt="http-client-architecture-testing" /></p>
+
+<h2 id="in-memory-web-api">In-memory web api</h2>
+
+<p>Dans le panel d’outils proposé par Angular, il est également possible de mettre en place un mécanisme de mocks dynamiques via le module <code class="highlighter-rouge">HttpClientInMemoryWebApiModule</code>.</p>
+
+<p>Vous devez configurer une DB “in memory” ce qui va vous mettre à disposition des end-points <a href="https://fr.wikipedia.org/wiki/CRUD">CRUD</a>.</p>
+
+<p>Ce module contient également sa propre implémentation du backend: <code class="highlighter-rouge">HttpClientBackendService</code>.</p>
+
+<p>Contrairement au module de “testing”, celui-ci a également une dépendance vers XhrFactory afin de permettre la configuration d’un <code class="highlighter-rouge">PassThruBackend</code> dans le cas où une URL n’est pas connue du mécanisme InMemory.</p>
+
+<p><img src="/images/angular-posts/http-client/http-client-4.png" alt="http-client-architecture-in-memory" /></p>
+
+<h2 id="schéma-récapitulatif">Schéma récapitulatif</h2>
+
+<p>Voici un schéma complet de se dont j’ai parlé dans cet article.</p>
+
+<p><img src="/images/angular-posts/http-client/http-client-5.png" alt="http-client-architecture-complet" /></p>
+
+<p>J’espère, avec cet article, avoir démistifié une partie du module HttpClient.</p>
 
 <hr />
 
@@ -365,19 +329,17 @@ Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la li
 <div id="toc"></div>
 <p><strong>Table des matières</strong></p>
 <ol id="markdown-toc">
-  <li><a href="#wire-pour-créer-linjection-de-dépendance-pendant-le-build" id="markdown-toc-wire-pour-créer-linjection-de-dépendance-pendant-le-build">Wire pour créer l’injection de dépendance pendant le build</a>    <ol>
-      <li><a href="#un-article-court" id="markdown-toc-un-article-court">Un article court</a></li>
-      <li><a href="#un-exemple-simple" id="markdown-toc-un-exemple-simple">Un exemple simple</a></li>
-      <li><a href="#wire-fait-son-entrée" id="markdown-toc-wire-fait-son-entrée">Wire fait son entrée</a>        <ol>
-          <li><a href="#implémentation-du-wire-build" id="markdown-toc-implémentation-du-wire-build">implémentation du wire build</a></li>
-        </ol>
-      </li>
-      <li><a href="#pourquoi-une-autre-manière-dinjecter-les-dépendances-" id="markdown-toc-pourquoi-une-autre-manière-dinjecter-les-dépendances-">Pourquoi une autre manière d’injecter les dépendances ?</a>        <ol>
-          <li><a href="#un-peu-plus-sur-la-librairie" id="markdown-toc-un-peu-plus-sur-la-librairie">Un peu plus sur la librairie</a></li>
-        </ol>
-      </li>
+  <li><a href="#architecture" id="markdown-toc-architecture">Architecture</a>    <ol>
+      <li><a href="#requêtesréponses" id="markdown-toc-requêtesréponses">Requêtes/Réponses</a></li>
+      <li><a href="#httphandler" id="markdown-toc-httphandler">HttpHandler</a></li>
+      <li><a href="#httpbackend" id="markdown-toc-httpbackend">HttpBackend</a></li>
+      <li><a href="#xhrfactory" id="markdown-toc-xhrfactory">XhrFactory</a></li>
     </ol>
   </li>
+  <li><a href="#ssr-angular-universal" id="markdown-toc-ssr-angular-universal">SSR (Angular Universal)</a></li>
+  <li><a href="#testing" id="markdown-toc-testing">Testing</a></li>
+  <li><a href="#in-memory-web-api" id="markdown-toc-in-memory-web-api">In-memory web api</a></li>
+  <li><a href="#schéma-récapitulatif" id="markdown-toc-schéma-récapitulatif">Schéma récapitulatif</a></li>
 </ol>
 
 
@@ -392,7 +354,7 @@ Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la li
 
         <!-- Add time bar only for pages without pagination -->
         
-            <div class="time-bar" data-minutes="5">
+            <div class="time-bar" data-minutes="4">
     <span class="time-completed"></span>
     <span class="time-remaining"></span>
     <div class="bar">
@@ -427,11 +389,11 @@ Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la li
 
         <section class="share">
     <h3>Share</h3>
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;go propose une manière bien à elle de fournir un système d'injection de dépendance&quot;%20https://wetry.tech/go-wire-injection-dependance-au-build/%20via%20&#64;&hashtags=go,injection de dépendance,wire,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;Démystification du client http Angular&quot;%20https://wetry.tech/fonctionnement-d-angular-httpclient/%20via%20&#64;&hashtags=angular,http,api,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/go-wire-injection-dependance-au-build/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/fonctionnement-d-angular-httpclient/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
@@ -442,33 +404,29 @@ Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la li
   <section class="author">
     <div class="details">
       
-        <img class="img-rounded" src="/images/authors/mscolas.jpg" alt="Mathieu Scolas">
+        <img class="img-rounded" src="/images/authors/dgilson.png" alt="David Gilson<br/>(Gilsdav)">
       
       <p class="def">Author</p>
       <h3 class="name">
-        <a href="/authors/mscolas/">Mathieu Scolas</a>
+        <a href="/authors/dgilson/">David Gilson<br/>(Gilsdav)</a>
       </h3>
-      <p class="desc">Développeur indépendant</p>
+      <p class="desc"></p>
       <p>
         
-          <a href="https://github.com/worming004" title="Github">
+          <a href="https://github.com/gilsdav" title="Github">
             <svg><use xlink:href="#icon-github"></use></svg>
           </a>
         
         
-          <a href="https://www.facebook.com/mathieu.scolas" title="Facebook">
-            <svg><use xlink:href="#icon-facebook"></use></svg>
-          </a>
         
-        
-          <a href="https://twitter.com/worming4" title="Twitter">
+          <a href="https://twitter.com/gilsondavid5" title="Twitter">
             <svg><use xlink:href="#icon-twitter"></use></svg>
           </a>
         
         
         
         
-          <a href="https://www.linkedin.com/in/mathieu-scolas-1a048484/" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/david-gilson-innovate" title="LinkedIn">
             <svg><use xlink:href="#icon-linkedin"></use></svg>
           </a>
         
@@ -488,14 +446,14 @@ Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la li
   {
       "@context": "http://schema.org",
       "@type": "Person",
-      "name": "Mathieu Scolas",
+      "name": "David Gilson<br/>(Gilsdav)",
       
-      "image": "/images/authors/mscolas.jpg",
+      "image": "/images/authors/dgilson.png",
       
       "jobTitle": "Développeur",
-      "url": "https://wetry.tech/authors/mscolas/",
+      "url": "https://wetry.tech/authors/dgilson/",
       "sameAs": [
-        "https://github.com/worming004","https://www.facebook.com/mathieu.scolas","https://twitter.com/worming4","https://www.linkedin.com/in/mathieu-scolas-1a048484/"
+        "https://github.com/gilsdav","https://twitter.com/gilsondavid5","https://www.linkedin.com/in/david-gilson-innovate"
       ]
   }
   </script>
@@ -515,7 +473,7 @@ Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la li
         disqus_loaded = true;
         var disqus_shortname = 'wetry';
         var disqus_title = '';
-        var disqus_url = '/go-wire-injection-dependance-au-build/';
+        var disqus_url = '/fonctionnement-d-angular-httpclient/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -704,138 +662,102 @@ Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la li
         {
             "@context": "http://schema.org",
             "@type": "BlogPosting",
-            "name": "L'injection de dépendance au build",
-            "headline": "",
-            "description": "go propose une manière bien à elle de fournir un système d'injection de dépendance",
-            "image": "/images/go/go-wire.png",
-            "url": "https://wetry.tech/go-wire-injection-dependance-au-build/",
-            "articleBody": "Wire pour créer l’injection de dépendance pendant le build
+            "name": "Fonctionnement d'Angular: HttpClient",
+            "headline": "Qu'y a-t-il derrière le module HttpClientModule ?",
+            "description": "Démystification du client http Angular",
+            "image": "/images/angular-posts/http-client/principal.png",
+            "url": "https://wetry.tech/fonctionnement-d-angular-httpclient/",
+            "articleBody": "Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique XMLHttpRequest, l’API plus récente Fetch ou encore une librairie externe (utilisant une de ces APIs) comme Axios.
 
-Le langage go gagne de la popularité d’année en année. et a atteint la pente de l’illumination. Avec sa volonté d’être simple, performant et scalable, la communauté de développeurs s’intéresse à ce langage moderne made in Google.
+Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (HttpModule) ayant été dépréciée depuis la venue du HttpClientModule dans la version 4.3 d’Angular, nous n’allons nous attarder que sur cette dernière.
 
-Pour s’aider dans le principe d’Inversion of Controls, Go a deux librairies populaires qui remplissent le même objectif avec la même méthode: construire un container et le résoudre pendant le runtime. Voyez vous-même inject de Facebook ou bien dig. Cette méthode est aussi populaire dans le monde C#.
+Architecture
 
-Google Cloud propose une autre solution pour définir le graphe d’injection de dépendance. L’inversion des contrôles se fait pendant ou avant le build. Voici Wire en action.
-
-Un article court
-
-L’objectif de cette publication est de montrer une alternative aux méthodes habituelles d’injection de dépendances. Nous n’explorerons pas la librairie Wire en profondeur. Si vous voulez avoir des exemples plus poussés de cette librairie, n’hésitez pas à le demander en commentaire.
-
-Tip: ce post est créé depuis ubuntu avec go 1.13. Il a été testé sur windows 10 avec aussi go 1.13.
+Comme d’habitude, HttpClient a été fait de façon très modulaire afin de pouvoir remplacer n’importe quelle partie.
 
 
-Un exemple simple
+Les éléments en bleu représentent les “idées” (interfaces) qui sont par défaut implémentées par les éléments en gris.
 
-Débutons par un exemple simple, nous verrons par la suite quels sont les avantages de cette librairie.
+Démarrons par le bas du schéma.
 
-type TodoRepository interface {
-    Save(todo Todo) error
-    Get(todoName string) (Todo, error)
-}
+Requêtes/Réponses
 
-type TodoFileRepository struct {
+Une requête est créée quand vous appelez une méthode du HttpClient comme .get(...) ou .request(...).
 
-}
+La réponse, elle, n’est pas créée par HttpClient mais par HttpBackend qui s’occupe notamment de déterminer s’il s’agit d’un succès ou d’une erreur.
 
-func NewTodoRepository() TodoRepository {
-    return TodoFileRepository{}
-}
+HttpHandler
 
+L’HttpHandler est la façon de traiter une requête (HttpRequest) et sa réponse (HttpResponse).
 
+Le handler principal implémenté par défaut s’appel HttpInterceptingHandler et comme son nom l’indique, c’est lui qui détermine comment et dans quel ordre exécuter les intercepteurs avant l’appel réel (qui lui se fait via l’HttpBackend).
 
-func (repo TodoFileRepository) Save(todo Todo) error {
-    // [...]
-}
+HttpBackend
 
-func (repo TodoFileRepository) Get(todoName string) (Todo, error) {
-    // [...]
-}
+L’HttpBackend implémente lui aussi HttpHandler mais mérite une section à part.
 
-// ...
+Le backend par défaut s’appel HttpXhrBackend et c’est dans celuis-ci que se trouve toute la logique automatique comme:
 
-type TodoService struct {
-    repository TodoRepository
-}
-
-func NewTodoService(repo TodoRepository) TodoService {
-    return TodoService{repository: repo}
-}
+  l’ajout du header Content-Type,
+  la détection d’erreurs cors (retour du statut 0),
+  la création du cas de succès ou d’erreur depuis le statut HTTP (200 &amp;lt;= succès &amp;lt; 300)
+  le parsing du payload en Json
+  …
 
 
-Rien d’extraordinaire, deux types contenant ses dépendances simples. Et chacun son constructeur.
+HttpXhrBackend utilise l’élément XhrFactory afin de créer un élément de type XMLHttpRequest.
 
-Wire fait son entrée
+XhrFactory
 
-Téléchargez la librairie wire via la commande go get github.com/google/wire/cmd/wire. Ceci installera une application cli pour créer notre injection de dépendance avant le build.
+L’XhrFactory ne fait pas grand-chose, mais vous comprendrez l’importance du découplage de cette logique quand nous parlerons du SSR (server-side rendering).
 
-Si vous rencontrez des problèmes d’installation, je vous redirige vers le github officiel.
-
-implémentation du wire build
-
-Dans le même package, ajoutez un fichier wire.go avec ceci:
-
-//+build wireinject
-
-package main
-
-import (
-    &quot;github.com/google/wire&quot;
-)
-
-func BuildTodoService() TodoService {
-    wire.Build(NewTodoRepository, NewTodoService)
-    return TodoService{}
-}
+Son implémentation par défaut est le BrowserXhr et ne fait rien de plus que:
+    new XMLHttpRequest()
 
 
-N'omettez pas la première ligne //+build wireinject.
-Elle indique au compilateur d'ignorer ce fichier. Respectez sa position et la ligne vide.
+SSR (Angular Universal)
+
+NodeJS n’étant pas pourvu de l’API pour créer un élément XMLHttpRequest, le module ServerModule nous fournit une autre implémentation de XhrFactory qui utilise la librairie xhr2.
+    new xhr2.XMLHttpRequest();
 
 
-Exécutez la commande wire. Un nouveau fichier est créé. Observons le contenu :
-
-// Code generated by Wire. DO NOT EDIT.
-
-//go:generate wire
-//+build !wireinject
-
-package main
-
-// Injectors from wire.go:
-
-func BuildTodoService() TodoService {
-    todoRepository := NewTodoRepository()
-    todoService := NewTodoService(todoRepository)
-    return todoService
-}
 
 
-Magnifique ! Ce nouveau fichier contient toute la logique pour créer un TodoService avec l’arbre de dépendance en entier. Elle contient une méthode avec la même signature que celle contenue dans wire.go créé précédemment.
+Testing
 
-Pourquoi une autre manière d’injecter les dépendances ?
+Un des avantages d’utiliser la solution d’Angular est bien entendu son écosystème pour les tests unitaires.
 
-Selon les avantages avancés par Google, nous recevons :
+Vous utilisez probablement déjà le module HttpClientTestingModule, mais quel est l’impact sur l’architecture du HttpClientModule ?
 
+Première chose bonne à savoir: il est inutile d’importer HttpClientModule en même temps, car HttpClientTestingModule le fait déjà.
 
-  Facilite le debug car le code est straight-forward. Débugguer la résolution de dépendance évaluée au run-time est complexe à suivre.
-  Utilise les types pour évaluer les résolutions. Pas de confusion possible.
-  Appelle le strict nécessaire. L’écriture dans la méthode générée opère un tree-shaking.
-  Ajoute de la clarté dans le code. Ceci permet à certains outils de mieux manier le code.
+Le testing module n’utilise pas HttpXhrBackend mais sa propre implémentation du backend: HttpClientTestingBackend.
 
+Vous l’aurez deviné, sa logique est bien différente. Il stocke les différents appels dans un tableau afin de pouvoir vérifier s’ils ont bien tous été gérés dans le test, le cas contraire indique que nous ne nous attendons pas à ce qu’il y ait un appel à ce moment-là.
 
-Personnellement, cette solution élégante pour les raisons suivantes :
-
-
-  Nous conservons la facilité d’écrire de nouvelles injections avec peu de code. Pour chaque nouvelle dépendance, peu de nouvelles lignes de code est nécessaire.
-  Le résultat a une lecture fabuleuse : la méthode générée contient tout le l’essentiel pour connaitre toutes les dépendances.
-  L’évolution des dépendances est lisible à travers le temps. Regardez l’historique git du fichier généré et vous aurez toutes les informations nécessaires à vos besoins sans devoir compiler et exécuter.
+Ce module redéfinis également le type Request afin de pouvoir retourner une valeur nous-mêmes via une méthode .flush(...).
 
 
-Un peu plus sur la librairie
 
-L’exemple ci-dessus est volontairement léger. Beaucoup d’autres outils intégrés à wire permettent de gérer différents problèmes récurrents. J’utilise les Sets pour regrouper par package la déclaration des contructeurs par exemple. Je vous invite à lire la documentation officielle à ce sujet.
+In-memory web api
 
-Retrouvez le code de l’article ici.
+Dans le panel d’outils proposé par Angular, il est également possible de mettre en place un mécanisme de mocks dynamiques via le module HttpClientInMemoryWebApiModule.
+
+Vous devez configurer une DB “in memory” ce qui va vous mettre à disposition des end-points CRUD.
+
+Ce module contient également sa propre implémentation du backend: HttpClientBackendService.
+
+Contrairement au module de “testing”, celui-ci a également une dépendance vers XhrFactory afin de permettre la configuration d’un PassThruBackend dans le cas où une URL n’est pas connue du mécanisme InMemory.
+
+
+
+Schéma récapitulatif
+
+Voici un schéma complet de se dont j’ai parlé dans cet article.
+
+
+
+J’espère, avec cet article, avoir démistifié une partie du module HttpClient.
 
 
 
@@ -849,26 +771,24 @@ Retrouvez le code de l’article ici.
 
 Table des matières
 
-  Wire pour créer l’injection de dépendance pendant le build    
-      Un article court
-      Un exemple simple
-      Wire fait son entrée        
-          implémentation du wire build
-        
-      
-      Pourquoi une autre manière d’injecter les dépendances ?        
-          Un peu plus sur la librairie
-        
-      
+  Architecture    
+      Requêtes/Réponses
+      HttpHandler
+      HttpBackend
+      XhrFactory
     
   
+  SSR (Angular Universal)
+  Testing
+  In-memory web api
+  Schéma récapitulatif
 
 ",
-            "wordcount": "932",
+            "wordcount": "770",
             "inLanguage": "fr",
-            "dateCreated": "2019-10-25/",
-            "datePublished": "2019-10-25/",
-            "dateModified": "2019-10-25/",
+            "dateCreated": "2019-12-25/",
+            "datePublished": "2019-12-25/",
+            "dateModified": "2019-12-25/",
             "author": {
                 "@type": "Person",
                 "name": "David Gilson<br/>(Gilsdav)",
@@ -893,9 +813,9 @@ Table des matières
                 }
             },
             "mainEntityOfPage": "True",
-            "genre": "documentation",
-            "articleSection": "documentation",
-            "keywords": ["go","injection de dépendance","wire"]
+            "genre": "demystification",
+            "articleSection": "demystification",
+            "keywords": ["angular","http","api"]
         }
         </script>
     </body>

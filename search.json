@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "Fonctionnement d&#39;Angular: HttpClient",
+      "tags"     : "angular, http, and api",
+      "categories" : "demystification",
+      "url"      : "/fonctionnement-d-angular-httpclient/",
+      "date"     : "12/25/2019"
+    } ,
+  
+    {
       "title"    : "Du serverless avec Kubernetes",
       "tags"     : "kubernetes, serverless, and kubeless",
       "categories" : "experimentation",
