@@ -80,15 +80,15 @@ Première chose bonne à savoir: il est inutile d'importer `HttpClientModule` en
 
 Le testing module n'utilise pas `HttpXhrBackend` mais sa propre implémentation du backend: `HttpClientTestingBackend`.
 
-Vous l'aurez deviné, sa logique est bien différente. Il stocke les différents appels dans un tableau afin de pouvoir vérifier s'ils ont bien tous été gérés dans le test (le cas contraire indique que nous ne nous attendons pas à ce qu'il y ait un appel à ce moment-là.
+Vous l'aurez deviné, sa logique est bien différente. Il stocke les différents appels dans un tableau afin de pouvoir vérifier s'ils ont bien tous été gérés dans le test, le cas contraire indique que nous ne nous attendons pas à ce qu'il y ait un appel à ce moment-là.
 
-Ce module redéfinis également le type `Request` afin de retourner une réponse nous-mêmes via une méthode `.flush(...)`.
+Ce module redéfinis également le type `Request` afin de pouvoir retourner une valeur nous-mêmes via une méthode `.flush(...)`.
 
 ![http-client-architecture-testing](/images/angular-posts/http-client/http-client-3.png)
 
 ## In-memory web api
 
-Dans le panel d'outils proposés par Angular, il est également possible de faire mécanisme de mocks dynamiques via le module `HttpClientInMemoryWebApiModule`.
+Dans le panel d'outils proposé par Angular, il est également possible de mettre en place un mécanisme de mocks dynamiques via le module `HttpClientInMemoryWebApiModule`.
 
 Vous devez configurer une DB "in memory" ce qui va vous mettre à disposition des end-points [CRUD](https://fr.wikipedia.org/wiki/CRUD).
 
