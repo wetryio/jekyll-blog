@@ -16,7 +16,7 @@ author: dgilson
 
 Dans les autres Frameworks JavaScript, il n'y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l'API historique [XMLHttpRequest](https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest), l'API plus récente [Fetch](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API) ou encore une librairie externe (utilisant une de ces APIs) comme [Axios](https://github.com/axios/axios).
 
-Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d'utiliser celles précédemment citées), je pense intéressant de se pencher sur la façon dont ils ont implémenté ce que vous avez probablement l'habitude d'utiliser: `HttpClientModule`.
+Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d'utiliser celles précédemment citées), je pense qu'il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l'habitude d'utiliser. La première version (`HttpModule`) ayant été dépréciée depuis la venue du `HttpClientModule` dans la version 4.3 d'Angular, nous n'allons nous attarder que sur cette dernière.
 
 ## Architecture
 
