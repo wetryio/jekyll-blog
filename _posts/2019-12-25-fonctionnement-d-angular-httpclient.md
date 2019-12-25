@@ -1,5 +1,5 @@
 ---
-date: 2019-12-23 22:33:43
+date: 2019-12-25 18:33:43
 layout: post
 title: "Fonctionnement d'Angular: HttpClient"
 subtitle: Qu'y a-t-il derrière le module HttpClientModule ?
