@@ -14,7 +14,7 @@
 
     {% assign image = '' %}
     {% if page.image %}
-        {% assign image = page.image %}
+        {% assign image = page.image | prepend: site.baseurl | prepend: site.url %}
     {% else %}
         {% assign image = "/assets/img/blog-image-wt.png" | prepend: site.baseurl | prepend: site.url %}
     {% endif %}
