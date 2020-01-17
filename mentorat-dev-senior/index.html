@@ -17,24 +17,24 @@
     
     
 
-    <title>Fonctionnement d'Angular: HttpClient | WeTry</title>
-    <meta name="description" content="Démystification du client http Angular">
+    <title>Le mentorat des seniors | WeTry</title>
+    <meta name="description" content="Quelles sont les responsabilités du dévelopeur sénior vis-à-vis des juniors">
     
-        <meta name="keywords" content="angular, http, api">
+        <meta name="keywords" content="mentorat, entreprise, senior, junior">
     
 
     <!-- Social: Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Fonctionnement d'Angular: HttpClient | WeTry">
-    <meta name="twitter:description" content="Démystification du client http Angular">
-    <meta property="twitter:image:src" content="https://wetry.tech/images/angular-posts/http-client/principal.png">
+    <meta name="twitter:title" content="Le mentorat des seniors | WeTry">
+    <meta name="twitter:description" content="Quelles sont les responsabilités du dévelopeur sénior vis-à-vis des juniors">
+    <meta property="twitter:image:src" content="https://wetry.tech/images/mentorat/html.png">
     
 
     <!-- Social: Facebook / Open Graph -->
-    <meta property="og:url" content="https://wetry.tech/fonctionnement-d-angular-httpclient/">
-    <meta property="og:title" content="Fonctionnement d'Angular: HttpClient | WeTry">
-    <meta property="og:image" content="https://wetry.tech/images/angular-posts/http-client/principal.png">
-    <meta property="og:description" content="Démystification du client http Angular">
+    <meta property="og:url" content="https://wetry.tech/mentorat-dev-senior/">
+    <meta property="og:title" content="Le mentorat des seniors | WeTry">
+    <meta property="og:image" content="https://wetry.tech/images/mentorat/html.png">
+    <meta property="og:description" content="Quelles sont les responsabilités du dévelopeur sénior vis-à-vis des juniors">
     <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
 
     <!-- Favicon -->
@@ -66,7 +66,7 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="/assets/css/styles.min.css">
-    <link rel="canonical" href="https://wetry.tech/fonctionnement-d-angular-httpclient/">
+    <link rel="canonical" href="https://wetry.tech/mentorat-dev-senior/">
     <link rel="alternate" type="application/rss+xml" title="WeTry | Encore un autre blog de développeur" href="https://wetry.tech/feed.xml" />
 </head>
 
@@ -203,144 +203,99 @@
                 <p class="post-info">
                     
                         <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
-                        <time class="date" datetime="2019-12-25T18:33:43+00:00">
+                        <time class="date" datetime="2020-01-17T12:00:00+00:00">
                             
 
 
-Décembre 25, 2019
+Janvier 17, 2020
 
                         </time>
                     
                     <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
-                    <span>4 min to read</span>
+                    <span>5 min to read</span>
                 </p>
-                <h1 class="post-title">Fonctionnement d'Angular: HttpClient</h1>
-                <p class="post-subtitle">Qu'y a-t-il derrière le module HttpClientModule ?</p>
+                <h1 class="post-title">Le mentorat des seniors</h1>
+                <p class="post-subtitle"></p>
 
                 
-                    <img src="/images/angular-posts/http-client/principal.png" alt="Featured image" class="post-cover">
+                    <img src="/images/mentorat/html.png" alt="Featured image" class="post-cover">
                 
 
                 <!-- Pagination links -->
 
 
 
-                <p>Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique <a href="https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a>, l’API plus récente <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API">Fetch</a> ou encore une librairie externe (utilisant une de ces APIs) comme <a href="https://github.com/axios/axios">Axios</a>.</p>
+                <p>Nous estimons le nombre de développeurs à <a href="https://www.businesswire.com/news/home/20131217005316/en/IDC-Releases-2014-Worldwide-Software-Developer-ICT-Skilled">18,5 millions en 2014</a> et <a href="https://www.daxx.com/blog/development-trends/number-software-developers-world">26,4 millions en fin 2019</a>. Ce qui signifie qu’il y a 7,9 millions de développeurs qui ont moins de 5 ans d’expérience. Ça représente 30% des développeurs mondiaux.</p>
 
-<p>Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (<code class="highlighter-rouge">HttpModule</code>) ayant été dépréciée depuis la venue du <code class="highlighter-rouge">HttpClientModule</code> dans la version 4.3 d’Angular, nous n’allons nous attarder que sur cette dernière.</p>
+<p>Ces développeurs juniors n’ont pas connaissance des bonnes pratiques. Pas de principe SOLID, ne comprennent pas l’utilité et le gain de temps qu’offrent les tests et qu’est-ce qu’un bon test, et j’en passe.</p>
 
-<h2 id="architecture">Architecture</h2>
+<p>Nous avons tous été junior, et nous avons tous appris. Et surtout, <strong>nous avons tous appris des autres.</strong></p>
 
-<p>Comme d’habitude, HttpClient a été fait de façon très modulaire afin de pouvoir remplacer n’importe quelle partie.</p>
+<p>Dans la situation où la majorité des développeurs travaillent de leur mieux pour appréhender la complexité des domaines à laquelle ils participent, les développeurs expérimentés doivent aussi coopérer avec ceux qui n’ont pas de bonne pratique.</p>
 
-<p><img src="/images/angular-posts/http-client/http-client-1.png" alt="http-client-architecture-de-base" />
-Les éléments en bleu représentent les “idées” (interfaces) qui sont par défaut implémentées par les éléments en gris.</p>
+<p>Dans cette même situation où à l’embauche, presque 1 développeur sur 3 ne pourra sans doute pas produire une application avec la qualité requise pour le maintien sur le long terme.</p>
 
-<p>Démarrons par le bas du schéma.</p>
+<p>C’est pour cela que les développeurs seniors ont la responsabilité d’éduquer, de responsabiliser et d’assister l’évolution des capacités des développeurs juniors.</p>
 
-<h3 id="requêtesréponses">Requêtes/Réponses</h3>
+<h2 id="plus-value">Plus-value</h2>
 
-<p>Une requête est créée quand vous appelez une méthode du <code class="highlighter-rouge">HttpClient</code> comme <code class="highlighter-rouge">.get(...)</code> ou <code class="highlighter-rouge">.request(...)</code>.</p>
+<p>Un développeur senior a un rate tarifaire élevé. Mais ils produisent aussi une plus-value au prorata des tarifs.
+L’embaucheur espère avant tout qu’un développeur produise. C’est la manière la plus naturelle d’honorer son engagement. Mais il y a d’autres manières: testing, documentation, refactoring, conseils … La manière qui nous intéresse aujourd’hui est la suivante : partager son expérience.</p>
 
-<p>La réponse, elle, n’est pas créée par <code class="highlighter-rouge">HttpClient</code> mais par <code class="highlighter-rouge">HttpBackend</code> qui s’occupe notamment de déterminer s’il s’agit d’un succès ou d’une erreur.</p>
+<p>Soyez transparent et éducatif. Sachez partager vos connaissances acquises à tous ceux qui le désirent et à ceux qui en ont besoin. C’est une manière efficace <strong>d’améliorer le codebase à court et long terme</strong>.</p>
 
-<h3 id="httphandler">HttpHandler</h3>
+<h2 id="code-review">Code review</h2>
 
-<p>L’HttpHandler est la façon de traiter une requête (<code class="highlighter-rouge">HttpRequest</code>) et sa réponse (<code class="highlighter-rouge">HttpResponse</code>).</p>
+<p>La manière la plus efficace est le code review. Il permet un compromis entre productivité et formation continue des développeurs juniors.</p>
 
-<p>Le handler principal implémenté par défaut s’appel <code class="highlighter-rouge">HttpInterceptingHandler</code> et comme son nom l’indique, c’est lui qui détermine comment et dans quel ordre exécuter les <strong>intercepteurs</strong> avant l’appel réel (qui lui se fait via l’HttpBackend).</p>
+<p>Selon moi, la meilleure façon d’apprendre est de se tromper. Donnez l’occasion au développeur junior de s’égarer dans une <strong>timebox court</strong> (1 journée de code maximum) pour avoir l’occasion de retravailler une partie précise. Ceci permet:</p>
 
-<h3 id="httpbackend">HttpBackend</h3>
-
-<p>L’HttpBackend implémente lui aussi HttpHandler mais mérite une section à part.</p>
-
-<p>Le backend par défaut s’appel <code class="highlighter-rouge">HttpXhrBackend</code> et c’est dans celuis-ci que se trouve toute la logique automatique comme:</p>
 <ul>
-  <li>l’ajout du header <code class="highlighter-rouge">Content-Type</code>,</li>
-  <li>la détection d’erreurs cors (retour du statut 0),</li>
-  <li>la création du cas de succès ou d’erreur depuis le statut HTTP (200 &lt;= succès &lt; 300)</li>
-  <li>le parsing du payload en Json</li>
-  <li>…</li>
+  <li>De se concentrer sur une petite partie du code. Limiter le nombre de sujets abordés par code review.</li>
+  <li>De lui donner la facilité de retravailler dans un petit scope et qu’il puisse plus facilement remanier ses classes/fonctions.</li>
+  <li>De ne pas le décourager face à un code review sévère. Plus la review cible est petit, plus elle sera clémente et constructive.</li>
 </ul>
 
-<p>HttpXhrBackend utilise l’élément XhrFactory afin de créer un élément de type <code class="highlighter-rouge">XMLHttpRequest</code>.</p>
+<h2 id="personnalités-et-assistance">Personnalités et assistance</h2>
 
-<h3 id="xhrfactory">XhrFactory</h3>
+<p>Chaque développeur a son tempérament. D’expérience, il ne faut pas accompagner de la même manière un jeune fougueux ou un introverti.</p>
 
-<p>L’XhrFactory ne fait pas grand-chose, mais vous comprendrez l’importance du découplage de cette logique quand nous parlerons du SSR (server-side rendering).</p>
+<p>Assurez-vous que la critique soit acquise et surtout constructive. Je ne connais pas aujourd’hui de méthode miracle. J’utilise souvent l’argument d’autorité. C-à-d que j’utilise les références techniques pour être écouté.</p>
 
-<p>Son implémentation par défaut est le <code class="highlighter-rouge">BrowserXhr</code> et ne fait rien de plus que:</p>
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">()</span>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Vous connaissez sûrement l'adage 'tout ce qui est sur internet est vrai'.
 </code></pre></div></div>
 
-<h2 id="ssr-angular-universal">SSR (Angular Universal)</h2>
+<p>Le junior a tendance à travailler seul. Il est soit sûr de lui ou soit n’ose pas déranger selon sa personnalité. À vous d’identifier l’approche. Si vous le laissez longtemps dans sa caverne, vous risquez d’avoir une quantité de lignes de code que vous ne pourriez pas exploiter pour le soutenir. À vous de fixer des règles de reviews pour l’assister.</p>
 
-<p>NodeJS n’étant pas pourvu de l’API pour créer un élément XMLHttpRequest, le module <code class="highlighter-rouge">ServerModule</code> nous fournit une autre implémentation de XhrFactory qui utilise la librairie <a href="https://github.com/pwnall/node-xhr2">xhr2</a>.</p>
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">new</span> <span class="nx">xhr2</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<h3 id="encourager-lautoapprentissage-par-une-présentation">Encourager l’autoapprentissage par une présentation</h3>
+
+<p>Une autre manière efficace est d’obliger le junior à présenter un sujet. Il se formera lui-même, mais aussi cela l’encourage a s’autoformer par la suite. La confiance en soi, ainsi que de démontrer qu’il est capable d’enseigner quelque chose à ses compères l’encouragera à être curieux et à parfaire ses capacités.</p>
+
+<h2 id="reconnaissance-et-motivation">Reconnaissance et motivation</h2>
+
+<p>La qualité que je recherche le plus chez un développeur est sa motivation. La motivation assure l’envie de produire, mais aussi la curiosité de chacun. Cette même motivation pousse naturellement les développeurs à s’améliorer et à se remettre en question.</p>
+
+<p>La motivation est propre à chacun. Par chance, elle peut être cultivée par son entourage. C’est sans doute le paragraphe le plus important de cet article.</p>
+
+<p>Motivez votre équipe, et surtout vos juniors. Sachez <strong>être constructif</strong> dans vos critiques. Elles doivent toujours être construites pour inculquer une bonne pratique. <strong>Mettez votre égo de côté</strong> et n’émettez jamais de critique pour vous poster en position supérieure.</p>
+
+<p>Sachez remarquer les bonnes actions. Donnez de la visibilité quand quelqu’un applique les bonnes pratiques. Cette manière d’encourager booste énormément la motivation.</p>
+
+<p>Et enfin, laissez respirer votre entourage. Apprendre est une tâche intellectuelle. Cela demande de mettre ses acquis de côté et de raisonner dans une zone d’inconfort. De plus, personne ne peut espérer qu’un junior devienne senior du jour au lendemain. La route est longue. Laissez-lui le droit de se tromper sur quelques points et corrigez vous-même quelques points dans un refactoring du lendemain si le temps presse. Si vous lui demandez la perfection H24, vous risquez de tuer sa motivation.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Si vous retravaillez une partie de l'application, faites-les remarquer poliment.
+La correction en cachette peut-être mal interprétée.
+Expliquez-lui quand même ce qui était attendu.
+Il se sentira quand même grandir et qu'il est estimé comme membre de l'équipe.
 </code></pre></div></div>
 
-<p><img src="/images/angular-posts/http-client/http-client-2.png" alt="http-client-architecture-ssr" /></p>
+<h2 id="chaque-minute-investie-dans-la-qualité-supprime-plusieurs-dizaines-dheures-de-travail-inutile">Chaque minute investie dans la qualité supprime plusieurs dizaines d’heures de travail inutile</h2>
 
-<h2 id="testing">Testing</h2>
+<p>Dans le monde agile, la finalité est la valeur. Est-ce qu’investir dans le mentorat crée de la valeur ? La réponse est oui.</p>
 
-<p>Un des avantages d’utiliser la solution d’Angular est bien entendu son écosystème pour les tests unitaires.</p>
+<p>Chaque fois qu’un junior apprend un principe, il l’appliquera toute sa vie. Et cet apprentissage garantit une amélioration continue de la qualité de vos applications.</p>
 
-<p>Vous utilisez probablement déjà le module <code class="highlighter-rouge">HttpClientTestingModule,</code> mais quel est l’impact sur l’architecture du <code class="highlighter-rouge">HttpClientModule</code> ?</p>
-
-<p>Première chose bonne à savoir: il est inutile d’importer <code class="highlighter-rouge">HttpClientModule</code> en même temps, car <code class="highlighter-rouge">HttpClientTestingModule</code> le fait déjà.</p>
-
-<p>Le testing module n’utilise pas <code class="highlighter-rouge">HttpXhrBackend</code> mais sa propre implémentation du backend: <code class="highlighter-rouge">HttpClientTestingBackend</code>.</p>
-
-<p>Vous l’aurez deviné, sa logique est bien différente. Il stocke les différents appels dans un tableau afin de pouvoir vérifier s’ils ont bien tous été gérés dans le test, le cas contraire indique que nous ne nous attendons pas à ce qu’il y ait un appel à ce moment-là.</p>
-
-<p>Ce module redéfinis également le type <code class="highlighter-rouge">Request</code> afin de pouvoir retourner une valeur nous-mêmes via une méthode <code class="highlighter-rouge">.flush(...)</code>.</p>
-
-<p><img src="/images/angular-posts/http-client/http-client-3.png" alt="http-client-architecture-testing" /></p>
-
-<h2 id="in-memory-web-api">In-memory web api</h2>
-
-<p>Dans le panel d’outils proposé par Angular, il est également possible de mettre en place un mécanisme de mocks dynamiques via le module <code class="highlighter-rouge">HttpClientInMemoryWebApiModule</code>.</p>
-
-<p>Vous devez configurer une DB “in memory” ce qui va vous mettre à disposition des end-points <a href="https://fr.wikipedia.org/wiki/CRUD">CRUD</a>.</p>
-
-<p>Ce module contient également sa propre implémentation du backend: <code class="highlighter-rouge">HttpClientBackendService</code>.</p>
-
-<p>Contrairement au module de “testing”, celui-ci a également une dépendance vers XhrFactory afin de permettre la configuration d’un <code class="highlighter-rouge">PassThruBackend</code> dans le cas où une URL n’est pas connue du mécanisme InMemory.</p>
-
-<p><img src="/images/angular-posts/http-client/http-client-4.png" alt="http-client-architecture-in-memory" /></p>
-
-<h2 id="schéma-récapitulatif">Schéma récapitulatif</h2>
-
-<p>Voici un schéma complet de se dont j’ai parlé dans cet article.</p>
-
-<p><img src="/images/angular-posts/http-client/http-client-5.png" alt="http-client-architecture-complet" /></p>
-
-<p>J’espère, avec cet article, avoir démistifié une partie du module HttpClient.</p>
-
-<hr />
-
-<div class="gratitude">
-    <span>MERCI</span>
-    <p>d'avoir pris le temps de lire cet article</p>
-</div>
-
-<hr />
-
-<div id="toc"></div>
-<p><strong>Table des matières</strong></p>
-<ol id="markdown-toc">
-  <li><a href="#architecture" id="markdown-toc-architecture">Architecture</a>    <ol>
-      <li><a href="#requêtesréponses" id="markdown-toc-requêtesréponses">Requêtes/Réponses</a></li>
-      <li><a href="#httphandler" id="markdown-toc-httphandler">HttpHandler</a></li>
-      <li><a href="#httpbackend" id="markdown-toc-httpbackend">HttpBackend</a></li>
-      <li><a href="#xhrfactory" id="markdown-toc-xhrfactory">XhrFactory</a></li>
-    </ol>
-  </li>
-  <li><a href="#ssr-angular-universal" id="markdown-toc-ssr-angular-universal">SSR (Angular Universal)</a></li>
-  <li><a href="#testing" id="markdown-toc-testing">Testing</a></li>
-  <li><a href="#in-memory-web-api" id="markdown-toc-in-memory-web-api">In-memory web api</a></li>
-  <li><a href="#schéma-récapitulatif" id="markdown-toc-schéma-récapitulatif">Schéma récapitulatif</a></li>
-</ol>
+<p>Toute entreprise informatique doit se mettre à jour pour survivre. Cette évolution passe, entre autres, par un mentorat appliqué. Sensibilisez votre entourage au mentorat.</p>
 
 
                 <!-- Pagination links -->
@@ -354,7 +309,7 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
 
         <!-- Add time bar only for pages without pagination -->
         
-            <div class="time-bar" data-minutes="4">
+            <div class="time-bar" data-minutes="5">
     <span class="time-completed"></span>
     <span class="time-remaining"></span>
     <div class="bar">
@@ -369,13 +324,13 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
         <a href="javascript:void(0);">Revenir en haut</a>
     </div>
     
-    <a href="/mentorat-dev-senior/" class="post-preview">
+    <a href="/oriente-objet-et-immuabilite/" class="post-preview">
         <div class="image">
             
-                <img src="/images/mentorat/html.png">
+                <img src="/images/immuabilite-objet/lock.jpg">
             
         </div>
-        <h3 class="title">Le mentorat des seniors</h3>
+        <h3 class="title">L'immuabilité pour un code sans bug</h3>
     </a>
 </div>
 
@@ -389,11 +344,11 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
 
         <section class="share">
     <h3>Share</h3>
-    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;Démystification du client http Angular&quot;%20https://wetry.tech/fonctionnement-d-angular-httpclient/%20via%20&#64;&hashtags=angular,http,api,"
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;Quelles sont les responsabilités du dévelopeur sénior vis-à-vis des juniors&quot;%20https://wetry.tech/mentorat-dev-senior/%20via%20&#64;&hashtags=mentorat,entreprise,senior,junior,"
     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
         <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
     </a>
-    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/fonctionnement-d-angular-httpclient/"
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/mentorat-dev-senior/"
     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
         <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
     </a>
@@ -404,29 +359,33 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
   <section class="author">
     <div class="details">
       
-        <img class="img-rounded" src="/images/authors/dgilson.png" alt="David Gilson<br/>(Gilsdav)">
+        <img class="img-rounded" src="/images/authors/mscolas.jpg" alt="Mathieu Scolas">
       
       <p class="def">Author</p>
       <h3 class="name">
-        <a href="/authors/dgilson/">David Gilson<br/>(Gilsdav)</a>
+        <a href="/authors/mscolas/">Mathieu Scolas</a>
       </h3>
-      <p class="desc"></p>
+      <p class="desc">Développeur indépendant</p>
       <p>
         
-          <a href="https://github.com/gilsdav" title="Github">
+          <a href="https://github.com/worming004" title="Github">
             <svg><use xlink:href="#icon-github"></use></svg>
           </a>
         
         
+          <a href="https://www.facebook.com/mathieu.scolas" title="Facebook">
+            <svg><use xlink:href="#icon-facebook"></use></svg>
+          </a>
         
-          <a href="https://twitter.com/gilsondavid5" title="Twitter">
+        
+          <a href="https://twitter.com/worming4" title="Twitter">
             <svg><use xlink:href="#icon-twitter"></use></svg>
           </a>
         
         
         
         
-          <a href="https://www.linkedin.com/in/david-gilson-innovate" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/mathieu-scolas-1a048484/" title="LinkedIn">
             <svg><use xlink:href="#icon-linkedin"></use></svg>
           </a>
         
@@ -446,14 +405,14 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
   {
       "@context": "http://schema.org",
       "@type": "Person",
-      "name": "David Gilson<br/>(Gilsdav)",
+      "name": "Mathieu Scolas",
       
-      "image": "/images/authors/dgilson.png",
+      "image": "/images/authors/mscolas.jpg",
       
       "jobTitle": "Développeur",
-      "url": "https://wetry.tech/authors/dgilson/",
+      "url": "https://wetry.tech/authors/mscolas/",
       "sameAs": [
-        "https://github.com/gilsdav","https://twitter.com/gilsondavid5","https://www.linkedin.com/in/david-gilson-innovate"
+        "https://github.com/worming004","https://www.facebook.com/mathieu.scolas","https://twitter.com/worming4","https://www.linkedin.com/in/mathieu-scolas-1a048484/"
       ]
   }
   </script>
@@ -473,7 +432,7 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
         disqus_loaded = true;
         var disqus_shortname = 'wetry';
         var disqus_title = '';
-        var disqus_url = '/fonctionnement-d-angular-httpclient/';
+        var disqus_url = '/mentorat-dev-senior/';
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
@@ -662,133 +621,88 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
         {
             "@context": "http://schema.org",
             "@type": "BlogPosting",
-            "name": "Fonctionnement d'Angular: HttpClient",
-            "headline": "Qu'y a-t-il derrière le module HttpClientModule ?",
-            "description": "Démystification du client http Angular",
-            "image": "/images/angular-posts/http-client/principal.png",
-            "url": "https://wetry.tech/fonctionnement-d-angular-httpclient/",
-            "articleBody": "Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique XMLHttpRequest, l’API plus récente Fetch ou encore une librairie externe (utilisant une de ces APIs) comme Axios.
+            "name": "Le mentorat des seniors",
+            "headline": "",
+            "description": "Quelles sont les responsabilités du dévelopeur sénior vis-à-vis des juniors",
+            "image": "/images/mentorat/html.png",
+            "url": "https://wetry.tech/mentorat-dev-senior/",
+            "articleBody": "Nous estimons le nombre de développeurs à 18,5 millions en 2014 et 26,4 millions en fin 2019. Ce qui signifie qu’il y a 7,9 millions de développeurs qui ont moins de 5 ans d’expérience. Ça représente 30% des développeurs mondiaux.
 
-Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (HttpModule) ayant été dépréciée depuis la venue du HttpClientModule dans la version 4.3 d’Angular, nous n’allons nous attarder que sur cette dernière.
+Ces développeurs juniors n’ont pas connaissance des bonnes pratiques. Pas de principe SOLID, ne comprennent pas l’utilité et le gain de temps qu’offrent les tests et qu’est-ce qu’un bon test, et j’en passe.
 
-Architecture
+Nous avons tous été junior, et nous avons tous appris. Et surtout, nous avons tous appris des autres.
 
-Comme d’habitude, HttpClient a été fait de façon très modulaire afin de pouvoir remplacer n’importe quelle partie.
+Dans la situation où la majorité des développeurs travaillent de leur mieux pour appréhender la complexité des domaines à laquelle ils participent, les développeurs expérimentés doivent aussi coopérer avec ceux qui n’ont pas de bonne pratique.
 
+Dans cette même situation où à l’embauche, presque 1 développeur sur 3 ne pourra sans doute pas produire une application avec la qualité requise pour le maintien sur le long terme.
 
-Les éléments en bleu représentent les “idées” (interfaces) qui sont par défaut implémentées par les éléments en gris.
+C’est pour cela que les développeurs seniors ont la responsabilité d’éduquer, de responsabiliser et d’assister l’évolution des capacités des développeurs juniors.
 
-Démarrons par le bas du schéma.
+Plus-value
 
-Requêtes/Réponses
+Un développeur senior a un rate tarifaire élevé. Mais ils produisent aussi une plus-value au prorata des tarifs.
+L’embaucheur espère avant tout qu’un développeur produise. C’est la manière la plus naturelle d’honorer son engagement. Mais il y a d’autres manières: testing, documentation, refactoring, conseils … La manière qui nous intéresse aujourd’hui est la suivante : partager son expérience.
 
-Une requête est créée quand vous appelez une méthode du HttpClient comme .get(...) ou .request(...).
+Soyez transparent et éducatif. Sachez partager vos connaissances acquises à tous ceux qui le désirent et à ceux qui en ont besoin. C’est une manière efficace d’améliorer le codebase à court et long terme.
 
-La réponse, elle, n’est pas créée par HttpClient mais par HttpBackend qui s’occupe notamment de déterminer s’il s’agit d’un succès ou d’une erreur.
+Code review
 
-HttpHandler
+La manière la plus efficace est le code review. Il permet un compromis entre productivité et formation continue des développeurs juniors.
 
-L’HttpHandler est la façon de traiter une requête (HttpRequest) et sa réponse (HttpResponse).
-
-Le handler principal implémenté par défaut s’appel HttpInterceptingHandler et comme son nom l’indique, c’est lui qui détermine comment et dans quel ordre exécuter les intercepteurs avant l’appel réel (qui lui se fait via l’HttpBackend).
-
-HttpBackend
-
-L’HttpBackend implémente lui aussi HttpHandler mais mérite une section à part.
-
-Le backend par défaut s’appel HttpXhrBackend et c’est dans celuis-ci que se trouve toute la logique automatique comme:
-
-  l’ajout du header Content-Type,
-  la détection d’erreurs cors (retour du statut 0),
-  la création du cas de succès ou d’erreur depuis le statut HTTP (200 &amp;lt;= succès &amp;lt; 300)
-  le parsing du payload en Json
-  …
+Selon moi, la meilleure façon d’apprendre est de se tromper. Donnez l’occasion au développeur junior de s’égarer dans une timebox court (1 journée de code maximum) pour avoir l’occasion de retravailler une partie précise. Ceci permet:
 
 
-HttpXhrBackend utilise l’élément XhrFactory afin de créer un élément de type XMLHttpRequest.
-
-XhrFactory
-
-L’XhrFactory ne fait pas grand-chose, mais vous comprendrez l’importance du découplage de cette logique quand nous parlerons du SSR (server-side rendering).
-
-Son implémentation par défaut est le BrowserXhr et ne fait rien de plus que:
-    new XMLHttpRequest()
+  De se concentrer sur une petite partie du code. Limiter le nombre de sujets abordés par code review.
+  De lui donner la facilité de retravailler dans un petit scope et qu’il puisse plus facilement remanier ses classes/fonctions.
+  De ne pas le décourager face à un code review sévère. Plus la review cible est petit, plus elle sera clémente et constructive.
 
 
-SSR (Angular Universal)
+Personnalités et assistance
 
-NodeJS n’étant pas pourvu de l’API pour créer un élément XMLHttpRequest, le module ServerModule nous fournit une autre implémentation de XhrFactory qui utilise la librairie xhr2.
-    new xhr2.XMLHttpRequest();
+Chaque développeur a son tempérament. D’expérience, il ne faut pas accompagner de la même manière un jeune fougueux ou un introverti.
 
+Assurez-vous que la critique soit acquise et surtout constructive. Je ne connais pas aujourd’hui de méthode miracle. J’utilise souvent l’argument d’autorité. C-à-d que j’utilise les références techniques pour être écouté.
 
-
-
-Testing
-
-Un des avantages d’utiliser la solution d’Angular est bien entendu son écosystème pour les tests unitaires.
-
-Vous utilisez probablement déjà le module HttpClientTestingModule, mais quel est l’impact sur l’architecture du HttpClientModule ?
-
-Première chose bonne à savoir: il est inutile d’importer HttpClientModule en même temps, car HttpClientTestingModule le fait déjà.
-
-Le testing module n’utilise pas HttpXhrBackend mais sa propre implémentation du backend: HttpClientTestingBackend.
-
-Vous l’aurez deviné, sa logique est bien différente. Il stocke les différents appels dans un tableau afin de pouvoir vérifier s’ils ont bien tous été gérés dans le test, le cas contraire indique que nous ne nous attendons pas à ce qu’il y ait un appel à ce moment-là.
-
-Ce module redéfinis également le type Request afin de pouvoir retourner une valeur nous-mêmes via une méthode .flush(...).
+Vous connaissez sûrement l'adage 'tout ce qui est sur internet est vrai'.
 
 
+Le junior a tendance à travailler seul. Il est soit sûr de lui ou soit n’ose pas déranger selon sa personnalité. À vous d’identifier l’approche. Si vous le laissez longtemps dans sa caverne, vous risquez d’avoir une quantité de lignes de code que vous ne pourriez pas exploiter pour le soutenir. À vous de fixer des règles de reviews pour l’assister.
 
-In-memory web api
+Encourager l’autoapprentissage par une présentation
 
-Dans le panel d’outils proposé par Angular, il est également possible de mettre en place un mécanisme de mocks dynamiques via le module HttpClientInMemoryWebApiModule.
+Une autre manière efficace est d’obliger le junior à présenter un sujet. Il se formera lui-même, mais aussi cela l’encourage a s’autoformer par la suite. La confiance en soi, ainsi que de démontrer qu’il est capable d’enseigner quelque chose à ses compères l’encouragera à être curieux et à parfaire ses capacités.
 
-Vous devez configurer une DB “in memory” ce qui va vous mettre à disposition des end-points CRUD.
+Reconnaissance et motivation
 
-Ce module contient également sa propre implémentation du backend: HttpClientBackendService.
+La qualité que je recherche le plus chez un développeur est sa motivation. La motivation assure l’envie de produire, mais aussi la curiosité de chacun. Cette même motivation pousse naturellement les développeurs à s’améliorer et à se remettre en question.
 
-Contrairement au module de “testing”, celui-ci a également une dépendance vers XhrFactory afin de permettre la configuration d’un PassThruBackend dans le cas où une URL n’est pas connue du mécanisme InMemory.
+La motivation est propre à chacun. Par chance, elle peut être cultivée par son entourage. C’est sans doute le paragraphe le plus important de cet article.
 
+Motivez votre équipe, et surtout vos juniors. Sachez être constructif dans vos critiques. Elles doivent toujours être construites pour inculquer une bonne pratique. Mettez votre égo de côté et n’émettez jamais de critique pour vous poster en position supérieure.
 
+Sachez remarquer les bonnes actions. Donnez de la visibilité quand quelqu’un applique les bonnes pratiques. Cette manière d’encourager booste énormément la motivation.
 
-Schéma récapitulatif
+Et enfin, laissez respirer votre entourage. Apprendre est une tâche intellectuelle. Cela demande de mettre ses acquis de côté et de raisonner dans une zone d’inconfort. De plus, personne ne peut espérer qu’un junior devienne senior du jour au lendemain. La route est longue. Laissez-lui le droit de se tromper sur quelques points et corrigez vous-même quelques points dans un refactoring du lendemain si le temps presse. Si vous lui demandez la perfection H24, vous risquez de tuer sa motivation.
 
-Voici un schéma complet de se dont j’ai parlé dans cet article.
-
-
-
-J’espère, avec cet article, avoir démistifié une partie du module HttpClient.
-
-
-
-
-    MERCI
-    d'avoir pris le temps de lire cet article
+Si vous retravaillez une partie de l'application, faites-les remarquer poliment.
+La correction en cachette peut-être mal interprétée.
+Expliquez-lui quand même ce qui était attendu.
+Il se sentira quand même grandir et qu'il est estimé comme membre de l'équipe.
 
 
+Chaque minute investie dans la qualité supprime plusieurs dizaines d’heures de travail inutile
 
+Dans le monde agile, la finalité est la valeur. Est-ce qu’investir dans le mentorat crée de la valeur ? La réponse est oui.
 
+Chaque fois qu’un junior apprend un principe, il l’appliquera toute sa vie. Et cet apprentissage garantit une amélioration continue de la qualité de vos applications.
 
-Table des matières
-
-  Architecture    
-      Requêtes/Réponses
-      HttpHandler
-      HttpBackend
-      XhrFactory
-    
-  
-  SSR (Angular Universal)
-  Testing
-  In-memory web api
-  Schéma récapitulatif
-
+Toute entreprise informatique doit se mettre à jour pour survivre. Cette évolution passe, entre autres, par un mentorat appliqué. Sensibilisez votre entourage au mentorat.
 ",
-            "wordcount": "770",
+            "wordcount": "927",
             "inLanguage": "fr",
-            "dateCreated": "2019-12-25/",
-            "datePublished": "2019-12-25/",
-            "dateModified": "2019-12-25/",
+            "dateCreated": "2020-01-17/",
+            "datePublished": "2020-01-17/",
+            "dateModified": "2020-01-17/",
             "author": {
                 "@type": "Person",
                 "name": "David Gilson<br/>(Gilsdav)",
@@ -813,9 +727,9 @@ Table des matières
                 }
             },
             "mainEntityOfPage": "True",
-            "genre": "demystification",
-            "articleSection": "demystification",
-            "keywords": ["angular","http","api"]
+            "genre": "entreprise",
+            "articleSection": "entreprise",
+            "keywords": ["mentorat","entreprise","senior","junior"]
         }
         </script>
     </body>

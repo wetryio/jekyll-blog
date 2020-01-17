@@ -5,9 +5,27 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Dec 2019 19:06:41 +0000</pubDate>
-    <lastBuildDate>Wed, 25 Dec 2019 19:06:41 +0000</lastBuildDate>
+    <pubDate>Fri, 17 Jan 2020 15:07:22 +0000</pubDate>
+    <lastBuildDate>Fri, 17 Jan 2020 15:07:22 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Le mentorat des seniors</title>
+        <description>&lt;p&gt;Nous estimons le nombre de développeurs à &lt;a href=&quot;https://www.businesswire.com/news/home/20131217005316/en/IDC-Releases-2014-Worldwide-Software-Developer-ICT-Skilled&quot;&gt;18,5 millions en 2014&lt;/a&gt; et &lt;a href=&quot;https://www.daxx.com/blog/development-trends/number-software-developers-world&quot;&gt;26,4 millions en fin 2019&lt;/a&gt;. Ce qui signifie qu’il y a 7,9 millions de développeurs qui ont moins de 5 ans d’expérience. Ça représente 30% des développeurs mondiaux.&lt;/p&gt; &lt;p&gt;Ces développeurs juniors n’ont pas connaissance des bonnes pratiques. Pas de principe SOLID, ne comprennent pas l’utilité et le gain de temps qu’offrent les tests et qu’est-ce qu’un bon test, et j’en passe.&lt;/p&gt; &lt;p&gt;Nous avons tous été junior, et nous avons tous appris. Et surtout, &lt;strong&gt;nous avons tous appris des autres.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Dans la situation où la majorité des...</description>
+        <pubDate>Fri, 17 Jan 2020 12:00:00 +0000</pubDate>
+        <link>https://wetry.tech/mentorat-dev-senior/</link>
+        <guid isPermaLink="true">https://wetry.tech/mentorat-dev-senior/</guid>
+        
+        <category>mentorat</category>
+        
+        <category>entreprise</category>
+        
+        <category>senior</category>
+        
+        <category>junior</category>
+        
+        <category>entreprise</category>
+      </item>
     
       <item>
         <title>Fonctionnement d'Angular: HttpClient</title>

@@ -118,7 +118,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2019-12-25</lastmod>
+                <lastmod>2020-01-17</lastmod>
             
         </url>
     
@@ -218,6 +218,13 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/mentorat-dev-senior/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2020-01-17</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/fonctionnement-d-angular-httpclient/</loc>
