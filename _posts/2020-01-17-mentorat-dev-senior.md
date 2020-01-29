@@ -3,7 +3,7 @@ author: mscolas
 layout: post
 title: Le mentorat des seniors
 date: 2020-01-17 12:00:00
-image: '/images/mentorat/html.png'
+image: '/assets/img/mentorat/html.png'
 description: Quelles sont les responsabilités du dévelopeur sénior vis-à-vis des juniors
 category: 'entreprise'
 tags:

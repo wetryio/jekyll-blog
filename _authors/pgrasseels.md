@@ -1,6 +1,6 @@
 ---
 layout: author
-photo: /images/authors/pgrasseels.jpg
+photo: /assets/img/authors/pgrasseels.jpg
 name: pgrasseels
 display_name: Patrick Grasseels
 position: Développeur

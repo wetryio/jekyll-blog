@@ -8,7 +8,7 @@ category: 'events'
 menu: true
 ---
 
-![Presentation](/images/devday/Presentation.jpg)
+![Presentation](/assets/img/devday/Presentation.jpg)
 
 # DevDay 2019, la conférence multi track belge
 
@@ -18,7 +18,7 @@ DevDay a les mêmes valeurs, cet événement est pour nous une source de motivat
 
 Nous vous expliquons dans cette page ce qu'est le DevDay, particulièrement cette édition 2019.
 
-![Public](/images/devday/Public.jpg)
+![Public](/assets/img/devday/Public.jpg)
 
 ## Une journée de talks
 
@@ -26,7 +26,7 @@ Les talks sont le cœur de cet événement. Étalés sur 4 tracks C#, Cloud, Web
 
 La devise de l'événement "Pour les Devs, avec des Devs, présenté par des Devs" est respectée.
 
-![Inscription](/images/devday/Inscription.jpg)
+![Inscription](/assets/img/devday/Inscription.jpg)
 
 ## De la visibilité pour les sponsors et les entreprises
 

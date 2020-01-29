@@ -6,12 +6,12 @@ description: CraftLab IT
 permalink: /craftlab-it/
 category: 'presentation'
 menu: true
-image: /images/craftlab-it/logo.jpeg
+image: /assets/img/craftlab-it/logo.jpeg
 ---
 
 # CraftLab IT
 
-![Logo](/images/craftlab-it/logo.jpeg)
+![Logo](/assets/img/craftlab-it/logo.jpeg)
 
 CraftLab IT est une organisation Tournaisienne (Belgique, Hainaut) qui aide les entreprises à matérialiser des solutions IT, principalement WEB.
 
@@ -20,7 +20,7 @@ CraftLab IT est une organisation Tournaisienne (Belgique, Hainaut) qui aide les 
 Mathieu Scolas, développeur depuis 2014.
 Je suis à l'écoute des défis d'entreprises et je propose également une solution informatique taillée aux problèmes rencontrés.
 
-![Mathieu Scolas](/images/craftlab-it/profil.jpg)
+![Mathieu Scolas](/assets/img/craftlab-it/profil.jpg)
 
 Mes expériences variées m'ont orienté vers des applications web PC et mobile. Le web offre aujourd'hui la facilité de déploiement continu, et je mise personnellement toutes mes formations dans ce domaine.
 

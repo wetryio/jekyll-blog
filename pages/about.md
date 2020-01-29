@@ -28,7 +28,7 @@ Microsoft follower.
 *Technical Architect & Front-end expert @Afelio (The NRB Group).*
 </small>
 
-![placeholder](/images/gilsdav.jpg "David GILSON")
+![placeholder](/assets/img/gilsdav.jpg "David GILSON")
 
 ### Mathieu Scolas
 
@@ -36,8 +36,8 @@ Défenseur des méthodes d'extensibilité de code.
 Partage les valeurs agiles.
 
 <small>
-    *Développeur indépendant depuis 2014*
+    *Développeur depuis 2014, indépendant depuis 2018*
 </small>
 
-![placeholder](/images/craftlab-it/profil-small.jpg "Mathieu Scolas")
+![placeholder](/assets/img/craftlab-it/profil-small.jpg "Mathieu Scolas")
 

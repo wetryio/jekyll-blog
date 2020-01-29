@@ -1,6 +1,6 @@
 ---
 layout: author
-photo: /images/authors/mscolas.jpg
+photo: /assets/img/authors/mscolas.jpg
 name: mscolas
 display_name: Mathieu Scolas
 position: Développeur

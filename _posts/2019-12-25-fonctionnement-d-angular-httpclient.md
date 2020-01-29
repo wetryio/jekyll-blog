@@ -4,7 +4,7 @@ layout: post
 title: "Fonctionnement d'Angular: HttpClient"
 subtitle: Qu'y a-t-il derrière le module HttpClientModule ?
 description: Démystification du client http Angular
-image: /images/angular-posts/http-client/principal.png
+image: /assets/img/angular-posts/http-client/principal.png
 optimized_image:
 category: 'demystification'
 tags:
@@ -22,7 +22,7 @@ Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d'utilis
 
 Comme d'habitude, HttpClient a été fait de façon très modulaire afin de pouvoir remplacer n'importe quelle partie.
 
-![http-client-architecture-de-base](/images/angular-posts/http-client/http-client-1.png)
+![http-client-architecture-de-base](/assets/img/angular-posts/http-client/http-client-1.png)
 Les éléments en bleu représentent les "idées" (interfaces) qui sont par défaut implémentées par les éléments en gris.
 
 Démarrons par le bas du schéma.
@@ -68,7 +68,7 @@ NodeJS n'étant pas pourvu de l'API pour créer un élément XMLHttpRequest, le 
     new xhr2.XMLHttpRequest();
 ```
 
-![http-client-architecture-ssr](/images/angular-posts/http-client/http-client-2.png)
+![http-client-architecture-ssr](/assets/img/angular-posts/http-client/http-client-2.png)
 
 ## Testing
 
@@ -84,7 +84,7 @@ Vous l'aurez deviné, sa logique est bien différente. Il stocke les différents
 
 Ce module redéfinis également le type `Request` afin de pouvoir retourner une valeur nous-mêmes via une méthode `.flush(...)`.
 
-![http-client-architecture-testing](/images/angular-posts/http-client/http-client-3.png)
+![http-client-architecture-testing](/assets/img/angular-posts/http-client/http-client-3.png)
 
 ## In-memory web api
 
@@ -96,13 +96,13 @@ Ce module contient également sa propre implémentation du backend: `HttpClientB
 
 Contrairement au module de "testing", celui-ci a également une dépendance vers XhrFactory afin de permettre la configuration d'un `PassThruBackend` dans le cas où une URL n'est pas connue du mécanisme InMemory.
 
-![http-client-architecture-in-memory](/images/angular-posts/http-client/http-client-4.png)
+![http-client-architecture-in-memory](/assets/img/angular-posts/http-client/http-client-4.png)
 
 ## Schéma récapitulatif
 
 Voici un schéma complet de se dont j'ai parlé dans cet article.
 
-![http-client-architecture-complet](/images/angular-posts/http-client/http-client-5.png)
+![http-client-architecture-complet](/assets/img/angular-posts/http-client/http-client-5.png)
 
 J'espère, avec cet article, avoir démistifié une partie du module HttpClient.
 
