@@ -4,7 +4,7 @@ layout: post
 title: "Les fonctions pures au service de la lisibilité"
 subtitle: Explications par des exemples
 description: Utiliser des fonctions pures pour plus de lisibilité.
-image: 
+image: '/assets/img/angular-posts/clean-code.png'
 category: 'bonne-pratique'
 tags:
     - bonne pratique
