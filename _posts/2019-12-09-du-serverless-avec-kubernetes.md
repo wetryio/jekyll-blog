@@ -4,7 +4,7 @@ layout: post
 title: "Du serverless avec Kubernetes"
 subtitle: Découvrons le framework serverless "Kubeless"
 description: Serverless ne veut pas dire sans serveur physique!
-image: /images/kubernetes/kubeless.png
+image: /assets/img/kubernetes/kubeless.png
 optimized_image:
 category: 'experimentation'
 tags:
@@ -22,7 +22,7 @@ Nous allons donc commencer par voir ce qu'est le serverless. Si vous vous y conn
 
 Si vous avez déjà fouillé un peu sur le sujet, vous avez remarqué qu'il existe pas mal d'autres frameworks du même genre. Mais si j'ai choisi Kubeless, c'est pour sa simplicité d'utilisation, parce qu'il n'utilise que les éléments natifs de Kubernetes et qu'il ne faut pas passer par un registry Docker comme DockerHub.
 
-![kubernetes_serveless_frameworks](/images/kubernetes/comparison_of_serverless_on_kubernetes.png)
+![kubernetes_serveless_frameworks](/assets/img/kubernetes/comparison_of_serverless_on_kubernetes.png)
 <!-- https://winderresearch.com/a-comparison-of-serverless-frameworks-for-kubernetes-openfaas-openwhisk-fission-kubeless-and-more/ -->
 
 ## Qu'est-ce que le serverless ?
@@ -35,7 +35,7 @@ Les microservices et les nanoservices répondants à un problème précis, il se
 
 Une architecture serverless est le plus souvent représentée par un mélange de services existants (BAAS) et de nanoservice personnalisé (FAAS).
 
-![serverless-architecture-evolution](/images/kubernetes/serverless-architecture-evolution-1024x405.jpg)
+![serverless-architecture-evolution](/assets/img/kubernetes/serverless-architecture-evolution-1024x405.jpg)
 <!-- http://serverlessarchitecture.com/about/ -->
 
 ### Deux types de serverless
@@ -83,7 +83,7 @@ Cela est possible en écrivant très peu de ligne de code car nous n'écrivons, 
 
 Wassim a décidé d'utiliser les services Azure et donc d'écrire des fonctions en Azure Functions. Mais cela est tout à fait possible via Kubeless.
 
-![serverless-example](/images/kubernetes/servless-example.jpeg)
+![serverless-example](/assets/img/kubernetes/servless-example.jpeg)
 
 ## Kubeless
 
@@ -171,7 +171,7 @@ Commençons par créer une fonction HTTP (un end-point).
 #### Fonction HTTP avec l'UI
 
 Après l'installation des outils, vous devriez avoir accès à cette interface:
-![kubelessui-home](/images/kubernetes/kubelessui1.png)
+![kubelessui-home](/assets/img/kubernetes/kubelessui1.png)
 
 Créons notre première fonction en cliquant sur le bouton à cet effet. Un popup vous demandera alors:
 <ol class="small">
@@ -180,19 +180,19 @@ Créons notre première fonction en cliquant sur le bouton à cet effet. Un popu
     <li>Le <strong>runtime</strong></li>
     <li>Les <strong>dépendances</strong> (formaté comme un package.json)</li>
 </ol>
-![kubelessui-create-function](/images/kubernetes/kubelessui2.png)
+![kubelessui-create-function](/assets/img/kubernetes/kubelessui2.png)
 
 Cela vous créera un "hello world" par défaut vous montrant comment le handler doit être exporté.
-![kubelessui-default-script](/images/kubernetes/kubelessui3.png)
+![kubelessui-default-script](/assets/img/kubernetes/kubelessui3.png)
 
 En dessous du code, vous pourrez ouvrir un "terminal" affichant les logs de la fonction des pods déployées (ici un pod unique):
-![kubelessui-terminal](/images/kubernetes/kubelessui5.png)
+![kubelessui-terminal](/assets/img/kubernetes/kubelessui5.png)
 
 Utilisons maintenant la dépendance que nous avons installée (`lodash`) en utilisant par exemple sa fonction `capitalize`.
-![kubelessui-script2](/images/kubernetes/kubelessui4.png)
+![kubelessui-script2](/assets/img/kubernetes/kubelessui4.png)
 
 Regardons à nouveau le terminal: nous bénéficions de l'orchestration Kubernetes pour éviter tout down-time durant la mise à jour de la fonction.
-![kubelessui-terminal2](/images/kubernetes/kubelessui6.png)
+![kubelessui-terminal2](/assets/img/kubernetes/kubelessui6.png)
 
 A-t-il déjà été aussi simple de déployer un service en on-premise ?
 
@@ -214,7 +214,7 @@ Le CLI dispose de deux commandes principales:
     ```
 
 Enfin, la fonction à déployer doit avoir la même structure que sur l'UI.
-![kubelessui-cli](/images/kubernetes/kubelessui7.png)
+![kubelessui-cli](/assets/img/kubernetes/kubelessui7.png)
 
 Une fonction déployée via le CLI peut ensuite être modifiée via l'UI sauf si vous utilisez un framework additionnel comme [Serverless](https://serverless.com/) qui va minifier/compiler le code et le rendre complètement illisible.
 

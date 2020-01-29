@@ -3,7 +3,7 @@ author: dgilson
 layout: post
 title: "Les secrets du Router d'Angular"
 date: 2019-08-29 19:22:26
-image: '/images/angular-posts/routing.jpg'
+image: '/assets/img/angular-posts/routing.jpg'
 description: En savoir plus sur le routing d'Angular.
 category: 'documentation'
 tags:

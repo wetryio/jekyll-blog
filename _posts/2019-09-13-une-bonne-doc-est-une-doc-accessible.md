@@ -3,7 +3,7 @@ author: mscolas
 layout: post
 title: Une bonne doc est une doc accessible
 date: 2019-09-13 07:00:00
-image: '/images/bonne-documentation/default-activity-diagram.png'
+image: '/assets/img/bonne-documentation/default-activity-diagram.png'
 description: Des principes simples s'appliquent aussi à la documentation
 category: 'bonne-pratique'
 tags:
@@ -70,7 +70,7 @@ Voici encore quelques principes à respecter pour les documents externes.
 
 ### Keep physically close what things are related
 
-![messenger](/images/bonne-documentation/messenger.png)
+![messenger](/assets/img/bonne-documentation/messenger.png)
 _Messenger intègre sa doc dans ses contrôles_
 
 Plus un élément est proche de ses relations, plus la probabilité de le retrouver est grande.

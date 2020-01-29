@@ -3,7 +3,7 @@ author: dgilson
 layout: post
 title: "Dockerisation sans limites"
 date: 2019-10-15 15:41:08
-image: /images/docker-posts/docker-vs-code.png
+image: /assets/img/docker-posts/docker-vs-code.png
 description: Docker, l'outil ultime des développeurs.
 category: 'experimentation'
 tags:
@@ -58,7 +58,7 @@ docker run -it -p 127.0.0.1:8080:8080 `
 
 Super, on a déjà plus que du concret!
 
-![vs code online](/images/docker-posts/vs-code-online.png)
+![vs code online](/assets/img/docker-posts/vs-code-online.png)
 
 Mais nous allons vite faire face à un "problème": le terminal fonctionne, mais il n'y a aucun outil de build disponible comme *npm* ou *maven*.
 
@@ -143,11 +143,11 @@ Un projet nommé [Sail Hub](https://github.com/gilsdav/sail-hub) à vu le jour d
 
 Une fois installé et démarré, il vous suffis d'ajouter un repo:
 
-![stail-add-repo](/images/docker-posts/sail-hub2.png)
+![stail-add-repo](/assets/img/docker-posts/sail-hub2.png)
 
 Cela vous permettra d'ouvrir un VS Code en ligne en cliquant sur `open`:
 
-![stail-list](/images/docker-posts/sail-hub1.png)
+![stail-list](/assets/img/docker-posts/sail-hub1.png)
 
 Et voilà, vous n'avez plus qu'une URL à retenir pour pouvoir développer depuis n'importe quel device.
 

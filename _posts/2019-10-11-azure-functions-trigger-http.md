@@ -3,7 +3,7 @@ author: pgrasseels
 layout: post
 title: "Azure Functions démystifions le trigger HTTP"
 date: 2019-10-11 11:20:00
-image: '/images/azure-functions/Azure-Functions.png'
+image: '/assets/img/azure-functions/Azure-Functions.png'
 description: Azure Functions, démystifions le trigger HTTP.
 category: 'azure'
 tags:
@@ -39,19 +39,19 @@ Les images utilisées ici sont tirées de Visual Studio 2019.
 
 
 #### Dans la fenêtre de création d'un Projet de Visual Studio 2019, chercher après Azure Functions.
-![placeholder](/images/azure-functions/create-functions-part1.png "Azure functions")
+![placeholder](/assets/img/azure-functions/create-functions-part1.png "Azure functions")
 
 #### Selectionner Azure Functions, ensuite Next / Suivant.
-![placeholder](/images/azure-functions/create-functions-part2.png "Azure functions")
+![placeholder](/assets/img/azure-functions/create-functions-part2.png "Azure functions")
 
 #### Il faut encoder le nom du projet, ici SampleFunction, ensuite la Location (emplacement sur le disque) et pour finir le nom de la solution.
-![placeholder](/images/azure-functions/create-functions-part3.png "Azure functions")
+![placeholder](/assets/img/azure-functions/create-functions-part3.png "Azure functions")
 
 #### La fenêtre suivante est très intéressante, elle va permettre de paramétrer la function, pour cet article, c'est un Trigger Http qu'il faut selectionner, en Storage Account le Storage Emulator et en Authorization sélectionner Anonymous. C'est l'étape principale qui permet de scalffoder les projets. Selon la sélection faite, Visual Studio va ajouter des packages différents. Mais également paramétrer l'entrypoint de la function différement.
-![placeholder](/images/azure-functions/create-functions-part4.png "Azure functions")
+![placeholder](/assets/img/azure-functions/create-functions-part4.png "Azure functions")
 
 #### Après avoir cliqué sur Create, le projet avec une Azure Functions est générée par Visual Studio.
-![placeholder](/images/azure-functions/create-functions-part5.png "Azure functions")
+![placeholder](/assets/img/azure-functions/create-functions-part5.png "Azure functions")
 
 ## Explication du code généré
 Le code généré à la base ressemble à ceci
@@ -175,13 +175,13 @@ public static class Multiplicator
 ```
 
 #### Pour tester, F5 lance en Debug ou Release selon ce qui est sélectionné. La première fois, il est possible que cela prenne un certain temps, notamment pour que l'azure Emulator se lance.
-![placeholder](/images/azure-functions/launch-functions-part.png "Azure functions")
+![placeholder](/assets/img/azure-functions/launch-functions-part.png "Azure functions")
 
 #### Si tout c'est bien passer, un invite de commande vas se lancer et ressemble à ceci.
-![placeholder](/images/azure-functions/launch-functions-part2.png "Azure functions")
+![placeholder](/assets/img/azure-functions/launch-functions-part2.png "Azure functions")
 
 #### Et la partie la plus important se trouve tout en bas.
-![placeholder](/images/azure-functions/launch-functions-part3.png "Azure functions")
+![placeholder](/assets/img/azure-functions/launch-functions-part3.png "Azure functions")
 
 L'URL suivante expose la Azure Functions.
 ```
@@ -223,7 +223,7 @@ Dans HttpTrigger, le paramètre Route définis donc le points d'entrée de la fu
 ```
 http://localhost:7071/api/Multiplicator/{a}/{b}
 ```
-![placeholder](/images/azure-functions/launch-functions-part4.png "Azure functions")
+![placeholder](/assets/img/azure-functions/launch-functions-part4.png "Azure functions")
 
 La prochaine modification, va permettre de lier les valeurs de la route, a des paramètres de la Azure Functions.
 ```csharp
@@ -354,16 +354,16 @@ La dernière étape est de rendre la Azure Function utilisable sur le cloud Azur
 Pour cela dans Visual Studio, clique droit sur le projet, ensuite Publish.
 
 #### Clique droit sur le projet qui doit être publié.
-![placeholder](/images/azure-functions/publish-functions-part1.png "Azure functions")
+![placeholder](/assets/img/azure-functions/publish-functions-part1.png "Azure functions")
 
 #### Une nouvelle fenêtre va s'ouvrir, le bouton Start va permettre de configurer le déploiement.
-![placeholder](/images/azure-functions/publish-functions-part2.png "Azure functions")
+![placeholder](/assets/img/azure-functions/publish-functions-part2.png "Azure functions")
 
 #### Ici, le déploiement se fera sur un consumption Plan. La fenêtre suivante va permettre de configurer la région, le nom, etc ...
-![placeholder](/images/azure-functions/publish-functions-part3.png "Azure functions")
+![placeholder](/assets/img/azure-functions/publish-functions-part3.png "Azure functions")
 
 #### Les informations du déploiement se font ici.
-![placeholder](/images/azure-functions/publish-functions-part4.png "Azure functions")
+![placeholder](/assets/img/azure-functions/publish-functions-part4.png "Azure functions")
 
 Le bouton Create en bas à droite va créer un profil de publication réutilisable.
 Ensuite, une autre fenêtre va s'ouvrir avec un bouton Publier, en cliquant dessus, Visual Studio, va publier la function sur azure.

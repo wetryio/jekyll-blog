@@ -1,6 +1,6 @@
 ---
 layout: author
-photo: /images/authors/dgilson.png
+photo: /assets/img/authors/dgilson.png
 name: dgilson
 display_name: David Gilson<br/>(Gilsdav)
 position: Développeur
