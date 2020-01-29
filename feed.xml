@@ -5,8 +5,8 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 29 Jan 2020 07:30:20 +0000</pubDate>
-    <lastBuildDate>Wed, 29 Jan 2020 07:30:20 +0000</lastBuildDate>
+    <pubDate>Wed, 29 Jan 2020 15:46:54 +0000</pubDate>
+    <lastBuildDate>Wed, 29 Jan 2020 15:46:54 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
@@ -157,8 +157,8 @@
         <title>Les secrets du Router d'Angular</title>
         <description>&lt;p&gt;Le routing est un élément inévitable dans une Application Web. Nous allons donc nous concentrer sur cette partie du framework Angular.&lt;/p&gt; &lt;p&gt;Si vous êtes uniquement intéressé pas un point précis du routing, n’hésitez pas à aller voir la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt;.&lt;/p&gt; &lt;h2 id=&quot;cest-quoi-le-routing-&quot;&gt;C’est quoi le routing ?&lt;/h2&gt; &lt;p&gt;Le système de routing est la gestion de l’affichage via l’URL dans le navigateur. Le fait d’avoir l’url &lt;code class=&quot;highlighter-rouge&quot;&gt;/home&lt;/code&gt; affichera des informations différentes de l’url &lt;code class=&quot;highlighter-rouge&quot;&gt;/contact&lt;/code&gt; par exemple.&lt;/p&gt; &lt;p&gt;Pour que cela fonctionne, il faut que ça soit le JavaScript qui ait la main sur l’url à la place du navigateur....</description>
         <pubDate>Thu, 29 Aug 2019 19:22:26 +0000</pubDate>
-        <link>https://wetry.tech/les-secrets-du-router-d'angular/</link>
-        <guid isPermaLink="true">https://wetry.tech/les-secrets-du-router-d'angular/</guid>
+        <link>https://wetry.tech/les-secrets-du-router-d-angular/</link>
+        <guid isPermaLink="true">https://wetry.tech/les-secrets-du-router-d-angular/</guid>
         
         <category>angular</category>
         
