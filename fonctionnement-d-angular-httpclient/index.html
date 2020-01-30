@@ -27,13 +27,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Fonctionnement d'Angular: HttpClient | WeTry">
     <meta name="twitter:description" content="Démystification du client http Angular">
-    <meta property="twitter:image:src" content="https://wetry.tech/images/angular-posts/http-client/principal.png">
+    <meta property="twitter:image:src" content="https://wetry.tech/assets/img/angular-posts/http-client/principal.png">
     
 
     <!-- Social: Facebook / Open Graph -->
     <meta property="og:url" content="https://wetry.tech/fonctionnement-d-angular-httpclient/">
     <meta property="og:title" content="Fonctionnement d'Angular: HttpClient | WeTry">
-    <meta property="og:image" content="https://wetry.tech/images/angular-posts/http-client/principal.png">
+    <meta property="og:image" content="https://wetry.tech/assets/img/angular-posts/http-client/principal.png">
     <meta property="og:description" content="Démystification du client http Angular">
     <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
 
@@ -224,7 +224,7 @@ Décembre 25, 2019
                 <p class="post-subtitle">Qu'y a-t-il derrière le module HttpClientModule ?</p>
 
                 
-                    <img src="/images/angular-posts/http-client/principal.png" alt="Featured image" class="post-cover">
+                    <img src="/assets/img/angular-posts/http-client/principal.png" alt="Featured image" class="post-cover">
                 
 
                 <!-- Pagination links -->
@@ -239,7 +239,7 @@ Décembre 25, 2019
 
 <p>Comme d’habitude, HttpClient a été fait de façon très modulaire afin de pouvoir remplacer n’importe quelle partie.</p>
 
-<p><img src="/images/angular-posts/http-client/http-client-1.png" alt="http-client-architecture-de-base" />
+<p><img src="/assets/img/angular-posts/http-client/http-client-1.png" alt="http-client-architecture-de-base" />
 Les éléments en bleu représentent les “idées” (interfaces) qui sont par défaut implémentées par les éléments en gris.</p>
 
 <p>Démarrons par le bas du schéma.</p>
@@ -285,7 +285,7 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">new</span> <span class="nx">xhr2</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
 </code></pre></div></div>
 
-<p><img src="/images/angular-posts/http-client/http-client-2.png" alt="http-client-architecture-ssr" /></p>
+<p><img src="/assets/img/angular-posts/http-client/http-client-2.png" alt="http-client-architecture-ssr" /></p>
 
 <h2 id="testing">Testing</h2>
 
@@ -301,7 +301,7 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
 
 <p>Ce module redéfinis également le type <code class="highlighter-rouge">Request</code> afin de pouvoir retourner une valeur nous-mêmes via une méthode <code class="highlighter-rouge">.flush(...)</code>.</p>
 
-<p><img src="/images/angular-posts/http-client/http-client-3.png" alt="http-client-architecture-testing" /></p>
+<p><img src="/assets/img/angular-posts/http-client/http-client-3.png" alt="http-client-architecture-testing" /></p>
 
 <h2 id="in-memory-web-api">In-memory web api</h2>
 
@@ -313,13 +313,13 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
 
 <p>Contrairement au module de “testing”, celui-ci a également une dépendance vers XhrFactory afin de permettre la configuration d’un <code class="highlighter-rouge">PassThruBackend</code> dans le cas où une URL n’est pas connue du mécanisme InMemory.</p>
 
-<p><img src="/images/angular-posts/http-client/http-client-4.png" alt="http-client-architecture-in-memory" /></p>
+<p><img src="/assets/img/angular-posts/http-client/http-client-4.png" alt="http-client-architecture-in-memory" /></p>
 
 <h2 id="schéma-récapitulatif">Schéma récapitulatif</h2>
 
 <p>Voici un schéma complet de se dont j’ai parlé dans cet article.</p>
 
-<p><img src="/images/angular-posts/http-client/http-client-5.png" alt="http-client-architecture-complet" /></p>
+<p><img src="/assets/img/angular-posts/http-client/http-client-5.png" alt="http-client-architecture-complet" /></p>
 
 <p>J’espère, avec cet article, avoir démistifié une partie du module HttpClient.</p>
 
@@ -378,7 +378,7 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
     <a href="/mentorat-dev-senior/" class="post-preview">
         <div class="image">
             
-                <img src="/images/mentorat/html.png">
+                <img src="/assets/img/mentorat/html.png">
             
         </div>
         <h3 class="title">Le mentorat des seniors</h3>
@@ -410,7 +410,7 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
   <section class="author">
     <div class="details">
       
-        <img class="img-rounded" src="/images/authors/dgilson.png" alt="David Gilson<br/>(Gilsdav)">
+        <img class="img-rounded" src="/assets/img/authors/dgilson.png" alt="David Gilson<br/>(Gilsdav)">
       
       <p class="def">Author</p>
       <h3 class="name">
@@ -454,7 +454,7 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
       "@type": "Person",
       "name": "David Gilson<br/>(Gilsdav)",
       
-      "image": "/images/authors/dgilson.png",
+      "image": "/assets/img/authors/dgilson.png",
       
       "jobTitle": "Développeur",
       "url": "https://wetry.tech/authors/dgilson/",
@@ -677,7 +677,7 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
             "name": "Fonctionnement d'Angular: HttpClient",
             "headline": "Qu'y a-t-il derrière le module HttpClientModule ?",
             "description": "Démystification du client http Angular",
-            "image": "/images/angular-posts/http-client/principal.png",
+            "image": "/assets/img/angular-posts/http-client/principal.png",
             "url": "https://wetry.tech/fonctionnement-d-angular-httpclient/",
             "articleBody": "Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique XMLHttpRequest, l’API plus récente Fetch ou encore une librairie externe (utilisant une de ces APIs) comme Axios.
 
@@ -805,7 +805,7 @@ Table des matières
                 "@type": "Person",
                 "name": "David Gilson<br/>(Gilsdav)",
                 
-                "image": "/images/authors/dgilson.png",
+                "image": "/assets/img/authors/dgilson.png",
                 
                 "jobTitle": "Développeur",
                 "url": "https://wetry.tech/authors/dgilson/",

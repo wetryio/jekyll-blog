@@ -27,13 +27,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Azure Functions démystifions le trigger HTTP | WeTry">
     <meta name="twitter:description" content="Azure Functions, démystifions le trigger HTTP.">
-    <meta property="twitter:image:src" content="https://wetry.tech/images/azure-functions/Azure-Functions.png">
+    <meta property="twitter:image:src" content="https://wetry.tech/assets/img/azure-functions/Azure-Functions.png">
     
 
     <!-- Social: Facebook / Open Graph -->
     <meta property="og:url" content="https://wetry.tech/azure-functions-trigger-http/">
     <meta property="og:title" content="Azure Functions démystifions le trigger HTTP | WeTry">
-    <meta property="og:image" content="https://wetry.tech/images/azure-functions/Azure-Functions.png">
+    <meta property="og:image" content="https://wetry.tech/assets/img/azure-functions/Azure-Functions.png">
     <meta property="og:description" content="Azure Functions, démystifions le trigger HTTP.">
     <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
 
@@ -224,7 +224,7 @@ Octobre 11, 2019
                 <p class="post-subtitle"></p>
 
                 
-                    <img src="/images/azure-functions/Azure-Functions.png" alt="Featured image" class="post-cover">
+                    <img src="/assets/img/azure-functions/Azure-Functions.png" alt="Featured image" class="post-cover">
                 
 
                 <!-- Pagination links -->
@@ -259,19 +259,19 @@ Octobre 11, 2019
 <p>Les images utilisées ici sont tirées de Visual Studio 2019.</p>
 
 <h4 id="dans-la-fenêtre-de-création-dun-projet-de-visual-studio-2019-chercher-après-azure-functions">Dans la fenêtre de création d’un Projet de Visual Studio 2019, chercher après Azure Functions.</h4>
-<p><img src="/images/azure-functions/create-functions-part1.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/create-functions-part1.png" alt="placeholder" title="Azure functions" /></p>
 
 <h4 id="selectionner-azure-functions-ensuite-next--suivant">Selectionner Azure Functions, ensuite Next / Suivant.</h4>
-<p><img src="/images/azure-functions/create-functions-part2.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/create-functions-part2.png" alt="placeholder" title="Azure functions" /></p>
 
 <h4 id="il-faut-encoder-le-nom-du-projet-ici-samplefunction-ensuite-la-location-emplacement-sur-le-disque-et-pour-finir-le-nom-de-la-solution">Il faut encoder le nom du projet, ici SampleFunction, ensuite la Location (emplacement sur le disque) et pour finir le nom de la solution.</h4>
-<p><img src="/images/azure-functions/create-functions-part3.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/create-functions-part3.png" alt="placeholder" title="Azure functions" /></p>
 
 <h4 id="la-fenêtre-suivante-est-très-intéressante-elle-va-permettre-de-paramétrer-la-function-pour-cet-article-cest-un-trigger-http-quil-faut-selectionner-en-storage-account-le-storage-emulator-et-en-authorization-sélectionner-anonymous-cest-létape-principale-qui-permet-de-scalffoder-les-projets-selon-la-sélection-faite-visual-studio-va-ajouter-des-packages-différents-mais-également-paramétrer-lentrypoint-de-la-function-différement">La fenêtre suivante est très intéressante, elle va permettre de paramétrer la function, pour cet article, c’est un Trigger Http qu’il faut selectionner, en Storage Account le Storage Emulator et en Authorization sélectionner Anonymous. C’est l’étape principale qui permet de scalffoder les projets. Selon la sélection faite, Visual Studio va ajouter des packages différents. Mais également paramétrer l’entrypoint de la function différement.</h4>
-<p><img src="/images/azure-functions/create-functions-part4.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/create-functions-part4.png" alt="placeholder" title="Azure functions" /></p>
 
 <h4 id="après-avoir-cliqué-sur-create-le-projet-avec-une-azure-functions-est-générée-par-visual-studio">Après avoir cliqué sur Create, le projet avec une Azure Functions est générée par Visual Studio.</h4>
-<p><img src="/images/azure-functions/create-functions-part5.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/create-functions-part5.png" alt="placeholder" title="Azure functions" /></p>
 
 <h2 id="explication-du-code-généré">Explication du code généré</h2>
 <p>Le code généré à la base ressemble à ceci</p>
@@ -385,13 +385,13 @@ Dans le sample de base, la Function attend en query params ou body, une valeur s
 </code></pre></div></div>
 
 <h4 id="pour-tester-f5-lance-en-debug-ou-release-selon-ce-qui-est-sélectionné-la-première-fois-il-est-possible-que-cela-prenne-un-certain-temps-notamment-pour-que-lazure-emulator-se-lance">Pour tester, F5 lance en Debug ou Release selon ce qui est sélectionné. La première fois, il est possible que cela prenne un certain temps, notamment pour que l’azure Emulator se lance.</h4>
-<p><img src="/images/azure-functions/launch-functions-part.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/launch-functions-part.png" alt="placeholder" title="Azure functions" /></p>
 
 <h4 id="si-tout-cest-bien-passer-un-invite-de-commande-vas-se-lancer-et-ressemble-à-ceci">Si tout c’est bien passer, un invite de commande vas se lancer et ressemble à ceci.</h4>
-<p><img src="/images/azure-functions/launch-functions-part2.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/launch-functions-part2.png" alt="placeholder" title="Azure functions" /></p>
 
 <h4 id="et-la-partie-la-plus-important-se-trouve-tout-en-bas">Et la partie la plus important se trouve tout en bas.</h4>
-<p><img src="/images/azure-functions/launch-functions-part3.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/launch-functions-part3.png" alt="placeholder" title="Azure functions" /></p>
 
 <p>L’URL suivante expose la Azure Functions.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:7071/api/Multiplicator
@@ -429,7 +429,7 @@ Pour cela, il faut modifier le paramètre route de la méthode Run.</p>
 Dans HttpTrigger, le paramètre Route définis donc le points d’entrée de la function, ajouter des valeurs entre acolade crée des valeurs dynamique.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:7071/api/Multiplicator/{a}/{b}
 </code></pre></div></div>
-<p><img src="/images/azure-functions/launch-functions-part4.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/launch-functions-part4.png" alt="placeholder" title="Azure functions" /></p>
 
 <p>La prochaine modification, va permettre de lier les valeurs de la route, a des paramètres de la Azure Functions.</p>
 <div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Multiplicator</span>
@@ -552,16 +552,16 @@ Dans HttpTrigger, le paramètre Route définis donc le points d’entrée de la 
 Pour cela dans Visual Studio, clique droit sur le projet, ensuite Publish.</p>
 
 <h4 id="clique-droit-sur-le-projet-qui-doit-être-publié">Clique droit sur le projet qui doit être publié.</h4>
-<p><img src="/images/azure-functions/publish-functions-part1.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/publish-functions-part1.png" alt="placeholder" title="Azure functions" /></p>
 
 <h4 id="une-nouvelle-fenêtre-va-souvrir-le-bouton-start-va-permettre-de-configurer-le-déploiement">Une nouvelle fenêtre va s’ouvrir, le bouton Start va permettre de configurer le déploiement.</h4>
-<p><img src="/images/azure-functions/publish-functions-part2.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/publish-functions-part2.png" alt="placeholder" title="Azure functions" /></p>
 
 <h4 id="ici-le-déploiement-se-fera-sur-un-consumption-plan-la-fenêtre-suivante-va-permettre-de-configurer-la-région-le-nom-etc-">Ici, le déploiement se fera sur un consumption Plan. La fenêtre suivante va permettre de configurer la région, le nom, etc …</h4>
-<p><img src="/images/azure-functions/publish-functions-part3.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/publish-functions-part3.png" alt="placeholder" title="Azure functions" /></p>
 
 <h4 id="les-informations-du-déploiement-se-font-ici">Les informations du déploiement se font ici.</h4>
-<p><img src="/images/azure-functions/publish-functions-part4.png" alt="placeholder" title="Azure functions" /></p>
+<p><img src="/assets/img/azure-functions/publish-functions-part4.png" alt="placeholder" title="Azure functions" /></p>
 
 <p>Le bouton Create en bas à droite va créer un profil de publication réutilisable.
 Ensuite, une autre fenêtre va s’ouvrir avec un bouton Publier, en cliquant dessus, Visual Studio, va publier la function sur azure.</p>
@@ -670,7 +670,7 @@ Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.</p>
     <a href="/dockerisation-sans-limites/" class="post-preview">
         <div class="image">
             
-                <img src="/images/docker-posts/docker-vs-code.png">
+                <img src="/assets/img/docker-posts/docker-vs-code.png">
             
         </div>
         <h3 class="title">Dockerisation sans limites</h3>
@@ -702,7 +702,7 @@ Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.</p>
   <section class="author">
     <div class="details">
       
-        <img class="img-rounded" src="/images/authors/pgrasseels.jpg" alt="Patrick Grasseels">
+        <img class="img-rounded" src="/assets/img/authors/pgrasseels.jpg" alt="Patrick Grasseels">
       
       <p class="def">Author</p>
       <h3 class="name">
@@ -742,7 +742,7 @@ Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.</p>
       "@type": "Person",
       "name": "Patrick Grasseels",
       
-      "image": "/images/authors/pgrasseels.jpg",
+      "image": "/assets/img/authors/pgrasseels.jpg",
       
       "jobTitle": "Développeur",
       "url": "https://wetry.tech/authors/pgrasseels/",
@@ -965,7 +965,7 @@ Si la clé est invalide, c’est une HTTP  401 qui est renvoyée.</p>
             "name": "Azure Functions démystifions le trigger HTTP",
             "headline": "",
             "description": "Azure Functions, démystifions le trigger HTTP.",
-            "image": "/images/azure-functions/Azure-Functions.png",
+            "image": "/assets/img/azure-functions/Azure-Functions.png",
             "url": "https://wetry.tech/azure-functions-trigger-http/",
             "articleBody": "Azure Functions, démystifions le trigger HTTP
 
@@ -1385,7 +1385,7 @@ Table des matières
                 "@type": "Person",
                 "name": "David Gilson<br/>(Gilsdav)",
                 
-                "image": "/images/authors/dgilson.png",
+                "image": "/assets/img/authors/dgilson.png",
                 
                 "jobTitle": "Développeur",
                 "url": "https://wetry.tech/authors/dgilson/",

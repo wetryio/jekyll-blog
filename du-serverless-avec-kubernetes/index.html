@@ -27,13 +27,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Du serverless avec Kubernetes | WeTry">
     <meta name="twitter:description" content="Serverless ne veut pas dire sans serveur physique!">
-    <meta property="twitter:image:src" content="https://wetry.tech/images/kubernetes/kubeless.png">
+    <meta property="twitter:image:src" content="https://wetry.tech/assets/img/kubernetes/kubeless.png">
     
 
     <!-- Social: Facebook / Open Graph -->
     <meta property="og:url" content="https://wetry.tech/du-serverless-avec-kubernetes/">
     <meta property="og:title" content="Du serverless avec Kubernetes | WeTry">
-    <meta property="og:image" content="https://wetry.tech/images/kubernetes/kubeless.png">
+    <meta property="og:image" content="https://wetry.tech/assets/img/kubernetes/kubeless.png">
     <meta property="og:description" content="Serverless ne veut pas dire sans serveur physique!">
     <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
 
@@ -224,7 +224,7 @@ Décembre 9, 2019
                 <p class="post-subtitle">Découvrons le framework serverless "Kubeless"</p>
 
                 
-                    <img src="/images/kubernetes/kubeless.png" alt="Featured image" class="post-cover">
+                    <img src="/assets/img/kubernetes/kubeless.png" alt="Featured image" class="post-cover">
                 
 
                 <!-- Pagination links -->
@@ -239,7 +239,7 @@ Décembre 9, 2019
 
 <p>Si vous avez déjà fouillé un peu sur le sujet, vous avez remarqué qu’il existe pas mal d’autres frameworks du même genre. Mais si j’ai choisi Kubeless, c’est pour sa simplicité d’utilisation, parce qu’il n’utilise que les éléments natifs de Kubernetes et qu’il ne faut pas passer par un registry Docker comme DockerHub.</p>
 
-<p><img src="/images/kubernetes/comparison_of_serverless_on_kubernetes.png" alt="kubernetes_serveless_frameworks" />
+<p><img src="/assets/img/kubernetes/comparison_of_serverless_on_kubernetes.png" alt="kubernetes_serveless_frameworks" />
 <!-- https://winderresearch.com/a-comparison-of-serverless-frameworks-for-kubernetes-openfaas-openwhisk-fission-kubeless-and-more/ --></p>
 
 <h2 id="quest-ce-que-le-serverless-">Qu’est-ce que le serverless ?</h2>
@@ -252,7 +252,7 @@ Décembre 9, 2019
 
 <p>Une architecture serverless est le plus souvent représentée par un mélange de services existants (BAAS) et de nanoservice personnalisé (FAAS).</p>
 
-<p><img src="/images/kubernetes/serverless-architecture-evolution-1024x405.jpg" alt="serverless-architecture-evolution" />
+<p><img src="/assets/img/kubernetes/serverless-architecture-evolution-1024x405.jpg" alt="serverless-architecture-evolution" />
 <!-- http://serverlessarchitecture.com/about/ --></p>
 
 <h3 id="deux-types-de-serverless">Deux types de serverless</h3>
@@ -300,7 +300,7 @@ Le code est exécuté dans des conteneurs éphémères (eux-mêmes géré par un
 
 <p>Wassim a décidé d’utiliser les services Azure et donc d’écrire des fonctions en Azure Functions. Mais cela est tout à fait possible via Kubeless.</p>
 
-<p><img src="/images/kubernetes/servless-example.jpeg" alt="serverless-example" /></p>
+<p><img src="/assets/img/kubernetes/servless-example.jpeg" alt="serverless-example" /></p>
 
 <h2 id="kubeless">Kubeless</h2>
 
@@ -392,7 +392,7 @@ Le code est exécuté dans des conteneurs éphémères (eux-mêmes géré par un
 <h4 id="fonction-http-avec-lui">Fonction HTTP avec l’UI</h4>
 
 <p>Après l’installation des outils, vous devriez avoir accès à cette interface:
-<img src="/images/kubernetes/kubelessui1.png" alt="kubelessui-home" /></p>
+<img src="/assets/img/kubernetes/kubelessui1.png" alt="kubelessui-home" /></p>
 
 <p>Créons notre première fonction en cliquant sur le bouton à cet effet. Un popup vous demandera alors:</p>
 <ol class="small">
@@ -401,19 +401,19 @@ Le code est exécuté dans des conteneurs éphémères (eux-mêmes géré par un
     <li>Le <strong>runtime</strong></li>
     <li>Les <strong>dépendances</strong> (formaté comme un package.json)</li>
 </ol>
-<p><img src="/images/kubernetes/kubelessui2.png" alt="kubelessui-create-function" /></p>
+<p><img src="/assets/img/kubernetes/kubelessui2.png" alt="kubelessui-create-function" /></p>
 
 <p>Cela vous créera un “hello world” par défaut vous montrant comment le handler doit être exporté.
-<img src="/images/kubernetes/kubelessui3.png" alt="kubelessui-default-script" /></p>
+<img src="/assets/img/kubernetes/kubelessui3.png" alt="kubelessui-default-script" /></p>
 
 <p>En dessous du code, vous pourrez ouvrir un “terminal” affichant les logs de la fonction des pods déployées (ici un pod unique):
-<img src="/images/kubernetes/kubelessui5.png" alt="kubelessui-terminal" /></p>
+<img src="/assets/img/kubernetes/kubelessui5.png" alt="kubelessui-terminal" /></p>
 
 <p>Utilisons maintenant la dépendance que nous avons installée (<code class="highlighter-rouge">lodash</code>) en utilisant par exemple sa fonction <code class="highlighter-rouge">capitalize</code>.
-<img src="/images/kubernetes/kubelessui4.png" alt="kubelessui-script2" /></p>
+<img src="/assets/img/kubernetes/kubelessui4.png" alt="kubelessui-script2" /></p>
 
 <p>Regardons à nouveau le terminal: nous bénéficions de l’orchestration Kubernetes pour éviter tout down-time durant la mise à jour de la fonction.
-<img src="/images/kubernetes/kubelessui6.png" alt="kubelessui-terminal2" /></p>
+<img src="/assets/img/kubernetes/kubelessui6.png" alt="kubelessui-terminal2" /></p>
 
 <p>A-t-il déjà été aussi simple de déployer un service en on-premise ?</p>
 
@@ -437,7 +437,7 @@ Pour cela il faudra évidemment avoir le CLI installé. Suivez les étapes expli
 </ul>
 
 <p>Enfin, la fonction à déployer doit avoir la même structure que sur l’UI.
-<img src="/images/kubernetes/kubelessui7.png" alt="kubelessui-cli" /></p>
+<img src="/assets/img/kubernetes/kubelessui7.png" alt="kubelessui-cli" /></p>
 
 <p>Une fonction déployée via le CLI peut ensuite être modifiée via l’UI sauf si vous utilisez un framework additionnel comme <a href="https://serverless.com/">Serverless</a> qui va minifier/compiler le code et le rendre complètement illisible.</p>
 
@@ -578,7 +578,7 @@ Il s’agit d’un type d’architecture peu couteux en développement, déploie
     <a href="/fonctionnement-d-angular-httpclient/" class="post-preview">
         <div class="image">
             
-                <img src="/images/angular-posts/http-client/principal.png">
+                <img src="/assets/img/angular-posts/http-client/principal.png">
             
         </div>
         <h3 class="title">Fonctionnement d'Angular: HttpClient</h3>
@@ -610,7 +610,7 @@ Il s’agit d’un type d’architecture peu couteux en développement, déploie
   <section class="author">
     <div class="details">
       
-        <img class="img-rounded" src="/images/authors/dgilson.png" alt="David Gilson<br/>(Gilsdav)">
+        <img class="img-rounded" src="/assets/img/authors/dgilson.png" alt="David Gilson<br/>(Gilsdav)">
       
       <p class="def">Author</p>
       <h3 class="name">
@@ -654,7 +654,7 @@ Il s’agit d’un type d’architecture peu couteux en développement, déploie
       "@type": "Person",
       "name": "David Gilson<br/>(Gilsdav)",
       
-      "image": "/images/authors/dgilson.png",
+      "image": "/assets/img/authors/dgilson.png",
       
       "jobTitle": "Développeur",
       "url": "https://wetry.tech/authors/dgilson/",
@@ -877,7 +877,7 @@ Il s’agit d’un type d’architecture peu couteux en développement, déploie
             "name": "Du serverless avec Kubernetes",
             "headline": "Découvrons le framework serverless "Kubeless"",
             "description": "Serverless ne veut pas dire sans serveur physique!",
-            "image": "/images/kubernetes/kubeless.png",
+            "image": "/assets/img/kubernetes/kubeless.png",
             "url": "https://wetry.tech/du-serverless-avec-kubernetes/",
             "articleBody": "Quand on parle de “serverless”, on pense évidemment au cloud. Et pourtant il est possible de faire un serverless on-premises sur vos propres serveurs.
 
@@ -1205,7 +1205,7 @@ Table des matières
                 "@type": "Person",
                 "name": "David Gilson<br/>(Gilsdav)",
                 
-                "image": "/images/authors/dgilson.png",
+                "image": "/assets/img/authors/dgilson.png",
                 
                 "jobTitle": "Développeur",
                 "url": "https://wetry.tech/authors/dgilson/",
