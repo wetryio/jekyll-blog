@@ -53,3 +53,40 @@ Inconvenients :
 - Actuellement, toute l'application est charger quand on arrive dessus, ce qui fais un temps de chargement parfois long
 - Demande des browsers récents, en effet le WebAssembly n'est pas compatible avec touts les browsers, mais les principaux le sont (88%) [Source caniuse.com](https://caniuse.com/#feat=wasm)
 - Debug encore très fastidieux
+
+### Blazor ca ressemble à quoi ?
+Blazor, c'est la syntax de Razor et du HTML qui vont générer des pages. Pour ceux qui ont déjà fais de l'ASP avec Razor en moteur de rendus,
+l'apprentissage sera très simple. Pour les autres, les syntax de Razor sont très proches du C# avec le @ qui caractérise ces instructions.
+
+Petit exemple tout simple d'une page :
+
+``` csharp
+
+@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @_currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int _currentCount = 0;
+
+    private void IncrementCount()
+    {
+        _currentCount++;
+    }
+}
+```
+
+- @page qui nous permets de déterminer une route pour arriver sur notre page
+- @_currentCount qui vas permettre d'afficher la valeur de la variable
+- @onclick pour s'attacher à un évènement, ici quand on vas cliquer sur le bouton, on vas appeller une méthode C#
+- @code entre accolade se trouve du pure code C#
+
+En résumé, quand on arrive sur la page avec l'url **/counter**, la valeur de la variable **_currentCount** est de 0.
+On a donc sur la page **Current count: 0**.
+Ensuite, en cliquant sur le bouton, **Click me**, on vas appeller la function **IncrementCount** du code C#.
+Celle-ci vas ajouter 1 dans la  variable **_currentCount**, qui a à présent une valeur de 1.
+Ayant détecter un changement de valeur, une partie du DOM vas se rafraichir et remplacer le **0** par **1**.
