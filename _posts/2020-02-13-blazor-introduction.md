@@ -2,8 +2,8 @@
 author: pgrasseels
 layout: post
 title: "Blazor Introduction"
-date: 2019-10-18 11:20:00
-image: '/images/azure-functions/Azure-Functions.png'
+date: 2020-02-13 11:20:00
+image: '/images/blazor/blazor.png'
 description: Blazor Introduction.
 category: 'blazor'
 tags:
@@ -90,3 +90,26 @@ On a donc sur la page **Current count: 0**.
 Ensuite, en cliquant sur le bouton, **Click me**, on vas appeller la function **IncrementCount** du code C#.
 Celle-ci vas ajouter 1 dans la  variable **_currentCount**, qui a à présent une valeur de 1.
 Ayant détecter un changement de valeur, une partie du DOM vas se rafraichir et remplacer le **0** par **1**.
+
+La syntaxe est simple et surtout la même pour du Client Side et du Server Side. La migration de l'un à l'autre est tout à fais envisageable, sans trop de perte de temps.
+
+### Petits conseils
+Je vois souvent la question : 
+*Comment je fais pour accèder au DOM depuis Blazor ?*
+
+La réponse est assez simple, c'est pas le but ! Pour modifier le DOM, les instruction Razor et autres sont la pour ça.
+En effet, si il est nécessaire d'afficher / cacher une div, il sera nécessaire d'utiliser le @if et non de modifier directement le DOM.
+Même chose pour modifier le contenus, si votre texte doit changer, c'est une variable avec une valeur qui changera et mettra à jour l'affichage / DOM.
+
+Blazor est récent, mais commence à avoir vraiment une très bonne / forte communautée, l'approche permets de s'ouvrir au développer .Net et faire des site bien plus intéréactif sans avoir à apprendre d'autres languages comme le JS.
+
+Explorer des cas simple pour vous mettre dedans. Ensuite, ajouter des choses au fur et à mesure.
+
+Et surtout, [la doc officiel](https://docs.microsoft.com/fr-fr/aspnet/core/blazor/?view=aspnetcore-3.1).
+
+Pour une introduction globale et une mise en bouche, je n'irais pas plus loin, mais dans les semaines à venir, un autre article arrivera avec l'intégration de GooglePay & ApplePay dans une application Blazor.
+
+<div id="toc"></div>
+**Table des matières**
+1. TOC
+{:toc}
