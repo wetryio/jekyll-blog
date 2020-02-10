@@ -85,3 +85,17 @@ Dans le monde agile, la finalité est la valeur. Est-ce qu’investir dans le me
 Chaque fois qu'un junior apprend un principe, il l'appliquera toute sa vie. Et cet apprentissage garantit une amélioration continue de la qualité de vos applications.
 
 Toute entreprise informatique doit se mettre à jour pour survivre. Cette évolution passe, entre autres, par un mentorat appliqué. Sensibilisez votre entourage au mentorat.
+
+---
+
+<div class="gratitude">
+    <span>MERCI</span>
+    <p>d'avoir pris le temps de lire cet article</p>
+</div>
+
+---
+
+<div id="toc"></div>
+**Table des matières**
+1. TOC
+{:toc}
