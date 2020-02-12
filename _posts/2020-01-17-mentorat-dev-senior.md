@@ -20,7 +20,7 @@ Ces développeurs juniors n'ont pas connaissance des bonnes pratiques. Pas de pr
 
 Nous avons tous été junior, et nous avons tous appris. Et surtout, **nous avons tous appris des autres.**
 
-Dans la situation où la majorité des développeurs travaillent de leur mieux pour appréhender la complexité des domaines à laquelle ils participent, les développeurs expérimentés doivent aussi coopérer avec ceux qui n'ont pas de bonne pratique.
+Dans la situation où la majorité des développeurs travaillent de leur mieux pour appréhender la complexité des domaines à laquelle ils participent, les développeurs expérimentés doivent aussi coopérer avec ceux qui n'ont pas de bonne pratiques.
 
 Dans cette même situation où à l'embauche, presque 1 développeur sur 3 ne pourra sans doute pas produire une application avec la qualité requise pour le maintien sur le long terme.
 
