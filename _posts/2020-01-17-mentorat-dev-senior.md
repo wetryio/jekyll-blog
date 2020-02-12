@@ -41,13 +41,13 @@ Selon moi, la meilleure façon d'apprendre est de se tromper. Donnez l'occasion 
 
 * De se concentrer sur une petite partie du code. Limiter le nombre de sujets abordés par code review.
 * De lui donner la facilité de retravailler dans un petit scope et qu'il puisse plus facilement remanier ses classes/fonctions.
-* De ne pas le décourager face à un code review sévère. Plus la review cible est petit, plus elle sera clémente et constructive.
+* De ne pas le décourager face à un code review sévère. Plus la review cible est petite, plus elle sera clémente et constructive.
 
 ## Personnalités et assistance
 
 Chaque développeur a son tempérament. D'expérience, il ne faut pas accompagner de la même manière un jeune fougueux ou un introverti.
 
-Assurez-vous que la critique soit acquise et surtout constructive. Je ne connais pas aujourd'hui de méthode miracle. J'utilise souvent l'argument d'autorité. C-à-d que j'utilise les références techniques pour être écouté.
+Assurez-vous que la critique soit acquise et surtout constructive. Je ne connais pas aujourd'hui de méthode miracle. J'utilise souvent l'argument d'autorité. C'est-à-dire que j'utilise les références techniques pour être écouté.
 
 ```text
 Vous connaissez sûrement l'adage 'tout ce qui est sur internet est vrai'.
@@ -57,7 +57,7 @@ Le junior a tendance à travailler seul. Il est soit sûr de lui ou soit n'ose p
 
 ### Encourager l'autoapprentissage par une présentation
 
-Une autre manière efficace est d'obliger le junior à présenter un sujet. Il se formera lui-même, mais aussi cela l'encourage a s'autoformer par la suite. La confiance en soi, ainsi que de démontrer qu'il est capable d'enseigner quelque chose à ses compères l'encouragera à être curieux et à parfaire ses capacités.
+Une autre manière efficace est d'obliger le junior à présenter un sujet. Il se formera lui-même, mais aussi cela l'encourage à s'autoformer par la suite. La confiance en soi, ainsi que de démontrer qu'il est capable d'enseigner quelque chose à ses compères l'encouragera à être curieux et à parfaire ses capacités.
 
 ## Reconnaissance et motivation
 
