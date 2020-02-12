@@ -281,7 +281,7 @@ Nous allons donc nous concentrer sur cette partie du framework Angular.</p>
 <p>Concentrons-nous sur les éléments les plus utilisés d’une route (l’interface complète peut être retrouvée <a href="https://angular.io/api/router/Route">ici</a>):</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Route</span> <span class="p">{</span>
-  <span class="nx">path</span><span class="p">?:</span> <span class="nx">string</span>
+  <span class="nl">path</span><span class="p">?:</span> <span class="nx">string</span>
   <span class="nx">pathMatch</span><span class="p">?:</span> <span class="nx">string</span>
   <span class="nx">component</span><span class="p">?:</span> <span class="nx">Type</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span>
   <span class="nx">redirectTo</span><span class="p">?:</span> <span class="nx">string</span>
@@ -558,7 +558,7 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 <p>Comme pour les routes, concentrons-nous sur les options les plus utilisés (l’interface est disponible <a href="https://angular.io/api/router/ExtraOptions">ici</a>):</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">ExtraOptions</span> <span class="p">{</span>
-  <span class="nx">useHash</span><span class="p">?:</span> <span class="nx">boolean</span>
+  <span class="nl">useHash</span><span class="p">?:</span> <span class="nx">boolean</span>
   <span class="nx">preloadingStrategy</span><span class="p">?:</span> <span class="nx">PreloadAllModules</span> <span class="o">|</span> <span class="nx">NoPreloading</span>
   <span class="nx">onSameUrlNavigation</span><span class="p">?:</span> <span class="dl">'</span><span class="s1">reload</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">ignore</span><span class="dl">'</span>
   <span class="nx">scrollPositionRestoration</span><span class="p">?:</span> <span class="dl">'</span><span class="s1">disabled</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">enabled</span><span class="dl">'</span> <span class="o">|</span> <span class="dl">'</span><span class="s1">top</span><span class="dl">'</span>
