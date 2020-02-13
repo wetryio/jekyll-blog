@@ -228,13 +228,6 @@
     
     
         <url>
-            <loc>https://wetry.tech/</loc>
-            <changefreq>weekly</changefreq>
-            <priority>0.8</priority>
-            <lastmod>2020-02-10</lastmod>
-        </url>
-    
-        <url>
             <loc>https://wetry.tech/mentorat-dev-senior/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
