@@ -23,7 +23,7 @@ Selon [Wikipédia](https://fr.wikipedia.org/wiki/Fonction_pure) :
 > * Sa valeur de retour est la même pour les mêmes arguments
 > * Son évaluation n'a pas d'effets de bord
 
-Une fonction a un scope (définit entre les accolades) le principe reflété par les deux points mis en avent par cette définition et le fait que nous ne puissions **pas sortir de ce scope**, que ça soit pour récupérer des informations ou pour en sauver/modifier.
+Une fonction a un scope (définit entre les accolades) le principe reflété par les deux points mis en avant par cette définition et le fait que nous ne puissions **pas sortir de ce scope**, que ça soit pour récupérer des informations ou pour en sauver/modifier.
 Cela signifie qu'il est interdit d'utiliser le mot clé `this` et que les seules données que l'on peut utiliser sont les **paramètres** de cette fonction.
 
 ```ts
