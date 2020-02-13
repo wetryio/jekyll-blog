@@ -105,7 +105,7 @@ class MyClass {
     }
 
     private fetchDataFromServer(): void {
-        this.data$ = return this.dataService.getData().pipe(
+        this.data$ = this.dataService.getData().pipe(
             map(response => response.map(item => DataModel.fromDTO(item))),
             catchError(error => of([]))
         );
@@ -169,7 +169,7 @@ class MyClass {
     }
 
     private fetchDataFromServer(dataService: DataService): void {
-        this.data$ = return dataService.getData().pipe(
+        return dataService.getData().pipe(
             map(response => response.map(item => DataModel.fromDTO(item))),
             catchError(error => of([]))
         );
@@ -190,7 +190,7 @@ class MyClass {
     }
 
     private getHasRejectedData(data$: Observable<DataModel[]>): Observable<boolean>) {
-        return this.data$.pipe(
+        return data$.pipe(
             map(data => data.some(item => item.rejected));
         );
     }
