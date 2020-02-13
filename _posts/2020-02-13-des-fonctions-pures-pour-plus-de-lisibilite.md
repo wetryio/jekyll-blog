@@ -1,5 +1,5 @@
 ---
-date: 2020-01-18 12:38:42
+date: 2020-02-13 12:38:42
 layout: post
 title: "Les fonctions pures au service de la lisibilité"
 subtitle: Explications par des exemples
