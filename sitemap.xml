@@ -228,6 +228,13 @@
     
     
         <url>
+            <loc>https://wetry.tech/des-fonctions-pures-pour-plus-de-lisibilite/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2020-02-13</lastmod>
+        </url>
+    
+        <url>
             <loc>https://wetry.tech/mentorat-dev-senior/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>

@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "Les fonctions pures au service de la lisibilité",
+      "tags"     : "bonne pratique and rxjs",
+      "categories" : "bonne-pratique",
+      "url"      : "/des-fonctions-pures-pour-plus-de-lisibilite/",
+      "date"     : "02/13/2020"
+    } ,
+  
+    {
       "title"    : "Le mentorat des seniors",
       "tags"     : "mentorat, entreprise, senior, and junior",
       "categories" : "entreprise",

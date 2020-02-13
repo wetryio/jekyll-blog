@@ -5,9 +5,23 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 13 Feb 2020 14:45:19 +0000</pubDate>
-    <lastBuildDate>Thu, 13 Feb 2020 14:45:19 +0000</lastBuildDate>
+    <pubDate>Thu, 13 Feb 2020 19:10:48 +0000</pubDate>
+    <lastBuildDate>Thu, 13 Feb 2020 19:10:48 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Les fonctions pures au service de la lisibilité</title>
+        <description>&lt;p&gt;Cet article sera donc composé marjoritèrement d’exemples afin de démontrer l’intérêt de cette bonne pratique et que vous puissiez en faire votre propre opinion. &lt;em&gt;Ces exemples sont en TypeScript et RXJS.&lt;/em&gt;&lt;/p&gt; &lt;h2 id=&quot;quest-ce-quune-fonction-pure-&quot;&gt;Qu’est-ce qu’une fonction pure ?&lt;/h2&gt; &lt;p&gt;Selon &lt;a href=&quot;https://fr.wikipedia.org/wiki/Fonction_pure&quot;&gt;Wikipédia&lt;/a&gt; :&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Une fonction pure est une fonction qui possède les propriétés suivantes:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Sa valeur de retour est la même pour les mêmes arguments&lt;/li&gt; &lt;li&gt;Son évaluation n’a pas d’effets de bord&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;Une fonction a un scope (définit entre les accolades) le principe reflété par les deux points mis en avent par cette définition et le fait que...</description>
+        <pubDate>Thu, 13 Feb 2020 12:38:42 +0000</pubDate>
+        <link>https://wetry.tech/des-fonctions-pures-pour-plus-de-lisibilite/</link>
+        <guid isPermaLink="true">https://wetry.tech/des-fonctions-pures-pour-plus-de-lisibilite/</guid>
+        
+        <category>bonne pratique</category>
+        
+        <category>rxjs</category>
+        
+        <category>bonne-pratique</category>
+      </item>
     
       <item>
         <title>Le mentorat des seniors</title>
