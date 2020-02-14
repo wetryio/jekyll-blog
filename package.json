@@ -8,6 +8,10 @@
     "type": "git",
     "url": "https://github.com/thiagorossener/jekflix-template.git"
   },
+  "scripts": {
+    "test": "jest --verbose false",
+    "build": "gulp build"
+  },
   "keywords": [
     "jekyll",
     "template",
@@ -21,6 +25,7 @@
     "url": "https://github.com/thiagorossener/jekflix-template/issues"
   },
   "devDependencies": {
+    "@types/jest": "^25.1.2",
     "autoprefixer-stylus": "^0.14.0",
     "browser-sync": "^2.26.7",
     "child_process": "^1.0.2",
@@ -37,9 +42,12 @@
     "gulp-uglify": "^3.0.0",
     "gulp-yaml": "^2.0.4",
     "jeet": "^7.1.0",
+    "jest": "^25.1.0",
     "kouto-swiss": "^1.1.0",
     "lodash": "^4.17.13",
     "lodash.merge": "^4.6.2",
+    "node-html-parser": "^1.2.4",
+    "request": "^2.88.2",
     "rupture": "^0.6.2"
   }
 }

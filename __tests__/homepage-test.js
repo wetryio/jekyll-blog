@@ -13,5 +13,11 @@ test('Should render home page', () => {
         bigVignetteElem  = root.querySelector(bigVignetteSelectory);
         expect(bigVignetteSelectory).not.toBeUndefined();
         expect(bigVignetteSelectory).not.toBeNull();
+
+        const article = root.querySelector('article');
+        expect(article).toBeNull();
+        
+        const toc = root.querySelector('#toc');
+        expect(toc).toBeNull();
     });
 })
