@@ -3,7 +3,7 @@ author: mscolas
 layout: post
 title: L'injection de dépendance au build
 date: 2019-10-25 07:00:00
-image: '/images/go/go-wire.png'
+image: '/assets/img/go/go-wire.png'
 description: go propose une manière bien à elle de fournir un système d'injection de dépendance
 category: 'documentation'
 tags:

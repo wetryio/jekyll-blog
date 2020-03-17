@@ -3,7 +3,7 @@ author: dgilson
 layout: post
 title: "Comprendre le ngModel"
 date: 2019-09-03 21:09:24
-image: '/images/angular-posts/ngmodel.jpg'
+image: '/assets/img/angular-posts/ngmodel.jpg'
 description: Sauriez-vous créer votre propre ngModel ?
 category: 'documentation'
 tags:

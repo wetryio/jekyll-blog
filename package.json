@@ -27,6 +27,7 @@
     "del": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
+    "gulp-image": "^6.0.0",
     "gulp-imagemin": "^6.0.0",
     "gulp-include": "^2.4.1",
     "gulp-plumber": "^1.1.0",
@@ -37,8 +38,8 @@
     "gulp-yaml": "^2.0.4",
     "jeet": "^7.1.0",
     "kouto-swiss": "^1.1.0",
-    "rupture": "^0.6.2",
     "lodash": "^4.17.13",
-    "lodash.merge": "^4.6.2"
+    "lodash.merge": "^4.6.2",
+    "rupture": "^0.6.2"
   }
 }

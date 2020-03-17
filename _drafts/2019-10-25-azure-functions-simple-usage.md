@@ -3,7 +3,7 @@ author: pgrasseels
 layout: post
 title: "Azure Functions cas d'utilisation réel"
 date: 2019-10-02 22:20:00
-image: '/images/azure-functions/Azure-Functions.png'
+image: '/assets/img/azure-functions/Azure-Functions.png'
 description: Azure Functions cas d'utilisation réel.
 category: 'blog'
 tags:

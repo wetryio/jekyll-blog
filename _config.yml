@@ -77,6 +77,23 @@ plugins:
   - jekyll-paginate-content
   - jekyll-redirect-from
 
+whitelist:
+  - jekyll-redirect-from
+
+# Links to include in menu navigation
+# For external links add external: true
+links:
+  - title: Accueil
+    url: /
+  - title: HITW 2019
+    url: /hitw2019/
+  - title: À propos de nous
+    url: /about/
+  - title: CraftLab-IT
+    url: /craftlab-it/
+  # - title: Contact
+  #   url: /contact/
+
 # Exclude my node related stuff
 exclude: [
   'package.json',
