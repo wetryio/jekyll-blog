@@ -4,7 +4,7 @@ layout: post
 title: "DotNet 5 sur Raspbian"
 subtitle: Le futur du .Net sur Raspberry PI
 description: Le futur du .Net sur Raspberry PI.
-image: '/assets/img/angular-posts/clean-code.png'
+image: '/assets/img/dotnet5-raspbian/dotnet5_platform.png'
 category: 'dotnet'
 tags:
     - dotnet5
@@ -16,6 +16,13 @@ author: pgrasseels
 [*DotNet 5 vient de sortir en preview, vive DotNet !!!*](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-5-preview-1)
 
 ## DotNet 5 c'est quoi ?
+
+DotNet 5 c'est l'unification de la plateforme .Net avec les API disponible pour Windows  / Linux / mcOsX / Android / iOS / TV / Watch / WebAssembly / ...
+
+Une très bon article est disponible [ici](https://devblogs.microsoft.com/dotnet/introducing-net-5/).
+
+![dotnet5](/assets/img/dotnet5-raspbian/dotnet5_platform.png)
+
 
 ## Installer DotNet 5 sur Raspbian
 Comme on peut le voir sur le site de Microsoft, la version ARM de DotNet 5 est déjà disponible, c'est parfait c'est la version nécessaire pour faire tourner sur Raspberry Pi 4 !
@@ -30,19 +37,51 @@ Première étape, récupérer l'archive qui contient le SDK.
 
 Les téléchargements sont disponible à la page suivante [DotNet](https://dotnet.microsoft.com/download/dotnet-core/5.0).
 
+Pour un Raspberry Pi 4 c'est la version ARM qui nous intéresse.
+
 ![download_link](/assets/img/dotnet5-raspbian/download.PNG)
 
-sudo mkdir -p /usr/dotnet
+```shell
+root@raspberrypi:/home/pi# wget https://download.visualstudio.microsoft.com/download/pr/658cb5dd-9a5f-481e-b481-f80a1ed802b3/9ab953320b89d5690a4fcda48b635986/dotnet-sdk-5.0.100-preview.1.20155.7-linux-arm.tar.gz
+```
 
-sudo tar zxf dotnet-sdk-5.0.100-preview.1.20155.7-linux-arm.tar.gz -C /usr/dotnet
+Ensuite, crée le répertoire pour décompresser DotNet.
 
-nano /etc/.bashrc
+```shell
+root@raspberrypi:/home/pi# sudo mkdir -p /usr/dotnet
+```
 
+Etape suivante, décompresser dans le dossier crée au préalable.
+
+```shell
+root@raspberrypi:/home/pi# sudo tar zxf dotnet-sdk-5.0.100-preview.1.20155.7-linux-arm.tar.gz -C /usr/dotnet
+```
+
+Deux étapes restantes, sont d'ajouter dans le PATH le chemin vers DotNet.
+Afin d'avoir les commandes disponible dés le lancement de Raspbian, modifier le fichier /etc/.bashrc pour ajouter les exports.
+
+Ouvrir le fichier avec nano / vim.
+```shell
+root@raspberrypi:/home/pi# nano /etc/.bashrc
+```
+
+Ajouter les deux lignes suivantes.
+```sh
 export DOTNET_ROOT=/usr/dotnet
 export PATH=$PATH:/usr/dotnet
+```
 
+Sauver et quitter.
 
+Afin de tester, lancher la commande dotnet --info.
+
+```shell
 root@raspberrypi:/usr/dotnet/sdk# dotnet --info
+```
+
+Résultat.
+
+```shell
 .NET Core SDK (reflecting any global.json):
  Version:   5.0.100-preview.1.20155.7
  Commit:    1c44853056
@@ -67,8 +106,11 @@ Host (useful for support):
 
 To install additional .NET Core runtimes or SDKs:
   https://aka.ms/dotnet-download
+```
 
+Crée un nouveau projet.
 
+```shell
 root@raspberrypi:/usr/dotnet/sdk# dotnet new
 Templates                                         Short Name               Language          Tags
 --------------------------------------------      -------------------      ------------      -------------------
@@ -111,9 +153,11 @@ Examples:
     dotnet new mvc --auth Individual
     dotnet new web
     dotnet new --help
+```
+
+Voilà, fin de l'article, il est certe court, mais je trouvais important de montrer que même en étant en preview et disponible depuis quelques heures, il est déjà installable et utilisable sur des devices plus spécifiques comme un Raspberry Pi.
 
 ---
-
 <div class="gratitude">
     <span>MERCI</span>
     <p>d'avoir pris le temps de lire cet article</p>
