@@ -26,6 +26,16 @@ steps:
     JEKYLL_ENV=production gulp build --gulpfile gulpfile.js
   displayName: 'npm install and run gulp build'
 
+- script: docker run --rm -d --name blog-for-test -p 80:80 -v "$(System.DefaultWorkingDirectory)/_site:/usr/share/nginx/html" nginx 
+  displayName: Launch docker nginx for test run
+
+- script: npm test
+  displayName: Run tests
+
+- script: docker stop blog-for-test
+  displayName: Cleanup tests. Delete container.
+  condition: always()
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: _site'
   inputs:
