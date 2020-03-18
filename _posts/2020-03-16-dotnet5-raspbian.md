@@ -13,13 +13,11 @@ tags:
 author: pgrasseels
 ---
 
-[*DotNet 5 vient de sortir en preview, vive DotNet !!!*](https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-5-preview-1)
-
 ## DotNet 5 c'est quoi ?
 
 DotNet 5 c'est l'unification de la plateforme .Net avec les API disponible pour Windows  / Linux / mcOsX / Android / iOS / TV / Watch / WebAssembly / ...
 
-Une très bon article est disponible [ici](https://devblogs.microsoft.com/dotnet/introducing-net-5/).
+Avant de se lancer dans l'utilisation de raspbian, cet article vous présente l'écosystème dotnet 5 [ici](https://devblogs.microsoft.com/dotnet/introducing-net-5/).
 
 ![dotnet5](/assets/img/dotnet5-raspbian/dotnet5_platform.png)
 
@@ -27,11 +25,11 @@ Une très bon article est disponible [ici](https://devblogs.microsoft.com/dotnet
 ## Installer DotNet 5 sur Raspbian
 Comme on peut le voir sur le site de Microsoft, la version ARM de DotNet 5 est déjà disponible, c'est parfait c'est la version nécessaire pour faire tourner sur Raspberry Pi 4 !
 
-Les base sont : 
+Les bases sont : 
 - Une carte SD avec Raspbian installer
 - Un raspberry pi 4
 
-Une fois le raspberry pi lancer, il suffit de soit se connecter en SSH soit y accèder directement par clavier/souris.
+Une fois le raspberry pi lancer, il suffit de soit se connecter en SSH soit y accédé directement par clavier/souris.
 
 Première étape, récupérer l'archive qui contient le SDK.
 
@@ -58,7 +56,7 @@ root@raspberrypi:/home/pi# sudo tar zxf dotnet-sdk-5.0.100-preview.1.20155.7-lin
 ```
 
 Deux étapes restantes, sont d'ajouter dans le PATH le chemin vers DotNet.
-Afin d'avoir les commandes disponible dés le lancement de Raspbian, modifier le fichier /etc/.bashrc pour ajouter les exports.
+Afin d'avoir les commandes disponibles dès le lancement de Raspbian, modifier le fichier /etc/.bashrc pour ajouter les exports.
 
 Ouvrir le fichier avec nano / vim.
 ```shell
@@ -73,7 +71,7 @@ export PATH=$PATH:/usr/dotnet
 
 Sauver et quitter.
 
-Afin de tester, lancher la commande dotnet --info.
+Afin de tester, lancer la commande dotnet --info.
 
 ```shell
 root@raspberrypi:/usr/dotnet/sdk# dotnet --info
@@ -155,7 +153,7 @@ Examples:
     dotnet new --help
 ```
 
-Voilà, fin de l'article, il est certe court, mais je trouvais important de montrer que même en étant en preview et disponible depuis quelques heures, il est déjà installable et utilisable sur des devices plus spécifiques comme un Raspberry Pi.
+Voilà, fin de l'article, il est certes court, mais je trouvais important de montrer que même en étant en preview et disponible depuis quelques heures, il est déjà installable et utilisable sur des devices plus spécifiques comme un Raspberry Pi.
 
 ---
 <div class="gratitude">
