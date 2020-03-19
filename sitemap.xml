@@ -26,6 +26,14 @@
         </url>
     
         <url>
+            <loc>https://wetry.tech/category/blazor/</loc>
+            
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            
+        </url>
+    
+        <url>
             <loc>https://wetry.tech/category/bonne-pratique/</loc>
             
                 <changefreq>monthly</changefreq>
@@ -82,6 +90,14 @@
         </url>
     
         <url>
+            <loc>https://wetry.tech/category/dotnet/</loc>
+            
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            
+        </url>
+    
+        <url>
             <loc>https://wetry.tech/category/events/</loc>
             
                 <changefreq>monthly</changefreq>
@@ -118,7 +134,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2020-03-17</lastmod>
+                <lastmod>2020-03-19</lastmod>
             
         </url>
     
@@ -226,6 +242,13 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/dotnet5-raspbian/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2020-02-13</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/des-fonctions-pures-pour-plus-de-lisibilite/</loc>

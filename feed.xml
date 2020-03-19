@@ -5,9 +5,25 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 17 Mar 2020 17:31:46 +0000</pubDate>
-    <lastBuildDate>Tue, 17 Mar 2020 17:31:46 +0000</lastBuildDate>
+    <pubDate>Thu, 19 Mar 2020 15:57:38 +0000</pubDate>
+    <lastBuildDate>Thu, 19 Mar 2020 15:57:38 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>DotNet 5 sur Raspbian</title>
+        <description>&lt;h2 id=&quot;dotnet-5-cest-quoi-&quot;&gt;DotNet 5 c’est quoi ?&lt;/h2&gt; &lt;p&gt;DotNet 5 c’est l’unification de la plateforme .Net avec les API disponible pour Windows / Linux / mcOsX / Android / iOS / TV / Watch / WebAssembly / …&lt;/p&gt; &lt;p&gt;Avant de se lancer dans l’utilisation de raspbian, cet article vous présente l’écosystème dotnet 5 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/introducing-net-5/&quot;&gt;ici&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/assets/img/dotnet5-raspbian/dotnet5_platform.png&quot; alt=&quot;dotnet5&quot; /&gt;&lt;/p&gt; &lt;h2 id=&quot;installer-dotnet-5-sur-raspbian&quot;&gt;Installer DotNet 5 sur Raspbian&lt;/h2&gt; &lt;p&gt;Comme on peut le voir sur le site de Microsoft, la version ARM de DotNet 5 est déjà disponible, c’est parfait c’est la version nécessaire pour faire tourner sur Raspberry Pi 4 !&lt;/p&gt; &lt;p&gt;Les bases sont :&lt;/p&gt;...</description>
+        <pubDate>Thu, 13 Feb 2020 12:38:42 +0000</pubDate>
+        <link>https://wetry.tech/dotnet5-raspbian/</link>
+        <guid isPermaLink="true">https://wetry.tech/dotnet5-raspbian/</guid>
+        
+        <category>dotnet5</category>
+        
+        <category>raspberry pi</category>
+        
+        <category>raspbian</category>
+        
+        <category>dotnet</category>
+      </item>
     
       <item>
         <title>Les fonctions pures au service de la lisibilité</title>
