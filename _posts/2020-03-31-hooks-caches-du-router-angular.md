@@ -3,7 +3,7 @@ date: 2020-03-31 21:10:21
 layout: post
 title: "Hooks cachés du router Angular"
 subtitle:
-description: Comment j'ai pu "augmenter" le router pour gérer un système d'onglet applicatif via des routes.
+description: Comment j'ai pu augmenter le router pour gérer un système d'onglet applicatif via des routes.
 image: /assets/img/angular-posts/angular-iceberg.png
 optimized_image:
 category: 'documentation'
