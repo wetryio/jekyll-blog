@@ -9,7 +9,7 @@ optimized_image:
 category: 'documentation'
 tags:
 - angular
-- form
+- routing
 author: dgilson
 ---
 
