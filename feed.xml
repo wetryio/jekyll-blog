@@ -5,9 +5,23 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 19 Mar 2020 15:57:38 +0000</pubDate>
-    <lastBuildDate>Thu, 19 Mar 2020 15:57:38 +0000</lastBuildDate>
+    <pubDate>Fri, 03 Apr 2020 21:32:54 +0000</pubDate>
+    <lastBuildDate>Fri, 03 Apr 2020 21:32:54 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>Hooks cachés du router Angular</title>
+        <description>&lt;p&gt;Nous allons parler ici d’éléments tellement bien cachés, qu’il n’y a pas moyen de savoir que ça existe sans aller voir dans le code source d’Angular, et c’est bien dommage de la part des développeurs du Framework.&lt;/p&gt; &lt;h3 id=&quot;comment-et-pourquoi-avoir-découvert-ça-&quot;&gt;Comment et pourquoi avoir découvert ça ?&lt;/h3&gt; &lt;p&gt;Il est intéressant de savoir que la doc Angular que j’utilise n’est rien d’autre que le code source. Ça me permet de découvrir des fonctionnalités (même accessible sans hack) parfois absentes de la doc. C’est en cherchant comment “annuler” une navigation de manière globale (sans devoir appliquer un guard sur chaque route) que j’ai découvert...</description>
+        <pubDate>Tue, 31 Mar 2020 21:10:21 +0000</pubDate>
+        <link>https://wetry.tech/hooks-caches-du-router-angular/</link>
+        <guid isPermaLink="true">https://wetry.tech/hooks-caches-du-router-angular/</guid>
+        
+        <category>angular</category>
+        
+        <category>routing</category>
+        
+        <category>documentation</category>
+      </item>
     
       <item>
         <title>DotNet 5 sur Raspbian</title>

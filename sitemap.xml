@@ -134,7 +134,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2020-03-19</lastmod>
+                <lastmod>2020-04-03</lastmod>
             
         </url>
     
@@ -242,6 +242,13 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/hooks-caches-du-router-angular/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2020-03-31</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/dotnet5-raspbian/</loc>

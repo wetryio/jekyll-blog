@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "Hooks cachés du router Angular",
+      "tags"     : "angular and routing",
+      "categories" : "documentation",
+      "url"      : "/hooks-caches-du-router-angular/",
+      "date"     : "03/31/2020"
+    } ,
+  
+    {
       "title"    : "DotNet 5 sur Raspbian",
       "tags"     : "dotnet5, raspberry pi, and raspbian",
       "categories" : "dotnet",
