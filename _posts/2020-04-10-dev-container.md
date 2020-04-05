@@ -1,10 +1,10 @@
 ---
 date: 2020-04-10 10:00:00
 layout: post
-title: ""
+title: "Accès rapide à un environnement de développement"
 subtitle: "avoir un environnement de développement en 5 minutes"
 description: "avoir un environnement de développement en 5 minutes"
-image:
+image: /assets/img/dev-container/containers.jpg
 optimized_image:
 category: experimentation
 tags:
