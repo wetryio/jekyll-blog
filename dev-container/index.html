@@ -305,7 +305,7 @@ Avril 10, 2020
     </span><span class="err">//</span><span class="w"> </span><span class="err">Quel</span><span class="w"> </span><span class="err">shell</span><span class="w"> </span><span class="err">est</span><span class="w"> </span><span class="err">lancé</span><span class="w"> </span><span class="err">quand</span><span class="w"> </span><span class="err">nous</span><span class="w"> </span><span class="err">ouvrons</span><span class="w"> </span><span class="err">un</span><span class="w"> </span><span class="err">terminal</span><span class="w"> </span><span class="err">intégré</span><span class="w">
     </span><span class="nl">"terminal.integrated.shell.linux"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/bin/bash"</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">une</span><span class="w"> </span><span class="err">commande</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">lancé</span><span class="w"> </span><span class="err">après</span><span class="w"> </span><span class="err">que</span><span class="w"> </span><span class="err">les</span><span class="w"> </span><span class="err">containers</span><span class="w"> </span><span class="err">soient</span><span class="w"> </span><span class="err">actifs</span><span class="w"> </span><span class="err">?</span><span class="w"> </span><span class="err">C'est</span><span class="w"> </span><span class="err">ici.</span><span class="w"> </span><span class="err">Je</span><span class="w"> </span><span class="err">l'utilise</span><span class="w"> </span><span class="err">pour</span><span class="w"> </span><span class="err">migrer</span><span class="w"> </span><span class="err">mes</span><span class="w"> </span><span class="err">schémas</span><span class="w">
+  </span><span class="err">//</span><span class="w"> </span><span class="err">une</span><span class="w"> </span><span class="err">commande</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="err">lancer</span><span class="w"> </span><span class="err">après</span><span class="w"> </span><span class="err">que</span><span class="w"> </span><span class="err">les</span><span class="w"> </span><span class="err">containers</span><span class="w"> </span><span class="err">soient</span><span class="w"> </span><span class="err">actifs</span><span class="w"> </span><span class="err">?</span><span class="w"> </span><span class="err">C'est</span><span class="w"> </span><span class="err">ici.</span><span class="w"> </span><span class="err">Je</span><span class="w"> </span><span class="err">l'utilise</span><span class="w"> </span><span class="err">pour</span><span class="w"> </span><span class="err">migrer</span><span class="w"> </span><span class="err">mes</span><span class="w"> </span><span class="err">schémas</span><span class="w">
   </span><span class="nl">"postCreateCommand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dotnet restore &amp;&amp; dotnet build &amp;&amp; dotnet ef database update --project ./DevContainer.Infrastructure --startup-project ./DevContainer"</span><span class="p">,</span><span class="w">
 
   </span><span class="err">//</span><span class="w"> </span><span class="err">Les</span><span class="w"> </span><span class="err">extensions</span><span class="w"> </span><span class="err">utiles</span><span class="w"> </span><span class="err">pour</span><span class="w"> </span><span class="err">le</span><span class="w"> </span><span class="err">développement</span><span class="w">
@@ -380,13 +380,13 @@ Avril 10, 2020
         <a href="javascript:void(0);">Revenir en haut</a>
     </div>
     
-    <a href="/mentorat-dev-senior/" class="post-preview">
+    <a href="/azure-functions-trigger-http/" class="post-preview">
         <div class="image">
             
-                <img src="/assets/img/mentorat/html.png">
+                <img src="/assets/img/azure-functions/Azure-Functions.png">
             
         </div>
-        <h3 class="title">Le mentorat des seniors</h3>
+        <h3 class="title">Azure Functions démystifions le trigger HTTP</h3>
     </a>
 </div>
 
@@ -762,7 +762,7 @@ C’est le fichier autour duquel tout tourne. Sans être compliqué, une explica
     // Quel shell est lancé quand nous ouvrons un terminal intégré
     &quot;terminal.integrated.shell.linux&quot;: &quot;/bin/bash&quot;
   },
-  // une commande a lancé après que les containers soient actifs ? C'est ici. Je l'utilise pour migrer mes schémas
+  // une commande à lancer après que les containers soient actifs ? C'est ici. Je l'utilise pour migrer mes schémas
   &quot;postCreateCommand&quot;: &quot;dotnet restore &amp;amp;&amp;amp; dotnet build &amp;amp;&amp;amp; dotnet ef database update --project ./DevContainer.Infrastructure --startup-project ./DevContainer&quot;,
 
   // Les extensions utiles pour le développement
