@@ -244,6 +244,13 @@
     
     
         <url>
+            <loc>https://wetry.tech/dev-container/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2020-04-10</lastmod>
+        </url>
+    
+        <url>
             <loc>https://wetry.tech/hooks-caches-du-router-angular/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>

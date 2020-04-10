@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "Accès rapide à un environnement de développement",
+      "tags"     : "devcontainer, docker, vscode, and open source",
+      "categories" : "experimentation",
+      "url"      : "/dev-container/",
+      "date"     : "04/10/2020"
+    } ,
+  
+    {
       "title"    : "Hooks cachés du router Angular",
       "tags"     : "angular and routing",
       "categories" : "documentation",
