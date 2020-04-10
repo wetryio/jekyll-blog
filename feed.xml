@@ -5,14 +5,14 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 10 Apr 2020 10:05:16 +0000</pubDate>
-    <lastBuildDate>Fri, 10 Apr 2020 10:05:16 +0000</lastBuildDate>
+    <pubDate>Fri, 10 Apr 2020 10:11:43 +0000</pubDate>
+    <lastBuildDate>Fri, 10 Apr 2020 10:11:43 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>Accès rapide à un environnement de développement</title>
         <description>&lt;p&gt;Il est indispensable que le développeur, dès son premier jour de travail, ait accès à l’environnement de développement. Or, le temps qu’un développeur passe pour mettre en place cet environnement représente un coût significatif pour l’employeur.&lt;/p&gt; &lt;p&gt;Microsoft propose depuis peu une solution: construire, dans une ou plusieurs images docker, son environnement de travail. On installe &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt;, &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VSCode&lt;/a&gt;, &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack&quot;&gt;une extension&lt;/a&gt;. On configure l’environnement dans quelques fichiers et celui-ci se construit de lui-même.&lt;/p&gt; &lt;p&gt;Je vous présente aujourd’hui un exemple à l’aide d’une application custom (une Todo app, un classique), avec Entity Framework et MariaDB.&lt;/p&gt; &lt;h1 id=&quot;quelques-prérequis&quot;&gt;Quelques prérequis&lt;/h1&gt; &lt;p&gt;Quelques outils...</description>
-        <pubDate>Fri, 10 Apr 2020 10:00:00 +0000</pubDate>
+        <pubDate>Fri, 10 Apr 2020 09:00:00 +0000</pubDate>
         <link>https://wetry.tech/dev-container/</link>
         <guid isPermaLink="true">https://wetry.tech/dev-container/</guid>
         
