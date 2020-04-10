@@ -79,7 +79,7 @@ C'est le fichier autour duquel tout tourne. Sans être compliqué, une explicati
     // Quel shell est lancé quand nous ouvrons un terminal intégré
     "terminal.integrated.shell.linux": "/bin/bash"
   },
-  // une commande a lancé après que les containers soient actifs ? C'est ici. Je l'utilise pour migrer mes schémas
+  // une commande à lancer après que les containers soient actifs ? C'est ici. Je l'utilise pour migrer mes schémas
   "postCreateCommand": "dotnet restore && dotnet build && dotnet ef database update --project ./DevContainer.Infrastructure --startup-project ./DevContainer",
 
   // Les extensions utiles pour le développement
