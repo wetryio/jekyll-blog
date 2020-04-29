@@ -6,8 +6,10 @@ subtitle:
 description:
 image:
 optimized_image:
-category:
+category: 'experimentation'
 tags:
+    - kubernetes
+    - paas
 author: dgilson
 ---
 
@@ -195,9 +197,19 @@ L'installation du Dashboard mais pour rester dans la simplicitée nous pouvons l
 
 Vous pourrez y retrouver tout ce que vous avez fait jusqu'a maintenant. Le dashboard permet aussi de déployer vos applications sans passer par le CLI.
 
+Vous pouvez également remarquer que ce que j'appel un "déploiement" s'appel en réalité un "service".
+
 # Déploiement d'une image Docker
 
+# Déployer une application locale
 
+# L'auto scaling
+
+# Router
+
+# Son propre domaine
+
+# Service externes
 
 ---
 <div class="gratitude">
