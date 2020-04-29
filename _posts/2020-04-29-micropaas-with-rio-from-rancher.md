@@ -28,6 +28,9 @@ Il gère pour vous:
 
 Il s'inscrit typiquement dans le mouvement DevOps et peut fournir une alternative Kubernetes simple aux systèmes tel que CloudFoundry ou les Web Apps Azure.
 
+### Concepts
+TODO:
+
 ## Outils utilisé dans cet article
 1. [Rio](https://rio.io/) de Rancher: Moteur de déploiement d'application pour Kuernetes (toujours en beta)
 2. [Civo](https://www.civo.com/): Plateforme Cloud Anglaise qui propose un moyen de déployer des clusters [k3s](https://k3s.io/) en quelques secondes (toujours en beta)
@@ -200,16 +203,21 @@ Vous pourrez y retrouver tout ce que vous avez fait jusqu'a maintenant. Le dashb
 Vous pouvez également remarquer que ce que j'appel un "déploiement" s'appel en réalité un "service".
 
 # Déploiement d'une image Docker
-
+TODO:
 # Déployer une application locale
-
-# L'auto scaling
-
+TODO:
+# Scaling
+TODO:
+## Manuel
+TODO:
+## Automatique
+TODO:
 # Router
-
+TODO:
 # Son propre domaine
-
+TODO:
 # Service externes
+TODO:
 
 ---
 <div class="gratitude">
