@@ -27,7 +27,6 @@ Il gère pour vous:
 3. Du déploiement continu depuis Git
 4. Déploiement Blue/Green
 
-**Image architecture**
 ![how rio works](/assets/img/kubernetes/rio/how-it-works-rio.svg)
 
 Il s'inscrit typiquement dans le mouvement DevOps et peut fournir une alternative Kubernetes simple aux systèmes tel que CloudFoundry ou les Web Apps Azure.
