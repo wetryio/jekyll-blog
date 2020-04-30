@@ -45,17 +45,21 @@ Pour que Rio puisse nous fournir cela, vous devez disposer d'une IP fixe publiqu
 Pour créer notre cluster, rendez-vous sur l'interface de Civo. Nous avons le choix sur la taille du cluster ainsi que la puissance de chaque noeud.
 Pour cet article je vais choisir un cluster deux noeud Medium (un master pouvant servir de worker ainsi qu'un autre worker). Le noeud master seul est suffisant pour un environement de developpement ou de test.
 
-Ne vous tracassez pas trop dès le départ sur le **nombre** de noeuds que vous souhaitez, vous pourrez en ajouter ou en supprimer comme bon vous semble.
+![civo price](/assets/img/kubernetes/rio/price.png)
 
-**Image Prix**
+Ne vous tracassez pas trop dès le départ sur le **nombre** de noeuds que vous souhaitez, vous pourrez en ajouter ou en supprimer comme bon vous semble.
 
 Civo propose également de vous préinstaller des applications. Par défaut "Taerfik" et "Metrics Server" sont installé, j'ai aussi pris l'habitude d'utilser Rancher comme interface pour mes clusters mais pour Rio nous n'avons besoin de rien de tout ça, tout le nécessaire sera installé en temps voulu. Assurez-vous donc d'avoir **décocher toutes les applications**.
 
-**Image Apps**
+![civo apps](/assets/img/kubernetes/rio/apps.png)
 
-Il ne reste plus qu'a cliqué sur le bouton "Create" et a attendre quelques secondes que notre cluster soit pret.
+Il ne reste plus qu'a cliquer sur le bouton "Create" et a attendre quelques secondes que notre cluster soit pret.
+
+![civo creation](/assets/img/kubernetes/rio/creation.png)
 
 Une fois l'attente terminée, vous allez pouvoir télécharger le kubeconfig afin d'y avoir accès depuis le CLI `kubectl`.
+
+![download kubefilr](/assets/img/kubernetes/rio/download-kubefile.png)
 
 Ayant nommé mon cluster "Rio on Civo", le fichier fourni s'appel "civo-rio-on-civo-kubeconfig".
 Vous pourez utiliser ce fichier facilement en ajoutant le paramètre `--kubeconfig` à chaque CLI kubernetes.
@@ -70,7 +74,7 @@ Exemples:
 
 Le CLI Rio est compatible avec tous les OS tournant sur amd64 ou arm.
 
-Vous pouvez utiliser la commande `curl -sfL https://get.rio.io | sh -` (le script détect automatiquement la release à utiliser) ou l'installer manuellemnt en téléchargeant la realease compatible avec votre OS [ici](https://github.com/rancher/rio/releases). J'ai personellement choisi le script etant sour MacOS.
+Vous pouvez utiliser la commande `curl -sfL https://get.rio.io | sh -` (le script détect automatiquement la release à utiliser) ou l'installer manuellemnt en téléchargeant la realease compatible avec votre OS [ici](https://github.com/rancher/rio/releases). J'ai personellement choisi le script étant sour MacOS.
 
 ## Installation sur le cluster
 
@@ -83,15 +87,15 @@ Le flag `--email` sera utilisé pour la demande de certificat à Let's Encrypt.
 Par défaut tout les services sont installé. Vous pouvez en désactiver en utilisant le flag `--disable-features`.
 Si vous utilisez votre propre domain et certificat wild-card vous pouvez par exemple ajouter `--disable-features rdns,letsencrypt` à votre commande.
 
-Vous pouvez également avoir plus de paramètre si vous le souhaitez en utilisant le flag `--yaml` qui crée un yaml sans l'appliquer. ça sera alors à vous de le faire après avoir effectuer les modifications souhaitées.
+Vous pouvez également avoir plus de paramètre si vous le souhaitez en utilisant le flag `--yaml` qui crée un yaml sans l'appliquer. Vous devrez alors l'appliquer après avoir effectuer les modifications souhaitées.
 
-**Image success**
+![rio deploy success](/assets/img/kubernetes/rio/deploy-success.png)
 
 Vous pouvez vérifier que tout c'est bien passé avec cette commande (`pods`):
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig -n rio-system pods`.
 
-![Great Success](https://thumbs.gfycat.com/DistantPitifulAardvark-size_restricted.gif)
+![Great Success](/assets/img/kubernetes/rio/borat-success.gif)
 
 Vous êtes déjà prèt à déployer une application.
 
@@ -104,9 +108,9 @@ L'application que nous allons déployé ici est la démo minimaliste que Rancher
 Vous remarquerez qu'il n'y a que 2 fichiers:
 * `main.go` un service web basic en Go
 * `Dockerfile` la façon de créer un environment pour faire tourner le service Go
-    * Le Dockerfile comprend la façon de builder `RUN ["go", "build", "-o", "demo"]` le projet ainsi que de façon de le lancer `CMD ["./demo"]`.
+    * Le Dockerfile comprend la façon de **builder** `RUN ["go", "build", "-o", "demo"]` le projet ainsi que de façon de l' **exécuter** `CMD ["./demo"]`.
 
-Cette découpe montre que nous utilisons une autre force de Docker qui est de pouvoir créer un environement reproductible.
+Cette découpe montre une autre force des containeurs qui est de pouvoir créer un environement reproductible.
 
 ## Déployement
 
@@ -121,13 +125,14 @@ Il ne vous reste plus qu'a exécuter la commande `ps` pour récupérer les infor
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
 
-**Image terminal**
+![rio ps result](/assets/img/kubernetes/rio/rio-ps.png)
 
 Accédez à l'url indiquée quand le build et le déploiement sont terminé et vous devriez avoir un beau petit message fourni par un site sécurisé via https.
 
-**Image certificat**
+![rio service deploy result](/assets/img/kubernetes/rio/rio-service-deployed.png)
 
-Avec cette commande unique, vous avez non seulement générer et déployer votre application mais vous avez activer un déploiement continue car Rio va vérifier toutes les 15 secondes s'il doit mettre à jour l'application.
+
+Avec cette commande unique, vous avez non seulement générer et déployer votre application mais vous avez activer un **déploiement continue** car Rio va vérifier toutes les 15 secondes s'il doit mettre à jour l'application.
 
 Vous pouvez ainsi exécuter plusieurs fois cette commande pour plusieurs namespaces avec des branches différentes afin de déployer vos différents environments.
 
@@ -172,7 +177,7 @@ Un point fort de Rio est qu'il peut provisionner une instance pour chaque PR, ce
 
 Pour ce faire il faut créer un access token sur [Github](https://github.com/settings/tokens)
 
-**Image Secret**
+![github access token](/assets/img/kubernetes/rio/github-token.png)
 
 et créer un secret de webhook toujours avec le flag `--github-webhook`:
 
@@ -196,11 +201,9 @@ L'installation du Dashboard mais pour rester dans la simplicitée nous pouvons l
 
 *Le Dashboard est installé mais ne répond pas encore ? Attendez encore un peu, le Dashboard prend plus de temps à ce lancer. Vous pouvez vérifier le lancement du Dashboard à l'aide de la commande `rio -n rio-system pods` déjà utilisée précédement*
 
-**Image Dashboard**
+![rio dashboard](/assets/img/kubernetes/rio/dashboard.png)
 
 Vous pourrez y retrouver tout ce que vous avez fait jusqu'a maintenant. Le dashboard permet aussi de déployer vos applications sans passer par le CLI.
-
-Vous pouvez également remarquer que ce que j'appel un "déploiement" s'appel en réalité un "service".
 
 # Déploiement d'une image Docker
 TODO:
