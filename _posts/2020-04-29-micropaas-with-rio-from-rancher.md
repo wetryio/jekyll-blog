@@ -270,12 +270,33 @@ Cela lancera une seconde instance du service "hello-word".
 
 ![scaling result](/assets/img/kubernetes/rio/after-scale.png)
 
+Vous pouvez également le faire via le dashboard.
+
+![scaling result](/assets/img/kubernetes/rio/scaling-dashboard.png)
+
 Ce qui est intéressant avec le hello-word de rancher c'est que vous pouvez tester le load-balancing entre les deux instances en rafraichissant plusieurs fois sa page web. En effet le nom derrière "My hostname is" est unique par instance.
 
 ![scaling result](/assets/img/kubernetes/rio/hello-word.png)
 
 ## Automatique
-TODO:
+
+Le mot "scaling automatique" peut vous sembler compliqué dans un premier abord, et pourtant aver Rio c'est aussi simple que le scaling manuel. La seule différence est que nous devons préciser un range (exemple: `1-10`).
+
+Il existe deux types d'auto-scaling:
+* froid (depuis 0): `0-10`
+* chaud (depuis au moins 1): `1-10`
+
+Attention qu'avec l'auto-scaling froid il y aura une latence de +/- 10 secondes le temps qu'un noeud se lance si aucun n'est lancé.
+
+Pour le tester, vous pouvez utiliser l'outil de commande [hey](https://github.com/rakyll/hey) qui permet de créer un grand nombre de connections simultanées:
+
+`hey -z 3m -c 100 https://hello-word-v0-default.4a7p4l.on-rio.io/`
+
+Vous devriez voir le nombre d'instance (réplicas) monté petit à petit puis avec la commande `ps`:
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
+
+![auto scaling result](/assets/img/kubernetes/rio/auto-scale.png)
 
 # Router
 TODO:
