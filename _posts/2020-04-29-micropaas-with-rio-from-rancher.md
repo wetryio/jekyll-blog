@@ -363,6 +363,20 @@ Il ne nous reste plus qu'a enregistrer ce nouveau domain dans Rio à l'aide de l
 # Service externes
 TODO:
 
+# Monitoring
+
+Vous vous souhaitez monitorez votre Rio, il est possible d'avoir accès au Linkerd ainsi que son grafana en utilisant la commande `linkerd` qui crée un proxy entre linkerd et votre réseau local (127.0.0.1).
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig linkerd`
+
+**Linkerd**
+
+![linkerd](/assets/img/kubernetes/rio/linkerd.png)
+
+**Grafana**
+
+![grafana](/assets/img/kubernetes/rio/grafana.png)
+
 ---
 <div class="gratitude">
     <span>MERCI</span>
