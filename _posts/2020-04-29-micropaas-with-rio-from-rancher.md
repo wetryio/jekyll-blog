@@ -18,7 +18,7 @@ N'hésitez pas à vous rendre sur la [table des matières](#toc) si vous n'êtes
 
 # Prélude
 
-## Qu'est ce que Rio ?
+## Qu'est-ce que Rio ?
 
 Rio se présente comme un moteur de déploiement d'applications pour Kubernetes ou encore comme du MicroPaaS.
 Il gère pour vous:
@@ -34,35 +34,35 @@ Il s'inscrit typiquement dans le mouvement DevOps et peut fournir une alternativ
 
 ### Concepts
 
-Rio introduit quelques de nouveaux concepts que nous allons voir dans cet articles:
+Rio introduit quelques de nouveaux concepts que nous allons voir dans cet article:
 * **Service** : ensemble de conteneurs scalables identiques 
-* **Router** : load-balancing et gestion des règles de traffic
-* **External Service** : enregistrement d'ips ou de nom de domaine dans service mesh
+* **Router** : load-balancing et gestion des règles de trafic
+* **External Service** : enregistrement d’Ips ou de nom de domaine dans service mesh
 * **Stack** : représentation d'un Riofile
 
-## Outils utilisé dans cet article
+## Outils utilisés dans cet article
 1. [Rio](https://rio.io/) de Rancher: Moteur de déploiement d'application pour Kuernetes (toujours en beta)
 2. [Civo](https://www.civo.com/): Plateforme Cloud Anglaise qui propose un moyen de déployer des clusters [k3s](https://k3s.io/) en quelques secondes (toujours en beta)
 3. [Cloudflare](https://www.cloudflare.com/): reverse proxy avec parfeu et gestion de certificats
 
-## Pourquoi avons nous besoin d'un cluster en ligne
-Rio s'occupe de beaucoup de choses pour nous dont l'attribution d'un nom de domain "on-rio" ainsi que son certificat wild-card (intéressants principalement pour les autres environements que la production).
+## Pourquoi avons-nous besoin d'un cluster en ligne
+Rio s'occupe de beaucoup de choses pour nous dont l'attribution d'un nom de domaine "on-rio" ainsi que son certificat wild-card (intéressants principalement pour les autres environnements que la production).
 
 Pour que Rio puisse nous fournir cela, vous devez disposer d'une IP fixe publique.
 
 # Mise en place du cluster Kubernetes
 Pour créer notre cluster, rendez-vous sur l'interface de Civo. Nous avons le choix sur la taille du cluster ainsi que la puissance de chaque noeud.
-Pour cet article je vais choisir un cluster deux noeud Medium (un master pouvant servir de worker ainsi qu'un autre worker). Le noeud master seul est suffisant pour un environement de developpement ou de test.
+Pour cet article je vais choisir un cluster deux noeuds Medium (un master pouvant servir de worker ainsi qu'un autre worker). Le noeud master seul est suffisant pour un environnement de développement ou de test.
 
 ![civo price](/assets/img/kubernetes/rio/price.png)
 
 Ne vous tracassez pas trop dès le départ sur le **nombre** de noeuds que vous souhaitez, vous pourrez en ajouter ou en supprimer comme bon vous semble.
 
-Civo propose également de vous préinstaller des applications. Par défaut "Taerfik" et "Metrics Server" sont installé, j'ai aussi pris l'habitude d'utilser Rancher comme interface pour mes clusters mais pour Rio nous n'avons besoin de rien de tout ça, tout le nécessaire sera installé en temps voulu. Assurez-vous donc d'avoir **décocher toutes les applications**.
+Civo propose également de vous préinstaller des applications. Par défaut "Taerfik" et "Metrics Server" sont installés, j'ai aussi pris l'habitude d'utiliser Rancher comme interface pour mes clusters, mais pour Rio nous n'avons besoin de rien de tout ça, tout le nécessaire sera installé en temps voulu. Assurez-vous donc d'avoir **décoché toutes les applications**.
 
 ![civo apps](/assets/img/kubernetes/rio/apps.png)
 
-Il ne reste plus qu'a cliquer sur le bouton "Create" et a attendre quelques secondes que notre cluster soit pret.
+Il ne reste plus qu'à cliquer sur le bouton "Create" et à attendre quelques secondes que notre cluster soit prêt.
 
 ![civo creation](/assets/img/kubernetes/rio/creation.png)
 
@@ -70,8 +70,8 @@ Une fois l'attente terminée, vous allez pouvoir télécharger le kubeconfig afi
 
 ![download kubefilr](/assets/img/kubernetes/rio/download-kubefile.png)
 
-Ayant nommé mon cluster "Rio on Civo", le fichier fourni s'appel "civo-rio-on-civo-kubeconfig".
-Vous pourez utiliser ce fichier facilement en ajoutant le paramètre `--kubeconfig` à chaque CLI kubernetes.
+Ayant nommé mon cluster "Rio on Civo", le fichier fourni s'appelle "civo-rio-on-civo-kubeconfig".
+Vous pourrez utiliser ce fichier facilement en ajoutant le paramètre `--kubeconfig` à chaque CLI kubernetes.
 
 Exemples:
 * `kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A`
@@ -83,7 +83,7 @@ Exemples:
 
 Le CLI Rio est compatible avec tous les OS tournant sur amd64 ou arm.
 
-Vous pouvez utiliser la commande `curl -sfL https://get.rio.io | sh -` (le script détect automatiquement la release à utiliser) ou l'installer manuellemnt en téléchargeant la realease compatible avec votre OS [ici](https://github.com/rancher/rio/releases). J'ai personellement choisi le script étant sour MacOS.
+Vous pouvez utiliser la commande `curl -sfL https://get.rio.io | sh -` (le script détect automatiquement la release à utiliser) ou l'installer manuellemnt en téléchargeant la realease compatible avec votre OS [ici](https://github.com/rancher/rio/releases). J'ai personnellement choisi le script étant sous macOS.
 
 ## Installation sur le cluster
 
@@ -93,57 +93,57 @@ L'installation sur le cluster est aussi simple que celle du CLI, une commande su
 
 Le flag `--email` sera utilisé pour la demande de certificat à Let's Encrypt.
 
-Par défaut tout les services sont installé. Vous pouvez en désactiver en utilisant le flag `--disable-features`.
-Si vous utilisez votre propre domain et certificat wild-card vous pouvez par exemple ajouter `--disable-features rdns,letsencrypt` à votre commande.
+Par défaut tous les services sont installés. Vous pouvez en désactiver en utilisant le flag `--disable-features`.
+Si vous utilisez votre propre domaine et certificat wild-card vous pouvez par exemple ajouter `--disable-features rdns,letsencrypt` à votre commande.
 
-Vous pouvez également avoir plus de paramètre si vous le souhaitez en utilisant le flag `--yaml` qui crée un yaml sans l'appliquer. Vous devrez alors l'appliquer après avoir effectuer les modifications souhaitées.
+Vous pouvez également avoir plus de paramètre si vous le souhaitez en utilisant le flag `--yaml` qui crée un yaml sans l'appliquer. Vous devrez alors l'appliquer après avoir effectué les modifications souhaitées.
 
 ![rio deploy success](/assets/img/kubernetes/rio/deploy-success.png)
 
-Vous pouvez vérifier que tout c'est bien passé avec cette commande (`pods`):
+Vous pouvez vérifier que tout s'est bien passé avec cette commande (`pods`):
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig -n rio-system pods`.
 
 ![Great Success](/assets/img/kubernetes/rio/borat-success.gif)
 
-Vous êtes déjà prèt à déployer une application.
+Vous êtes déjà prêt à déployer une application.
 
 # Déploiement depuis Github
 
-L'application que nous allons déployé ici est la démo minimaliste que Rancher nous fournis: [https://github.com/rancher/rio-demo](https://github.com/rancher/rio-demo).
+L'application que nous allons déployer ici est la démo minimaliste que Rancher nous fournis: [https://github.com/rancher/rio-demo](https://github.com/rancher/rio-demo).
 
 ## Composition du repo
 
 Vous remarquerez qu'il n'y a que 2 fichiers:
 * `main.go` un service web basic en Go
-* `Dockerfile` la façon de créer un environment pour faire tourner le service Go
+* `Dockerfile` la façon de créer un environnement pour faire tourner le service Go
     * Le Dockerfile comprend la façon de **builder** `RUN ["go", "build", "-o", "demo"]` le projet ainsi que de façon de l' **exécuter** `CMD ["./demo"]`.
 
-Cette découpe montre une autre force des containeurs qui est de pouvoir créer un environement reproductible.
+Cette découpe montre une autre force des conteneurs qui est de pouvoir créer un environnement reproductible.
 
 ## Déployement
 
-Le repo étant publique nous n'avons qu'a exécuter une commande (`run`) en faisant référence à celui-ci.
+Le repo étant publique nous n'avons qu’à exécuter une commande (`run`) en faisant référence à celui-ci.
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig run -n cd-demo -p 8080 https://github.com/rancher/rio-demo`
 
 Ici nous avons décidé de publier notre service avec le nom "cd-demo" et nous mappons le port 8080 au port publique 80.
 Il est également possible de mapper d'autres ports en utilisant par exemple `-p 81:8081`.
 
-Il ne vous reste plus qu'a exécuter la commande `ps` pour récupérer les informations de l'application que vous venez de déployer.
+Il ne vous reste plus qu’à exécuter la commande `ps` pour récupérer les informations de l'application que vous venez de déployer.
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
 
 ![rio ps result](/assets/img/kubernetes/rio/rio-ps.png)
 
-Accédez à l'url indiquée quand le build et le déploiement sont terminé et vous devriez avoir un beau petit message fourni par un site sécurisé via https.
+Accédez à l'url indiquée quand le build et le déploiement sont terminés et vous devriez avoir un beau petit message fourni par un site sécurisé via https.
 
 ![rio service deploy result](/assets/img/kubernetes/rio/rio-service-deployed.png)
 
 
-Avec cette commande unique, vous avez non seulement générer et déployer votre application mais vous avez activer un **déploiement continue** car Rio va vérifier toutes les 15 secondes s'il doit mettre à jour l'application.
+Avec cette commande unique vous avez non seulement générer et déployer votre application, mais vous avez activé un **déploiement continu,** car Rio va vérifier toutes les 15 secondes s'il doit mettre à jour l'application.
 
-Vous pouvez ainsi exécuter plusieurs fois cette commande pour plusieurs namespaces avec des branches différentes afin de déployer vos différents environments.
+Vous pouvez ainsi exécuter plusieurs fois cette commande pour plusieurs namespaces avec des branches différentes afin de déployer vos différents environnements.
 
 ## Utiliser un Git privé (sécurisé)
 
@@ -151,13 +151,13 @@ Plusieurs types d'authentification sont possibles: Basic ou SSH.
 
 ### Authentification Basic
 
-Cette méthode permet d'utiliser les autres commandes comme précédement sans rien changer.
+Cette méthode permet d'utiliser les autres commandes comme précédemment sans rien changer.
 
 Pour enregistrer vos données d'authentification dans Rio, utilisez la commande (`secret`):
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig secret create --git-basic-auth`
 
-Vous devrez indiquer une URL informer sur quelle Git appliquer ce secret.
+Vous devrez indiquer une URL informer sur quelle git appliquer ce secret.
 Comme dit plus haut, les autres commandes ne changent pas.
 
 ### Authentification SSH
@@ -176,7 +176,7 @@ D'autres types de secrets existe comme la connection à un docker registry priv�
 
 Vous pouvez voir les différents types de secrets possible à l'aide de la commande d'aide `rio secret create --help`.
 
-Pour plus d'information n'hésitez pas à aller faire un tour dans la [documentation](https://github.com/rancher/rio/blob/master/docs/continuous-deployment.md).
+Pour plus d'information, n'hésitez pas à aller faire un tour dans la [documentation](https://github.com/rancher/rio/blob/master/docs/continuous-deployment.md).
 
 ## Pull Request
 
@@ -202,13 +202,13 @@ Utilisez la commande `run` avec un nouveau flag `--build-pr`
 
 # Dashboard
 
-Avant de voir d'autres façon de déployer votre application, c'est peut-être le moment de vous informer qu'il existe un dashboard web vous permetant de monitorer visuellement vos applications.
+Avant de voir d'autres façons de déployer votre application, c'est peut-être le moment de vous informer qu'il existe un dashboard web vous permettant de monitorer visuellement vos applications.
 
-L'installation du Dashboard mais pour rester dans la simplicitée nous pouvons l'installer en une seule commande (`dashboard`):
+L'installation du Dashboard, mais pour rester dans la simplicité nous pouvons l'installer en une seule commande (`dashboard`):
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig dashboard`
 
-*Le Dashboard est installé mais ne répond pas encore ? Attendez encore un peu, le Dashboard prend plus de temps à ce lancer. Vous pouvez vérifier le lancement du Dashboard à l'aide de la commande `rio -n rio-system pods` déjà utilisée précédement*
+*Le Dashboard est installé, mais ne répond pas encore ? Attendez encore un peu, le Dashboard prend plus de temps à ce lancer. Vous pouvez vérifier le lancement du Dashboard à l'aide de la commande `rio -n rio-system pods` déjà utilisée précédement*
 
 ![rio dashboard](/assets/img/kubernetes/rio/dashboard.png)
 
@@ -216,21 +216,21 @@ Vous pourrez y retrouver tout ce que vous avez fait jusqu'a maintenant. Le dashb
 
 # Déploiement d'une image Docker
 
-Avec Rio, il est aussi facile de déployer depuis une image Docker qu'en local. Il s'agit de la même commande (`run`) que pour le déploiement via github et Rio détecte automatiquement qu'il ne s'agit pas d'un lien Git mais d'un nom d'image.
+Avec Rio, il est aussi facile de déployer depuis une image Docker qu'en local. Il s'agit de la même commande (`run`) que pour le déploiement via github et Rio détecte automatiquement qu'il ne s'agit pas d'un lien Git, mais d'un nom d'image.
 
 Pour déployer par exemple l'image [hello-word de rancher](https://hub.docker.com/r/rancher/hello-world), nous allons utiliser cette commande:
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig run -n hello-word -p 80 rancher/hello-world`
 
-Vous pouvez évidement utiliser des variables d'environement à l'aide des flags `--env` et `--env-file`.
+Vous pouvez évidement utiliser des variables d'environnement à l'aide des flags `--env` et `--env-file`.
 
-Pour avoir le nom de domaine, vous pouvez utiliser `ps` comme fait précédement ou regarder la liste des services du dashboard.
+Pour avoir le nom de domaine, vous pouvez utiliser `ps` comme fait précédemment ou regarder la liste des services du dashboard.
 
 ![rio dashboard service deployed](/assets/img/kubernetes/rio/service-deployed-dashboard.png)
 
 # Déployer une application locale
 
-Ce point est un de ceux que je voulais absolument expérimenter car s'il y a bien quelque chose qui m'embête pour des environements de debugging, c'est le fait de devoir passer par un registry d'images pour pouvoir tester l'application déployée.
+Ce point est un de ceux que je voulais absolument expérimenter car s'il y a bien quelque chose qui m'embête pour des environnements de debugging, c'est le fait de devoir passer par un registry d'images pour pouvoir tester l'application déployée.
 
 Heureusement Rio fait tout pour nous en utilisant un registry local.
 
@@ -243,13 +243,13 @@ services:
     port: 8080/http
 ```
 
-Ce fichier crée un service dont le nom est "dev" en se basant sur `image`. Image peut contenir le nom d'une image disponible dans un registry ou un chemin relatif. Le chemin relatif insique à Rio qu'il doit builder l'image lui même.
+Ce fichier crée un service dont le nom est "dev" en se basant sur `image`. Image peut contenir le nom d'une image disponible dans un registry ou un chemin relatif. Le chemin relatif indique à Rio qu'il doit builder l'image lui-même.
 
 Il s'agit du fichier Riofile le plus petit que l'on puisse faire. Il y a 1001 autres options que vous pouvez spécifier dans ce fichier, je vous invite donc à aller les découvrir [dans la doc officielle](https://github.com/rancher/rio/blob/master/docs/riofile.md).
 
-L'emplacement de votre dossier (`./` dans le cas présent) doit bien entendu contenir le code source de l'appliation ainsi qu'un Dockerfile tout comme nous l'avons vu dans la partie [Composition du repo](#Composition-du-repo).
+L'emplacement de votre dossier (`./` dans le cas présent) doit bien entendu contenir le code source de l'application ainsi qu'un Dockerfile tout comme nous l'avons vu dans la partie [Composition du repo](#Composition-du-repo).
 
-Pour dépployer notre application il ne reste plus qu'a exécuter la commande `up`.
+Pour déployer notre application, il ne reste plus qu'à exécuter la commande `up`.
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig up`
 
@@ -257,19 +257,19 @@ Nous pouvons alors suivre toutes les étapes par lesquelles il procède:
 
 ![local deployment](/assets/img/kubernetes/rio/local-deploy.png)
 
-Vous pouvez exécuter une des 3 étapes par lesquelles il passe vous même:
+Vous pouvez exécuter une des 3 étapes par lesquelles il passe vous-même:
 1. `rio --kubeconfig civo-rio-on-civo-kubeconfig build`: build de l'image
-2. `rio --kubeconfig civo-rio-on-civo-kubeconfig run -p 8080 localhost:5442/default/dev:latest` déployer l'image précédement créée
+2. `rio --kubeconfig civo-rio-on-civo-kubeconfig run -p 8080 localhost:5442/default/dev:latest` déployer l'image précédemment créée
 
 # Scaling
 
 Le scaling est le fait d'avoir plusieurs instances du même service qui tourne afin de pouvoir absorber plus facilement la charge de calcul demandée en la distribuant.
 
-Il se peut se gérer de toutes les manière de créer un service: commande **run** (`--scale`), **Riofile** (`scale` ou `autoscale`) ou encore via le **dashboard**.
+Il se peut se gérer de toutes les manières de créer un service: commande **run** (`--scale`), **Riofile** (`scale` ou `autoscale`) ou encore via le **dashboard**.
 
 ## Manuel
 
-Comme dit plus haut, le scaling se gère à la création d'un service. Il sera automatiquement mis à `1` si vous n'inquez rien.
+Comme dit plus haut, le scaling se gère à la création d'un service. Il sera automatiquement mis à `1` si vous n'indiquez rien.
 
 Vous pouvez modifier le scaling après ça création à l'aide de la commande `scale`.
 
@@ -289,7 +289,7 @@ Ce qui est intéressant avec le hello-word de rancher c'est que vous pouvez test
 
 ## Automatique
 
-Le mot "scaling automatique" peut vous sembler compliqué dans un premier abord, et pourtant aver Rio c'est aussi simple que le scaling manuel. La seule différence est que nous devons préciser un range (exemple: `1-10`).
+Le mot "scaling automatique" peut vous sembler compliqué dans un premier abord, et pourtant avec Rio c'est aussi simple que le scaling manuel. La seule différence est que nous devons préciser un range (exemple: `1-10`).
 
 Il existe deux types d'auto-scaling:
 * froid (depuis 0): `0-10`
@@ -301,7 +301,7 @@ Pour le tester, vous pouvez utiliser l'outil de commande [hey](https://github.co
 
 `hey -z 3m -c 100 https://hello-word-v0-default.4a7p4l.on-rio.io/`
 
-Vous devriez voir le nombre d'instance (réplicas) monté petit à petit puis avec la commande `ps`:
+Vous devriez voir le nombre d'instances (répliquas) monté petit à petit puis avec la commande `ps`:
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
 
@@ -316,7 +316,7 @@ Commençons par un car concret: donner accès à nos deux applications (cd-demo 
 Nous allons utiliser la commande `route add`.
 
 Pour créer une règle de routing sur base d'un path, nous allons utiliser la commande de cette façon: `rio route add $name/$path to $target`.
-* `$name`: est à remplacer par le nom du router (est utilisé pour créer un sous domaine)
+* `$name`: est à remplacer par le nom du router (est utilisé pour créer un sous-domaine)
 * `$path`: est à remplacer par le path sur lequel vous voulez que votre service soit accessible
 * `$target`: est à remplacer par le nom du service vers lequel pointer
 
@@ -331,49 +331,49 @@ Pour vous assurez que la route est bien créée vous pouvez utiliser la commande
 
 ![router list](/assets/img/kubernetes/rio/routers.png)
 
-Nous pouvons faire de même avec "cd-demo" avec la même commande à une exception pret: Nous devons spécifier le port car cette application écoute sur le port 8080.
+Nous pouvons faire de même avec "cd-demo" avec la même commande à une exception près: Nous devons spécifier le port, car cette application écoute sur le port 8080.
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig route add test/cd-demo to cd-demo,port=8080`
 
 Nous avons maintenant également une application qui répond sous le chemin `https://test-default.<rio-domain>/cd-demo`
 
-***Encore une fois je privilégie le CLI au dashboard mais tout est faisable via ce dernier.***
+***Encore une fois je privilégie le CLI au dashboard, mais tout est faisable via ce dernier.***
 
 ![router list](/assets/img/kubernetes/rio/dashboard-router.png)
 
-Maintenant que vous avez compris comment le router fonctionnait, je n'ai pas besoin de passer tous les méchanismes en revue. Je vous propose d'aller voir dans la [documentation officielle](https://github.com/rancher/rio/blob/master/docs/router.md) pour informer sur les autres méchanismes.
+Maintenant que vous avez compris comment le router fonctionnait, je n'ai pas besoin de passer tous les mécanismes en revue. Je vous propose d'aller voir dans la [documentation officielle](https://github.com/rancher/rio/blob/master/docs/router.md) pour informer sur les autres mécanismes.
 
 # Son propre domaine
 
 Pour utiliser son propre domaine, le plus simple est d'ajouter un record `CNAME` vers notre domaine `xxxxxx.on-rio.io` (récupérable depuis la commande `rio info`).
 
-Afin de ne pas avoir de problème de certificats je vous propose d'utilser le service gratuit CloudFlare.
+Afin de ne pas avoir de problème de certificats je vous propose d'utiliser le service gratuit CloudFlare.
 
-Pour se faire rendez-vous dans la partie DNS pour ajouter le **CNAME**.
+Pour se faire, rendez-vous dans la partie DNS pour ajouter le **CNAME**.
 
 ![cloudflare dns](/assets/img/kubernetes/rio/cloudflare-dns.png)
 
 Ici j'ai configuré mon domaine pour que "rio.wetry.eu" fasse proxy vers "test-default.4a7p4l.on-rio.io".
 
-Afin de ne pas avoir de problème de certificats, assurez-vous d'avoir choisi "Fexible" comme mode d'encryption. Cela signifie que qu'il y aura une encryption entre notre serveur et cloudflare et une encryption entre cloudflare et notre navigateur mais pas directement entre notre serveur et le navigateur.
+Afin de ne pas avoir de problème de certificats, assurez-vous d'avoir choisi "Fexible" comme mode d'encryption. Cela signifie qu'il y aura une encryption entre notre serveur et cloudflare et une encryption entre cloudflare et notre navigateur, mais pas directement entre notre serveur et le navigateur.
 
 ![cloudflare certificate](/assets/img/kubernetes/rio/cloudflare-certificate.png)
 
-Il ne nous reste plus qu'a enregistrer ce nouveau domain dans Rio à l'aide de la commande `domain register`.
+Il ne nous reste plus qu'à enregistrer ce nouveau domaine dans Rio à l'aide de la commande `domain register`.
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig domain register rio.wetry.eu test`
 
 ![custom dns result](/assets/img/kubernetes/rio/custom-domain-result.png)
 
-# Service externes
+# Services externes
 
-Cette fonctionalité a pour but d'éviter de jouer avec des ips ou des domaines dans nos applications/services mais de les gérer à un endroit centralisé.
+Cette fonctionnalité a pour but d'éviter de jouer avec des Ips ou des domaines dans nos applications/services, mais de les gérer à un endroit centralisé.
 
-Elle est utile pour la communication entre namespaces kubernetes mais également pour accéder à des resources réellements externes au cluster.
+Elle est utile pour la communication entre namespaces kubernetes, mais également pour accéder à des ressources réellement externes au cluster.
 
 ## Autre namespace
 
-Imaginon que nous ayont une application **app2** dans un autre namespace se nommant **namespace2**, il est possible d'y avoir accès par exemple avec le nom **ext2** via la commance `external create` de cette façon:
+Imaginons que nous ayons une application **app2** dans un autre namespace se nommant **namespace2**, il est possible d'y avoir accès par exemple avec le nom **ext2** via la commande `external create` de cette façon:
 
 `rio --kubeconfig civo-rio-on-civo-kubeconfig external create ext2 namespace2:app2`
 
