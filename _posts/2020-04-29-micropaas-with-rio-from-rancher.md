@@ -76,8 +76,8 @@ Exemples:
 * `kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A`
 * `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
 
-*Afin de pouvoir mieux nous concentrer sur les commandes, je ne mettrai pas la configuration `--kubeconfig` dans les prochaines commandes de l'article mais garder en tête qu'il faut l'ajouter à chaque fois derrière le mot `rio`.
-Par exemple, `rio ps` dans l'article dois être exécuté `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`.*
+***Afin de pouvoir mieux nous concentrer sur les commandes, je ne mettrai pas la configuration `--kubeconfig` dans les prochaines commandes de l'article mais garder en tête qu'il faut l'ajouter à chaque fois derrière le mot `rio`.
+Par exemple, `rio ps` dans l'article dois être exécuté `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`.***
 
 # Installation de RIO
 
