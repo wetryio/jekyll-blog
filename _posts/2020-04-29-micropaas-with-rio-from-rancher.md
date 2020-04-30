@@ -345,9 +345,9 @@ Nous avons maintenant également une application qui répond sous le chemin `htt
 
 Maintenant que vous avez compris comment le router fonctionnait, je n'ai pas besoin de passer tous les mécanismes en revue. Je vous propose d'aller voir dans la [documentation officielle](https://github.com/rancher/rio/blob/master/docs/router.md) pour informer sur les autres mécanismes.
 
-# Son propre domaine
+# Votre domaine
 
-Pour utiliser son propre domaine, le plus simple est d'ajouter un record `CNAME` vers notre domaine `xxxxxx.on-rio.io` (récupérable depuis la commande `rio info`).
+Pour utiliser votre propre domaine, le plus simple est d'ajouter un record `CNAME` vers notre domaine `xxxxxx.on-rio.io` (récupérable depuis la commande `rio info`).
 
 Afin de ne pas avoir de problème de certificats je vous propose d'utiliser le service gratuit CloudFlare.
 
