@@ -13,8 +13,8 @@ tags:
 author: dgilson
 ---
 
-Cet article vise à vous expliquer comment expérimenter l'outil Rio qui est un outil comprenant beaucoup de fonctionnalités.
-N'hésitez pas à vous rendre sur la [table des matières](#toc) si vous n'êtes intéressé que par certaines de ces fonctionnalités.
+Cet article vise à vous expliquer comment expérimenter l'outil Rio qui comprenant beaucoup de fonctionnalités.
+N'hésitez pas à vous rendre sur la [table des matières](#toc) si vous n'êtes intéressé que par certaines parties.
 
 # Prélude
 
