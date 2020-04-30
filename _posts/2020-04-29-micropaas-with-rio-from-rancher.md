@@ -41,11 +41,11 @@ Avant de commencer, clarifions quelques concepts de Rio:
 
 ## Outils utilisés dans cet article
 1. [Rio](https://rio.io/) de Rancher: Moteur de déploiement d'application pour Kuernetes (toujours en beta)
-2. [Civo](https://www.civo.com/): Plateforme Cloud Anglaise qui propose un moyen de déployer des clusters [k3s](https://k3s.io/) en quelques secondes (toujours en beta)
+2. [Civo](https://www.civo.com/): Plateforme Cloud provenant du Royaume-Uni qui propose un moyen de déployer des clusters [k3s](https://k3s.io/) en quelques secondes (toujours en beta)
 3. [Cloudflare](https://www.cloudflare.com/): reverse proxy avec parfeu et gestion de certificats
 
 ## Pourquoi avons-nous besoin d'un cluster en ligne
-Rio s'occupe de beaucoup de choses pour nous dont l'attribution d'un nom de domaine "on-rio" ainsi que son certificat wild-card (intéressants principalement pour les autres environnements que la production).
+Rio s'occupe de beaucoup de choses pour nous dont l'attribution d'un nom de domaine "on-rio" ainsi que son certificat wild-card (intéressants aussi bien pour les environnements de développement que de production).
 
 Pour que Rio puisse nous fournir cela, vous devez disposer d'une IP fixe publique.
 
@@ -76,7 +76,7 @@ Exemples:
 * `kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A`
 * `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
 
-*Afin de pouvoir mieux nous concentrer sur les commandes, ne ne mettrait pas la configuration `--kubeconfig` dans les prochaines commandes de l'article mais garder en tête qu'il faut l'ajouter dans chaque commande derrière le mot `rio`.
+*Afin de pouvoir mieux nous concentrer sur les commandes, je ne mettrai pas la configuration `--kubeconfig` dans les prochaines commandes de l'article mais garder en tête qu'il faut l'ajouter à chaque fois derrière le mot `rio`.
 Par exemple, `rio ps` dans l'article dois être exécuté `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`.*
 
 # Installation de RIO
@@ -108,7 +108,7 @@ Vous pouvez vérifier que tout s'est bien passé avec cette commande (`pods`):
 
 ![Great Success](/assets/img/kubernetes/rio/borat-success.gif)
 
-Vous êtes déjà prêt à déployer une application.
+Vous êtes déjà prêt pour déployer une application.
 
 # Déploiement depuis Github
 
