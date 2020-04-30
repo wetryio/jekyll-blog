@@ -77,6 +77,9 @@ Exemples:
 * `kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A`
 * `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
 
+*Afin de pouvoir mieux nous concentrer sur les commandes, ne ne mettrait pas la configuration `--kubeconfig` dans les prochaines commandes de l'article mais garder en tête qu'il faut l'ajouter dans chaque commande derrière le mot `rio`.
+Par exemple, `rio ps` dans l'article dois être exécuté `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`.*
+
 # Installation de RIO
 
 ## Rio CLI
@@ -89,7 +92,7 @@ Vous pouvez utiliser la commande `curl -sfL https://get.rio.io | sh -` (le scrip
 
 L'installation sur le cluster est aussi simple que celle du CLI, une commande suffit (`install`):
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig install --email your@email.com`
+`rio install --email your@email.com`
 
 Le flag `--email` sera utilisé pour la demande de certificat à Let's Encrypt.
 
@@ -102,7 +105,7 @@ Vous pouvez également avoir plus de paramètre si vous le souhaitez en utilisan
 
 Vous pouvez vérifier que tout s'est bien passé avec cette commande (`pods`):
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig -n rio-system pods`.
+`rio -n rio-system pods`.
 
 ![Great Success](/assets/img/kubernetes/rio/borat-success.gif)
 
@@ -125,14 +128,14 @@ Cette découpe montre une autre force des conteneurs qui est de pouvoir créer u
 
 Le repo étant publique nous n'avons qu’à exécuter une commande (`run`) en faisant référence à celui-ci.
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig run -n cd-demo -p 8080 https://github.com/rancher/rio-demo`
+`rio run -n cd-demo -p 8080 https://github.com/rancher/rio-demo`
 
 Ici nous avons décidé de publier notre service avec le nom "cd-demo" et nous mappons le port 8080 au port publique 80.
 Il est également possible de mapper d'autres ports en utilisant par exemple `-p 81:8081`.
 
 Il ne vous reste plus qu’à exécuter la commande `ps` pour récupérer les informations de l'application que vous venez de déployer.
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
+`rio ps`
 
 ![rio ps result](/assets/img/kubernetes/rio/rio-ps.png)
 
@@ -155,7 +158,7 @@ Cette méthode permet d'utiliser les autres commandes comme précédemment sans 
 
 Pour enregistrer vos données d'authentification dans Rio, utilisez la commande (`secret`):
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig secret create --git-basic-auth`
+`rio secret create --git-basic-auth`
 
 Vous devrez indiquer une URL informer sur quelle git appliquer ce secret.
 Comme dit plus haut, les autres commandes ne changent pas.
@@ -164,11 +167,11 @@ Comme dit plus haut, les autres commandes ne changent pas.
 
 Pour engesitrer la clé SSH, vous devez également utiliser la commande `secret` mais avec le flag `--git-sshkey-auth`:
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig secret create --git-sshkey-auth`
+`rio secret create --git-sshkey-auth`
 
 La commande pour lancer un service change un peu afin d'informer qu'il faut utiliser une connexion SSH:
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig run --build-clone-secret gitcredential-ssh -p 8080 git@github.com/rancher/rio-demo`
+`rio run --build-clone-secret gitcredential-ssh -p 8080 git@github.com/rancher/rio-demo`
 
 ### Autres secrets
 
@@ -190,7 +193,7 @@ Pour ce faire il faut créer un access token sur [Github](https://github.com/set
 
 et créer un secret de webhook toujours avec le flag `--github-webhook`:
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig secret add --git-sshkey-auth`
+`rio secret add --git-sshkey-auth`
 
 ### Déployement pour PR
 
@@ -206,7 +209,7 @@ Avant de voir d'autres façons de déployer votre application, c'est peut-être 
 
 L'installation du Dashboard, mais pour rester dans la simplicité nous pouvons l'installer en une seule commande (`dashboard`):
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig dashboard`
+`rio dashboard`
 
 *Le Dashboard est installé, mais ne répond pas encore ? Attendez encore un peu, le Dashboard prend plus de temps à ce lancer. Vous pouvez vérifier le lancement du Dashboard à l'aide de la commande `rio -n rio-system pods` déjà utilisée précédement*
 
@@ -220,7 +223,7 @@ Avec Rio, il est aussi facile de déployer depuis une image Docker qu'en local. 
 
 Pour déployer par exemple l'image [hello-word de rancher](https://hub.docker.com/r/rancher/hello-world), nous allons utiliser cette commande:
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig run -n hello-word -p 80 rancher/hello-world`
+`rio run -n hello-word -p 80 rancher/hello-world`
 
 Vous pouvez évidement utiliser des variables d'environnement à l'aide des flags `--env` et `--env-file`.
 
@@ -251,15 +254,15 @@ L'emplacement de votre dossier (`./` dans le cas présent) doit bien entendu con
 
 Pour déployer notre application, il ne reste plus qu'à exécuter la commande `up`.
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig up`
+`rio up`
 
 Nous pouvons alors suivre toutes les étapes par lesquelles il procède:
 
 ![local deployment](/assets/img/kubernetes/rio/local-deploy.png)
 
 Vous pouvez exécuter une des 3 étapes par lesquelles il passe vous-même:
-1. `rio --kubeconfig civo-rio-on-civo-kubeconfig build`: build de l'image
-2. `rio --kubeconfig civo-rio-on-civo-kubeconfig run -p 8080 localhost:5442/default/dev:latest` déployer l'image précédemment créée
+1. `rio build`: build de l'image
+2. `rio run -p 8080 localhost:5442/default/dev:latest` déployer l'image précédemment créée
 
 # Scaling
 
@@ -273,7 +276,7 @@ Comme dit plus haut, le scaling se gère à la création d'un service. Il sera a
 
 Vous pouvez modifier le scaling après ça création à l'aide de la commande `scale`.
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig scale hello-word=2`
+`rio scale hello-word=2`
 
 Cela lancera une seconde instance du service "hello-word".
 
@@ -303,7 +306,7 @@ Pour le tester, vous pouvez utiliser l'outil de commande [hey](https://github.co
 
 Vous devriez voir le nombre d'instances (répliquas) monté petit à petit puis avec la commande `ps`:
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
+`rio ps`
 
 ![auto scaling result](/assets/img/kubernetes/rio/auto-scale.png)
 
@@ -323,17 +326,17 @@ Pour créer une règle de routing sur base d'un path, nous allons utiliser la co
 Créons notre première redirection du service **hello-word** sur le sous domaine `test-default` (test = nom du router, default = nom du namespace) sur le path `/hello-word`.
 Autrement dit `https://test-default.<rio-domain>/hello-word`.
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig route add test/hello-word to hello-word`
+`rio route add test/hello-word to hello-word`
 
 Pour vous assurez que la route est bien créée vous pouvez utiliser la commande `routers`:
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig routers`
+`rio routers`
 
 ![router list](/assets/img/kubernetes/rio/routers.png)
 
 Nous pouvons faire de même avec "cd-demo" avec la même commande à une exception près: Nous devons spécifier le port, car cette application écoute sur le port 8080.
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig route add test/cd-demo to cd-demo,port=8080`
+`rio route add test/cd-demo to cd-demo,port=8080`
 
 Nous avons maintenant également une application qui répond sous le chemin `https://test-default.<rio-domain>/cd-demo`
 
@@ -361,7 +364,7 @@ Afin de ne pas avoir de problème de certificats, assurez-vous d'avoir choisi "F
 
 Il ne nous reste plus qu'à enregistrer ce nouveau domaine dans Rio à l'aide de la commande `domain register`.
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig domain register rio.wetry.eu test`
+`rio domain register rio.wetry.eu test`
 
 ![custom dns result](/assets/img/kubernetes/rio/custom-domain-result.png)
 
@@ -375,19 +378,19 @@ Elle est utile pour la communication entre namespaces kubernetes, mais égalemen
 
 Imaginons que nous ayons une application **app2** dans un autre namespace se nommant **namespace2**, il est possible d'y avoir accès par exemple avec le nom **ext2** via la commande `external create` de cette façon:
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig external create ext2 namespace2:app2`
+`rio external create ext2 namespace2:app2`
 
 ## Ip ou nom de domaine
 
 Pour voir accès à un service externe via un nom (par exemple: *ext1*) nous utilisons également la commande `external create` en lui fournissant une/plusieurs IPs ou un nom de domaine:
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig external create ext1 1.1.1.1 2.2.2.2`
+`rio external create ext1 1.1.1.1 2.2.2.2`
 
 # Monitoring
 
 Vous vous souhaitez monitorez votre Rio, il est possible d'avoir accès au Linkerd ainsi que son grafana en utilisant la commande `linkerd` qui crée un proxy entre linkerd et votre réseau local (127.0.0.1).
 
-`rio --kubeconfig civo-rio-on-civo-kubeconfig linkerd`
+`rio linkerd`
 
 **Linkerd**
 
