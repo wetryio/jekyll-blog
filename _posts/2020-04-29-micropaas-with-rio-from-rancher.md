@@ -33,7 +33,12 @@ Il gère pour vous:
 Il s'inscrit typiquement dans le mouvement DevOps et peut fournir une alternative Kubernetes simple aux systèmes tel que CloudFoundry ou les Web Apps Azure.
 
 ### Concepts
-TODO:
+
+Rio introduit quelques de nouveaux concepts que nous allons voir dans cet articles:
+* **Service** : ensemble de conteneurs scalables identiques 
+* **Router** : load-balancing et gestion des règles de traffic
+* **External Service** : enregistrement d'ips ou de nom de domaine dans service mesh
+* **Stack** : représentation d'un Riofile
 
 ## Outils utilisé dans cet article
 1. [Rio](https://rio.io/) de Rancher: Moteur de déploiement d'application pour Kuernetes (toujours en beta)
@@ -361,7 +366,22 @@ Il ne nous reste plus qu'a enregistrer ce nouveau domain dans Rio à l'aide de l
 ![custom dns result](/assets/img/kubernetes/rio/custom-domain-result.png)
 
 # Service externes
-TODO:
+
+Cette fonctionalité a pour but d'éviter de jouer avec des ips ou des domaines dans nos applications/services mais de les gérer à un endroit centralisé.
+
+Elle est utile pour la communication entre namespaces kubernetes mais également pour accéder à des resources réellements externes au cluster.
+
+## Autre namespace
+
+Imaginon que nous ayont une application **app2** dans un autre namespace se nommant **namespace2**, il est possible d'y avoir accès par exemple avec le nom **ext2** via la commance `external create` de cette façon:
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig external create ext2 namespace2:app2`
+
+## Ip ou nom de domaine
+
+Pour voir accès à un service externe via un nom (par exemple: *ext1*) nous utilisons également la commande `external create` en lui fournissant une/plusieurs IPs ou un nom de domaine:
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig external create ext1 1.1.1.1 2.2.2.2`
 
 # Monitoring
 
