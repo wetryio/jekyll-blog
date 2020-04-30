@@ -13,6 +13,9 @@ tags:
 author: dgilson
 ---
 
+Cet article vise à vous expliquer comment expérimenter l'outil Rio qui est un outil comprenant beaucoup de fonctionnalités.
+N'hésitez pas à vous rendre sur la [table des matières](#toc) si vous n'êtes intéressé que par certaines de ces fonctionnalités.
+
 # Prélude
 
 ## Qu'est ce que Rio ?
@@ -25,6 +28,7 @@ Il gère pour vous:
 4. Déploiement Blue/Green
 
 **Image architecture**
+![how rio works](/assets/img/kubernetes/rio/how-it-works-rio.svg)
 
 Il s'inscrit typiquement dans le mouvement DevOps et peut fournir une alternative Kubernetes simple aux systèmes tel que CloudFoundry ou les Web Apps Azure.
 
@@ -299,9 +303,63 @@ Vous devriez voir le nombre d'instance (réplicas) monté petit à petit puis av
 ![auto scaling result](/assets/img/kubernetes/rio/auto-scale.png)
 
 # Router
-TODO:
+
+Rio utilise l'API Gateway [Gloo](https://docs.solo.io/gloo/latest/) qui permet d'ajouter des règles basées sur des headers, path, cookies et encore d'autres.
+
+Commençons par un car concret: donner accès à nos deux applications (cd-demo et hello-word) depuis le même sous domaine avec deux path différents.
+
+Nous allons utiliser la commande `route add`.
+
+Pour créer une règle de routing sur base d'un path, nous allons utiliser la commande de cette façon: `rio route add $name/$path to $target`.
+* `$name`: est à remplacer par le nom du router (est utilisé pour créer un sous domaine)
+* `$path`: est à remplacer par le path sur lequel vous voulez que votre service soit accessible
+* `$target`: est à remplacer par le nom du service vers lequel pointer
+
+Créons notre première redirection du service **hello-word** sur le sous domaine `test-default` (test = nom du router, default = nom du namespace) sur le path `/hello-word`.
+Autrement dit `https://test-default.<rio-domain>/hello-word`.
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig route add test/hello-word to hello-word`
+
+Pour vous assurez que la route est bien créée vous pouvez utiliser la commande `routers`:
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig routers`
+
+![router list](/assets/img/kubernetes/rio/routers.png)
+
+Nous pouvons faire de même avec "cd-demo" avec la même commande à une exception pret: Nous devons spécifier le port car cette application écoute sur le port 8080.
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig route add test/cd-demo to cd-demo,port=8080`
+
+Nous avons maintenant également une application qui répond sous le chemin `https://test-default.<rio-domain>/cd-demo`
+
+***Encore une fois je privilégie le CLI au dashboard mais tout est faisable via ce dernier.***
+
+![router list](/assets/img/kubernetes/rio/dashboard-router.png)
+
+Maintenant que vous avez compris comment le router fonctionnait, je n'ai pas besoin de passer tous les méchanismes en revue. Je vous propose d'aller voir dans la [documentation officielle](https://github.com/rancher/rio/blob/master/docs/router.md) pour informer sur les autres méchanismes.
+
 # Son propre domaine
-TODO:
+
+Pour utiliser son propre domaine, le plus simple est d'ajouter un record `CNAME` vers notre domaine `xxxxxx.on-rio.io` (récupérable depuis la commande `rio info`).
+
+Afin de ne pas avoir de problème de certificats je vous propose d'utilser le service gratuit CloudFlare.
+
+Pour se faire rendez-vous dans la partie DNS pour ajouter le **CNAME**.
+
+![cloudflare dns](/assets/img/kubernetes/rio/cloudflare-dns.png)
+
+Ici j'ai configuré mon domaine pour que "rio.wetry.eu" fasse proxy vers "test-default.4a7p4l.on-rio.io".
+
+Afin de ne pas avoir de problème de certificats, assurez-vous d'avoir choisi "Fexible" comme mode d'encryption. Cela signifie que qu'il y aura une encryption entre notre serveur et cloudflare et une encryption entre cloudflare et notre navigateur mais pas directement entre notre serveur et le navigateur.
+
+![cloudflare certificate](/assets/img/kubernetes/rio/cloudflare-certificate.png)
+
+Il ne nous reste plus qu'a enregistrer ce nouveau domain dans Rio à l'aide de la commande `domain register`.
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig domain register rio.wetry.eu test`
+
+![custom dns result](/assets/img/kubernetes/rio/custom-domain-result.png)
+
 # Service externes
 TODO:
 
