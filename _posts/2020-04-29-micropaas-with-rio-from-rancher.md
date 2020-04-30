@@ -365,6 +365,8 @@ Il ne nous reste plus qu'à enregistrer ce nouveau domaine dans Rio à l'aide de
 
 `rio domain register rio.wetry.eu test`
 
+*"test" est le nom de la route créée précédement*
+
 ![custom dns result](/assets/img/kubernetes/rio/custom-domain-result.png)
 
 # Services externes
