@@ -33,7 +33,7 @@ Il s'inscrit typiquement dans le mouvement DevOps et peut fournir une alternativ
 
 ### Concepts
 
-Rio introduit quelques de nouveaux concepts que nous allons voir dans cet article:
+Avant de commencer, clarifions quelques concepts de Rio:
 * **Service** : ensemble de conteneurs scalables identiques 
 * **Router** : load-balancing et gestion des règles de trafic
 * **External Service** : enregistrement d’Ips ou de nom de domaine dans service mesh
