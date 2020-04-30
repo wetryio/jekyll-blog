@@ -206,15 +206,77 @@ L'installation du Dashboard mais pour rester dans la simplicitée nous pouvons l
 Vous pourrez y retrouver tout ce que vous avez fait jusqu'a maintenant. Le dashboard permet aussi de déployer vos applications sans passer par le CLI.
 
 # Déploiement d'une image Docker
-TODO:
+
+Avec Rio, il est aussi facile de déployer depuis une image Docker qu'en local. Il s'agit de la même commande (`run`) que pour le déploiement via github et Rio détecte automatiquement qu'il ne s'agit pas d'un lien Git mais d'un nom d'image.
+
+Pour déployer par exemple l'image [hello-word de rancher](https://hub.docker.com/r/rancher/hello-world), nous allons utiliser cette commande:
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig run -n hello-word -p 80 rancher/hello-world`
+
+Vous pouvez évidement utiliser des variables d'environement à l'aide des flags `--env` et `--env-file`.
+
+Pour avoir le nom de domaine, vous pouvez utiliser `ps` comme fait précédement ou regarder la liste des services du dashboard.
+
+![rio dashboard service deployed](/assets/img/kubernetes/rio/service-deployed-dashboard.png)
+
 # Déployer une application locale
-TODO:
+
+Ce point est un de ceux que je voulais absolument expérimenter car s'il y a bien quelque chose qui m'embête pour des environements de debugging, c'est le fait de devoir passer par un registry d'images pour pouvoir tester l'application déployée.
+
+Heureusement Rio fait tout pour nous en utilisant un registry local.
+
+J'en profite pour vous parler d'une autre point qui est le `RioFile`. Il s'agit d'un fichier yaml se rapprochant un peu d'un fichier dockercompose.
+
+```yaml
+services:
+  dev:
+    image: ./
+    port: 8080/http
+```
+
+Ce fichier crée un service dont le nom est "dev" en se basant sur `image`. Image peut contenir le nom d'une image disponible dans un registry ou un chemin relatif. Le chemin relatif insique à Rio qu'il doit builder l'image lui même.
+
+Il s'agit du fichier Riofile le plus petit que l'on puisse faire. Il y a 1001 autres options que vous pouvez spécifier dans ce fichier, je vous invite donc à aller les découvrir [dans la doc officielle](https://github.com/rancher/rio/blob/master/docs/riofile.md).
+
+L'emplacement de votre dossier (`./` dans le cas présent) doit bien entendu contenir le code source de l'appliation ainsi qu'un Dockerfile tout comme nous l'avons vu dans la partie [Composition du repo](#Composition-du-repo).
+
+Pour dépployer notre application il ne reste plus qu'a exécuter la commande `up`.
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig up`
+
+Nous pouvons alors suivre toutes les étapes par lesquelles il procède:
+
+![local deployment](/assets/img/kubernetes/rio/local-deploy.png)
+
+Vous pouvez exécuter une des 3 étapes par lesquelles il passe vous même:
+1. `rio --kubeconfig civo-rio-on-civo-kubeconfig build`: build de l'image
+2. `rio --kubeconfig civo-rio-on-civo-kubeconfig run -p 8080 localhost:5442/default/dev:latest` déployer l'image précédement créée
+
 # Scaling
-TODO:
+
+Le scaling est le fait d'avoir plusieurs instances du même service qui tourne afin de pouvoir absorber plus facilement la charge de calcul demandée en la distribuant.
+
+Il se peut se gérer de toutes les manière de créer un service: commande **run** (`--scale`), **Riofile** (`scale` ou `autoscale`) ou encore via le **dashboard**.
+
 ## Manuel
-TODO:
+
+Comme dit plus haut, le scaling se gère à la création d'un service. Il sera automatiquement mis à `1` si vous n'inquez rien.
+
+Vous pouvez modifier le scaling après ça création à l'aide de la commande `scale`.
+
+`rio --kubeconfig civo-rio-on-civo-kubeconfig scale hello-word=2`
+
+Cela lancera une seconde instance du service "hello-word".
+
+![scaling result](/assets/img/kubernetes/rio/after-scale.png)
+
+Ce qui est intéressant avec le hello-word de rancher c'est que vous pouvez tester le load-balancing entre les deux instances en rafraichissant plusieurs fois sa page web. En effet le nom derrière "My hostname is" est unique par instance.
+
+![scaling result](/assets/img/kubernetes/rio/hello-word.png)
+
 ## Automatique
 TODO:
+
 # Router
 TODO:
 # Son propre domaine
