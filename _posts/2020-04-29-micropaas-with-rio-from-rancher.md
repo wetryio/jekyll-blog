@@ -282,7 +282,7 @@ Nous pouvons alors suivre toutes les étapes par lesquelles il procède:
 
 ![local deployment](/assets/img/kubernetes/rio/local-deploy.png)
 
-Vous pouvez exécuter une des 3 étapes par lesquelles il passe vous-même:
+Vous pouvez exécuter une des 2 étapes par lesquelles il passe vous-même:
 1. `rio build`: build de l'image
 2. `rio run -p 8080 localhost:5442/default/dev:latest` déployer l'image précédemment créée
 
