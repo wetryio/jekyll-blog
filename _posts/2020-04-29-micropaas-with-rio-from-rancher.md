@@ -223,7 +223,7 @@ rio run -p 8080 -n example-cd --build-webhook-secret=githubtoken --build-pr --te
 
 Avant de voir d'autres façons de déployer votre application, c'est peut-être le moment de vous informer qu'il existe un dashboard web vous permettant de monitorer visuellement vos applications.
 
-L'installation du Dashboard, mais pour rester dans la simplicité nous pouvons l'installer en une seule commande (`dashboard`):
+Pour rester dans la simplicité nous pouvons l'installer en une seule commande (`dashboard`):
 
 ```sh
 rio dashboard
