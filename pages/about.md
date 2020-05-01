@@ -12,9 +12,8 @@ menu: true
 
 Développeur depuis toujours.
 Azure Addict, Microsoft Fan Boy.
-Azure Badger Mentor
 
-(https://enjinx.io/eth/asset/63151533 "Azure Badger Mentor")
+[Azure Badger Mentor](https://enjinx.io/eth/asset/63151533)
 
 <small>
 *Software engineer & Architect @Ingenico.*
