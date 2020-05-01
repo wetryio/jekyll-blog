@@ -69,22 +69,26 @@ Une fois l'attente terminée, vous allez pouvoir télécharger le kubeconfig afi
 ![download kubefilr](/assets/img/kubernetes/rio/download-kubefile.png)
 
 Ayant nommé mon cluster "Rio on Civo", le fichier fourni s'appelle "civo-rio-on-civo-kubeconfig".
-Vous pourrez utiliser ce fichier facilement en ajoutant le paramètre `--kubeconfig` à chaque CLI kubernetes.
+Vous pourrez utiliser ce fichier facilement en ajoutant le paramètre `--kubeconfig` à chaque CLI kubernetes ou en utilisant la variable d'environnement `KUBECONFIG`.
 
 Exemples:
 * `kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A`
 * `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
+Ou
+* `export KUBECONFIG=civo-rio-on-civo-kubeconfig`
+* `kubectl get pods -A`
+* `rio ps`
 
-***Afin de pouvoir mieux nous concentrer sur les commandes, je ne mettrai pas la configuration `--kubeconfig` dans les prochaines commandes de l'article mais garder en tête qu'il faut l'ajouter à chaque fois derrière le mot `rio`.
-Par exemple, `rio ps` dans l'article dois être exécuté `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`.***
+***Afin de pouvoir mieux nous concentrer sur les commandes, j'utilise la variable d'environnement et donc ne spécifierais pas la configuration `--kubeconfig` dans la suite de l'article. Si vous ne savez pas comment créer une variable d'environnement sur votre OS, ajouter le flag à chaque fois derrière le mot `rio`.
+Par exemple, `rio ps` dans l'article donne `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`.***
 
 # Installation de RIO
 
 ## Rio CLI
 
-Le CLI Rio est compatible avec tous les OS tournant sur amd64 ou arm.
+Le CLI Rio s'installe sur votre machine locale et est compatible avec tous les OS tournant sur amd64 ou arm.
 
-Vous pouvez utiliser la commande `curl -sfL https://get.rio.io | sh -` (le script détect automatiquement la release à utiliser) ou l'installer manuellement en téléchargeant la realease compatible avec votre OS [ici](https://github.com/rancher/rio/releases). J'ai personnellement choisi le script étant sous macOS.
+Vous pouvez utiliser la commande `curl -sfL https://get.rio.io | sh -` (le script détect automatiquement la release à utiliser) ou l'installer manuellement en téléchargeant la realease compatible avec votre OS local [ici](https://github.com/rancher/rio/releases). J'ai personnellement choisi le script étant sous macOS.
 
 ## Installation sur le cluster
 
@@ -239,10 +243,10 @@ Vous pourrez y retrouver tout ce que vous avez fait jusqu'a maintenant. Le dashb
 
 Avec Rio, il est aussi facile de déployer depuis une image Docker qu'en local. Il s'agit de la même commande (`run`) que pour le déploiement via github et Rio détecte automatiquement qu'il ne s'agit pas d'un lien Git, mais d'un nom d'image.
 
-Pour déployer par exemple l'image [hello-word de rancher](https://hub.docker.com/r/rancher/hello-world), nous allons utiliser cette commande:
+Pour déployer par exemple l'image [hello-world de rancher](https://hub.docker.com/r/rancher/hello-world), nous allons utiliser cette commande:
 
 ```sh
-rio run -n hello-word -p 80 rancher/hello-world
+rio run -n hello-world -p 80 rancher/hello-world
 ```
 
 Vous pouvez évidement utiliser des variables d'environnement à l'aide des flags `--env` et `--env-file`.
@@ -299,10 +303,10 @@ Comme dit plus haut, le scaling se gère à la création d'un service. Il sera a
 Vous pouvez modifier le scaling après ça création à l'aide de la commande `scale`.
 
 ```sh
-rio scale hello-word=2
+rio scale hello-world=2
 ```
 
-Cela lancera une seconde instance du service "hello-word".
+Cela lancera une seconde instance du service "hello-world".
 
 ![scaling result](/assets/img/kubernetes/rio/after-scale.png)
 
@@ -310,9 +314,9 @@ Vous pouvez également le faire via le dashboard.
 
 ![scaling result](/assets/img/kubernetes/rio/scaling-dashboard.png)
 
-Ce qui est intéressant avec le hello-word de rancher c'est que vous pouvez tester le load-balancing entre les deux instances en rafraichissant plusieurs fois sa page web. En effet le nom derrière "My hostname is" est unique par instance.
+Ce qui est intéressant avec le hello-world de rancher c'est que vous pouvez tester le load-balancing entre les deux instances en rafraichissant plusieurs fois sa page web. En effet le nom derrière "My hostname is" est unique par instance.
 
-![scaling result](/assets/img/kubernetes/rio/hello-word.png)
+![scaling result](/assets/img/kubernetes/rio/hello-world.png)
 
 ## Automatique
 
@@ -327,7 +331,7 @@ Attention qu'avec l'auto-scaling froid il y aura une latence de +/- 10 secondes 
 Pour le tester, vous pouvez utiliser l'outil de commande [hey](https://github.com/rakyll/hey) qui permet de créer un grand nombre de connections simultanées:
 
 ```sh
-hey -z 3m -c 100 https://hello-word-v0-default.4a7p4l.on-rio.io/
+hey -z 3m -c 100 https://hello-world-v0-default.4a7p4l.on-rio.io/
 ```
 
 Vous devriez voir le nombre d'instances (répliquas) monté petit à petit puis avec la commande `ps`:
@@ -342,7 +346,7 @@ rio ps
 
 Rio utilise l'API Gateway [Gloo](https://docs.solo.io/gloo/latest/) qui permet d'ajouter des règles basées sur des headers, path, cookies et encore d'autres.
 
-Commençons par un cas concret: donner accès à nos deux applications (cd-demo et hello-word) depuis le même sous domaine avec deux path différents.
+Commençons par un cas concret: donner accès à nos deux applications (cd-demo et hello-world) depuis le même sous domaine avec deux path différents.
 
 Nous allons utiliser la commande `route add`.
 
@@ -351,11 +355,11 @@ Pour créer une règle de routing sur base d'un path, nous allons utiliser la co
 * `$path`: est à remplacer par le path sur lequel vous voulez que votre service soit accessible
 * `$target`: est à remplacer par le nom du service vers lequel pointer
 
-Créons notre première redirection du service **hello-word** sur le sous domaine `test-default` (test = nom du router, default = nom du namespace) sur le path `/hello-word`.
-Autrement dit `https://test-default.<rio-domain>/hello-word`.
+Créons notre première redirection du service **hello-world** sur le sous domaine `test-default` (test = nom du router, default = nom du namespace) sur le path `/hello-world`.
+Autrement dit `https://test-default.<rio-domain>/hello-world`.
 
 ```sh
-rio route add test/hello-word to hello-word
+rio route add test/hello-world to hello-world
 ```
 
 Pour vous assurez que la route est bien créée vous pouvez utiliser la commande `routers`:
@@ -443,6 +447,10 @@ rio linkerd
 **Grafana**
 
 ![grafana](/assets/img/kubernetes/rio/grafana.png)
+
+# Suite
+
+Une seconde partie arrivera plus tard car il nous reste encore d'autres fonctionnaliés à voir.
 
 ---
 <div class="gratitude">
