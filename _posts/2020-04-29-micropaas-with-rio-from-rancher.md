@@ -4,8 +4,7 @@ layout: post
 title: "MicroPaaS with Rio from Rancher"
 subtitle:
 description:
-image:
-optimized_image:
+image: /assets/img/kubernetes/rio/top.png
 category: 'experimentation'
 tags:
     - kubernetes
