@@ -1,9 +1,9 @@
 ---
 date: 2020-04-29 18:37:17
 layout: post
-title: "MicroPaaS with Rio from Rancher"
+title: "MicroPaaS avec Rio de Rancher"
 subtitle:
-description:
+description: Qu'est-ce que Rio et comment l'utiliser ?
 image: /assets/img/kubernetes/rio/top.png
 category: 'experimentation'
 tags:
