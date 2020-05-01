@@ -290,7 +290,7 @@ Vous pouvez exécuter une des 2 étapes par lesquelles il passe vous-même:
 
 Le scaling est le fait d'avoir plusieurs instances du même service qui tourne afin de pouvoir absorber plus facilement la charge de calcul demandée en la distribuant.
 
-Il se peut se gérer de toutes les manières de créer un service: commande **run** (`--scale`), **Riofile** (`scale` ou `autoscale`) ou encore via le **dashboard**.
+Il peut se gérer de toutes les manières de créer un service: commande **run** (`--scale`), **Riofile** (`scale` ou `autoscale`) ou encore via le **dashboard**.
 
 ## Manuel
 
@@ -316,13 +316,13 @@ Ce qui est intéressant avec le hello-word de rancher c'est que vous pouvez test
 
 ## Automatique
 
-Le mot "scaling automatique" peut vous sembler compliqué dans un premier abord, et pourtant avec Rio c'est aussi simple que le scaling manuel. La seule différence est que nous devons préciser un range (exemple: `1-10`).
+Le mot "scaling automatique" peut vous sembler compliqué d'un premier abord, et pourtant avec Rio c'est aussi simple que le scaling manuel. La seule différence est que nous devons préciser un range (exemple: `1-10`).
 
 Il existe deux types d'auto-scaling:
 * froid (depuis 0): `0-10`
 * chaud (depuis au moins 1): `1-10`
 
-Attention qu'avec l'auto-scaling froid il y aura une latence de +/- 10 secondes le temps qu'un noeud se lance si aucun n'est lancé.
+Attention qu'avec l'auto-scaling froid il y aura une latence de +/- 10 secondes le temps qu'une instance se lance si aucun n'est lancé.
 
 Pour le tester, vous pouvez utiliser l'outil de commande [hey](https://github.com/rakyll/hey) qui permet de créer un grand nombre de connections simultanées:
 
@@ -342,7 +342,7 @@ rio ps
 
 Rio utilise l'API Gateway [Gloo](https://docs.solo.io/gloo/latest/) qui permet d'ajouter des règles basées sur des headers, path, cookies et encore d'autres.
 
-Commençons par un car concret: donner accès à nos deux applications (cd-demo et hello-word) depuis le même sous domaine avec deux path différents.
+Commençons par un cas concret: donner accès à nos deux applications (cd-demo et hello-word) depuis le même sous domaine avec deux path différents.
 
 Nous allons utiliser la commande `route add`.
 
