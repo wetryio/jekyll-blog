@@ -3,9 +3,9 @@ layout: main
 ---
 
 {% if site.paginate %}
-    {% assign posts = paginator.posts | where_exp:"post","post.is_generated != true" %}
+    {% assign posts = paginator.posts | where_exp:"post","post.is_generated != true" | where_exp:"post","post.hidden != true" %}
 {% else %}
-    {% assign posts = site.posts | where_exp:"post","post.is_generated != true" %}
+    {% assign posts = site.posts | where_exp:"post","post.is_generated != true" | where_exp:"post","post.hidden != true" %}
 {% endif %}
 
 {% if site.show_hero %}
