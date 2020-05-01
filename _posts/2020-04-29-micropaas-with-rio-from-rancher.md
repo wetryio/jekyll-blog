@@ -12,6 +12,8 @@ tags:
 author: dgilson
 ---
 
+<small>*You can find the english version [here](/micropaas-with-rio-from-rancher-en).*</small>
+
 Cet article vise à vous expliquer comment expérimenter l'outil Rio qui comprenant beaucoup de fonctionnalités.
 N'hésitez pas à vous rendre sur la [table des matières](#toc) si vous n'êtes intéressé que par certaines parties.
 
@@ -39,9 +41,9 @@ Avant de commencer, clarifions quelques concepts de Rio:
 * **Stack** : représentation d'un Riofile
 
 ## Outils utilisés dans cet article
-1. [Rio](https://rio.io/) de Rancher: Moteur de déploiement d'application pour Kuernetes (toujours en beta)
+1. [Rio](https://rio.io/) de Rancher: Moteur de déploiement d'application pour Kubernetes (toujours en beta)
 2. [Civo](https://www.civo.com/): Plateforme Cloud provenant du Royaume-Uni qui propose un moyen de déployer des clusters [k3s](https://k3s.io/) en quelques secondes (toujours en beta)
-3. [Cloudflare](https://www.cloudflare.com/): proxy avec parfeu, gestion de certificats et gestionaire de domaines
+3. [Cloudflare](https://www.cloudflare.com/): proxy avec parfeu, gestion de certificats et gestionnaire de domaines
 
 ## Pourquoi avons-nous besoin d'un cluster en ligne
 Rio s'occupe de beaucoup de choses pour nous dont l'attribution d'un nom de domaine "on-rio" ainsi que son certificat wild-card (intéressants aussi bien pour les environnements de développement que de production).
@@ -177,7 +179,7 @@ Comme dit plus haut, les autres commandes ne changent pas.
 
 ### Authentification SSH
 
-Pour engesitrer la clé SSH, vous devez également utiliser la commande `secret` mais avec le flag `--git-sshkey-auth`:
+Pour enregistrer la clé SSH, vous devez également utiliser la commande `secret` mais avec le flag `--git-sshkey-auth`:
 
 ```sh
 rio secret create --git-sshkey-auth
@@ -207,13 +209,13 @@ Pour ce faire il faut créer un access token sur [Github](https://github.com/set
 
 ![github access token](/assets/img/kubernetes/rio/github-token.png)
 
-et créer un secret de webhook toujours avec le flag `--github-webhook`:
+et créer un secret de webhook toujours avec la même commande et le flag `--github-webhook`:
 
 ```sh
 rio secret add --git-sshkey-auth
 ```
 
-### Déployement pour PR
+### Déploiement pour PR
 
 Utilisez la commande `run` avec un nouveau flag `--build-pr`
 
@@ -237,7 +239,7 @@ rio dashboard
 
 ![rio dashboard](/assets/img/kubernetes/rio/dashboard.png)
 
-Vous pourrez y retrouver tout ce que vous avez fait jusqu'a maintenant. Le dashboard permet aussi de déployer vos applications sans passer par le CLI.
+Vous pourrez y retrouver tout ce que vous avez fait jusqu'a maintenant. Le dashboard permet aussi de déployer vos applications sans passer par le CLI mais est moins stable. Rappelons nous qu'il s'agit d'une version beta.
 
 # Déploiement d'une image Docker
 
@@ -300,7 +302,7 @@ Il peut se gérer de toutes les manières de créer un service: commande **run**
 
 Comme dit plus haut, le scaling se gère à la création d'un service. Il sera automatiquement mis à `1` si vous n'indiquez rien.
 
-Vous pouvez modifier le scaling après ça création à l'aide de la commande `scale`.
+Vous pouvez modifier le scaling après sa création à l'aide de la commande `scale`.
 
 ```sh
 rio scale hello-world=2
@@ -334,7 +336,7 @@ Pour le tester, vous pouvez utiliser l'outil de commande [hey](https://github.co
 hey -z 3m -c 100 https://hello-world-v0-default.4a7p4l.on-rio.io/
 ```
 
-Vous devriez voir le nombre d'instances (répliquas) monté petit à petit puis avec la commande `ps`:
+Vous devriez voir le nombre d'instances (répliquas) monter petit à petit puis avec la commande `ps`:
 
 ```sh
 rio ps
@@ -386,9 +388,9 @@ Maintenant que vous avez compris comment le router fonctionnait, je n'ai pas bes
 
 # Votre domaine
 
-Pour utiliser votre propre domaine, le plus simple est d'ajouter un record `CNAME` vers notre domaine `xxxxxx.on-rio.io` (récupérable depuis la commande `rio info`).
+Pour utiliser votre propre domaine, le plus simple est d'ajouter un record `CNAME` vers votre domaine `xxxxxx.on-rio.io` (récupérable depuis la commande `rio info`).
 
-Afin de ne pas avoir de problème de certificats je vous propose d'utiliser le service gratuit CloudFlare.
+Afin de ne pas avoir de problèmes de certificat je vous propose d'utiliser le service gratuit CloudFlare.
 
 Pour se faire, rendez-vous dans la partie DNS pour ajouter le **CNAME**.
 
@@ -406,7 +408,7 @@ Il ne nous reste plus qu'à enregistrer ce nouveau domaine dans Rio à l'aide de
 rio domain register rio.wetry.eu test
 ```
 
-*"test" est le nom de la route créée précédement*
+*"test" est le nom de la route créée précédemment*
 
 ![custom dns result](/assets/img/kubernetes/rio/custom-domain-result.png)
 
@@ -426,7 +428,7 @@ rio external create ext2 namespace2:app2
 
 ## Ip ou nom de domaine
 
-Pour voir accès à un service externe via un nom (par exemple: *ext1*) nous utilisons également la commande `external create` en lui fournissant une/plusieurs IPs ou un nom de domaine:
+Pour avoir accès à un service externe via un nom (par exemple: *ext1*) nous utilisons également la commande `external create` en lui fournissant une/plusieurs IPs ou un nom de domaine:
 
 ```sh
 rio external create ext1 1.1.1.1 2.2.2.2
@@ -434,7 +436,7 @@ rio external create ext1 1.1.1.1 2.2.2.2
 
 # Monitoring
 
-Vous vous souhaitez monitorez votre Rio, il est possible d'avoir accès au Linkerd ainsi que son grafana en utilisant la commande `linkerd` qui crée un proxy entre linkerd et votre réseau local (127.0.0.1).
+Si vous souhaitez monitorez votre Rio, il est possible d'avoir accès au Linkerd ainsi que son grafana en utilisant la commande `linkerd` qui crée un proxy entre linkerd et votre réseau local (127.0.0.1).
 
 ```sh
 rio linkerd
@@ -450,7 +452,7 @@ rio linkerd
 
 # Suite
 
-Une seconde partie arrivera plus tard car il nous reste encore d'autres fonctionnaliés à voir.
+Une seconde partie de cet article arrivera plus tard car il nous reste encore quelques fonctionnaliés de cet excelent outil à voir.
 
 ---
 <div class="gratitude">
