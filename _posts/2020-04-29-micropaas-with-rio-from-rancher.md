@@ -85,17 +85,19 @@ Par exemple, `rio ps` dans l'article dois être exécuté `rio --kubeconfig civo
 
 Le CLI Rio est compatible avec tous les OS tournant sur amd64 ou arm.
 
-Vous pouvez utiliser la commande `curl -sfL https://get.rio.io | sh -` (le script détect automatiquement la release à utiliser) ou l'installer manuellemnt en téléchargeant la realease compatible avec votre OS [ici](https://github.com/rancher/rio/releases). J'ai personnellement choisi le script étant sous macOS.
+Vous pouvez utiliser la commande `curl -sfL https://get.rio.io | sh -` (le script détect automatiquement la release à utiliser) ou l'installer manuellement en téléchargeant la realease compatible avec votre OS [ici](https://github.com/rancher/rio/releases). J'ai personnellement choisi le script étant sous macOS.
 
 ## Installation sur le cluster
 
 L'installation sur le cluster est aussi simple que celle du CLI, une commande suffit (`install`):
 
-`rio install --email your@email.com`
+```sh
+rio install --email your@email.com
+```
 
 Le flag `--email` sera utilisé pour la demande de certificat à Let's Encrypt.
 
-Par défaut tous les services sont installés. Vous pouvez en désactiver en utilisant le flag `--disable-features`.
+Par défaut tous les [services](https://github.com/rancher/rio/blob/master/docs/install.md#features) sont installés. Vous pouvez en désactiver en utilisant le flag `--disable-features`.
 Si vous utilisez votre propre domaine et certificat wild-card vous pouvez par exemple ajouter `--disable-features rdns,letsencrypt` à votre commande.
 
 Vous pouvez également avoir plus de paramètre si vous le souhaitez en utilisant le flag `--yaml` qui crée un yaml sans l'appliquer. Vous devrez alors l'appliquer après avoir effectué les modifications souhaitées.
@@ -104,7 +106,9 @@ Vous pouvez également avoir plus de paramètre si vous le souhaitez en utilisan
 
 Vous pouvez vérifier que tout s'est bien passé avec cette commande (`pods`):
 
-`rio -n rio-system pods`.
+```sh
+rio -n rio-system pods
+```
 
 ![Great Success](/assets/img/kubernetes/rio/borat-success.gif)
 
@@ -127,14 +131,18 @@ Cette découpe montre une autre force des conteneurs qui est de pouvoir créer u
 
 Le repo étant publique nous n'avons qu’à exécuter une commande (`run`) en faisant référence à celui-ci.
 
-`rio run -n cd-demo -p 8080 https://github.com/rancher/rio-demo`
+```sh
+rio run -n cd-demo -p 8080 https://github.com/rancher/rio-demo
+```
 
 Ici nous avons décidé de publier notre service avec le nom "cd-demo" et nous mappons le port 8080 au port publique 80.
 Il est également possible de mapper d'autres ports en utilisant par exemple `-p 81:8081`.
 
 Il ne vous reste plus qu’à exécuter la commande `ps` pour récupérer les informations de l'application que vous venez de déployer.
 
-`rio ps`
+```sh
+rio ps
+```
 
 ![rio ps result](/assets/img/kubernetes/rio/rio-ps.png)
 
@@ -143,7 +151,7 @@ Accédez à l'url indiquée quand le build et le déploiement sont terminés et 
 ![rio service deploy result](/assets/img/kubernetes/rio/rio-service-deployed.png)
 
 
-Avec cette commande unique vous avez non seulement générer et déployer votre application, mais vous avez activé un **déploiement continu,** car Rio va vérifier toutes les 15 secondes s'il doit mettre à jour l'application.
+Avec cette commande unique vous avez non seulement générer et déployer votre application, mais vous avez activé un **déploiement continu,** car Rio va vérifier toutes les 15 secondes si un changement a été effectué sur git afin mettre à jour l'application.
 
 Vous pouvez ainsi exécuter plusieurs fois cette commande pour plusieurs namespaces avec des branches différentes afin de déployer vos différents environnements.
 
@@ -157,7 +165,9 @@ Cette méthode permet d'utiliser les autres commandes comme précédemment sans 
 
 Pour enregistrer vos données d'authentification dans Rio, utilisez la commande (`secret`):
 
-`rio secret create --git-basic-auth`
+```sh
+rio secret create --git-basic-auth
+```
 
 Vous devrez indiquer une URL informer sur quelle git appliquer ce secret.
 Comme dit plus haut, les autres commandes ne changent pas.
@@ -166,11 +176,15 @@ Comme dit plus haut, les autres commandes ne changent pas.
 
 Pour engesitrer la clé SSH, vous devez également utiliser la commande `secret` mais avec le flag `--git-sshkey-auth`:
 
-`rio secret create --git-sshkey-auth`
+```sh
+rio secret create --git-sshkey-auth
+```
 
 La commande pour lancer un service change un peu afin d'informer qu'il faut utiliser une connexion SSH:
 
-`rio run --build-clone-secret gitcredential-ssh -p 8080 git@github.com/rancher/rio-demo`
+```sh
+rio run --build-clone-secret gitcredential-ssh -p 8080 git@github.com/rancher/rio-demo
+```
 
 ### Autres secrets
 
@@ -192,13 +206,17 @@ Pour ce faire il faut créer un access token sur [Github](https://github.com/set
 
 et créer un secret de webhook toujours avec le flag `--github-webhook`:
 
-`rio secret add --git-sshkey-auth`
+```sh
+rio secret add --git-sshkey-auth
+```
 
 ### Déployement pour PR
 
 Utilisez la commande `run` avec un nouveau flag `--build-pr`
 
-`rio run -p 8080 -n example-cd --build-webhook-secret=githubtoken --build-pr --template https://github.com/rancher/rio-demo`
+```sh
+rio run -p 8080 -n example-cd --build-webhook-secret=githubtoken --build-pr --template https://github.com/rancher/rio-demo
+```
 
 *Envie d'en savoir plus sur `--template` ? C'est par [ici](https://github.com/rancher/rio/blob/master/docs/continuous-deployment.md#automatic-versioning).*
 
@@ -208,7 +226,9 @@ Avant de voir d'autres façons de déployer votre application, c'est peut-être 
 
 L'installation du Dashboard, mais pour rester dans la simplicité nous pouvons l'installer en une seule commande (`dashboard`):
 
-`rio dashboard`
+```sh
+rio dashboard
+```
 
 *Le Dashboard est installé, mais ne répond pas encore ? Attendez encore un peu, le Dashboard prend plus de temps à ce lancer. Vous pouvez vérifier le lancement du Dashboard à l'aide de la commande `rio -n rio-system pods` déjà utilisée précédement*
 
@@ -222,7 +242,9 @@ Avec Rio, il est aussi facile de déployer depuis une image Docker qu'en local. 
 
 Pour déployer par exemple l'image [hello-word de rancher](https://hub.docker.com/r/rancher/hello-world), nous allons utiliser cette commande:
 
-`rio run -n hello-word -p 80 rancher/hello-world`
+```sh
+rio run -n hello-word -p 80 rancher/hello-world
+```
 
 Vous pouvez évidement utiliser des variables d'environnement à l'aide des flags `--env` et `--env-file`.
 
@@ -253,7 +275,9 @@ L'emplacement de votre dossier (`./` dans le cas présent) doit bien entendu con
 
 Pour déployer notre application, il ne reste plus qu'à exécuter la commande `up`.
 
-`rio up`
+```sh
+rio up
+```
 
 Nous pouvons alors suivre toutes les étapes par lesquelles il procède:
 
@@ -275,7 +299,9 @@ Comme dit plus haut, le scaling se gère à la création d'un service. Il sera a
 
 Vous pouvez modifier le scaling après ça création à l'aide de la commande `scale`.
 
-`rio scale hello-word=2`
+```sh
+rio scale hello-word=2
+```
 
 Cela lancera une seconde instance du service "hello-word".
 
@@ -301,11 +327,15 @@ Attention qu'avec l'auto-scaling froid il y aura une latence de +/- 10 secondes 
 
 Pour le tester, vous pouvez utiliser l'outil de commande [hey](https://github.com/rakyll/hey) qui permet de créer un grand nombre de connections simultanées:
 
-`hey -z 3m -c 100 https://hello-word-v0-default.4a7p4l.on-rio.io/`
+```sh
+hey -z 3m -c 100 https://hello-word-v0-default.4a7p4l.on-rio.io/
+```
 
 Vous devriez voir le nombre d'instances (répliquas) monté petit à petit puis avec la commande `ps`:
 
-`rio ps`
+```sh
+rio ps
+```
 
 ![auto scaling result](/assets/img/kubernetes/rio/auto-scale.png)
 
@@ -325,17 +355,23 @@ Pour créer une règle de routing sur base d'un path, nous allons utiliser la co
 Créons notre première redirection du service **hello-word** sur le sous domaine `test-default` (test = nom du router, default = nom du namespace) sur le path `/hello-word`.
 Autrement dit `https://test-default.<rio-domain>/hello-word`.
 
-`rio route add test/hello-word to hello-word`
+```sh
+rio route add test/hello-word to hello-word
+```
 
 Pour vous assurez que la route est bien créée vous pouvez utiliser la commande `routers`:
 
-`rio routers`
+```sh
+rio routers
+```
 
 ![router list](/assets/img/kubernetes/rio/routers.png)
 
 Nous pouvons faire de même avec "cd-demo" avec la même commande à une exception près: Nous devons spécifier le port, car cette application écoute sur le port 8080.
 
-`rio route add test/cd-demo to cd-demo,port=8080`
+```sh
+rio route add test/cd-demo to cd-demo,port=8080
+```
 
 Nous avons maintenant également une application qui répond sous le chemin `https://test-default.<rio-domain>/cd-demo`
 
@@ -363,7 +399,9 @@ Afin de ne pas avoir de problème de certificats, assurez-vous d'avoir choisi "F
 
 Il ne nous reste plus qu'à enregistrer ce nouveau domaine dans Rio à l'aide de la commande `domain register`.
 
-`rio domain register rio.wetry.eu test`
+```sh
+rio domain register rio.wetry.eu test
+```
 
 *"test" est le nom de la route créée précédement*
 
@@ -379,19 +417,25 @@ Elle est utile pour la communication entre namespaces kubernetes, mais égalemen
 
 Imaginons que nous ayons une application **app2** dans un autre namespace se nommant **namespace2**, il est possible d'y avoir accès par exemple avec le nom **ext2** via la commande `external create` de cette façon:
 
-`rio external create ext2 namespace2:app2`
+```sh
+rio external create ext2 namespace2:app2
+```
 
 ## Ip ou nom de domaine
 
 Pour voir accès à un service externe via un nom (par exemple: *ext1*) nous utilisons également la commande `external create` en lui fournissant une/plusieurs IPs ou un nom de domaine:
 
-`rio external create ext1 1.1.1.1 2.2.2.2`
+```sh
+rio external create ext1 1.1.1.1 2.2.2.2
+```
 
 # Monitoring
 
 Vous vous souhaitez monitorez votre Rio, il est possible d'avoir accès au Linkerd ainsi que son grafana en utilisant la commande `linkerd` qui crée un proxy entre linkerd et votre réseau local (127.0.0.1).
 
-`rio linkerd`
+```sh
+rio linkerd
+```
 
 **Linkerd**
 
