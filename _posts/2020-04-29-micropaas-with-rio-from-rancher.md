@@ -46,7 +46,7 @@ Avant de commencer, clarifions quelques concepts de Rio:
 ## Pourquoi avons-nous besoin d'un cluster en ligne
 Rio s'occupe de beaucoup de choses pour nous dont l'attribution d'un nom de domaine "on-rio" ainsi que son certificat wild-card (intéressants aussi bien pour les environnements de développement que de production).
 
-Pour que Rio puisse nous fournir cela, vous devez disposer d'une IP fixe publique.
+Pour que Rio puisse vous fournir cela, vous devez disposer d'une IP fixe publique.
 
 # Mise en place du cluster Kubernetes
 Pour créer notre cluster, rendez-vous sur l'interface de Civo. Nous avons le choix sur la taille du cluster ainsi que la puissance de chaque noeud.
