@@ -41,7 +41,7 @@ Avant de commencer, clarifions quelques concepts de Rio:
 ## Outils utilisés dans cet article
 1. [Rio](https://rio.io/) de Rancher: Moteur de déploiement d'application pour Kuernetes (toujours en beta)
 2. [Civo](https://www.civo.com/): Plateforme Cloud provenant du Royaume-Uni qui propose un moyen de déployer des clusters [k3s](https://k3s.io/) en quelques secondes (toujours en beta)
-3. [Cloudflare](https://www.cloudflare.com/): reverse proxy avec parfeu et gestion de certificats
+3. [Cloudflare](https://www.cloudflare.com/): proxy avec parfeu, gestion de certificats et gestionaire de domaines
 
 ## Pourquoi avons-nous besoin d'un cluster en ligne
 Rio s'occupe de beaucoup de choses pour nous dont l'attribution d'un nom de domaine "on-rio" ainsi que son certificat wild-card (intéressants aussi bien pour les environnements de développement que de production).
