@@ -76,7 +76,9 @@ Vous pourrez utiliser ce fichier facilement en ajoutant le paramètre `--kubecon
 Exemples:
 * `kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A`
 * `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
+
 Ou
+
 * `export KUBECONFIG=civo-rio-on-civo-kubeconfig`
 * `kubectl get pods -A`
 * `rio ps`
