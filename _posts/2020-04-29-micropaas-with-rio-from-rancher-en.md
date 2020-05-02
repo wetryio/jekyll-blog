@@ -77,7 +77,9 @@ You can easily use this file by adding the `--kubeconfig` parameter to each kube
 Examples:
 * `kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A`
 * `rio --kubeconfig civo-rio-on-civo-kubeconfig ps`
+
 Or
+
 * `export KUBECONFIG=civo-rio-on-civo-kubeconfig`
 * `kubectl get pods -A`
 * `rio ps`
