@@ -67,7 +67,7 @@ We can now click on the "Create" button and wait a few seconds for our cluster t
 
 ![civo creation](/assets/img/kubernetes/rio/creation.png)
 
-Once the wait is over, you will be able to download the kubeconfig in order to access to the cluster from the `kubectl` CLI.
+Once the wait is over, you will be able to download the kubeconfig to allow you to access to the cluster from the `kubectl` CLI.
 
 ![download kubefilr](/assets/img/kubernetes/rio/download-kubefile.png)
 
@@ -161,7 +161,7 @@ Go to the indicated url when the build and deployment are complete and you shoul
 
 With this unique command you have not only generated and deployed your application but you have activated a **continuous deployment** because Rio will check every 15 seconds if a change has been made on git in order to update the application.
 
-You can thus execute this command several times for several namespaces with different branches in order to deploy your different environments.
+You can thus execute this command several times for several namespaces with different branches to deploy your different environments.
 
 ## Use a private (secure) Git
 
