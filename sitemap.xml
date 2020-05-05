@@ -134,7 +134,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2020-05-01</lastmod>
+                <lastmod>2020-05-05</lastmod>
             
         </url>
     
@@ -242,6 +242,20 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/micropaas-with-rio-from-rancher/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2020-05-05</lastmod>
+        </url>
+    
+        <url>
+            <loc>https://wetry.tech/micropaas-with-rio-from-rancher-en/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2020-05-05</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/dev-container/</loc>

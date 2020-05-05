@@ -2,6 +2,22 @@
   
   
     {
+      "title"    : "MicroPaaS avec Rio de Rancher",
+      "tags"     : "kubernetes and paas",
+      "categories" : "experimentation",
+      "url"      : "/micropaas-with-rio-from-rancher/",
+      "date"     : "05/05/2020"
+    } ,
+  
+    {
+      "title"    : "MicroPaaS with Rio from Rancher",
+      "tags"     : "kubernetes and paas",
+      "categories" : "experimentation",
+      "url"      : "/micropaas-with-rio-from-rancher-en/",
+      "date"     : "05/05/2020"
+    } ,
+  
+    {
       "title"    : "Accès rapide à un environnement de développement",
       "tags"     : "devcontainer, docker, vscode, and open source",
       "categories" : "experimentation",

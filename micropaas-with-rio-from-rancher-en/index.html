@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    <title>MicroPaaS with Rio from Rancher | WeTry</title>
+    <meta name="description" content="What is Rio and how to use it?">
+    
+        <meta name="keywords" content="kubernetes, paas">
+    
+
+    <!-- Social: Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MicroPaaS with Rio from Rancher | WeTry">
+    <meta name="twitter:description" content="What is Rio and how to use it?">
+    <meta property="twitter:image:src" content="https://wetry.tech/assets/img/kubernetes/rio/top.png">
+    
+
+    <!-- Social: Facebook / Open Graph -->
+    <meta property="og:url" content="https://wetry.tech/micropaas-with-rio-from-rancher-en/">
+    <meta property="og:title" content="MicroPaaS with Rio from Rancher | WeTry">
+    <meta property="og:image" content="https://wetry.tech/assets/img/kubernetes/rio/top.png">
+    <meta property="og:description" content="What is Rio and how to use it?">
+    <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/icons/apple-touch-icon-152x152.png" />
+
+    <!-- Windows 8 Tile Icons -->
+    <meta name="application-name" content="WeTry">
+    <meta name="msapplication-TileColor" content="#ff0a16">
+    <meta name="msapplication-square70x70logo" content="smalltile.png" />
+    <meta name="msapplication-square150x150logo" content="mediumtile.png" />
+    <meta name="msapplication-wide310x150logo" content="widetile.png" />
+    <meta name="msapplication-square310x310logo" content="largetile.png" />
+    
+    <!-- Android Lolipop Theme Color -->
+    <meta name="theme-color" content="#ff0a16">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="canonical" href="https://wetry.tech/micropaas-with-rio-from-rancher-en/">
+    <link rel="alternate" type="application/rss+xml" title="WeTry | Encore un autre blog de développeur" href="https://wetry.tech/feed.xml" />
+</head>
+
+    <body class="has-push-menu">
+        
+
+
+
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1"><defs><symbol id="icon-menu" viewBox="0 0 1024 1024"><path class="path1" d="M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"/></symbol><symbol id="icon-search" viewBox="0 0 951 1024"><path class="path1" d="M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"/></symbol><symbol id="icon-close" viewBox="0 0 1000 1000"><path d="M969.8,870.3c27,27.7,27,71.8,0,99.1C955.7,983,937.9,990,920,990c-17.9,0-35.7-7-49.7-20.7L500,599L129.6,969.4C115.6,983,97.8,990,79.9,990s-35.7-7-49.7-20.7c-27-27.3-27-71.4,0-99.1L400.9,500L30.3,129.3c-27-27.3-27-71.4,0-99.1c27.3-27,71.8-27,99.4,0L500,400.9L870.4,30.2c27.7-27,71.8-27,99.4,0c27,27.7,27,71.8,0,99.1L599.1,500L969.8,870.3z"/></symbol><symbol id="icon-twitter" viewBox="0 0 951 1024"><path class="path1" d="M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"/></symbol><symbol id="icon-facebook" viewBox="0 0 585 1024"><path class="path1" d="M548 6.857v150.857h-89.714q-49.143 0-66.286 20.571t-17.143 61.714v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571q0-106.286 59.429-164.857t158.286-58.571q84 0 130.286 6.857z"/></symbol><symbol id="icon-clock" viewBox="0 0 1000 1000"><path d="M500,10C229.8,10,10,229.8,10,500c0,270.2,219.8,490,490,490c270.2,0,490-219.8,490-490C990,229.8,770.2,10,500,10z M500,910.2c-226.2,0-410.2-184-410.2-410.2c0-226.2,184-410.2,410.2-410.2c226.2,0,410.2,184,410.2,410.2C910.2,726.1,726.2,910.2,500,910.2z M753.1,374c8.2,11.9,5.2,28.1-6.6,36.3L509.9,573.7c-4.4,3.1-9.6,4.6-14.8,4.6c-4.1,0-8.3-1-12.1-3c-8.6-4.5-14-13.4-14-23.1V202.5c0-14.4,11.7-26.1,26.1-26.1c14.4,0,26.1,11.7,26.1,26.1v300l195.6-135.1C728.7,359.2,744.9,362.1,753.1,374z"/></symbol><symbol id="icon-calendar" viewBox="0 0 1000 1000"><path d="M920,500v420H80V500H920 M990,430H10v490c0,38.7,31.3,70,70,70h840c38.7,0,70-31.3,70-70V430L990,430z"/><path d="M850,80v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80H360v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80C72.8,80,10,142.7,10,220v140h980V220C990,142.7,927.2,80,850,80z"/><path d="M255,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C290,25.8,274.3,10,255,10z"/><path d="M745,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C780,25.8,764.3,10,745,10z"/></symbol><symbol id="icon-github" viewBox="0 0 12 14"><path d="M6 1q1.633 0 3.012 0.805t2.184 2.184 0.805 3.012q0 1.961-1.145 3.527t-2.957 2.168q-0.211 0.039-0.312-0.055t-0.102-0.234q0-0.023 0.004-0.598t0.004-1.051q0-0.758-0.406-1.109 0.445-0.047 0.801-0.141t0.734-0.305 0.633-0.52 0.414-0.82 0.16-1.176q0-0.93-0.617-1.609 0.289-0.711-0.062-1.594-0.219-0.070-0.633 0.086t-0.719 0.344l-0.297 0.187q-0.727-0.203-1.5-0.203t-1.5 0.203q-0.125-0.086-0.332-0.211t-0.652-0.301-0.664-0.105q-0.352 0.883-0.062 1.594-0.617 0.68-0.617 1.609 0 0.664 0.16 1.172t0.41 0.82 0.629 0.523 0.734 0.305 0.801 0.141q-0.305 0.281-0.383 0.805-0.164 0.078-0.352 0.117t-0.445 0.039-0.512-0.168-0.434-0.488q-0.148-0.25-0.379-0.406t-0.387-0.187l-0.156-0.023q-0.164 0-0.227 0.035t-0.039 0.090 0.070 0.109 0.102 0.094l0.055 0.039q0.172 0.078 0.34 0.297t0.246 0.398l0.078 0.18q0.102 0.297 0.344 0.48t0.523 0.234 0.543 0.055 0.434-0.027l0.18-0.031q0 0.297 0.004 0.691t0.004 0.426q0 0.141-0.102 0.234t-0.312 0.055q-1.812-0.602-2.957-2.168t-1.145-3.527q0-1.633 0.805-3.012t2.184-2.184 3.012-0.805zM2.273 9.617q0.023-0.055-0.055-0.094-0.078-0.023-0.102 0.016-0.023 0.055 0.055 0.094 0.070 0.047 0.102-0.016zM2.516 9.883q0.055-0.039-0.016-0.125-0.078-0.070-0.125-0.023-0.055 0.039 0.016 0.125 0.078 0.078 0.125 0.023zM2.75 10.234q0.070-0.055 0-0.148-0.062-0.102-0.133-0.047-0.070 0.039 0 0.141t0.133 0.055zM3.078 10.562q0.062-0.062-0.031-0.148-0.094-0.094-0.156-0.023-0.070 0.062 0.031 0.148 0.094 0.094 0.156 0.023zM3.523 10.758q0.023-0.086-0.102-0.125-0.117-0.031-0.148 0.055t0.102 0.117q0.117 0.047 0.148-0.047zM4.016 10.797q0-0.102-0.133-0.086-0.125 0-0.125 0.086 0 0.102 0.133 0.086 0.125 0 0.125-0.086zM4.469 10.719q-0.016-0.086-0.141-0.070-0.125 0.023-0.109 0.117t0.141 0.062 0.109-0.109z"></path></symbol><symbol id="icon-medium" viewBox="0 0 1000 1000"><path d="M336.5,240.2v641.5c0,9.1-2.3,16.9-6.8,23.2s-11.2,9.6-20,9.6c-6.2,0-12.2-1.5-18-4.4L37.3,782.7c-7.7-3.6-14.1-9.8-19.4-18.3S10,747.4,10,739V115.5c0-7.3,1.8-13.5,5.5-18.6c3.6-5.1,8.9-7.7,15.9-7.7c5.1,0,13.1,2.7,24.1,8.2l279.5,140C335.9,238.6,336.5,239.5,336.5,240.2L336.5,240.2z M371.5,295.5l292,473.6l-292-145.5V295.5z M990,305.3v576.4c0,9.1-2.6,16.5-7.7,22.1c-5.1,5.7-12,8.5-20.8,8.5s-17.3-2.4-25.7-7.1L694.7,784.9L990,305.3z M988.4,239.7c0,1.1-46.8,77.6-140.3,229.4C754.6,621,699.8,709.8,683.8,735.7L470.5,389l177.2-288.2c6.2-10.2,15.7-15.3,28.4-15.3c5.1,0,9.8,1.1,14.2,3.3l295.9,147.7C987.6,237.1,988.4,238.2,988.4,239.7L988.4,239.7z"/></symbol><symbol id="icon-instagram" viewBox="0 0 489.84 489.84"><path d="M249.62,50.46c65.4,0,73.14.25,99,1.43C372.47,53,385.44,57,394.07,60.32a75.88,75.88,0,0,1,28.16,18.32,75.88,75.88,0,0,1,18.32,28.16c3.35,8.63,7.34,21.6,8.43,45.48,1.18,25.83,1.43,33.57,1.43,99s-0.25,73.14-1.43,99c-1.09,23.88-5.08,36.85-8.43,45.48a81.11,81.11,0,0,1-46.48,46.48c-8.63,3.35-21.6,7.34-45.48,8.43-25.82,1.18-33.57,1.43-99,1.43s-73.15-.25-99-1.43c-23.88-1.09-36.85-5.08-45.48-8.43A75.88,75.88,0,0,1,77,423.86,75.88,75.88,0,0,1,58.69,395.7c-3.35-8.63-7.34-21.6-8.43-45.48-1.18-25.83-1.43-33.57-1.43-99s0.25-73.14,1.43-99c1.09-23.88,5.08-36.85,8.43-45.48A75.88,75.88,0,0,1,77,78.64a75.88,75.88,0,0,1,28.16-18.32c8.63-3.35,21.6-7.34,45.48-8.43,25.83-1.18,33.57-1.43,99-1.43m0-44.13c-66.52,0-74.86.28-101,1.47s-43.87,5.33-59.45,11.38A120.06,120.06,0,0,0,45.81,47.44,120.06,120.06,0,0,0,17.56,90.82C11.5,106.4,7.36,124.2,6.17,150.27s-1.47,34.46-1.47,101,0.28,74.86,1.47,101,5.33,43.87,11.38,59.45a120.06,120.06,0,0,0,28.25,43.38,120.06,120.06,0,0,0,43.38,28.25c15.58,6.05,33.38,10.19,59.45,11.38s34.46,1.47,101,1.47,74.86-.28,101-1.47,43.87-5.33,59.45-11.38a125.24,125.24,0,0,0,71.63-71.63c6.05-15.58,10.19-33.38,11.38-59.45s1.47-34.46,1.47-101-0.28-74.86-1.47-101-5.33-43.87-11.38-59.45a120.06,120.06,0,0,0-28.25-43.38,120.06,120.06,0,0,0-43.38-28.25C394.47,13.13,376.67,9,350.6,7.8s-34.46-1.47-101-1.47h0Z" transform="translate(-4.7 -6.33)" /><path d="M249.62,125.48A125.77,125.77,0,1,0,375.39,251.25,125.77,125.77,0,0,0,249.62,125.48Zm0,207.41a81.64,81.64,0,1,1,81.64-81.64A81.64,81.64,0,0,1,249.62,332.89Z" transform="translate(-4.7 -6.33)"/><circle cx="375.66" cy="114.18" r="29.39" /></symbol><symbol id="icon-linkedin" viewBox="0 0 12 14"><path d="M2.727 4.883v7.742h-2.578v-7.742h2.578zM2.891 2.492q0.008 0.57-0.395 0.953t-1.059 0.383h-0.016q-0.641 0-1.031-0.383t-0.391-0.953q0-0.578 0.402-0.957t1.051-0.379 1.039 0.379 0.398 0.957zM12 8.187v4.437h-2.57v-4.141q0-0.82-0.316-1.285t-0.988-0.465q-0.492 0-0.824 0.27t-0.496 0.668q-0.086 0.234-0.086 0.633v4.32h-2.57q0.016-3.117 0.016-5.055t-0.008-2.313l-0.008-0.375h2.57v1.125h-0.016q0.156-0.25 0.32-0.438t0.441-0.406 0.68-0.34 0.895-0.121q1.336 0 2.148 0.887t0.813 2.598z"></path></symbol><symbol id="icon-heart" viewBox="0 0 34 30"><path d="M17,29.7 L16.4,29.2 C3.5,18.7 0,15 0,9 C0,4 4,0 9,0 C13.1,0 15.4,2.3 17,4.1 C18.6,2.3 20.9,0 25,0 C30,0 34,4 34,9 C34,15 30.5,18.7 17.6,29.2 L17,29.7 Z M9,2 C5.1,2 2,5.1 2,9 C2,14.1 5.2,17.5 17,27.1 C28.8,17.5 32,14.1 32,9 C32,5.1 28.9,2 25,2 C21.5,2 19.6,4.1 18.1,5.8 L17,7.1 L15.9,5.8 C14.4,4.1 12.5,2 9,2 Z" id="Shape"></path></symbol><symbol id="icon-arrow-right" viewBox="0 0 25.452 25.452"><path d="M4.471,24.929v-2.004l12.409-9.788c0.122-0.101,0.195-0.251,0.195-0.411c0-0.156-0.073-0.31-0.195-0.409L4.471,2.526V0.522c0-0.2,0.115-0.384,0.293-0.469c0.18-0.087,0.396-0.066,0.552,0.061l15.47,12.202c0.123,0.1,0.195,0.253,0.195,0.409c0,0.16-0.072,0.311-0.195,0.411L5.316,25.34c-0.155,0.125-0.372,0.147-0.552,0.061C4.586,25.315,4.471,25.13,4.471,24.929z"/></symbol></defs></svg>
+
+        <header class="bar-header">
+    <a id="menu" role="button">
+        <svg id="open" class="icon-menu"><use xlink:href="#icon-menu"></use></svg>
+    </a>
+    <h1 class="logo">
+        <a href="/">
+            WeTry
+        </a>
+    </h1>
+    <a class="header-action" href="https://gitter.im/wetryio/community?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge" target="_blank" style="margin-left: 1rem;">
+        <img src="https://badges.gitter.im/wetryio/community.svg" alt="Gitter">
+    <a id="search" class="dosearch" role="button">
+        <svg class="icon-search"><use xlink:href="#icon-search"></use></svg>
+    </a>
+</header>
+
+<div id="mask" class="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <nav id="navigation">
+      <h2>Menu</h2>
+      <ul>
+  <li>
+    <a href="https://wetry.tech/">Home</a>
+  </li>
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/about/">À propos de nous</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/craftlab-it/">CraftLab IT</a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/devday2019/">DevDay 2019</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/hitw2019/">HITW 2019</a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/merci-correcteurs/">Merci à nos correcteurs</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/wetry-conf/">WeTry.Conf</a>
+      </li>
+    
+  
+    
+  
+    
+  
+  
+  <li>
+    <a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a>
+  </li>
+</ul>
+
+    </nav>
+</aside>
+
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" class="search-field" placeholder="Search">
+        <svg class="icon-remove-sign"><use xlink:href="#icon-close"></use></svg>
+        <ul class="search-results search-list"></ul>
+    </div>
+</div>
+
+
+
+        <section class="post one-column">
+            <article role="article" class="post-content">
+                <p class="post-info">
+                    
+                        <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
+                        <time class="date" datetime="2020-05-05T15:37:17+00:00">
+                            
+
+
+Mai 5, 2020
+
+                        </time>
+                    
+                    <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
+                    <span>17 min to read</span>
+                </p>
+                <h1 class="post-title">MicroPaaS with Rio from Rancher</h1>
+                <p class="post-subtitle"></p>
+
+                
+                    <img src="/assets/img/kubernetes/rio/top.png" alt="Featured image" class="post-cover">
+                
+
+                <!-- Pagination links -->
+
+
+
+                <p><small><em>Vous pouvez trouver la version française <a href="/micropaas-with-rio-from-rancher">ici</a>.</em></small></p>
+
+<p>The purpose of this article is to explain how to experiment with the Rio tool which includes many features.
+Feel free to go to the <a href="#toc">table of contents</a> if you are only interested in certain parts.</p>
+
+<h1 id="introduction">Introduction</h1>
+
+<h2 id="what-is-rio">What is Rio?</h2>
+
+<p>Rio is an application deployment engine for Kubernetes or MicroPaaS.
+It manages for you:</p>
+<ol>
+  <li>Which relates to routing and load-balancing</li>
+  <li>The auto scaling</li>
+  <li>Continuous deployment from Git</li>
+  <li>Blue/Green deployment</li>
+</ol>
+
+<p><img src="/assets/img/kubernetes/rio/how-it-works-rio.svg" alt="how rio works" /></p>
+
+<p>It’s typically part of the DevOps movement and can provide a simple Kubernetes alternative to systems such as CloudFoundry or Azure Web Apps.</p>
+
+<h3 id="concepts">Concepts</h3>
+
+<p>Let’s clarify a few Rio concepts before we start:</p>
+<ul>
+  <li><strong>Service</strong> : set of identical scalable containers</li>
+  <li><strong>Router</strong> : load-balancing and traffic rules management</li>
+  <li><strong>External Service</strong> : registration of IPs or domain names in a service mesh</li>
+  <li><strong>Stack</strong> : representation of a Riofile</li>
+</ul>
+
+<h2 id="tools-used-in-this-article">Tools used in this article</h2>
+<ol>
+  <li><a href="https://rio.io/">Rio</a> from Rancher: Application deployment engine for Kubernetes (still in beta)</li>
+  <li><a href="https://www.civo.com/">Civo</a>: Cloud platform from the UK which offers a way to deploy <a href="https://k3s.io/">k3s</a> clusters in a few seconds (still in beta)</li>
+  <li><a href="https://www.cloudflare.com/">Cloudflare</a>: proxy with firewall, certificate and domain management</li>
+</ol>
+
+<h2 id="why-do-we-need-an-online-cluster">Why do we need an online cluster</h2>
+<p>Rio takes care of many things for us including the attribution of a domain name “on-rio” as well as its wild-card certificate (interesting for both development and production environments).</p>
+
+<p>You must have a public fixed IP to allow Rio to provide this to you, which an online platform such as Civo allows you to get.</p>
+
+<h1 id="setting-up-the-kubernetes-cluster">Setting up the Kubernetes cluster</h1>
+<p>Go to the <a href="https://www.civo.com/account/kubernetes">Civo interface</a> to create our cluster. We have the choice on the size of the cluster as well as the power of each node.
+For this article I will choose a cluster with two Medium nodes (a master that can be used as a worker as well as another worker). Using only the master node is sufficient for a development or test environment.</p>
+
+<p><img src="/assets/img/kubernetes/rio/price.png" alt="civo price" /></p>
+
+<p>Don’t worry too much right now about the <strong>number</strong> of nodes you need because you will be able to add or remove them as you wish.</p>
+
+<p>Civo also offers you the option to preinstall applications. By default “Traefik” and “Metrics Server” are installed and I also got into the habit of using Rancher as an interface for my clusters but we don’t need any of that because all needed features will be installed by Rio. Make sure you have <strong>unchecked all applications</strong>.</p>
+
+<p><img src="/assets/img/kubernetes/rio/apps.png" alt="civo apps" /></p>
+
+<p>We can now click on the “Create” button and wait a moment for our cluster to be ready.</p>
+
+<p><img src="/assets/img/kubernetes/rio/creation.png" alt="civo creation" /></p>
+
+<p>Once the wait is over, you will be able to download the kubeconfig to allow you to access to the cluster from the <code class="highlighter-rouge">kubectl</code> CLI.</p>
+
+<p><img src="/assets/img/kubernetes/rio/download-kubefile.png" alt="download kubefile" /></p>
+
+<p>The provided file is called “civo-rio-on-civo-kubeconfig” because I named my cluster “Rio on Civo”.
+You can easily use this file by adding the <code class="highlighter-rouge">--kubeconfig</code> parameter to each kubernetes CLI or by using the <code class="highlighter-rouge">KUBECONFIG</code> environment variable.</p>
+
+<p>Examples:</p>
+<ul>
+  <li><code class="highlighter-rouge">kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A</code></li>
+  <li><code class="highlighter-rouge">rio --kubeconfig civo-rio-on-civo-kubeconfig ps</code></li>
+</ul>
+
+<p>Or</p>
+
+<ul>
+  <li><code class="highlighter-rouge">export KUBECONFIG=civo-rio-on-civo-kubeconfig</code></li>
+  <li><code class="highlighter-rouge">kubectl get pods -A</code></li>
+  <li><code class="highlighter-rouge">rio ps</code></li>
+</ul>
+
+<p><strong><em>To focus on commands, I use the environment variable and therefore would not specify the <code class="highlighter-rouge">--kubeconfig</code> configuration in the rest of the article. Add the flag each time behind the word <code class="highlighter-rouge">rio</code> if you don’t know how to create an environment variable on your OS.
+For example, <code class="highlighter-rouge">rio ps</code> in the article gives <code class="highlighter-rouge">rio --kubeconfig civo-rio-on-civo-kubeconfig ps</code>.</em></strong></p>
+
+<h1 id="rio-installation">Rio installation</h1>
+
+<h2 id="rio-cli">Rio CLI</h2>
+
+<p>The Rio CLI allows you to install Rio on your local machine and is compatible with all Operating Systems running on amd64 or arm.</p>
+
+<p>You can use the <code class="highlighter-rouge">curl -sfL https://get.rio.io | sh -</code> command (the script automatically detects the release to use) or install it manually by downloading the realease compatible with your local OS <a href="https://github.com/rancher/rio/releases">here</a>. I personally chose the script because I’m on macOS.</p>
+
+<h2 id="installation-on-the-cluster">Installation on the cluster</h2>
+
+<p>The installation on the cluster is as simple as for the CLI, one command is enough (<code class="highlighter-rouge">install</code>):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio <span class="nb">install</span> <span class="nt">--email</span> your@email.com
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">--email</code> flag will be used for the certificate request to Let’s Encrypt.</p>
+
+<p>By default all <a href="https://github.com/rancher/rio/blob/master/docs/install.md#features">features</a> are installed. You can disable ones you don’t need or want using the <code class="highlighter-rouge">--disable-features</code> flag.
+If you use your own domain and wild-card certificate you can, for example, add <code class="highlighter-rouge">--disable-features rdns, letsencrypt</code> to your command.</p>
+
+<p>You can also have more parameters if you want by using the <code class="highlighter-rouge">--yaml</code> flag which creates a yaml without applying it. You will then need to apply it after making the desired changes.</p>
+
+<p><img src="/assets/img/kubernetes/rio/deploy-success.png" alt="rio deploy success" /></p>
+
+<p>You can check that everything went well with this command (<code class="highlighter-rouge">pods</code>):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio <span class="nt">-n</span> rio-system pods
+</code></pre></div></div>
+
+<p><img src="/assets/img/kubernetes/rio/borat-success.gif" alt="Great Success" /></p>
+
+<p>You are already ready to deploy an application.</p>
+
+<h1 id="deployment-from-github">Deployment from Github</h1>
+
+<p>The application that we are going to deploy is the minimalist demo provided by Rancher: <a href="https://github.com/rancher/rio-demo">https://github.com/rancher/rio-demo</a>.</p>
+
+<h2 id="repo-composition">Repo composition</h2>
+
+<p>You notice that there are only 2 files:</p>
+<ul>
+  <li><code class="highlighter-rouge">main.go</code> a basic web service in Go</li>
+  <li><code class="highlighter-rouge">Dockerfile</code> how to create an environment to run the Go service
+    <ul>
+      <li>The Dockerfile includes the way to <strong>build</strong> <code class="highlighter-rouge">RUN [" go "," build "," -o "," demo "]</code> the project as well to <strong>execute</strong> <code class="highlighter-rouge">CMD [ "./demo"] </code> it.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>This structure shows another strength of the containers which is being able to create a reproducible environment.</p>
+
+<h2 id="deployment">Deployment</h2>
+
+<p>Because the repo is public we only have to execute a command (<code class="highlighter-rouge">run</code>) that refer to it.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio run <span class="nt">-n</span> cd-demo <span class="nt">-p</span> 8080 https://github.com/rancher/rio-demo
+</code></pre></div></div>
+
+<p>Here we have decided to publish our service with the name “cd-demo” and we map port 8080 to public port 80.
+It’s also possible to map other ports using for example <code class="highlighter-rouge">-p 81:8081</code>.</p>
+
+<p>All you have to do is execute the <code class="highlighter-rouge">ps</code> command to retrieve the information from the application you just deployed.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio ps
+</code></pre></div></div>
+
+<p><img src="/assets/img/kubernetes/rio/rio-ps.png" alt="rio ps result" /></p>
+
+<p>Go to the indicated url when the build and deployment are complete and you should have a nice little message provided by a secure site via https.</p>
+
+<p><img src="/assets/img/kubernetes/rio/rio-service-deployed.png" alt="rio service deploy result" /></p>
+
+<p>With this unique command you have not only generated and deployed your application but you have activated a <strong>continuous deployment</strong> because Rio will check every 15 seconds if a change has been made on git in order to update the application.</p>
+
+<p>You can thus execute this command several times for several namespaces with different branches to deploy your different environments.</p>
+
+<h2 id="use-a-private-secure-git">Use a private (secure) Git</h2>
+
+<p>Several types of authentication are possible: Basic or SSH.</p>
+
+<h3 id="basic-authentication">Basic authentication</h3>
+
+<p>This method allows you to use the other commands as before without changing anything.</p>
+
+<p>To save your authentication data in Rio, use the command (<code class="highlighter-rouge">secret</code>):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio secret create <span class="nt">--git-basic-auth</span>
+</code></pre></div></div>
+
+<p>You will need to provide a URL informing which git to apply this secret to.
+The other commands are not changed as said above.</p>
+
+<h3 id="ssh-authentication">SSH authentication</h3>
+
+<p>To store the SSH key, you must also use the <code class="highlighter-rouge">secret</code> command but with the<code class="highlighter-rouge"> --git-sshkey-auth</code> flag:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio secret create <span class="nt">--git-sshkey-auth</span>
+</code></pre></div></div>
+
+<p>The command to launch a service changes a little to inform that you must use an SSH connection:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio run <span class="nt">--build-clone-secret</span> gitcredential-ssh <span class="nt">-p</span> 8080 git@github.com/rancher/rio-demo
+</code></pre></div></div>
+
+<h3 id="other-secrets">Other secrets</h3>
+
+<p>Other types of secrets exist such as connection to a private docker registry.</p>
+
+<p>You can see the different possible types of secrets using the help command: <code class="highlighter-rouge">rio secret create --help</code>.</p>
+
+<p>Don’t hesitate to take a look in the <a href="https://github.com/rancher/rio/blob/master/docs/continuous-deployment.md">documentation</a> for more information.</p>
+
+<h2 id="pull-request">Pull Request</h2>
+
+<p>A strong point of Rio is that it can provision an instance for each Pull Request. This allows you to see the result before merging without having to launch the application locally.</p>
+
+<h3 id="webhook-configuration">Webhook configuration</h3>
+
+<p>To do this, you must create an access token on <a href="https://github.com/settings/tokens">Github</a></p>
+
+<p><img src="/assets/img/kubernetes/rio/github-token.png" alt="github access token" /></p>
+
+<p>and create a webhook secret again with the same command and the <code class="highlighter-rouge">--github-webhook</code> flag:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio secret add <span class="nt">--git-sshkey-auth</span>
+</code></pre></div></div>
+
+<h3 id="deployment-for-pr">Deployment for PR</h3>
+
+<p>Use the <code class="highlighter-rouge">run</code> command with a new <code class="highlighter-rouge">--build-pr</code> flag</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio run <span class="nt">-p</span> 8080 <span class="nt">-n</span> example-cd <span class="nt">--build-webhook-secret</span><span class="o">=</span>githubtoken <span class="nt">--build-pr</span> <span class="nt">--template</span> https://github.com/rancher/rio-demo
+</code></pre></div></div>
+
+<p><em>Want to know more about <code class="highlighter-rouge">--template</code>? Check <a href="https://github.com/rancher/rio/blob/master/docs/continuous-deployment.md#automatic-versioning">this</a>.</em></p>
+
+<h1 id="dashboard">Dashboard</h1>
+
+<p>I think it’s now time to inform you that there is a web dashboard allowing you to visually monitor your applications.</p>
+
+<p>To keep it simple we can install it with a single command (<code class="highlighter-rouge">dashboard</code>):</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio dashboard
+</code></pre></div></div>
+
+<p><em>The dashboard is installed but still not responding? Wait a little longer, the Dashboard takes longer to launch. You can check the launch of the dashboard using the <code class="highlighter-rouge">rio -n rio-system pods</code> command already used previously</em></p>
+
+<p><img src="/assets/img/kubernetes/rio/dashboard.png" alt="rio dashboard" /></p>
+
+<p>You can find there everything you have done so far. The dashboard also allows you to deploy your applications without going through the CLI but is less stable. Remember that this is a beta version.</p>
+
+<h1 id="deploy-a-docker-image">Deploy a Docker image</h1>
+
+<p>It’s as easy to deploy from a Docker image with Rio as it is to deploy this image on a local Docker. This is the same command (<code class="highlighter-rouge">run</code>) as for deployment via github and Rio automatically detects that it’s an image name and not a Git link.</p>
+
+<p>We use this command to deploy the example image <a href="https://hub.docker.com/r/rancher/hello-world">hello-world of rancher</a>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio run <span class="nt">-n</span> hello-world <span class="nt">-p</span> 80 rancher/hello-world
+</code></pre></div></div>
+
+<p>You can obviously use environment variables using the <code class="highlighter-rouge">--env</code> and<code class="highlighter-rouge"> --env-file</code> flags.</p>
+
+<p>You can use <code class="highlighter-rouge">ps</code> to get the domain name as done previously or check the list of services in the dashboard.</p>
+
+<p><img src="/assets/img/kubernetes/rio/service-deployed-dashboard.png" alt="rio dashboard service deployed" /></p>
+
+<h1 id="deploy-a-local-application">Deploy a local application</h1>
+
+<p>This point is one of those that I absolutely wanted to experiment because if there is something that bothers me for debugging environments: it’s the fact of having to go through an image registry to be able to test a deployed application.</p>
+
+<p>Fortunately Rio does everything for us using a local registry.</p>
+
+<p>I take this opportunity to speak about another point which is the <code class="highlighter-rouge">RioFile</code>. It is a yaml file quite similar to a docker-compose one.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
+  <span class="na">dev</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">./</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="s">8080/http</span>
+</code></pre></div></div>
+
+<p>This file creates a service named “dev” based on <code class="highlighter-rouge">image</code>. The image can contain the name of a Docker image available in a register or a relative path. The relative path tells to Rio that it has to build the image itself.</p>
+
+<p>This is the smallest Riofile file we can make. There are 1001 other options that you can specify in this file, so I invite you to go and discover them <a href="https://github.com/rancher/rio/blob/master/docs/riofile.md">in the official doc</a>.</p>
+
+<p>The location of your folder (<code class="highlighter-rouge">./</code> In this case) must of course contain the source code of the application as well as a Dockerfile just as we saw in the <a href="#Composition-of-repo">Repo composition</a> section.</p>
+
+<p>It only remains to execute the <code class="highlighter-rouge">up</code> command to deploy our application.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio up
+</code></pre></div></div>
+
+<p>We can then see all the steps by which it proceeds:</p>
+
+<p><img src="/assets/img/kubernetes/rio/local-deploy.png" alt="local deployment" /></p>
+
+<p>You can execute yourself one of the 2 steps through which it goes:</p>
+<ol>
+  <li><code class="highlighter-rouge">rio build</code>: image build</li>
+  <li><code class="highlighter-rouge">rio run -p 8080 localhost:5442/default/dev:latest</code> deploy the previously created image</li>
+</ol>
+
+<h1 id="scaling">Scaling</h1>
+
+<p>Scaling is the fact of having several instances of the same service running in order to be able to more easily absorb the compute requests by distributing them to available hosts.</p>
+
+<p>It can be managed in any way of creating a service: <strong>run</strong> command (<code class="highlighter-rouge">--scale</code>), <strong>Riofile</strong> (<code class="highlighter-rouge">scale</code> or <code class="highlighter-rouge">autoscale</code>) or via the <strong>dashboard</strong> .</p>
+
+<h2 id="manual">Manual</h2>
+
+<p>Scaling is managed when creating a service and it will be automatically set to <code class="highlighter-rouge">1</code> if you don’t specify anything.</p>
+
+<p>Don’t worry, you can change the scaling after its creation too using the <code class="highlighter-rouge">scale</code> command.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio scale hello-world<span class="o">=</span>2
+</code></pre></div></div>
+
+<p>This will launch a second instance of the “hello-world” service.</p>
+
+<p><img src="/assets/img/kubernetes/rio/after-scale.png" alt="scaling result" /></p>
+
+<p>You can also do it via the dashboard.</p>
+
+<p><img src="/assets/img/kubernetes/rio/scaling-dashboard.png" alt="scaling result" /></p>
+
+<p>What is interesting with the hello-world of Rancher is that you can test the load-balancing between the two instances by refreshing its web page several times. The name behind “My hostname is” is unique per instance.</p>
+
+<p><img src="/assets/img/kubernetes/rio/hello-world.png" alt="scaling result" /></p>
+
+<h2 id="automatic">Automatic</h2>
+
+<p>The word “automatic scaling” may seem complicated at first but with Rio it’s as simple as manual scaling. The only difference is that we have to specify a range (example: <code class="highlighter-rouge">1-10</code>).</p>
+
+<p>There are two types of auto-scaling:</p>
+<ul>
+  <li>cold (from 0): <code class="highlighter-rouge">0-10</code></li>
+  <li>hot (from at least 1): <code class="highlighter-rouge">1-10</code></li>
+</ul>
+
+<p>Please note that with cold auto-scaling there will be a latency of around 10 seconds while an instance is launched if none is running when requested.</p>
+
+<p>In order to test it you can use the command tool <a href="https://github.com/rakyll/hey">hey</a> which allows you to create a large number of simultaneous connections:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hey <span class="nt">-z</span> 3m <span class="nt">-c</span> 100 https://hello-world-v0-default.4a7p4l.on-rio.io/
+</code></pre></div></div>
+
+<p>You should see the number of instances (replicas) rise progressively with the command <code class="highlighter-rouge">ps</code>:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio ps
+</code></pre></div></div>
+
+<p><img src="/assets/img/kubernetes/rio/auto-scale.png" alt="auto scaling result" /></p>
+
+<h1 id="router">Router</h1>
+
+<p>Rio uses the Gateway API <a href="https://docs.solo.io/gloo/latest/">Gloo</a> which allows you to add rules based on headers, path, cookies and more.</p>
+
+<p>Let’s start with a specific case: give access to our two applications (cd-demo and hello-world) from the same subdomain with two different paths.</p>
+
+<p>We will use the <code class="highlighter-rouge">route add</code> command this way to create a routing rule based on a path: <code class="highlighter-rouge">rio route add $name/$path to $target</code>.</p>
+<ul>
+  <li><code class="highlighter-rouge">$name</code>: has to be replaced by the name of the router (is used to create a subdomain)</li>
+  <li><code class="highlighter-rouge">$path</code>: has to be replaced by the path on which you want your service to be accessible</li>
+  <li><code class="highlighter-rouge">$target</code>: has to be replaced by the name of the service to point</li>
+</ul>
+
+<p>Let’s create our first redirection of the <strong>hello-world</strong> service on the subdomain <code class="highlighter-rouge">test-default</code> (test = name of the router, default = name of the namespace) on the path<code class="highlighter-rouge">/hello-world</code>.
+In other words <code class="highlighter-rouge">https://test-default.&lt;rio-domain&gt;/hello-world</code>.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio route add <span class="nb">test</span>/hello-world to hello-world
+</code></pre></div></div>
+
+<p>To make sure the route is created you can use the <code class="highlighter-rouge">routers</code> command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio routers
+</code></pre></div></div>
+
+<p><img src="/assets/img/kubernetes/rio/routers.png" alt="router list" /></p>
+
+<p>We can do the same with “cd-demo” but with one exception: We must specify the port because this application listens on port 8080.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio route add <span class="nb">test</span>/cd-demo to cd-demo,port<span class="o">=</span>8080
+</code></pre></div></div>
+
+<p>We now have an application that responds under the path <code class="highlighter-rouge">https://test-default.&lt;rio-domain&gt;/cd-demo</code>.</p>
+
+<p><strong><em>Again, I prefer the CLI rather than the dashboard but everything is doable via the latter.</em></strong></p>
+
+<p><img src="/assets/img/kubernetes/rio/dashboard-router.png" alt="router list" /></p>
+
+<p>I don’t need to go through all the mechanisms now you understand how the router works. I suggest you go to the <a href="https://github.com/rancher/rio/blob/master/docs/router.md">official documentation</a> to find out about them.</p>
+
+<h1 id="your-domain">Your domain</h1>
+
+<p>The easiest way to use your own domain is to add a <code class="highlighter-rouge">CNAME</code> record that point to your <code class="highlighter-rouge">xxxxxx.on-rio.io</code> domain (findable from the <code class="highlighter-rouge">rio info</code> command).</p>
+
+<p>I suggest that you use the free CloudFlare service to avoid any certificate problems.</p>
+
+<p>To do so go to the DNS section to add the <strong>CNAME</strong>.</p>
+
+<p><img src="/assets/img/kubernetes/rio/cloudflare-dns.png" alt="cloudflare dns" /></p>
+
+<p>Here I have configured my domain so that “rio.wetry.eu” proxies to “test-default.4a7p4l.on-rio.io”.</p>
+
+<p>Make sure you have chosen “Flexible” as the encryption mode. This means that there will be encryption between our server and Cloudflare, and an encryption between Cloudflare and our browser, but not directly between our server and browser.</p>
+
+<p><img src="/assets/img/kubernetes/rio/cloudflare-certificate.png" alt="cloudflare certificate" /></p>
+
+<p>We just have to register this new domain in Rio using the <code class="highlighter-rouge">domain register</code> command.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio domain register rio.wetry.eu <span class="nb">test</span>
+</code></pre></div></div>
+
+<p><em>“test” is the name of the route created previously</em></p>
+
+<p><img src="/assets/img/kubernetes/rio/custom-domain-result.png" alt="custom dns result" /></p>
+
+<h1 id="external-services">External services</h1>
+
+<p>The purpose of this functionality is to avoid playing with IPs or domains in our applications/services. You can manage them in a centralized place.</p>
+
+<p>It is useful for communication between Kubernetes namespaces, but also for accessing real external resources to the cluster.</p>
+
+<h2 id="other-namespace">Other namespace</h2>
+
+<p>Imagine that we have an application <strong>app2</strong> in another namespace called <strong>namespace2</strong>, it’s possible to access it for example with the name <strong>ext2</strong> via the <code class="highlighter-rouge">external create</code> command by this way:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio external create ext2 namespace2:app2
+</code></pre></div></div>
+
+<h2 id="ip-or-domain-name">IP or domain name</h2>
+
+<p>To access an external service via a name (for example: <em>ext1</em>) we also use the <code class="highlighter-rouge">external create</code> command by providing it with one/some IPs or a domain name:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio external create ext1 1.1.1.1 2.2.2.2
+</code></pre></div></div>
+
+<h1 id="monitoring">Monitoring</h1>
+
+<p>It’s possible to have access to the Linkerd as well as its Grafana service by using the command <code class="highlighter-rouge">linkerd</code> which creates a proxy between linkerd and your local network (127.0.0.1).</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio linkerd
+</code></pre></div></div>
+
+<p><strong>Linkerd</strong></p>
+
+<p><img src="/assets/img/kubernetes/rio/linkerd.png" alt="linkerd" /></p>
+
+<p><strong>Grafana</strong></p>
+
+<p><img src="/assets/img/kubernetes/rio/grafana.png" alt="grafana" /></p>
+
+<h1 id="next-steps">Next steps</h1>
+
+<p>A second part of this article will arrive later because we still have some features of this excellent tool to see.</p>
+
+<hr />
+<div class="gratitude">
+    <span>THANK YOU</span>
+    <p>for taking the time to read this article</p>
+</div>
+
+<hr />
+
+<div id="toc"></div>
+<p><strong>Table of Contents</strong></p>
+<ol id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a>    <ol>
+      <li><a href="#what-is-rio" id="markdown-toc-what-is-rio">What is Rio?</a>        <ol>
+          <li><a href="#concepts" id="markdown-toc-concepts">Concepts</a></li>
+        </ol>
+      </li>
+      <li><a href="#tools-used-in-this-article" id="markdown-toc-tools-used-in-this-article">Tools used in this article</a></li>
+      <li><a href="#why-do-we-need-an-online-cluster" id="markdown-toc-why-do-we-need-an-online-cluster">Why do we need an online cluster</a></li>
+    </ol>
+  </li>
+  <li><a href="#setting-up-the-kubernetes-cluster" id="markdown-toc-setting-up-the-kubernetes-cluster">Setting up the Kubernetes cluster</a></li>
+  <li><a href="#rio-installation" id="markdown-toc-rio-installation">Rio installation</a>    <ol>
+      <li><a href="#rio-cli" id="markdown-toc-rio-cli">Rio CLI</a></li>
+      <li><a href="#installation-on-the-cluster" id="markdown-toc-installation-on-the-cluster">Installation on the cluster</a></li>
+    </ol>
+  </li>
+  <li><a href="#deployment-from-github" id="markdown-toc-deployment-from-github">Deployment from Github</a>    <ol>
+      <li><a href="#repo-composition" id="markdown-toc-repo-composition">Repo composition</a></li>
+      <li><a href="#deployment" id="markdown-toc-deployment">Deployment</a></li>
+      <li><a href="#use-a-private-secure-git" id="markdown-toc-use-a-private-secure-git">Use a private (secure) Git</a>        <ol>
+          <li><a href="#basic-authentication" id="markdown-toc-basic-authentication">Basic authentication</a></li>
+          <li><a href="#ssh-authentication" id="markdown-toc-ssh-authentication">SSH authentication</a></li>
+          <li><a href="#other-secrets" id="markdown-toc-other-secrets">Other secrets</a></li>
+        </ol>
+      </li>
+      <li><a href="#pull-request" id="markdown-toc-pull-request">Pull Request</a>        <ol>
+          <li><a href="#webhook-configuration" id="markdown-toc-webhook-configuration">Webhook configuration</a></li>
+          <li><a href="#deployment-for-pr" id="markdown-toc-deployment-for-pr">Deployment for PR</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li><a href="#dashboard" id="markdown-toc-dashboard">Dashboard</a></li>
+  <li><a href="#deploy-a-docker-image" id="markdown-toc-deploy-a-docker-image">Deploy a Docker image</a></li>
+  <li><a href="#deploy-a-local-application" id="markdown-toc-deploy-a-local-application">Deploy a local application</a></li>
+  <li><a href="#scaling" id="markdown-toc-scaling">Scaling</a>    <ol>
+      <li><a href="#manual" id="markdown-toc-manual">Manual</a></li>
+      <li><a href="#automatic" id="markdown-toc-automatic">Automatic</a></li>
+    </ol>
+  </li>
+  <li><a href="#router" id="markdown-toc-router">Router</a></li>
+  <li><a href="#your-domain" id="markdown-toc-your-domain">Your domain</a></li>
+  <li><a href="#external-services" id="markdown-toc-external-services">External services</a>    <ol>
+      <li><a href="#other-namespace" id="markdown-toc-other-namespace">Other namespace</a></li>
+      <li><a href="#ip-or-domain-name" id="markdown-toc-ip-or-domain-name">IP or domain name</a></li>
+    </ol>
+  </li>
+  <li><a href="#monitoring" id="markdown-toc-monitoring">Monitoring</a></li>
+  <li><a href="#next-steps" id="markdown-toc-next-steps">Next steps</a></li>
+</ol>
+
+
+
+                <!-- Pagination links -->
+
+
+            </article>
+
+            
+
+        </section>
+
+        <!-- Add time bar only for pages without pagination -->
+        
+            <div class="time-bar" data-minutes="17">
+    <span class="time-completed"></span>
+    <span class="time-remaining"></span>
+    <div class="bar">
+        <span class="completed" style="width:0%;"></span>
+        <span class="remaining" style="width:100%;"></span>
+    </div>
+</div>
+
+            <div class="recommendation">
+    <div class="message">
+        <strong>Pourquoi ne pas lire autre chose?</strong>
+        <a href="javascript:void(0);">Revenir en haut</a>
+    </div>
+    
+    <a href="/micropaas-with-rio-from-rancher/" class="post-preview">
+        <div class="image">
+            
+                <img src="/assets/img/kubernetes/rio/top.png">
+            
+        </div>
+        <h3 class="title">MicroPaaS avec Rio de Rancher</h3>
+    </a>
+</div>
+
+        
+
+        <!-- Show modal if the post is the last one -->
+        
+
+        <!-- Show modal before user leaves the page -->
+        
+
+        <section class="share">
+    <h3>Share</h3>
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;What is Rio and how to use it?&quot;%20https://wetry.tech/micropaas-with-rio-from-rancher-en/%20via%20&#64;&hashtags=kubernetes,paas,"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+        <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
+    </a>
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/micropaas-with-rio-from-rancher-en/"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+        <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
+    </a>
+</section>
+
+        
+
+  <section class="author">
+    <div class="details">
+      
+        <img class="img-rounded" src="/assets/img/authors/dgilson.png" alt="David Gilson<br/>(Gilsdav)">
+      
+      <p class="def">Author</p>
+      <h3 class="name">
+        <a href="/authors/dgilson/">David Gilson<br/>(Gilsdav)</a>
+      </h3>
+      <p class="desc"></p>
+      <p>
+        
+          <a href="https://github.com/gilsdav" title="Github">
+            <svg><use xlink:href="#icon-github"></use></svg>
+          </a>
+        
+        
+        
+          <a href="https://twitter.com/gilsondavid5" title="Twitter">
+            <svg><use xlink:href="#icon-twitter"></use></svg>
+          </a>
+        
+        
+        
+        
+          <a href="https://www.linkedin.com/in/david-gilson-innovate" title="LinkedIn">
+            <svg><use xlink:href="#icon-linkedin"></use></svg>
+          </a>
+        
+      </p>
+    </div>
+  </section>
+
+  
+  
+  
+  
+  
+  
+  
+
+  <script type="application/ld+json">
+  {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "David Gilson<br/>(Gilsdav)",
+      
+      "image": "/assets/img/authors/dgilson.png",
+      
+      "jobTitle": "Développeur",
+      "url": "https://wetry.tech/authors/dgilson/",
+      "sameAs": [
+        "https://github.com/gilsdav","https://twitter.com/gilsondavid5","https://www.linkedin.com/in/david-gilson-innovate"
+      ]
+  }
+  </script>
+
+
+        
+
+<section class="comments">
+    <h3>Comments</h3>
+    <div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+    var disqus_loaded = false;
+
+    function load_disqus()
+    {
+        disqus_loaded = true;
+        var disqus_shortname = 'wetry';
+        var disqus_title = '';
+        var disqus_url = '/micropaas-with-rio-from-rancher-en/';
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        var ldr = document.getElementById('disqus_loader');
+    };
+    window.onscroll = function(e) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 800)) {
+            //hit bottom of page
+            if (disqus_loaded==false)
+                load_disqus()
+        }
+    };
+</script>
+
+
+
+        <footer>
+    <p>
+      
+        <a href="https://github.com/wetryio" title="Github">
+          <svg><use xlink:href="#icon-github"></use></svg>
+        </a>
+      
+      
+        <a href="https://www.facebook.com/WeTry-103230437736535" title="Facebook">
+          <svg><use xlink:href="#icon-facebook"></use></svg>
+        </a>
+      
+      
+      
+      
+      
+    </p>
+
+    <ul>
+  <li>
+    <a href="https://wetry.tech/">Home</a>
+  </li>
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/about/">À propos de nous</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/craftlab-it/">CraftLab IT</a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/devday2019/">DevDay 2019</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/hitw2019/">HITW 2019</a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/merci-correcteurs/">Merci à nos correcteurs</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/wetry-conf/">WeTry.Conf</a>
+      </li>
+    
+  
+    
+  
+    
+  
+  
+  <li>
+    <a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a>
+  </li>
+</ul>
+
+
+    <p>
+      <span>Jekflix</span> was made with <svg class="love"><use xlink:href="#icon-heart"></use></svg> by <a href="https://rossener.com" target="_blank" class="creator">Thiago Rossener</a>
+    </p>
+</footer>
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "WeTry",
+  "description": "Encore un autre blog de développeur.",
+  "url": "https://wetry.tech/",
+  "logo": {
+      "@type": "ImageObject",
+      "url": "https://wetry.tech/assets/img/icons/mediumtile.png",
+      "width": "600",
+      "height": "315"
+  },
+  "sameAs": [
+    "https://github.com/wetryio","https://www.facebook.com/WeTry-103230437736535"
+  ]
+}
+</script>
+
+<!-- Include the script that allows Netlify CMS login -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- Include the website scripts -->
+<script src="/assets/js/scripts.min.js"></script>
+
+<!-- Include Google Analytics script -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-145445435-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+
+
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "name": "MicroPaaS with Rio from Rancher",
+            "headline": "",
+            "description": "What is Rio and how to use it?",
+            "image": "/assets/img/kubernetes/rio/top.png",
+            "url": "https://wetry.tech/micropaas-with-rio-from-rancher-en/",
+            "articleBody": "Vous pouvez trouver la version française ici.
+
+The purpose of this article is to explain how to experiment with the Rio tool which includes many features.
+Feel free to go to the table of contents if you are only interested in certain parts.
+
+Introduction
+
+What is Rio?
+
+Rio is an application deployment engine for Kubernetes or MicroPaaS.
+It manages for you:
+
+  Which relates to routing and load-balancing
+  The auto scaling
+  Continuous deployment from Git
+  Blue/Green deployment
+
+
+
+
+It’s typically part of the DevOps movement and can provide a simple Kubernetes alternative to systems such as CloudFoundry or Azure Web Apps.
+
+Concepts
+
+Let’s clarify a few Rio concepts before we start:
+
+  Service : set of identical scalable containers
+  Router : load-balancing and traffic rules management
+  External Service : registration of IPs or domain names in a service mesh
+  Stack : representation of a Riofile
+
+
+Tools used in this article
+
+  Rio from Rancher: Application deployment engine for Kubernetes (still in beta)
+  Civo: Cloud platform from the UK which offers a way to deploy k3s clusters in a few seconds (still in beta)
+  Cloudflare: proxy with firewall, certificate and domain management
+
+
+Why do we need an online cluster
+Rio takes care of many things for us including the attribution of a domain name “on-rio” as well as its wild-card certificate (interesting for both development and production environments).
+
+You must have a public fixed IP to allow Rio to provide this to you, which an online platform such as Civo allows you to get.
+
+Setting up the Kubernetes cluster
+Go to the Civo interface to create our cluster. We have the choice on the size of the cluster as well as the power of each node.
+For this article I will choose a cluster with two Medium nodes (a master that can be used as a worker as well as another worker). Using only the master node is sufficient for a development or test environment.
+
+
+
+Don’t worry too much right now about the number of nodes you need because you will be able to add or remove them as you wish.
+
+Civo also offers you the option to preinstall applications. By default “Traefik” and “Metrics Server” are installed and I also got into the habit of using Rancher as an interface for my clusters but we don’t need any of that because all needed features will be installed by Rio. Make sure you have unchecked all applications.
+
+
+
+We can now click on the “Create” button and wait a moment for our cluster to be ready.
+
+
+
+Once the wait is over, you will be able to download the kubeconfig to allow you to access to the cluster from the kubectl CLI.
+
+
+
+The provided file is called “civo-rio-on-civo-kubeconfig” because I named my cluster “Rio on Civo”.
+You can easily use this file by adding the --kubeconfig parameter to each kubernetes CLI or by using the KUBECONFIG environment variable.
+
+Examples:
+
+  kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A
+  rio --kubeconfig civo-rio-on-civo-kubeconfig ps
+
+
+Or
+
+
+  export KUBECONFIG=civo-rio-on-civo-kubeconfig
+  kubectl get pods -A
+  rio ps
+
+
+To focus on commands, I use the environment variable and therefore would not specify the --kubeconfig configuration in the rest of the article. Add the flag each time behind the word rio if you don’t know how to create an environment variable on your OS.
+For example, rio ps in the article gives rio --kubeconfig civo-rio-on-civo-kubeconfig ps.
+
+Rio installation
+
+Rio CLI
+
+The Rio CLI allows you to install Rio on your local machine and is compatible with all Operating Systems running on amd64 or arm.
+
+You can use the curl -sfL https://get.rio.io | sh - command (the script automatically detects the release to use) or install it manually by downloading the realease compatible with your local OS here. I personally chose the script because I’m on macOS.
+
+Installation on the cluster
+
+The installation on the cluster is as simple as for the CLI, one command is enough (install):
+
+rio install --email your@email.com
+
+
+The --email flag will be used for the certificate request to Let’s Encrypt.
+
+By default all features are installed. You can disable ones you don’t need or want using the --disable-features flag.
+If you use your own domain and wild-card certificate you can, for example, add --disable-features rdns, letsencrypt to your command.
+
+You can also have more parameters if you want by using the --yaml flag which creates a yaml without applying it. You will then need to apply it after making the desired changes.
+
+
+
+You can check that everything went well with this command (pods):
+
+rio -n rio-system pods
+
+
+
+
+You are already ready to deploy an application.
+
+Deployment from Github
+
+The application that we are going to deploy is the minimalist demo provided by Rancher: https://github.com/rancher/rio-demo.
+
+Repo composition
+
+You notice that there are only 2 files:
+
+  main.go a basic web service in Go
+  Dockerfile how to create an environment to run the Go service
+    
+      The Dockerfile includes the way to build RUN [&quot; go &quot;,&quot; build &quot;,&quot; -o &quot;,&quot; demo &quot;] the project as well to execute CMD [ &quot;./demo&quot;]  it.
+    
+  
+
+
+This structure shows another strength of the containers which is being able to create a reproducible environment.
+
+Deployment
+
+Because the repo is public we only have to execute a command (run) that refer to it.
+
+rio run -n cd-demo -p 8080 https://github.com/rancher/rio-demo
+
+
+Here we have decided to publish our service with the name “cd-demo” and we map port 8080 to public port 80.
+It’s also possible to map other ports using for example -p 81:8081.
+
+All you have to do is execute the ps command to retrieve the information from the application you just deployed.
+
+rio ps
+
+
+
+
+Go to the indicated url when the build and deployment are complete and you should have a nice little message provided by a secure site via https.
+
+
+
+With this unique command you have not only generated and deployed your application but you have activated a continuous deployment because Rio will check every 15 seconds if a change has been made on git in order to update the application.
+
+You can thus execute this command several times for several namespaces with different branches to deploy your different environments.
+
+Use a private (secure) Git
+
+Several types of authentication are possible: Basic or SSH.
+
+Basic authentication
+
+This method allows you to use the other commands as before without changing anything.
+
+To save your authentication data in Rio, use the command (secret):
+
+rio secret create --git-basic-auth
+
+
+You will need to provide a URL informing which git to apply this secret to.
+The other commands are not changed as said above.
+
+SSH authentication
+
+To store the SSH key, you must also use the secret command but with the --git-sshkey-auth flag:
+
+rio secret create --git-sshkey-auth
+
+
+The command to launch a service changes a little to inform that you must use an SSH connection:
+
+rio run --build-clone-secret gitcredential-ssh -p 8080 git@github.com/rancher/rio-demo
+
+
+Other secrets
+
+Other types of secrets exist such as connection to a private docker registry.
+
+You can see the different possible types of secrets using the help command: rio secret create --help.
+
+Don’t hesitate to take a look in the documentation for more information.
+
+Pull Request
+
+A strong point of Rio is that it can provision an instance for each Pull Request. This allows you to see the result before merging without having to launch the application locally.
+
+Webhook configuration
+
+To do this, you must create an access token on Github
+
+
+
+and create a webhook secret again with the same command and the --github-webhook flag:
+
+rio secret add --git-sshkey-auth
+
+
+Deployment for PR
+
+Use the run command with a new --build-pr flag
+
+rio run -p 8080 -n example-cd --build-webhook-secret=githubtoken --build-pr --template https://github.com/rancher/rio-demo
+
+
+Want to know more about --template? Check this.
+
+Dashboard
+
+I think it’s now time to inform you that there is a web dashboard allowing you to visually monitor your applications.
+
+To keep it simple we can install it with a single command (dashboard):
+
+rio dashboard
+
+
+The dashboard is installed but still not responding? Wait a little longer, the Dashboard takes longer to launch. You can check the launch of the dashboard using the rio -n rio-system pods command already used previously
+
+
+
+You can find there everything you have done so far. The dashboard also allows you to deploy your applications without going through the CLI but is less stable. Remember that this is a beta version.
+
+Deploy a Docker image
+
+It’s as easy to deploy from a Docker image with Rio as it is to deploy this image on a local Docker. This is the same command (run) as for deployment via github and Rio automatically detects that it’s an image name and not a Git link.
+
+We use this command to deploy the example image hello-world of rancher:
+
+rio run -n hello-world -p 80 rancher/hello-world
+
+
+You can obviously use environment variables using the --env and --env-file flags.
+
+You can use ps to get the domain name as done previously or check the list of services in the dashboard.
+
+
+
+Deploy a local application
+
+This point is one of those that I absolutely wanted to experiment because if there is something that bothers me for debugging environments: it’s the fact of having to go through an image registry to be able to test a deployed application.
+
+Fortunately Rio does everything for us using a local registry.
+
+I take this opportunity to speak about another point which is the RioFile. It is a yaml file quite similar to a docker-compose one.
+
+services:
+  dev:
+    image: ./
+    port: 8080/http
+
+
+This file creates a service named “dev” based on image. The image can contain the name of a Docker image available in a register or a relative path. The relative path tells to Rio that it has to build the image itself.
+
+This is the smallest Riofile file we can make. There are 1001 other options that you can specify in this file, so I invite you to go and discover them in the official doc.
+
+The location of your folder (./ In this case) must of course contain the source code of the application as well as a Dockerfile just as we saw in the Repo composition section.
+
+It only remains to execute the up command to deploy our application.
+
+rio up
+
+
+We can then see all the steps by which it proceeds:
+
+
+
+You can execute yourself one of the 2 steps through which it goes:
+
+  rio build: image build
+  rio run -p 8080 localhost:5442/default/dev:latest deploy the previously created image
+
+
+Scaling
+
+Scaling is the fact of having several instances of the same service running in order to be able to more easily absorb the compute requests by distributing them to available hosts.
+
+It can be managed in any way of creating a service: run command (--scale), Riofile (scale or autoscale) or via the dashboard .
+
+Manual
+
+Scaling is managed when creating a service and it will be automatically set to 1 if you don’t specify anything.
+
+Don’t worry, you can change the scaling after its creation too using the scale command.
+
+rio scale hello-world=2
+
+
+This will launch a second instance of the “hello-world” service.
+
+
+
+You can also do it via the dashboard.
+
+
+
+What is interesting with the hello-world of Rancher is that you can test the load-balancing between the two instances by refreshing its web page several times. The name behind “My hostname is” is unique per instance.
+
+
+
+Automatic
+
+The word “automatic scaling” may seem complicated at first but with Rio it’s as simple as manual scaling. The only difference is that we have to specify a range (example: 1-10).
+
+There are two types of auto-scaling:
+
+  cold (from 0): 0-10
+  hot (from at least 1): 1-10
+
+
+Please note that with cold auto-scaling there will be a latency of around 10 seconds while an instance is launched if none is running when requested.
+
+In order to test it you can use the command tool hey which allows you to create a large number of simultaneous connections:
+
+hey -z 3m -c 100 https://hello-world-v0-default.4a7p4l.on-rio.io/
+
+
+You should see the number of instances (replicas) rise progressively with the command ps:
+
+rio ps
+
+
+
+
+Router
+
+Rio uses the Gateway API Gloo which allows you to add rules based on headers, path, cookies and more.
+
+Let’s start with a specific case: give access to our two applications (cd-demo and hello-world) from the same subdomain with two different paths.
+
+We will use the route add command this way to create a routing rule based on a path: rio route add $name/$path to $target.
+
+  $name: has to be replaced by the name of the router (is used to create a subdomain)
+  $path: has to be replaced by the path on which you want your service to be accessible
+  $target: has to be replaced by the name of the service to point
+
+
+Let’s create our first redirection of the hello-world service on the subdomain test-default (test = name of the router, default = name of the namespace) on the path/hello-world.
+In other words https://test-default.&amp;lt;rio-domain&amp;gt;/hello-world.
+
+rio route add test/hello-world to hello-world
+
+
+To make sure the route is created you can use the routers command:
+
+rio routers
+
+
+
+
+We can do the same with “cd-demo” but with one exception: We must specify the port because this application listens on port 8080.
+
+rio route add test/cd-demo to cd-demo,port=8080
+
+
+We now have an application that responds under the path https://test-default.&amp;lt;rio-domain&amp;gt;/cd-demo.
+
+Again, I prefer the CLI rather than the dashboard but everything is doable via the latter.
+
+
+
+I don’t need to go through all the mechanisms now you understand how the router works. I suggest you go to the official documentation to find out about them.
+
+Your domain
+
+The easiest way to use your own domain is to add a CNAME record that point to your xxxxxx.on-rio.io domain (findable from the rio info command).
+
+I suggest that you use the free CloudFlare service to avoid any certificate problems.
+
+To do so go to the DNS section to add the CNAME.
+
+
+
+Here I have configured my domain so that “rio.wetry.eu” proxies to “test-default.4a7p4l.on-rio.io”.
+
+Make sure you have chosen “Flexible” as the encryption mode. This means that there will be encryption between our server and Cloudflare, and an encryption between Cloudflare and our browser, but not directly between our server and browser.
+
+
+
+We just have to register this new domain in Rio using the domain register command.
+
+rio domain register rio.wetry.eu test
+
+
+“test” is the name of the route created previously
+
+
+
+External services
+
+The purpose of this functionality is to avoid playing with IPs or domains in our applications/services. You can manage them in a centralized place.
+
+It is useful for communication between Kubernetes namespaces, but also for accessing real external resources to the cluster.
+
+Other namespace
+
+Imagine that we have an application app2 in another namespace called namespace2, it’s possible to access it for example with the name ext2 via the external create command by this way:
+
+rio external create ext2 namespace2:app2
+
+
+IP or domain name
+
+To access an external service via a name (for example: ext1) we also use the external create command by providing it with one/some IPs or a domain name:
+
+rio external create ext1 1.1.1.1 2.2.2.2
+
+
+Monitoring
+
+It’s possible to have access to the Linkerd as well as its Grafana service by using the command linkerd which creates a proxy between linkerd and your local network (127.0.0.1).
+
+rio linkerd
+
+
+Linkerd
+
+
+
+Grafana
+
+
+
+Next steps
+
+A second part of this article will arrive later because we still have some features of this excellent tool to see.
+
+
+
+    THANK YOU
+    for taking the time to read this article
+
+
+
+
+
+Table of Contents
+
+  Introduction    
+      What is Rio?        
+          Concepts
+        
+      
+      Tools used in this article
+      Why do we need an online cluster
+    
+  
+  Setting up the Kubernetes cluster
+  Rio installation    
+      Rio CLI
+      Installation on the cluster
+    
+  
+  Deployment from Github    
+      Repo composition
+      Deployment
+      Use a private (secure) Git        
+          Basic authentication
+          SSH authentication
+          Other secrets
+        
+      
+      Pull Request        
+          Webhook configuration
+          Deployment for PR
+        
+      
+    
+  
+  Dashboard
+  Deploy a Docker image
+  Deploy a local application
+  Scaling    
+      Manual
+      Automatic
+    
+  
+  Router
+  Your domain
+  External services    
+      Other namespace
+      IP or domain name
+    
+  
+  Monitoring
+  Next steps
+
+
+",
+            "wordcount": "3179",
+            "inLanguage": "fr",
+            "dateCreated": "2020-05-05/",
+            "datePublished": "2020-05-05/",
+            "dateModified": "2020-05-05/",
+            "author": {
+                "@type": "Person",
+                "name": "David Gilson<br/>(Gilsdav)",
+                
+                "image": "/assets/img/authors/dgilson.png",
+                
+                "jobTitle": "Développeur",
+                "url": "https://wetry.tech/authors/dgilson/",
+                "sameAs": [
+                    "https://github.com/gilsdav","https://twitter.com/gilsondavid5","https://www.linkedin.com/in/david-gilson-innovate"
+                ]
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "WeTry",
+                "url": "https://wetry.tech/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://wetry.tech/assets/img/blog-image-wt.png",
+                    "width": "600",
+                    "height": "315"
+                }
+            },
+            "mainEntityOfPage": "True",
+            "genre": "experimentation",
+            "articleSection": "experimentation",
+            "keywords": ["kubernetes","paas"]
+        }
+        </script>
+    </body>
+</html>
