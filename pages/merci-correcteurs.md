@@ -14,3 +14,4 @@ Nos remerciements vont vers
 * Myriam Scolas
 * Boris Senyo
 * Laura Ait Braham
+* Kai Hoffman
