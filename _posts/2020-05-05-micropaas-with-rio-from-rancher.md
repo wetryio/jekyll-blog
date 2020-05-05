@@ -14,7 +14,7 @@ author: dgilson
 
 <small>*You can find the english version [here](/micropaas-with-rio-from-rancher-en).*</small>
 
-Cet article vise à vous expliquer comment expérimenter l'outil Rio qui comprenant beaucoup de fonctionnalités.
+Cet article vise à vous expliquer comment expérimenter l'outil Rio qui comprend beaucoup de fonctionnalités.
 N'hésitez pas à vous rendre sur la [table des matières](#toc) si vous n'êtes intéressé que par certaines parties.
 
 # Prélude
