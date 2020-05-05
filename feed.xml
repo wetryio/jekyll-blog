@@ -5,13 +5,13 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 05 May 2020 16:55:25 +0000</pubDate>
-    <lastBuildDate>Tue, 05 May 2020 16:55:25 +0000</lastBuildDate>
+    <pubDate>Tue, 05 May 2020 18:35:29 +0000</pubDate>
+    <lastBuildDate>Tue, 05 May 2020 18:35:29 +0000</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
         <title>MicroPaaS avec Rio de Rancher</title>
-        <description>&lt;p&gt;&lt;small&gt;&lt;em&gt;You can find the english version &lt;a href=&quot;/micropaas-with-rio-from-rancher-en&quot;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt; &lt;p&gt;Cet article vise à vous expliquer comment expérimenter l’outil Rio qui comprenant beaucoup de fonctionnalités. N’hésitez pas à vous rendre sur la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt; si vous n’êtes intéressé que par certaines parties.&lt;/p&gt; &lt;h1 id=&quot;prélude&quot;&gt;Prélude&lt;/h1&gt; &lt;h2 id=&quot;quest-ce-que-rio-&quot;&gt;Qu’est-ce que Rio ?&lt;/h2&gt; &lt;p&gt;Rio se présente comme un moteur de déploiement d’applications pour Kubernetes ou encore comme du MicroPaaS. Il gère pour vous:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Ce qui touche au routing et au loadbalancing&lt;/li&gt; &lt;li&gt;L’auto scaling&lt;/li&gt; &lt;li&gt;Du déploiement continu depuis Git&lt;/li&gt; &lt;li&gt;Déploiement Blue/Green&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;img src=&quot;/assets/img/kubernetes/rio/how-it-works-rio.svg&quot; alt=&quot;how rio works&quot; /&gt;&lt;/p&gt; &lt;p&gt;Il s’inscrit typiquement dans le mouvement...</description>
+        <description>&lt;p&gt;&lt;small&gt;&lt;em&gt;You can find the english version &lt;a href=&quot;/micropaas-with-rio-from-rancher-en&quot;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt; &lt;p&gt;Cet article vise à vous expliquer comment expérimenter l’outil Rio qui comprend beaucoup de fonctionnalités. N’hésitez pas à vous rendre sur la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt; si vous n’êtes intéressé que par certaines parties.&lt;/p&gt; &lt;h1 id=&quot;prélude&quot;&gt;Prélude&lt;/h1&gt; &lt;h2 id=&quot;quest-ce-que-rio-&quot;&gt;Qu’est-ce que Rio ?&lt;/h2&gt; &lt;p&gt;Rio se présente comme un moteur de déploiement d’applications pour Kubernetes ou encore comme du MicroPaaS. Il gère pour vous:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Ce qui touche au routing et au loadbalancing&lt;/li&gt; &lt;li&gt;L’auto scaling&lt;/li&gt; &lt;li&gt;Du déploiement continu depuis Git&lt;/li&gt; &lt;li&gt;Déploiement Blue/Green&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;img src=&quot;/assets/img/kubernetes/rio/how-it-works-rio.svg&quot; alt=&quot;how rio works&quot; /&gt;&lt;/p&gt; &lt;p&gt;Il s’inscrit typiquement dans le mouvement...</description>
         <pubDate>Tue, 05 May 2020 15:37:17 +0000</pubDate>
         <link>https://wetry.tech/micropaas-with-rio-from-rancher/</link>
         <guid isPermaLink="true">https://wetry.tech/micropaas-with-rio-from-rancher/</guid>
