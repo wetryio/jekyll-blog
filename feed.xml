@@ -5,9 +5,9 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 May 2020 21:49:36 +0000</pubDate>
-    <lastBuildDate>Wed, 06 May 2020 21:49:36 +0000</lastBuildDate>
-    <generator>Jekyll v3.8.6</generator>
+    <pubDate>Thu, 25 Jun 2020 22:56:45 +0000</pubDate>
+    <lastBuildDate>Thu, 25 Jun 2020 22:56:45 +0000</lastBuildDate>
+    <generator>Jekyll v3.8.7</generator>
     
       <item>
         <title>MicroPaaS avec Rio de Rancher</title>
@@ -201,7 +201,7 @@
     
       <item>
         <title>L'immuabilité pour un code sans bug</title>
-        <description>&lt;h2 id=&quot;mon-premier-titre-putaclick&quot;&gt;Mon premier titre putaclick&lt;/h2&gt; &lt;p&gt;Voilà un titre prétentieux. Je me dois déjà de préciser le contenu qui va suivre.&lt;/p&gt; &lt;p&gt;Seules les bonnes pratiques sont à l’origine de code sans bug et sans surprise. Elles sont nombreuses et toutes agissent sur différentes ficelles. Parfois sur l’extensibilité du code, sur la lisibilité, les performances …&lt;/p&gt; &lt;p&gt;Aujourd’hui, la bonne pratique que je vous partage facilite l’évolution des objets dans ses futures itérations.&lt;/p&gt; &lt;h2 id=&quot;un-exemple&quot;&gt;Un exemple&lt;/h2&gt; &lt;div class=&quot;language-ts highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_nom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_prenom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;...</description>
+        <description>&lt;h2 id=&quot;mon-premier-titre-putaclick&quot;&gt;Mon premier titre putaclick&lt;/h2&gt; &lt;p&gt;Voilà un titre prétentieux. Je me dois déjà de préciser le contenu qui va suivre.&lt;/p&gt; &lt;p&gt;Seules les bonnes pratiques sont à l’origine de code sans bug et sans surprise. Elles sont nombreuses et toutes agissent sur différentes ficelles. Parfois sur l’extensibilité du code, sur la lisibilité, les performances …&lt;/p&gt; &lt;p&gt;Aujourd’hui, la bonne pratique que je vous partage facilite l’évolution des objets dans ses futures itérations.&lt;/p&gt; &lt;h2 id=&quot;un-exemple&quot;&gt;Un exemple&lt;/h2&gt; &lt;div class=&quot;language-ts highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_nom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_prenom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;...</description>
         <pubDate>Fri, 04 Oct 2019 07:00:00 +0000</pubDate>
         <link>https://wetry.tech/oriente-objet-et-immuabilite/</link>
         <guid isPermaLink="true">https://wetry.tech/oriente-objet-et-immuabilite/</guid>

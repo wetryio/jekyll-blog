@@ -246,25 +246,25 @@ Octobre 4, 2019
 <h2 id="un-exemple">Un exemple</h2>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="kr">private</span> <span class="nx">_nom</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="kr">private</span> <span class="nx">_prenom</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="kr">private</span> <span class="nx">_initiales</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">_nom</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">_prenom</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">_initiales</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 
-    <span class="kd">get</span> <span class="nx">Nom</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">Nom</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_nom</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="kd">set</span> <span class="nx">Nom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">set</span> <span class="nx">Nom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_nom</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">get</span> <span class="nx">Prenom</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">Prenom</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_prenom</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="kd">set</span> <span class="nx">Prenom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">set</span> <span class="nx">Prenom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_prenom</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">get</span> <span class="nx">Initiales</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">Initiales</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_initiales</span><span class="p">;</span>
     <span class="p">}</span>
 
@@ -281,12 +281,12 @@ Le développeur a oublié de mettre à jour les initiales lorsque le nom et le p
 
 <p>J’observe souvent chez mes collègues cette solution :</p>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">set</span> <span class="nx">Nom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">set</span> <span class="nx">Nom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_nom</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">initIntitiales</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="kd">set</span> <span class="nx">Prenom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">set</span> <span class="nx">Prenom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_prenom</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">initIntitiales</span><span class="p">();</span>
     <span class="p">}</span>
@@ -294,12 +294,12 @@ Le développeur a oublié de mettre à jour les initiales lorsque le nom et le p
 
 <p>La tentation est forte. Ainsi, le champ privé est tout le temps mis à jour. Mais lors d’une update future, un oubli peut vite arriver:</p>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kr">private</span> <span class="nx">_deuxiemePrenom</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">private</span> <span class="nx">_deuxiemePrenom</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 
-    <span class="kd">get</span> <span class="nx">DeuxiemePrenom</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">DeuxiemePrenom</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">deuxiemePrenom</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="kd">set</span> <span class="nx">DeuxiemePrenom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">set</span> <span class="nx">DeuxiemePrenom</span><span class="p">(</span><span class="nx">value</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">deuxiemePrenom</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
     <span class="p">}</span>
 
@@ -328,25 +328,25 @@ L’immuabilité peut aider de deux manières.</p>
 Vous obtenez votre nom et prénom à la naissance, et celle-ci ne change plus. Voici comment l’exprimer en orienté objet.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="kr">private</span> <span class="nx">_nom</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="kr">private</span> <span class="nx">_prenom</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="kr">private</span> <span class="nx">_initiales</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">_nom</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">_prenom</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">_initiales</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 
-    <span class="kd">constructor</span><span class="p">(</span><span class="nx">Nom</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">Prenom</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">Nom</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">Prenom</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_nom</span> <span class="o">=</span> <span class="nx">Nom</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_prenom</span> <span class="o">=</span> <span class="nx">Prenom</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_initiales</span> <span class="o">=</span> <span class="nx">Prenom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nx">Nom</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
     <span class="p">}</span>
 
-    <span class="kd">get</span> <span class="nx">Nom</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">Nom</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_nom</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">get</span> <span class="nx">Prenom</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">Prenom</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_prenom</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">get</span> <span class="nx">Initiales</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">Initiales</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_initiales</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -364,8 +364,8 @@ Mais comment mettre à jour son prénom me direz-vous ? Ne le faites pas. Il n�
 <p>Notez que les champs _nom et _prenom sont encore variables. On peut intérieurement modifier ces deux-ci. La classe permet encore une modification des champs depuis les méthodes propres à la classe.
 Le mot-clé readonly y remédie facilement.</p>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nx">readonly</span> <span class="nx">_nom</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="nx">readonly</span> <span class="nx">_prenom</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">readonly</span> <span class="nx">_nom</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">readonly</span> <span class="nx">_prenom</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>De cette manière, la classe est certifiée <strong>figée</strong>. Elle ne peut plus être modifiée, et ne portera aucune mauvaise surprise une fois sa construction terminée.</p>
@@ -374,7 +374,7 @@ Le mot-clé readonly y remédie facilement.</p>
 
 <p>Une autre manière est d’exprimer en interne les initiales par une expression, et plus un champ. Comme ceci:</p>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">get</span> <span class="nx">Initiales</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">get</span> <span class="nx">Initiales</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_prenom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">_nom</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -392,19 +392,19 @@ Le mot-clé readonly y remédie facilement.</p>
 <p>Les deux ! Observez la simplicité du résultat :</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="kd">constructor</span><span class="p">(</span><span class="nx">readonly</span> <span class="nx">nom</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">readonly</span> <span class="nx">prenom</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">readonly</span> <span class="nx">nom</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="k">readonly</span> <span class="nx">prenom</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="p">}</span>
 
-    <span class="kd">get</span> <span class="nx">Nom</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">Nom</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">nom</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">get</span> <span class="nx">Prenom</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">Prenom</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">prenom</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="kd">get</span> <span class="nx">Initiales</span><span class="p">():</span> <span class="nx">string</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">Initiales</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">prenom</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">nom</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -586,7 +586,7 @@ Le mot-clé readonly y remédie facilement.</p>
         
 
 <section class="comments">
-    <h3>Comments</h3>
+    <h3>Commentaires</h3>
     <div id="disqus_thread"></div>
 </section>
 <script type="text/javascript">

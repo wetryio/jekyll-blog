@@ -271,10 +271,10 @@ Cela signifie qu’il est interdit d’utiliser le mot clé <code class="highlig
 L’exemple est petit, mais est pourtant assez complexe pour les personnes qui ne sont pas familières avec RXJS.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
-    <span class="kr">public</span> <span class="nx">data$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="kr">public</span> <span class="nx">openedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="kr">public</span> <span class="nx">hasRejectedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="kr">public</span> <span class="nx">refreshData$</span><span class="p">:</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">data$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">openedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">hasRejectedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">refreshData$</span><span class="p">:</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">;</span>
 
     <span class="kd">constructor</span><span class="p">(</span><span class="nx">dataService</span><span class="p">:</span> <span class="nx">DataService</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Récupération des données depuis le serveur</span>
@@ -316,19 +316,19 @@ L’exemple est petit, mais est pourtant assez complexe pour les personnes qui n
 <p>Découpons maintenant ce même code en fonctions afin de ne plus avoir que l’orchestration dans le constructeur.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
-    <span class="kr">public</span> <span class="nx">data$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="kr">public</span> <span class="nx">openedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="kr">public</span> <span class="nx">hasRejectedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="kr">public</span> <span class="nx">refreshData$</span><span class="p">:</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">data$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">openedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">hasRejectedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">refreshData$</span><span class="p">:</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">;</span>
 
-    <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">dataService</span><span class="p">:</span> <span class="nx">DataService</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">dataService</span><span class="p">:</span> <span class="nx">DataService</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">fetchDataFromServer</span><span class="p">();</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">initDataRefresher</span><span class="p">();</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">initFilteredDataObservable</span><span class="p">();</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">initHasRejectedDataObservable</span><span class="p">();</span>
     <span class="p">}</span>
 
-    <span class="kr">private</span> <span class="nx">fetchDataFromServer</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">fetchDataFromServer</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">data$</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">dataService</span><span class="p">.</span><span class="nx">getData</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span>
             <span class="nx">map</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">DataModel</span><span class="p">.</span><span class="nx">fromDTO</span><span class="p">(</span><span class="nx">item</span><span class="p">))),</span>
             <span class="nx">catchError</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="k">of</span><span class="p">([]))</span>
@@ -339,7 +339,7 @@ L’exemple est petit, mais est pourtant assez complexe pour les personnes qui n
      * This will mutate `MyClass.data$`
      * @requires MyClass.data$
      */</span>
-    <span class="kr">private</span> <span class="nx">initDataRefresher</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">initDataRefresher</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">refreshData$</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">();</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">data$</span> <span class="o">=</span> <span class="nx">merge</span><span class="p">(</span>
             <span class="k">this</span><span class="p">.</span><span class="nx">data$</span><span class="p">,</span>
@@ -350,7 +350,7 @@ L’exemple est petit, mais est pourtant assez complexe pour les personnes qui n
     <span class="cm">/**
      * @requires MyClass.data$
      */</span>
-    <span class="kr">private</span> <span class="nx">initFilteredDataObservable</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">initFilteredDataObservable</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">openedData$</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">data$</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
             <span class="nx">map</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">opened</span><span class="p">))</span>
         <span class="p">);</span>
@@ -359,7 +359,7 @@ L’exemple est petit, mais est pourtant assez complexe pour les personnes qui n
     <span class="cm">/**
      * @requires MyClass.data$
      */</span>
-    <span class="kr">private</span> <span class="nx">initHasRejectedDataObservable</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">initHasRejectedDataObservable</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">hasRejectedData$</span> <span class="o">=</span><span class="k">this</span><span class="p">.</span><span class="nx">data$</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
             <span class="nx">map</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">some</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">rejected</span><span class="p">));</span>
         <span class="p">);</span>
@@ -378,10 +378,10 @@ De plus rien n’indique au compilateur qu’il y a un ordre à respecter, et un
 <p>Voyons enfin à quoi le code ressemble en utilisant des fonctions pures.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
-    <span class="kr">public</span> <span class="nx">data$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="kr">public</span> <span class="nx">openedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="kr">public</span> <span class="nx">hasRejectedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">;</span>
-    <span class="kr">public</span> <span class="nx">refreshData$</span><span class="p">:</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">data$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">openedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">hasRejectedData$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">refreshData$</span><span class="p">:</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">;</span>
 
     <span class="kd">constructor</span><span class="p">(</span><span class="nx">dataService</span><span class="p">:</span> <span class="nx">DataService</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">const</span> <span class="nx">dataFetching$</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">fetchDataFromServer</span><span class="p">(</span><span class="nx">dataService</span><span class="p">);</span>
@@ -391,28 +391,28 @@ De plus rien n’indique au compilateur qu’il y a un ordre à respecter, et un
         <span class="k">this</span><span class="p">.</span><span class="nx">hasRejectedData$</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getHasRejectedData</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">data$</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="kr">private</span> <span class="nx">fetchDataFromServer</span><span class="p">(</span><span class="nx">dataService</span><span class="p">:</span> <span class="nx">DataService</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">fetchDataFromServer</span><span class="p">(</span><span class="nx">dataService</span><span class="p">:</span> <span class="nx">DataService</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">dataService</span><span class="p">.</span><span class="nx">getData</span><span class="p">().</span><span class="nx">pipe</span><span class="p">(</span>
             <span class="nx">map</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">DataModel</span><span class="p">.</span><span class="nx">fromDTO</span><span class="p">(</span><span class="nx">item</span><span class="p">))),</span>
             <span class="nx">catchError</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="k">of</span><span class="p">([]))</span>
         <span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="kr">private</span> <span class="nx">getDataWithRefresher</span><span class="p">(</span><span class="nx">dataFetcher</span><span class="na">$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">,</span>
-            <span class="nx">refresher</span><span class="na">$</span><span class="p">:</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">getDataWithRefresher</span><span class="p">(</span><span class="nx">dataFetcher$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">,</span>
+            <span class="nx">refresher$</span><span class="p">:</span> <span class="nx">Subject</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">merge</span><span class="p">(</span>
             <span class="nx">dataFetcher$</span><span class="p">,</span>
             <span class="nx">refresher$</span><span class="p">.</span><span class="nx">mergeMap</span><span class="p">(</span><span class="nx">dataFetcher$</span><span class="p">)</span>
         <span class="p">).</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">shareReplay</span><span class="p">());</span>
     <span class="p">}</span>
 
-    <span class="kr">private</span> <span class="nx">getOpenedData</span><span class="p">(</span><span class="nx">data</span><span class="na">$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">getOpenedData</span><span class="p">(</span><span class="nx">data$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">data$</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
             <span class="nx">map</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">opened</span><span class="p">))</span>
         <span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="kr">private</span> <span class="nx">getHasRejectedData</span><span class="p">(</span><span class="nx">data</span><span class="na">$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">getHasRejectedData</span><span class="p">(</span><span class="nx">data$</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">DataModel</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nx">data$</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span>
             <span class="nx">map</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">some</span><span class="p">(</span><span class="nx">item</span> <span class="o">=&gt;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">rejected</span><span class="p">));</span>
         <span class="p">);</span>
@@ -551,7 +551,7 @@ Enfin, un nouvel élément apporté par les fonctions pures est le fait que nous
         
 
 <section class="comments">
-    <h3>Comments</h3>
+    <h3>Commentaires</h3>
     <div id="disqus_thread"></div>
 </section>
 <script type="text/javascript">
@@ -962,7 +962,7 @@ Enfin, un nouvel élément apporté par les fonctions pures est le fait que nous
     d'avoir pris le temps de lire cet article
 
 ",
-            "wordcount": "1493",
+            "wordcount": "1489",
             "inLanguage": "fr",
             "dateCreated": "2020-02-13/",
             "datePublished": "2020-02-13/",

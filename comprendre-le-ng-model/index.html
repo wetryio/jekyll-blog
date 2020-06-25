@@ -254,8 +254,8 @@ Septembre 3, 2019
 <p>Il est possible de créer son propre property bindig via un <code class="highlighter-rouge">@Input()</code> comme il est possible de créer son propre event binding via un <code class="highlighter-rouge">@Output()</code>, mais est-il possible de créer un binding Two way ?</p>
 
 <p>Tout à fait ! Il s’agit en réalité d’une simple combinaison des deux. En effet il nous faut créer un input ainsi qu’un output, mais en respectant une règle: l’output doit avoir le même nom que l’input suivi du mot <code class="highlighter-rouge">Change</code>. Cela donnera par exemple:</p>
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Input</span><span class="p">()</span> <span class="nx">myData</span><span class="p">:</span> <span class="nx">string</span><span class="p">[];</span>
-<span class="p">@</span><span class="nd">Output</span><span class="p">()</span> <span class="nx">myDataChange</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="o">&lt;</span><span class="nx">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">();</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Input</span><span class="p">()</span> <span class="nx">myData</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
+<span class="p">@</span><span class="nd">Output</span><span class="p">()</span> <span class="nx">myDataChange</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">();</span>
 </code></pre></div></div>
 
 <p>Il sera alors possible de l’utiliser dans le parent avec cette syntaxe:</p>
@@ -302,29 +302,29 @@ La syntaxe est un peu particulière, mais très importante.</p>
   <li><code class="highlighter-rouge">setDisabledState</code> (optionel): permet au formulaire de demander au composant de s’activer ou de se désactiver.</li>
 </ul>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">YesNoComponent</span> <span class="kr">implements</span> <span class="nx">ControlValueAccessor</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">YesNoComponent</span> <span class="k">implements</span> <span class="nx">ControlValueAccessor</span>
 
-  <span class="nx">items</span><span class="p">:</span> <span class="nx">string</span><span class="p">[];</span>
+  <span class="nx">items</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
 
   <span class="c1">// Fonction temporaire qui sera remplacée par le callback de changement</span>
-  <span class="nx">onChange</span> <span class="o">=</span> <span class="p">(</span><span class="nx">rating</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+  <span class="nx">onChange</span> <span class="o">=</span> <span class="p">(</span><span class="nx">rating</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{};</span>
 
   <span class="c1">// Fonction temporaire qui sera remplacée par le callback de touché</span>
   <span class="nx">onTouched</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{};</span>
 
-  <span class="nx">writeValue</span><span class="p">(</span><span class="nx">data</span><span class="p">:</span> <span class="nx">string</span><span class="p">[]):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">writeValue</span><span class="p">(</span><span class="nx">data</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]):</span> <span class="k">void</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">items</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="nx">registerOnChange</span><span class="p">(</span><span class="na">fn</span><span class="p">:</span> <span class="p">(</span><span class="na">data</span><span class="p">:</span> <span class="nx">string</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">registerOnChange</span><span class="p">(</span><span class="nx">fn</span><span class="p">:</span> <span class="p">(</span><span class="nx">data</span><span class="p">:</span> <span class="kr">string</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">onChange</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="nx">registerOnTouched</span><span class="p">(</span><span class="na">fn</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">registerOnTouched</span><span class="p">(</span><span class="nx">fn</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">onTouched</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">;</span>
   <span class="p">}</span>
 
-  <span class="nx">setDisabledState</span><span class="p">(</span><span class="na">isDisabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+  <span class="nx">setDisabledState</span><span class="p">(</span><span class="nx">isDisabled</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">disabled</span> <span class="o">=</span> <span class="nx">isDisabled</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -489,7 +489,7 @@ La syntaxe est un peu particulière, mais très importante.</p>
         
 
 <section class="comments">
-    <h3>Comments</h3>
+    <h3>Commentaires</h3>
     <div id="disqus_thread"></div>
 </section>
 <script type="text/javascript">

@@ -286,12 +286,12 @@ Cela veut dire qu’il ne faut pas oublier d’appeler la fonction de base en pl
 
 <p>Ce hook n’est rien d’autre qu’une lambda retournant une instance de <code class="highlighter-rouge">Observable&lt;void&gt;</code>.</p>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="nx">type</span> <span class="nx">RouterHook</span> <span class="o">=</span> <span class="p">(</span><span class="nx">snapshot</span><span class="p">:</span> <span class="nx">RouterStateSnapshot</span><span class="p">,</span> <span class="nx">runExtras</span><span class="p">:</span> <span class="p">{</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">type</span> <span class="nx">RouterHook</span> <span class="o">=</span> <span class="p">(</span><span class="nx">snapshot</span><span class="p">:</span> <span class="nx">RouterStateSnapshot</span><span class="p">,</span> <span class="nx">runExtras</span><span class="p">:</span> <span class="p">{</span>
     <span class="nl">appliedUrlTree</span><span class="p">:</span> <span class="nx">UrlTree</span><span class="p">,</span>
     <span class="nx">rawUrlTree</span><span class="p">:</span> <span class="nx">UrlTree</span><span class="p">,</span>
     <span class="nx">skipLocationChange</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
     <span class="nx">replaceUrl</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">,</span>
-    <span class="nx">navigationId</span><span class="p">:</span> <span class="nx">number</span>
+    <span class="nx">navigationId</span><span class="p">:</span> <span class="kr">number</span>
 <span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div></div>
 
@@ -514,7 +514,7 @@ Cela veut dire qu’il ne faut pas oublier d’appeler la fonction de base en pl
         
 
 <section class="comments">
-    <h3>Comments</h3>
+    <h3>Commentaires</h3>
     <div id="disqus_thread"></div>
 </section>
 <script type="text/javascript">

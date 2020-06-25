@@ -285,13 +285,13 @@ Nous allons donc nous concentrer sur cette partie du framework Angular.</p>
 <p>Concentrons-nous sur les éléments les plus utilisés d’une route (l’interface complète peut être retrouvée <a href="https://angular.io/api/router/Route">ici</a>):</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">Route</span> <span class="p">{</span>
-  <span class="nl">path</span><span class="p">?:</span> <span class="nx">string</span>
-  <span class="nx">pathMatch</span><span class="p">?:</span> <span class="nx">string</span>
-  <span class="nx">component</span><span class="p">?:</span> <span class="nx">Type</span><span class="o">&lt;</span><span class="nx">any</span><span class="o">&gt;</span>
-  <span class="nx">redirectTo</span><span class="p">?:</span> <span class="nx">string</span>
-  <span class="nx">canActivate</span><span class="p">?:</span> <span class="nx">any</span><span class="p">[]</span>
-  <span class="nx">canDeactivate</span><span class="p">?:</span> <span class="nx">any</span><span class="p">[]</span>
-  <span class="nx">canLoad</span><span class="p">?:</span> <span class="nx">any</span><span class="p">[]</span>
+  <span class="nl">path</span><span class="p">?:</span> <span class="kr">string</span>
+  <span class="nx">pathMatch</span><span class="p">?:</span> <span class="kr">string</span>
+  <span class="nx">component</span><span class="p">?:</span> <span class="nx">Type</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;</span>
+  <span class="nx">redirectTo</span><span class="p">?:</span> <span class="kr">string</span>
+  <span class="nx">canActivate</span><span class="p">?:</span> <span class="kr">any</span><span class="p">[]</span>
+  <span class="nx">canDeactivate</span><span class="p">?:</span> <span class="kr">any</span><span class="p">[]</span>
+  <span class="nx">canLoad</span><span class="p">?:</span> <span class="kr">any</span><span class="p">[]</span>
   <span class="nx">data</span><span class="p">?:</span> <span class="nx">Data</span>
   <span class="nx">children</span><span class="p">?:</span> <span class="nx">Routes</span>
   <span class="nx">loadChildren</span><span class="p">?:</span> <span class="nx">LoadChildren</span>
@@ -382,7 +382,7 @@ C’est là que le composant <code class="highlighter-rouge">&lt;router-outlet&g
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Paramètre unique</span>
 <span class="p">{</span> <span class="nl">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">users/:id</span><span class="dl">'</span><span class="p">,</span> <span class="nx">component</span><span class="p">:</span> <span class="nx">UserListComponent</span> <span class="p">}</span>
 <span class="c1">// Plusieurs paramètres</span>
-<span class="p">{</span> <span class="nl">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">users/:category/:id</span><span class="dl">'</span><span class="p">,</span> <span class="nx">component</span><span class="p">:</span> <span class="nx">UserListComponent</span> <span class="p">}</span>
+<span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">users/:category/:id</span><span class="dl">'</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="nx">UserListComponent</span> <span class="p">}</span>
 </code></pre></div></div>
 
 <p>Ce paramètre est alors récupérable via la route active.</p>
@@ -446,7 +446,7 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 
 <p>La donnée est récupérable à l’aide de l’<code class="highlighter-rouge">ActivatedRoute</code>.</p>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">title</span><span class="p">:</span> <span class="nx">Title</span><span class="p">)</span> <span class="p">{}</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="k">private</span> <span class="nx">title</span><span class="p">:</span> <span class="nx">Title</span><span class="p">)</span> <span class="p">{}</span>
 
 <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">title</span><span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">route</span><span class="p">.</span><span class="nx">snapshot</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">myTitle</span><span class="p">);</span>
@@ -508,7 +508,7 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 
 <p>Pour avoir accès à cette API, il vous suffit d’injecter <code class="highlighter-rouge">Router</code>.</p>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">router</span><span class="p">:</span> <span class="nx">Router</span><span class="p">)</span><span class="err"> </span><span class="p">{}</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">router</span><span class="p">:</span> <span class="nx">Router</span><span class="p">)</span><span class="err"> </span><span class="p">{}</span>
 </code></pre></div></div>
 
 <h4 id="navigate">Navigate</h4>
@@ -537,7 +537,7 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 
 <p>Nous allons pouvoir récupérer le parent de l’url active et demander une navigation relative à cette route.</p>
 
-<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">router</span><span class="p">:</span> <span class="nx">Router</span><span class="p">)</span> <span class="p">{}</span>
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="k">private</span> <span class="nx">router</span><span class="p">:</span> <span class="nx">Router</span><span class="p">)</span> <span class="p">{}</span>
 <span class="p">...</span>
 <span class="c1">// Navigation vers le parent</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">navigate</span><span class="p">([</span><span class="dl">'</span><span class="s1">.</span><span class="dl">'</span><span class="p">],</span> <span class="p">{</span> <span class="na">relativeTo</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">route</span><span class="p">.</span><span class="nx">parent</span> <span class="p">});</span>
@@ -632,21 +632,21 @@ La raison et que ces trois paramètres restants méritent de créer une nouvelle
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// canActivate</span>
 <span class="p">@</span><span class="nd">Injectable</span><span class="p">(</span><span class="nx">providedIn</span><span class="p">:</span> <span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">)</span>
-<span class="kd">class</span> <span class="nx">CanActivateGuard</span> <span class="kr">implements</span> <span class="nx">CanActivate</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nx">CanActivateGuard</span> <span class="k">implements</span> <span class="nx">CanActivate</span> <span class="p">{</span>
     <span class="nx">canActivate</span><span class="p">(</span><span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRouteSnapshot</span><span class="p">,</span> <span class="nx">state</span><span class="p">:</span> <span class="nx">RouterStateSnapshot</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;|</span><span class="nx">boolean</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">// canDeactivate</span>
 <span class="p">@</span><span class="nd">Injectable</span><span class="p">(</span><span class="nx">providedIn</span><span class="p">:</span> <span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">)</span>
-<span class="kd">class</span> <span class="nx">CanDeactivateGuard</span> <span class="kr">implements</span> <span class="nx">CanDeactivate</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nx">CanDeactivateGuard</span> <span class="k">implements</span> <span class="nx">CanDeactivate</span> <span class="p">{</span>
     <span class="nx">canDeactivate</span><span class="p">(</span><span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRouteSnapshot</span><span class="p">,</span> <span class="nx">state</span><span class="p">:</span> <span class="nx">RouterStateSnapshot</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;|</span><span class="nx">boolean</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="c1">// canLoad</span>
 <span class="p">@</span><span class="nd">Injectable</span><span class="p">(</span><span class="nx">providedIn</span><span class="p">:</span> <span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">)</span>
-<span class="kd">class</span> <span class="nx">CanLoadGuard</span> <span class="kr">implements</span> <span class="nx">CanLoad</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nx">CanLoadGuard</span> <span class="k">implements</span> <span class="nx">CanLoad</span> <span class="p">{</span>
     <span class="nx">canLoad</span><span class="p">(</span><span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRouteSnapshot</span><span class="p">,</span> <span class="nx">state</span><span class="p">:</span> <span class="nx">RouterStateSnapshot</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">boolean</span><span class="o">&gt;|</span><span class="nx">boolean</span> <span class="p">{</span>
         <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
@@ -839,7 +839,7 @@ La raison et que ces trois paramètres restants méritent de créer une nouvelle
         
 
 <section class="comments">
-    <h3>Comments</h3>
+    <h3>Commentaires</h3>
     <div id="disqus_thread"></div>
 </section>
 <script type="text/javascript">
