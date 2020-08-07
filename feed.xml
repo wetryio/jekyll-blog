@@ -5,13 +5,13 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Aug 2020 16:10:19 +0000</pubDate>
-    <lastBuildDate>Fri, 07 Aug 2020 16:10:19 +0000</lastBuildDate>
+    <pubDate>Fri, 07 Aug 2020 16:50:17 +0000</pubDate>
+    <lastBuildDate>Fri, 07 Aug 2020 16:50:17 +0000</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
         <title>Pourquoi deno existe</title>
-        <description>&lt;blockquote&gt; &lt;p&gt;Cet article utilise du code qui exécute deno 1.1.1, sur ubuntu 20.04. Pour la lecture de cet article, des connaissances basiques en javascript ou typescript et nodejs sont nécessaires. Lors de la rédaction de l’article, le package standard deno (expliquée plus tard) était en version 0.58.0&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;J’aime nodejs, j’adore le typescript et j’aime surtout tout le go. Cet article vous présente les deno, avec les corrections apportées à nodejs, le typescript intégré et l’écosystème similaire à go.&lt;/p&gt; &lt;h1 id=&quot;deno-cest-quoi&quot;&gt;Deno, c’est quoi?&lt;/h1&gt; &lt;p&gt;Deno (un anagramme de node!) est créé pour corriger les regrets d’un créateur de nodejs, Ryan Dahl....</description>
+        <description>&lt;blockquote&gt; &lt;p&gt;Cet article utilise du code qui exécute deno 1.1.1, sur ubuntu 20.04. Pour la lecture de cet article, des connaissances basiques en javascript ou typescript et nodejs sont nécessaires. Lors de la rédaction de l’article, le package standard deno (expliquée plus tard) était en version 0.58.0&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;J’aime nodejs, j’adore le typescript et j’aime surtout tout le go. Cet article vous présente deno, avec les corrections apportées à nodejs, le typescript intégré et l’écosystème similaire à go.&lt;/p&gt; &lt;h1 id=&quot;deno-cest-quoi&quot;&gt;Deno, c’est quoi?&lt;/h1&gt; &lt;p&gt;Deno (un anagramme de node!) est créé pour corriger les regrets d’un créateur de nodejs, Ryan Dahl. Il...</description>
         <pubDate>Fri, 07 Aug 2020 11:00:00 +0000</pubDate>
         <link>https://wetry.tech/pourquoi-deno-existe/</link>
         <guid isPermaLink="true">https://wetry.tech/pourquoi-deno-existe/</guid>
