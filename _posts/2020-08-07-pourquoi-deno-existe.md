@@ -19,7 +19,7 @@ author: mscolas
 > Pour la lecture de cet article, des connaissances basiques en javascript ou typescript et nodejs sont nécessaires.
 > Lors de la rédaction de l'article, le package standard deno (expliquée plus tard) était en version 0.58.0
 
-J'aime nodejs, j'adore le typescript et j'aime surtout tout le go. Cet article vous présente les deno, avec les corrections apportées à nodejs, le typescript intégré et l'écosystème similaire à go.
+J'aime nodejs, j'adore le typescript et j'aime surtout tout le go. Cet article vous présente deno, avec les corrections apportées à nodejs, le typescript intégré et l'écosystème similaire à go.
 
 # Deno, c'est quoi?
 
