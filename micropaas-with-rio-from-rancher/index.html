@@ -222,7 +222,7 @@ Mai 5, 2020
                         </time>
                     
                     <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
-                    <span>17 min to read</span>
+                    <span>18 min to read</span>
                 </p>
                 <h1 class="post-title">MicroPaaS avec Rio de Rancher</h1>
                 <p class="post-subtitle"></p>
@@ -295,29 +295,29 @@ Pour cet article je vais choisir un cluster deux noeuds Medium (un master pouvan
 
 <p><img src="/assets/img/kubernetes/rio/creation.png" alt="civo creation" /></p>
 
-<p>Une fois l’attente terminée, vous allez pouvoir télécharger le kubeconfig afin d’y avoir accès depuis le CLI <code class="highlighter-rouge">kubectl</code>.</p>
+<p>Une fois l’attente terminée, vous allez pouvoir télécharger le kubeconfig afin d’y avoir accès depuis le CLI <code class="language-plaintext highlighter-rouge">kubectl</code>.</p>
 
 <p><img src="/assets/img/kubernetes/rio/download-kubefile.png" alt="download kubefilr" /></p>
 
 <p>Ayant nommé mon cluster “Rio on Civo”, le fichier fourni s’appelle “civo-rio-on-civo-kubeconfig”.
-Vous pourrez utiliser ce fichier facilement en ajoutant le paramètre <code class="highlighter-rouge">--kubeconfig</code> à chaque CLI kubernetes ou en utilisant la variable d’environnement <code class="highlighter-rouge">KUBECONFIG</code>.</p>
+Vous pourrez utiliser ce fichier facilement en ajoutant le paramètre <code class="language-plaintext highlighter-rouge">--kubeconfig</code> à chaque CLI kubernetes ou en utilisant la variable d’environnement <code class="language-plaintext highlighter-rouge">KUBECONFIG</code>.</p>
 
 <p>Exemples:</p>
 <ul>
-  <li><code class="highlighter-rouge">kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A</code></li>
-  <li><code class="highlighter-rouge">rio --kubeconfig civo-rio-on-civo-kubeconfig ps</code></li>
+  <li><code class="language-plaintext highlighter-rouge">kubectl --kubeconfig civo-rio-on-civo-kubeconfig get pods -A</code></li>
+  <li><code class="language-plaintext highlighter-rouge">rio --kubeconfig civo-rio-on-civo-kubeconfig ps</code></li>
 </ul>
 
 <p>Ou</p>
 
 <ul>
-  <li><code class="highlighter-rouge">export KUBECONFIG=civo-rio-on-civo-kubeconfig</code></li>
-  <li><code class="highlighter-rouge">kubectl get pods -A</code></li>
-  <li><code class="highlighter-rouge">rio ps</code></li>
+  <li><code class="language-plaintext highlighter-rouge">export KUBECONFIG=civo-rio-on-civo-kubeconfig</code></li>
+  <li><code class="language-plaintext highlighter-rouge">kubectl get pods -A</code></li>
+  <li><code class="language-plaintext highlighter-rouge">rio ps</code></li>
 </ul>
 
-<p><strong><em>Afin de pouvoir mieux nous concentrer sur les commandes, j’utilise la variable d’environnement et donc ne spécifierais pas la configuration <code class="highlighter-rouge">--kubeconfig</code> dans la suite de l’article. Si vous ne savez pas comment créer une variable d’environnement sur votre OS, ajouter le flag à chaque fois derrière le mot <code class="highlighter-rouge">rio</code>.
-Par exemple, <code class="highlighter-rouge">rio ps</code> dans l’article donne <code class="highlighter-rouge">rio --kubeconfig civo-rio-on-civo-kubeconfig ps</code>.</em></strong></p>
+<p><strong><em>Afin de pouvoir mieux nous concentrer sur les commandes, j’utilise la variable d’environnement et donc ne spécifierais pas la configuration <code class="language-plaintext highlighter-rouge">--kubeconfig</code> dans la suite de l’article. Si vous ne savez pas comment créer une variable d’environnement sur votre OS, ajouter le flag à chaque fois derrière le mot <code class="language-plaintext highlighter-rouge">rio</code>.
+Par exemple, <code class="language-plaintext highlighter-rouge">rio ps</code> dans l’article donne <code class="language-plaintext highlighter-rouge">rio --kubeconfig civo-rio-on-civo-kubeconfig ps</code>.</em></strong></p>
 
 <h1 id="installation-de-rio">Installation de RIO</h1>
 
@@ -325,25 +325,25 @@ Par exemple, <code class="highlighter-rouge">rio ps</code> dans l’article donn
 
 <p>Le CLI Rio s’installe sur votre machine locale et est compatible avec tous les OS tournant sur amd64 ou arm.</p>
 
-<p>Vous pouvez utiliser la commande <code class="highlighter-rouge">curl -sfL https://get.rio.io | sh -</code> (le script détect automatiquement la release à utiliser) ou l’installer manuellement en téléchargeant la realease compatible avec votre OS local <a href="https://github.com/rancher/rio/releases">ici</a>. J’ai personnellement choisi le script étant sous macOS.</p>
+<p>Vous pouvez utiliser la commande <code class="language-plaintext highlighter-rouge">curl -sfL https://get.rio.io | sh -</code> (le script détect automatiquement la release à utiliser) ou l’installer manuellement en téléchargeant la realease compatible avec votre OS local <a href="https://github.com/rancher/rio/releases">ici</a>. J’ai personnellement choisi le script étant sous macOS.</p>
 
 <h2 id="installation-sur-le-cluster">Installation sur le cluster</h2>
 
-<p>L’installation sur le cluster est aussi simple que celle du CLI, une commande suffit (<code class="highlighter-rouge">install</code>):</p>
+<p>L’installation sur le cluster est aussi simple que celle du CLI, une commande suffit (<code class="language-plaintext highlighter-rouge">install</code>):</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio <span class="nb">install</span> <span class="nt">--email</span> your@email.com
 </code></pre></div></div>
 
-<p>Le flag <code class="highlighter-rouge">--email</code> sera utilisé pour la demande de certificat à Let’s Encrypt.</p>
+<p>Le flag <code class="language-plaintext highlighter-rouge">--email</code> sera utilisé pour la demande de certificat à Let’s Encrypt.</p>
 
-<p>Par défaut tous les <a href="https://github.com/rancher/rio/blob/master/docs/install.md#features">services</a> sont installés. Vous pouvez en désactiver en utilisant le flag <code class="highlighter-rouge">--disable-features</code>.
-Si vous utilisez votre propre domaine et certificat wild-card vous pouvez par exemple ajouter <code class="highlighter-rouge">--disable-features rdns,letsencrypt</code> à votre commande.</p>
+<p>Par défaut tous les <a href="https://github.com/rancher/rio/blob/master/docs/install.md#features">services</a> sont installés. Vous pouvez en désactiver en utilisant le flag <code class="language-plaintext highlighter-rouge">--disable-features</code>.
+Si vous utilisez votre propre domaine et certificat wild-card vous pouvez par exemple ajouter <code class="language-plaintext highlighter-rouge">--disable-features rdns,letsencrypt</code> à votre commande.</p>
 
-<p>Vous pouvez également avoir plus de paramètre si vous le souhaitez en utilisant le flag <code class="highlighter-rouge">--yaml</code> qui crée un yaml sans l’appliquer. Vous devrez alors l’appliquer après avoir effectué les modifications souhaitées.</p>
+<p>Vous pouvez également avoir plus de paramètre si vous le souhaitez en utilisant le flag <code class="language-plaintext highlighter-rouge">--yaml</code> qui crée un yaml sans l’appliquer. Vous devrez alors l’appliquer après avoir effectué les modifications souhaitées.</p>
 
 <p><img src="/assets/img/kubernetes/rio/deploy-success.png" alt="rio deploy success" /></p>
 
-<p>Vous pouvez vérifier que tout s’est bien passé avec cette commande (<code class="highlighter-rouge">pods</code>):</p>
+<p>Vous pouvez vérifier que tout s’est bien passé avec cette commande (<code class="language-plaintext highlighter-rouge">pods</code>):</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio <span class="nt">-n</span> rio-system pods
 </code></pre></div></div>
@@ -360,10 +360,10 @@ Si vous utilisez votre propre domaine et certificat wild-card vous pouvez par ex
 
 <p>Vous remarquerez qu’il n’y a que 2 fichiers:</p>
 <ul>
-  <li><code class="highlighter-rouge">main.go</code> un service web basic en Go</li>
-  <li><code class="highlighter-rouge">Dockerfile</code> la façon de créer un environnement pour faire tourner le service Go
+  <li><code class="language-plaintext highlighter-rouge">main.go</code> un service web basic en Go</li>
+  <li><code class="language-plaintext highlighter-rouge">Dockerfile</code> la façon de créer un environnement pour faire tourner le service Go
     <ul>
-      <li>Le Dockerfile comprend la façon de <strong>builder</strong> <code class="highlighter-rouge">RUN ["go", "build", "-o", "demo"]</code> le projet ainsi que de façon de l’ <strong>exécuter</strong> <code class="highlighter-rouge">CMD ["./demo"]</code>.</li>
+      <li>Le Dockerfile comprend la façon de <strong>builder</strong> <code class="language-plaintext highlighter-rouge">RUN ["go", "build", "-o", "demo"]</code> le projet ainsi que de façon de l’ <strong>exécuter</strong> <code class="language-plaintext highlighter-rouge">CMD ["./demo"]</code>.</li>
     </ul>
   </li>
 </ul>
@@ -372,15 +372,15 @@ Si vous utilisez votre propre domaine et certificat wild-card vous pouvez par ex
 
 <h2 id="déployement">Déployement</h2>
 
-<p>Le repo étant publique nous n’avons qu’à exécuter une commande (<code class="highlighter-rouge">run</code>) en faisant référence à celui-ci.</p>
+<p>Le repo étant publique nous n’avons qu’à exécuter une commande (<code class="language-plaintext highlighter-rouge">run</code>) en faisant référence à celui-ci.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio run <span class="nt">-n</span> cd-demo <span class="nt">-p</span> 8080 https://github.com/rancher/rio-demo
 </code></pre></div></div>
 
 <p>Ici nous avons décidé de publier notre service avec le nom “cd-demo” et nous mappons le port 8080 au port publique 80.
-Il est également possible de mapper d’autres ports en utilisant par exemple <code class="highlighter-rouge">-p 81:8081</code>.</p>
+Il est également possible de mapper d’autres ports en utilisant par exemple <code class="language-plaintext highlighter-rouge">-p 81:8081</code>.</p>
 
-<p>Il ne vous reste plus qu’à exécuter la commande <code class="highlighter-rouge">ps</code> pour récupérer les informations de l’application que vous venez de déployer.</p>
+<p>Il ne vous reste plus qu’à exécuter la commande <code class="language-plaintext highlighter-rouge">ps</code> pour récupérer les informations de l’application que vous venez de déployer.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio ps
 </code></pre></div></div>
@@ -403,7 +403,7 @@ Il est également possible de mapper d’autres ports en utilisant par exemple <
 
 <p>Cette méthode permet d’utiliser les autres commandes comme précédemment sans rien changer.</p>
 
-<p>Pour enregistrer vos données d’authentification dans Rio, utilisez la commande (<code class="highlighter-rouge">secret</code>):</p>
+<p>Pour enregistrer vos données d’authentification dans Rio, utilisez la commande (<code class="language-plaintext highlighter-rouge">secret</code>):</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio secret create <span class="nt">--git-basic-auth</span>
 </code></pre></div></div>
@@ -413,7 +413,7 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
 
 <h3 id="authentification-ssh">Authentification SSH</h3>
 
-<p>Pour enregistrer la clé SSH, vous devez également utiliser la commande <code class="highlighter-rouge">secret</code> mais avec le flag <code class="highlighter-rouge">--git-sshkey-auth</code>:</p>
+<p>Pour enregistrer la clé SSH, vous devez également utiliser la commande <code class="language-plaintext highlighter-rouge">secret</code> mais avec le flag <code class="language-plaintext highlighter-rouge">--git-sshkey-auth</code>:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio secret create <span class="nt">--git-sshkey-auth</span>
 </code></pre></div></div>
@@ -427,7 +427,7 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
 
 <p>D’autres types de secrets existe comme la connection à un docker registry privé.</p>
 
-<p>Vous pouvez voir les différents types de secrets possible à l’aide de la commande d’aide <code class="highlighter-rouge">rio secret create --help</code>.</p>
+<p>Vous pouvez voir les différents types de secrets possible à l’aide de la commande d’aide <code class="language-plaintext highlighter-rouge">rio secret create --help</code>.</p>
 
 <p>Pour plus d’information, n’hésitez pas à aller faire un tour dans la <a href="https://github.com/rancher/rio/blob/master/docs/continuous-deployment.md">documentation</a>.</p>
 
@@ -441,30 +441,30 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
 
 <p><img src="/assets/img/kubernetes/rio/github-token.png" alt="github access token" /></p>
 
-<p>et créer un secret de webhook toujours avec la même commande et le flag <code class="highlighter-rouge">--github-webhook</code>:</p>
+<p>et créer un secret de webhook toujours avec la même commande et le flag <code class="language-plaintext highlighter-rouge">--github-webhook</code>:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio secret add <span class="nt">--git-sshkey-auth</span>
 </code></pre></div></div>
 
 <h3 id="déploiement-pour-pr">Déploiement pour PR</h3>
 
-<p>Utilisez la commande <code class="highlighter-rouge">run</code> avec un nouveau flag <code class="highlighter-rouge">--build-pr</code></p>
+<p>Utilisez la commande <code class="language-plaintext highlighter-rouge">run</code> avec un nouveau flag <code class="language-plaintext highlighter-rouge">--build-pr</code></p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio run <span class="nt">-p</span> 8080 <span class="nt">-n</span> example-cd <span class="nt">--build-webhook-secret</span><span class="o">=</span>githubtoken <span class="nt">--build-pr</span> <span class="nt">--template</span> https://github.com/rancher/rio-demo
 </code></pre></div></div>
 
-<p><em>Envie d’en savoir plus sur <code class="highlighter-rouge">--template</code> ? C’est par <a href="https://github.com/rancher/rio/blob/master/docs/continuous-deployment.md#automatic-versioning">ici</a>.</em></p>
+<p><em>Envie d’en savoir plus sur <code class="language-plaintext highlighter-rouge">--template</code> ? C’est par <a href="https://github.com/rancher/rio/blob/master/docs/continuous-deployment.md#automatic-versioning">ici</a>.</em></p>
 
 <h1 id="dashboard">Dashboard</h1>
 
 <p>Avant de voir d’autres façons de déployer votre application, c’est peut-être le moment de vous informer qu’il existe un dashboard web vous permettant de monitorer visuellement vos applications.</p>
 
-<p>Pour rester dans la simplicité nous pouvons l’installer en une seule commande (<code class="highlighter-rouge">dashboard</code>):</p>
+<p>Pour rester dans la simplicité nous pouvons l’installer en une seule commande (<code class="language-plaintext highlighter-rouge">dashboard</code>):</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio dashboard
 </code></pre></div></div>
 
-<p><em>Le Dashboard est installé, mais ne répond pas encore ? Attendez encore un peu, le Dashboard prend plus de temps à ce lancer. Vous pouvez vérifier le lancement du Dashboard à l’aide de la commande <code class="highlighter-rouge">rio -n rio-system pods</code> déjà utilisée précédement</em></p>
+<p><em>Le Dashboard est installé, mais ne répond pas encore ? Attendez encore un peu, le Dashboard prend plus de temps à ce lancer. Vous pouvez vérifier le lancement du Dashboard à l’aide de la commande <code class="language-plaintext highlighter-rouge">rio -n rio-system pods</code> déjà utilisée précédement</em></p>
 
 <p><img src="/assets/img/kubernetes/rio/dashboard.png" alt="rio dashboard" /></p>
 
@@ -472,16 +472,16 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
 
 <h1 id="déploiement-dune-image-docker">Déploiement d’une image Docker</h1>
 
-<p>Avec Rio, il est aussi facile de déployer depuis une image Docker qu’en local. Il s’agit de la même commande (<code class="highlighter-rouge">run</code>) que pour le déploiement via github et Rio détecte automatiquement qu’il ne s’agit pas d’un lien Git, mais d’un nom d’image.</p>
+<p>Avec Rio, il est aussi facile de déployer depuis une image Docker qu’en local. Il s’agit de la même commande (<code class="language-plaintext highlighter-rouge">run</code>) que pour le déploiement via github et Rio détecte automatiquement qu’il ne s’agit pas d’un lien Git, mais d’un nom d’image.</p>
 
 <p>Pour déployer par exemple l’image <a href="https://hub.docker.com/r/rancher/hello-world">hello-world de rancher</a>, nous allons utiliser cette commande:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio run <span class="nt">-n</span> hello-world <span class="nt">-p</span> 80 rancher/hello-world
 </code></pre></div></div>
 
-<p>Vous pouvez évidement utiliser des variables d’environnement à l’aide des flags <code class="highlighter-rouge">--env</code> et <code class="highlighter-rouge">--env-file</code>.</p>
+<p>Vous pouvez évidement utiliser des variables d’environnement à l’aide des flags <code class="language-plaintext highlighter-rouge">--env</code> et <code class="language-plaintext highlighter-rouge">--env-file</code>.</p>
 
-<p>Pour avoir le nom de domaine, vous pouvez utiliser <code class="highlighter-rouge">ps</code> comme fait précédemment ou regarder la liste des services du dashboard.</p>
+<p>Pour avoir le nom de domaine, vous pouvez utiliser <code class="language-plaintext highlighter-rouge">ps</code> comme fait précédemment ou regarder la liste des services du dashboard.</p>
 
 <p><img src="/assets/img/kubernetes/rio/service-deployed-dashboard.png" alt="rio dashboard service deployed" /></p>
 
@@ -491,7 +491,7 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
 
 <p>Heureusement Rio fait tout pour nous en utilisant un registry local.</p>
 
-<p>J’en profite pour vous parler d’une autre point qui est le <code class="highlighter-rouge">RioFile</code>. Il s’agit d’un fichier yaml se rapprochant un peu d’un fichier dockercompose.</p>
+<p>J’en profite pour vous parler d’une autre point qui est le <code class="language-plaintext highlighter-rouge">RioFile</code>. Il s’agit d’un fichier yaml se rapprochant un peu d’un fichier dockercompose.</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">services</span><span class="pi">:</span>
   <span class="na">dev</span><span class="pi">:</span>
@@ -499,13 +499,13 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
     <span class="na">port</span><span class="pi">:</span> <span class="s">8080/http</span>
 </code></pre></div></div>
 
-<p>Ce fichier crée un service dont le nom est “dev” en se basant sur <code class="highlighter-rouge">image</code>. Image peut contenir le nom d’une image disponible dans un registry ou un chemin relatif. Le chemin relatif indique à Rio qu’il doit builder l’image lui-même.</p>
+<p>Ce fichier crée un service dont le nom est “dev” en se basant sur <code class="language-plaintext highlighter-rouge">image</code>. Image peut contenir le nom d’une image disponible dans un registry ou un chemin relatif. Le chemin relatif indique à Rio qu’il doit builder l’image lui-même.</p>
 
 <p>Il s’agit du fichier Riofile le plus petit que l’on puisse faire. Il y a 1001 autres options que vous pouvez spécifier dans ce fichier, je vous invite donc à aller les découvrir <a href="https://github.com/rancher/rio/blob/master/docs/riofile.md">dans la doc officielle</a>.</p>
 
-<p>L’emplacement de votre dossier (<code class="highlighter-rouge">./</code> dans le cas présent) doit bien entendu contenir le code source de l’application ainsi qu’un Dockerfile tout comme nous l’avons vu dans la partie <a href="#Composition-du-repo">Composition du repo</a>.</p>
+<p>L’emplacement de votre dossier (<code class="language-plaintext highlighter-rouge">./</code> dans le cas présent) doit bien entendu contenir le code source de l’application ainsi qu’un Dockerfile tout comme nous l’avons vu dans la partie <a href="#Composition-du-repo">Composition du repo</a>.</p>
 
-<p>Pour déployer notre application, il ne reste plus qu’à exécuter la commande <code class="highlighter-rouge">up</code>.</p>
+<p>Pour déployer notre application, il ne reste plus qu’à exécuter la commande <code class="language-plaintext highlighter-rouge">up</code>.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio up
 </code></pre></div></div>
@@ -516,21 +516,21 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
 
 <p>Vous pouvez exécuter une des 2 étapes par lesquelles il passe vous-même:</p>
 <ol>
-  <li><code class="highlighter-rouge">rio build</code>: build de l’image</li>
-  <li><code class="highlighter-rouge">rio run -p 8080 localhost:5442/default/dev:latest</code> déployer l’image précédemment créée</li>
+  <li><code class="language-plaintext highlighter-rouge">rio build</code>: build de l’image</li>
+  <li><code class="language-plaintext highlighter-rouge">rio run -p 8080 localhost:5442/default/dev:latest</code> déployer l’image précédemment créée</li>
 </ol>
 
 <h1 id="scaling">Scaling</h1>
 
 <p>Le scaling est le fait d’avoir plusieurs instances du même service qui tourne afin de pouvoir absorber plus facilement la charge de calcul demandée en la distribuant.</p>
 
-<p>Il peut se gérer de toutes les manières de créer un service: commande <strong>run</strong> (<code class="highlighter-rouge">--scale</code>), <strong>Riofile</strong> (<code class="highlighter-rouge">scale</code> ou <code class="highlighter-rouge">autoscale</code>) ou encore via le <strong>dashboard</strong>.</p>
+<p>Il peut se gérer de toutes les manières de créer un service: commande <strong>run</strong> (<code class="language-plaintext highlighter-rouge">--scale</code>), <strong>Riofile</strong> (<code class="language-plaintext highlighter-rouge">scale</code> ou <code class="language-plaintext highlighter-rouge">autoscale</code>) ou encore via le <strong>dashboard</strong>.</p>
 
 <h2 id="manuel">Manuel</h2>
 
-<p>Comme dit plus haut, le scaling se gère à la création d’un service. Il sera automatiquement mis à <code class="highlighter-rouge">1</code> si vous n’indiquez rien.</p>
+<p>Comme dit plus haut, le scaling se gère à la création d’un service. Il sera automatiquement mis à <code class="language-plaintext highlighter-rouge">1</code> si vous n’indiquez rien.</p>
 
-<p>Vous pouvez modifier le scaling après sa création à l’aide de la commande <code class="highlighter-rouge">scale</code>.</p>
+<p>Vous pouvez modifier le scaling après sa création à l’aide de la commande <code class="language-plaintext highlighter-rouge">scale</code>.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio scale hello-world<span class="o">=</span>2
 </code></pre></div></div>
@@ -549,12 +549,12 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
 
 <h2 id="automatique">Automatique</h2>
 
-<p>Le mot “scaling automatique” peut vous sembler compliqué d’un premier abord, et pourtant avec Rio c’est aussi simple que le scaling manuel. La seule différence est que nous devons préciser un range (exemple: <code class="highlighter-rouge">1-10</code>).</p>
+<p>Le mot “scaling automatique” peut vous sembler compliqué d’un premier abord, et pourtant avec Rio c’est aussi simple que le scaling manuel. La seule différence est que nous devons préciser un range (exemple: <code class="language-plaintext highlighter-rouge">1-10</code>).</p>
 
 <p>Il existe deux types d’auto-scaling:</p>
 <ul>
-  <li>froid (depuis 0): <code class="highlighter-rouge">0-10</code></li>
-  <li>chaud (depuis au moins 1): <code class="highlighter-rouge">1-10</code></li>
+  <li>froid (depuis 0): <code class="language-plaintext highlighter-rouge">0-10</code></li>
+  <li>chaud (depuis au moins 1): <code class="language-plaintext highlighter-rouge">1-10</code></li>
 </ul>
 
 <p>Attention qu’avec l’auto-scaling froid il y aura une latence de +/- 10 secondes le temps qu’une instance se lance si aucun n’est lancé.</p>
@@ -564,7 +564,7 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hey <span class="nt">-z</span> 3m <span class="nt">-c</span> 100 https://hello-world-v0-default.4a7p4l.on-rio.io/
 </code></pre></div></div>
 
-<p>Vous devriez voir le nombre d’instances (répliquas) monter petit à petit puis avec la commande <code class="highlighter-rouge">ps</code>:</p>
+<p>Vous devriez voir le nombre d’instances (répliquas) monter petit à petit puis avec la commande <code class="language-plaintext highlighter-rouge">ps</code>:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio ps
 </code></pre></div></div>
@@ -577,22 +577,22 @@ Comme dit plus haut, les autres commandes ne changent pas.</p>
 
 <p>Commençons par un cas concret: donner accès à nos deux applications (cd-demo et hello-world) depuis le même sous domaine avec deux path différents.</p>
 
-<p>Nous allons utiliser la commande <code class="highlighter-rouge">route add</code>.</p>
+<p>Nous allons utiliser la commande <code class="language-plaintext highlighter-rouge">route add</code>.</p>
 
-<p>Pour créer une règle de routing sur base d’un path, nous allons utiliser la commande de cette façon: <code class="highlighter-rouge">rio route add $name/$path to $target</code>.</p>
+<p>Pour créer une règle de routing sur base d’un path, nous allons utiliser la commande de cette façon: <code class="language-plaintext highlighter-rouge">rio route add $name/$path to $target</code>.</p>
 <ul>
-  <li><code class="highlighter-rouge">$name</code>: est à remplacer par le nom du router (est utilisé pour créer un sous-domaine)</li>
-  <li><code class="highlighter-rouge">$path</code>: est à remplacer par le path sur lequel vous voulez que votre service soit accessible</li>
-  <li><code class="highlighter-rouge">$target</code>: est à remplacer par le nom du service vers lequel pointer</li>
+  <li><code class="language-plaintext highlighter-rouge">$name</code>: est à remplacer par le nom du router (est utilisé pour créer un sous-domaine)</li>
+  <li><code class="language-plaintext highlighter-rouge">$path</code>: est à remplacer par le path sur lequel vous voulez que votre service soit accessible</li>
+  <li><code class="language-plaintext highlighter-rouge">$target</code>: est à remplacer par le nom du service vers lequel pointer</li>
 </ul>
 
-<p>Créons notre première redirection du service <strong>hello-world</strong> sur le sous domaine <code class="highlighter-rouge">test-default</code> (test = nom du router, default = nom du namespace) sur le path <code class="highlighter-rouge">/hello-world</code>.
-Autrement dit <code class="highlighter-rouge">https://test-default.&lt;rio-domain&gt;/hello-world</code>.</p>
+<p>Créons notre première redirection du service <strong>hello-world</strong> sur le sous domaine <code class="language-plaintext highlighter-rouge">test-default</code> (test = nom du router, default = nom du namespace) sur le path <code class="language-plaintext highlighter-rouge">/hello-world</code>.
+Autrement dit <code class="language-plaintext highlighter-rouge">https://test-default.&lt;rio-domain&gt;/hello-world</code>.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio route add <span class="nb">test</span>/hello-world to hello-world
 </code></pre></div></div>
 
-<p>Pour vous assurez que la route est bien créée vous pouvez utiliser la commande <code class="highlighter-rouge">routers</code>:</p>
+<p>Pour vous assurez que la route est bien créée vous pouvez utiliser la commande <code class="language-plaintext highlighter-rouge">routers</code>:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio routers
 </code></pre></div></div>
@@ -604,7 +604,7 @@ Autrement dit <code class="highlighter-rouge">https://test-default.&lt;rio-domai
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio route add <span class="nb">test</span>/cd-demo to cd-demo,port<span class="o">=</span>8080
 </code></pre></div></div>
 
-<p>Nous avons maintenant également une application qui répond sous le chemin <code class="highlighter-rouge">https://test-default.&lt;rio-domain&gt;/cd-demo</code></p>
+<p>Nous avons maintenant également une application qui répond sous le chemin <code class="language-plaintext highlighter-rouge">https://test-default.&lt;rio-domain&gt;/cd-demo</code></p>
 
 <p><strong><em>Encore une fois je privilégie le CLI au dashboard, mais tout est faisable via ce dernier.</em></strong></p>
 
@@ -614,7 +614,7 @@ Autrement dit <code class="highlighter-rouge">https://test-default.&lt;rio-domai
 
 <h1 id="votre-domaine">Votre domaine</h1>
 
-<p>Pour utiliser votre propre domaine, le plus simple est d’ajouter un record <code class="highlighter-rouge">CNAME</code> vers votre domaine <code class="highlighter-rouge">xxxxxx.on-rio.io</code> (récupérable depuis la commande <code class="highlighter-rouge">rio info</code>).</p>
+<p>Pour utiliser votre propre domaine, le plus simple est d’ajouter un record <code class="language-plaintext highlighter-rouge">CNAME</code> vers votre domaine <code class="language-plaintext highlighter-rouge">xxxxxx.on-rio.io</code> (récupérable depuis la commande <code class="language-plaintext highlighter-rouge">rio info</code>).</p>
 
 <p>Afin de ne pas avoir de problèmes de certificat je vous propose d’utiliser le service gratuit CloudFlare.</p>
 
@@ -628,7 +628,7 @@ Autrement dit <code class="highlighter-rouge">https://test-default.&lt;rio-domai
 
 <p><img src="/assets/img/kubernetes/rio/cloudflare-certificate.png" alt="cloudflare certificate" /></p>
 
-<p>Il ne nous reste plus qu’à enregistrer ce nouveau domaine dans Rio à l’aide de la commande <code class="highlighter-rouge">domain register</code>.</p>
+<p>Il ne nous reste plus qu’à enregistrer ce nouveau domaine dans Rio à l’aide de la commande <code class="language-plaintext highlighter-rouge">domain register</code>.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio domain register rio.wetry.eu <span class="nb">test</span>
 </code></pre></div></div>
@@ -645,21 +645,21 @@ Autrement dit <code class="highlighter-rouge">https://test-default.&lt;rio-domai
 
 <h2 id="autre-namespace">Autre namespace</h2>
 
-<p>Imaginons que nous ayons une application <strong>app2</strong> dans un autre namespace se nommant <strong>namespace2</strong>, il est possible d’y avoir accès par exemple avec le nom <strong>ext2</strong> via la commande <code class="highlighter-rouge">external create</code> de cette façon:</p>
+<p>Imaginons que nous ayons une application <strong>app2</strong> dans un autre namespace se nommant <strong>namespace2</strong>, il est possible d’y avoir accès par exemple avec le nom <strong>ext2</strong> via la commande <code class="language-plaintext highlighter-rouge">external create</code> de cette façon:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio external create ext2 namespace2:app2
 </code></pre></div></div>
 
 <h2 id="ip-ou-nom-de-domaine">Ip ou nom de domaine</h2>
 
-<p>Pour avoir accès à un service externe via un nom (par exemple: <em>ext1</em>) nous utilisons également la commande <code class="highlighter-rouge">external create</code> en lui fournissant une/plusieurs IPs ou un nom de domaine:</p>
+<p>Pour avoir accès à un service externe via un nom (par exemple: <em>ext1</em>) nous utilisons également la commande <code class="language-plaintext highlighter-rouge">external create</code> en lui fournissant une/plusieurs IPs ou un nom de domaine:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio external create ext1 1.1.1.1 2.2.2.2
 </code></pre></div></div>
 
 <h1 id="monitoring">Monitoring</h1>
 
-<p>Si vous souhaitez monitorez votre Rio, il est possible d’avoir accès au Linkerd ainsi que son grafana en utilisant la commande <code class="highlighter-rouge">linkerd</code> qui crée un proxy entre linkerd et votre réseau local (127.0.0.1).</p>
+<p>Si vous souhaitez monitorez votre Rio, il est possible d’avoir accès au Linkerd ainsi que son grafana en utilisant la commande <code class="language-plaintext highlighter-rouge">linkerd</code> qui crée un proxy entre linkerd et votre réseau local (127.0.0.1).</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rio linkerd
 </code></pre></div></div>
@@ -750,7 +750,7 @@ Autrement dit <code class="highlighter-rouge">https://test-default.&lt;rio-domai
 
         <!-- Add time bar only for pages without pagination -->
         
-            <div class="time-bar" data-minutes="17">
+            <div class="time-bar" data-minutes="18">
     <span class="time-completed"></span>
     <span class="time-remaining"></span>
     <div class="bar">
@@ -765,13 +765,13 @@ Autrement dit <code class="highlighter-rouge">https://test-default.&lt;rio-domai
         <a href="javascript:void(0);">Revenir en haut</a>
     </div>
     
-    <a href="/azure-functions-les-bases/" class="post-preview">
+    <a href="/pourquoi-deno-existe/" class="post-preview">
         <div class="image">
             
-                <img src="/assets/img/azure-functions/Azure-Functions.png">
+                <img src="/assets/img/deno/deno-logo.svg">
             
         </div>
-        <h3 class="title">Azure Functions les bases</h3>
+        <h3 class="title">Pourquoi deno existe</h3>
     </a>
 </div>
 
@@ -1576,7 +1576,7 @@ Table des matières
 
 
 ",
-            "wordcount": "3206",
+            "wordcount": "3278",
             "inLanguage": "fr",
             "dateCreated": "2020-05-05/",
             "datePublished": "2020-05-05/",

@@ -237,7 +237,7 @@ Décembre 25, 2019
 
                 <p>Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique <a href="https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a>, l’API plus récente <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API">Fetch</a> ou encore une librairie externe (utilisant une de ces APIs) comme <a href="https://github.com/axios/axios">Axios</a>.</p>
 
-<p>Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (<code class="highlighter-rouge">HttpModule</code>) ayant été dépréciée depuis la venue du <code class="highlighter-rouge">HttpClientModule</code> dans la version 4.3 d’Angular, nous n’allons nous attarder que sur cette dernière.</p>
+<p>Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (<code class="language-plaintext highlighter-rouge">HttpModule</code>) ayant été dépréciée depuis la venue du <code class="language-plaintext highlighter-rouge">HttpClientModule</code> dans la version 4.3 d’Angular, nous n’allons nous attarder que sur cette dernière.</p>
 
 <h2 id="architecture">Architecture</h2>
 
@@ -250,42 +250,42 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
 
 <h3 id="requêtesréponses">Requêtes/Réponses</h3>
 
-<p>Une requête est créée quand vous appelez une méthode du <code class="highlighter-rouge">HttpClient</code> comme <code class="highlighter-rouge">.get(...)</code> ou <code class="highlighter-rouge">.request(...)</code>.</p>
+<p>Une requête est créée quand vous appelez une méthode du <code class="language-plaintext highlighter-rouge">HttpClient</code> comme <code class="language-plaintext highlighter-rouge">.get(...)</code> ou <code class="language-plaintext highlighter-rouge">.request(...)</code>.</p>
 
-<p>La réponse, elle, n’est pas créée par <code class="highlighter-rouge">HttpClient</code> mais par <code class="highlighter-rouge">HttpBackend</code> qui s’occupe notamment de déterminer s’il s’agit d’un succès ou d’une erreur.</p>
+<p>La réponse, elle, n’est pas créée par <code class="language-plaintext highlighter-rouge">HttpClient</code> mais par <code class="language-plaintext highlighter-rouge">HttpBackend</code> qui s’occupe notamment de déterminer s’il s’agit d’un succès ou d’une erreur.</p>
 
 <h3 id="httphandler">HttpHandler</h3>
 
-<p>L’HttpHandler est la façon de traiter une requête (<code class="highlighter-rouge">HttpRequest</code>) et sa réponse (<code class="highlighter-rouge">HttpResponse</code>).</p>
+<p>L’HttpHandler est la façon de traiter une requête (<code class="language-plaintext highlighter-rouge">HttpRequest</code>) et sa réponse (<code class="language-plaintext highlighter-rouge">HttpResponse</code>).</p>
 
-<p>Le handler principal implémenté par défaut s’appel <code class="highlighter-rouge">HttpInterceptingHandler</code> et comme son nom l’indique, c’est lui qui détermine comment et dans quel ordre exécuter les <strong>intercepteurs</strong> avant l’appel réel (qui lui se fait via l’HttpBackend).</p>
+<p>Le handler principal implémenté par défaut s’appel <code class="language-plaintext highlighter-rouge">HttpInterceptingHandler</code> et comme son nom l’indique, c’est lui qui détermine comment et dans quel ordre exécuter les <strong>intercepteurs</strong> avant l’appel réel (qui lui se fait via l’HttpBackend).</p>
 
 <h3 id="httpbackend">HttpBackend</h3>
 
 <p>L’HttpBackend implémente lui aussi HttpHandler mais mérite une section à part.</p>
 
-<p>Le backend par défaut s’appel <code class="highlighter-rouge">HttpXhrBackend</code> et c’est dans celuis-ci que se trouve toute la logique automatique comme:</p>
+<p>Le backend par défaut s’appel <code class="language-plaintext highlighter-rouge">HttpXhrBackend</code> et c’est dans celuis-ci que se trouve toute la logique automatique comme:</p>
 <ul>
-  <li>l’ajout du header <code class="highlighter-rouge">Content-Type</code>,</li>
+  <li>l’ajout du header <code class="language-plaintext highlighter-rouge">Content-Type</code>,</li>
   <li>la détection d’erreurs cors (retour du statut 0),</li>
   <li>la création du cas de succès ou d’erreur depuis le statut HTTP (200 &lt;= succès &lt; 300)</li>
   <li>le parsing du payload en Json</li>
   <li>…</li>
 </ul>
 
-<p>HttpXhrBackend utilise l’élément XhrFactory afin de créer un élément de type <code class="highlighter-rouge">XMLHttpRequest</code>.</p>
+<p>HttpXhrBackend utilise l’élément XhrFactory afin de créer un élément de type <code class="language-plaintext highlighter-rouge">XMLHttpRequest</code>.</p>
 
 <h3 id="xhrfactory">XhrFactory</h3>
 
 <p>L’XhrFactory ne fait pas grand-chose, mais vous comprendrez l’importance du découplage de cette logique quand nous parlerons du SSR (server-side rendering).</p>
 
-<p>Son implémentation par défaut est le <code class="highlighter-rouge">BrowserXhr</code> et ne fait rien de plus que:</p>
+<p>Son implémentation par défaut est le <code class="language-plaintext highlighter-rouge">BrowserXhr</code> et ne fait rien de plus que:</p>
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">()</span>
 </code></pre></div></div>
 
 <h2 id="ssr-angular-universal">SSR (Angular Universal)</h2>
 
-<p>NodeJS n’étant pas pourvu de l’API pour créer un élément XMLHttpRequest, le module <code class="highlighter-rouge">ServerModule</code> nous fournit une autre implémentation de XhrFactory qui utilise la librairie <a href="https://github.com/pwnall/node-xhr2">xhr2</a>.</p>
+<p>NodeJS n’étant pas pourvu de l’API pour créer un élément XMLHttpRequest, le module <code class="language-plaintext highlighter-rouge">ServerModule</code> nous fournit une autre implémentation de XhrFactory qui utilise la librairie <a href="https://github.com/pwnall/node-xhr2">xhr2</a>.</p>
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">new</span> <span class="nx">xhr2</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">();</span>
 </code></pre></div></div>
 
@@ -295,27 +295,27 @@ Les éléments en bleu représentent les “idées” (interfaces) qui sont par 
 
 <p>Un des avantages d’utiliser la solution d’Angular est bien entendu son écosystème pour les tests unitaires.</p>
 
-<p>Vous utilisez probablement déjà le module <code class="highlighter-rouge">HttpClientTestingModule,</code> mais quel est l’impact sur l’architecture du <code class="highlighter-rouge">HttpClientModule</code> ?</p>
+<p>Vous utilisez probablement déjà le module <code class="language-plaintext highlighter-rouge">HttpClientTestingModule,</code> mais quel est l’impact sur l’architecture du <code class="language-plaintext highlighter-rouge">HttpClientModule</code> ?</p>
 
-<p>Première chose bonne à savoir: il est inutile d’importer <code class="highlighter-rouge">HttpClientModule</code> en même temps, car <code class="highlighter-rouge">HttpClientTestingModule</code> le fait déjà.</p>
+<p>Première chose bonne à savoir: il est inutile d’importer <code class="language-plaintext highlighter-rouge">HttpClientModule</code> en même temps, car <code class="language-plaintext highlighter-rouge">HttpClientTestingModule</code> le fait déjà.</p>
 
-<p>Le testing module n’utilise pas <code class="highlighter-rouge">HttpXhrBackend</code> mais sa propre implémentation du backend: <code class="highlighter-rouge">HttpClientTestingBackend</code>.</p>
+<p>Le testing module n’utilise pas <code class="language-plaintext highlighter-rouge">HttpXhrBackend</code> mais sa propre implémentation du backend: <code class="language-plaintext highlighter-rouge">HttpClientTestingBackend</code>.</p>
 
 <p>Vous l’aurez deviné, sa logique est bien différente. Il stocke les différents appels dans un tableau afin de pouvoir vérifier s’ils ont bien tous été gérés dans le test, le cas contraire indique que nous ne nous attendons pas à ce qu’il y ait un appel à ce moment-là.</p>
 
-<p>Ce module redéfinis également le type <code class="highlighter-rouge">Request</code> afin de pouvoir retourner une valeur nous-mêmes via une méthode <code class="highlighter-rouge">.flush(...)</code>.</p>
+<p>Ce module redéfinis également le type <code class="language-plaintext highlighter-rouge">Request</code> afin de pouvoir retourner une valeur nous-mêmes via une méthode <code class="language-plaintext highlighter-rouge">.flush(...)</code>.</p>
 
 <p><img src="/assets/img/angular-posts/http-client/http-client-3.png" alt="http-client-architecture-testing" /></p>
 
 <h2 id="in-memory-web-api">In-memory web api</h2>
 
-<p>Dans le panel d’outils proposé par Angular, il est également possible de mettre en place un mécanisme de mocks dynamiques via le module <code class="highlighter-rouge">HttpClientInMemoryWebApiModule</code>.</p>
+<p>Dans le panel d’outils proposé par Angular, il est également possible de mettre en place un mécanisme de mocks dynamiques via le module <code class="language-plaintext highlighter-rouge">HttpClientInMemoryWebApiModule</code>.</p>
 
 <p>Vous devez configurer une DB “in memory” ce qui va vous mettre à disposition des end-points <a href="https://fr.wikipedia.org/wiki/CRUD">CRUD</a>.</p>
 
-<p>Ce module contient également sa propre implémentation du backend: <code class="highlighter-rouge">HttpClientBackendService</code>.</p>
+<p>Ce module contient également sa propre implémentation du backend: <code class="language-plaintext highlighter-rouge">HttpClientBackendService</code>.</p>
 
-<p>Contrairement au module de “testing”, celui-ci a également une dépendance vers XhrFactory afin de permettre la configuration d’un <code class="highlighter-rouge">PassThruBackend</code> dans le cas où une URL n’est pas connue du mécanisme InMemory.</p>
+<p>Contrairement au module de “testing”, celui-ci a également une dépendance vers XhrFactory afin de permettre la configuration d’un <code class="language-plaintext highlighter-rouge">PassThruBackend</code> dans le cas où une URL n’est pas connue du mécanisme InMemory.</p>
 
 <p><img src="/assets/img/angular-posts/http-client/http-client-4.png" alt="http-client-architecture-in-memory" /></p>
 
@@ -804,7 +804,7 @@ Table des matières
   Schéma récapitulatif
 
 ",
-            "wordcount": "770",
+            "wordcount": "796",
             "inLanguage": "fr",
             "dateCreated": "2019-12-25/",
             "datePublished": "2019-12-25/",

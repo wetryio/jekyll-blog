@@ -413,7 +413,7 @@ Le code est exécuté dans des conteneurs éphémères (eux-mêmes géré par un
 <p>En dessous du code, vous pourrez ouvrir un “terminal” affichant les logs de la fonction des pods déployées (ici un pod unique):
 <img src="/assets/img/kubernetes/kubelessui5.png" alt="kubelessui-terminal" /></p>
 
-<p>Utilisons maintenant la dépendance que nous avons installée (<code class="highlighter-rouge">lodash</code>) en utilisant par exemple sa fonction <code class="highlighter-rouge">capitalize</code>.
+<p>Utilisons maintenant la dépendance que nous avons installée (<code class="language-plaintext highlighter-rouge">lodash</code>) en utilisant par exemple sa fonction <code class="language-plaintext highlighter-rouge">capitalize</code>.
 <img src="/assets/img/kubernetes/kubelessui4.png" alt="kubelessui-script2" /></p>
 
 <p>Regardons à nouveau le terminal: nous bénéficions de l’orchestration Kubernetes pour éviter tout down-time durant la mise à jour de la fonction.
@@ -464,7 +464,7 @@ Pour cela il faudra évidemment avoir le CLI installé. Suivez les étapes expli
   </li>
 </ul>
 
-<p>La récupération de données depuis le fonction est aussi simple que pour la fonction HTTP. La donnée se trouve dans <code class="highlighter-rouge">event.data</code>.</p>
+<p>La récupération de données depuis le fonction est aussi simple que pour la fonction HTTP. La donnée se trouve dans <code class="language-plaintext highlighter-rouge">event.data</code>.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">intercept</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
@@ -1204,7 +1204,7 @@ Table des matières
   Conclusion
 
 ",
-            "wordcount": "1832",
+            "wordcount": "1835",
             "inLanguage": "fr",
             "dateCreated": "2019-12-09/",
             "datePublished": "2019-12-09/",

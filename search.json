@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "Pourquoi deno existe",
+      "tags"     : "deno, node, javascript, and typescript",
+      "categories" : "decouverte",
+      "url"      : "/pourquoi-deno-existe/",
+      "date"     : "08/07/2020"
+    } ,
+  
+    {
       "title"    : "MicroPaaS avec Rio de Rancher",
       "tags"     : "kubernetes and paas",
       "categories" : "experimentation",

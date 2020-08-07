@@ -242,35 +242,35 @@ Nous allons donc nous concentrer sur cette partie du framework Angular.</p>
 
 <h2 id="cest-quoi-le-routing-">C’est quoi le routing ?</h2>
 
-<p>Le système de routing est la gestion de l’affichage via l’URL dans le navigateur. Le fait d’avoir l’url <code class="highlighter-rouge">/home</code> affichera des informations différentes de l’url <code class="highlighter-rouge">/contact</code> par exemple.</p>
+<p>Le système de routing est la gestion de l’affichage via l’URL dans le navigateur. Le fait d’avoir l’url <code class="language-plaintext highlighter-rouge">/home</code> affichera des informations différentes de l’url <code class="language-plaintext highlighter-rouge">/contact</code> par exemple.</p>
 
 <p>Pour que cela fonctionne, il faut que ça soit le JavaScript qui ait la main sur l’url à la place du navigateur. Cela est possible de plusieurs façons:</p>
 <ul>
   <li>
-    <p><strong>Path location</strong> <em>(par défaut)</em>: utilise la fonction <code class="highlighter-rouge">pushState</code> de l’API HTML5 qui permet de changer l’URL sans que le navigateur ne se préoccupe d’aller chercher la page sur l’URL. Exemple d’url: <code class="highlighter-rouge">http://localhost:4200/home</code>.</p>
+    <p><strong>Path location</strong> <em>(par défaut)</em>: utilise la fonction <code class="language-plaintext highlighter-rouge">pushState</code> de l’API HTML5 qui permet de changer l’URL sans que le navigateur ne se préoccupe d’aller chercher la page sur l’URL. Exemple d’url: <code class="language-plaintext highlighter-rouge">http://localhost:4200/home</code>.</p>
 
-    <p><em>Gardez à l’esprit qu’il faudra configurer votre serveur de fichiers statiques pour qu’il ai un fallback non pas sur une page 404, mais sur l’<code class="highlighter-rouge">index.html</code>. Le serveur ne connaitra pas le dossier <code class="highlighter-rouge">home</code> en cas de rafraichissement de la page. Vous pouvez trouver les différentes configurations serveur <a href="https://angular.io/guide/deployment#server-configuration">ici</a>.</em></p>
+    <p><em>Gardez à l’esprit qu’il faudra configurer votre serveur de fichiers statiques pour qu’il ai un fallback non pas sur une page 404, mais sur l’<code class="language-plaintext highlighter-rouge">index.html</code>. Le serveur ne connaitra pas le dossier <code class="language-plaintext highlighter-rouge">home</code> en cas de rafraichissement de la page. Vous pouvez trouver les différentes configurations serveur <a href="https://angular.io/guide/deployment#server-configuration">ici</a>.</em></p>
   </li>
   <li>
-    <p><strong>Hash location</strong> : utilise les fragments (aussi appelés “ancre”) afin d’éviter toute communication des données du routing entre le navigateur et le serveur. Exemple d’url: <code class="highlighter-rouge">http://localhost:4200/#/home</code>.</p>
+    <p><strong>Hash location</strong> : utilise les fragments (aussi appelés “ancre”) afin d’éviter toute communication des données du routing entre le navigateur et le serveur. Exemple d’url: <code class="language-plaintext highlighter-rouge">http://localhost:4200/#/home</code>.</p>
 
     <p><em>Cela n’est donc pas compatible avec Angular Universal.</em></p>
   </li>
 </ul>
 
-<p>Les bonnes pratiques pour la création d’urls sont les mêmes que pour la méthode <code class="highlighter-rouge">GET</code> des API REST.</p>
+<p>Les bonnes pratiques pour la création d’urls sont les mêmes que pour la méthode <code class="language-plaintext highlighter-rouge">GET</code> des API REST.</p>
 
 <h2 id="aperçu-du-module">Aperçu du module</h2>
 
-<p>Le module à utiliser est le <code class="highlighter-rouge">RouterModule</code> qu’il faudra importer depuis le package <code class="highlighter-rouge">@angular/router</code>.</p>
+<p>Le module à utiliser est le <code class="language-plaintext highlighter-rouge">RouterModule</code> qu’il faudra importer depuis le package <code class="language-plaintext highlighter-rouge">@angular/router</code>.</p>
 
 <p>Ce module contient deux fonctions statiques dont vous commencez probablement à avoir l’habitude:</p>
 <ul>
-  <li><code class="highlighter-rouge">forRoot</code>: permet d’initialiser tout (principalement des services) ce qui ne doit être initialisé qu’une seule fois par application. L’initialisation du routing principal se fera également ici. Il faudra donc limiter l’utilisation de cette fonction à l’<code class="highlighter-rouge">App(Routing)Module</code>.</li>
-  <li><code class="highlighter-rouge">forChild</code>: permet d’initialiser les routes d’un module chargé en <strong>lazy-loading</strong>. La découpe du routing en plusieurs fichiers est donc possible.</li>
+  <li><code class="language-plaintext highlighter-rouge">forRoot</code>: permet d’initialiser tout (principalement des services) ce qui ne doit être initialisé qu’une seule fois par application. L’initialisation du routing principal se fera également ici. Il faudra donc limiter l’utilisation de cette fonction à l’<code class="language-plaintext highlighter-rouge">App(Routing)Module</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">forChild</code>: permet d’initialiser les routes d’un module chargé en <strong>lazy-loading</strong>. La découpe du routing en plusieurs fichiers est donc possible.</li>
 </ul>
 
-<p>L’utilisation d’<strong>aucune de ces fonctions</strong> permet d’utiliser le système de route (comme la directive <code class="highlighter-rouge">routerLink</code>), dans un module séparé, sans ajouter de configuration supplémentaire.</p>
+<p>L’utilisation d’<strong>aucune de ces fonctions</strong> permet d’utiliser le système de route (comme la directive <code class="language-plaintext highlighter-rouge">routerLink</code>), dans un module séparé, sans ajouter de configuration supplémentaire.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// AppRoutingModule</span>
 <span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">(</span><span class="nx">routes</span><span class="p">)</span>
@@ -312,26 +312,26 @@ Nous allons donc nous concentrer sur cette partie du framework Angular.</p>
 
 <p>Vous pouvez remarquer deux paths étranges qui sont, en réalité, les seuls obligatoires pour le bon fonctionnement de notre routing:</p>
 <ul>
-  <li><code class="highlighter-rouge">''</code>: représente la racine de l’application. (exemple: <code class="highlighter-rouge">http://localhost:4200/</code>)</li>
-  <li><code class="highlighter-rouge">'**'</code>: représente toutes les urls n’existants pas dans la liste des routes donnée. C’est en quelque sorte notre page “404”. (exemple: <code class="highlighter-rouge">http://localhost/blabla</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">''</code>: représente la racine de l’application. (exemple: <code class="language-plaintext highlighter-rouge">http://localhost:4200/</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">'**'</code>: représente toutes les urls n’existants pas dans la liste des routes donnée. C’est en quelque sorte notre page “404”. (exemple: <code class="language-plaintext highlighter-rouge">http://localhost/blabla</code>)</li>
 </ul>
 
-<p>L’option choisie dans cet exemple est de les rediriger vers la page “home” à l’aide de l’attribut <code class="highlighter-rouge">redirectTo</code>.
-L’attribut <code class="highlighter-rouge">pathMatch</code> mis à la valeur <code class="highlighter-rouge">'full'</code> permet de déterminer que ce cas ne doit être exécuté que si le path est complètement vide (soit “/” ou “”), mais absolument rien d’autre.</p>
+<p>L’option choisie dans cet exemple est de les rediriger vers la page “home” à l’aide de l’attribut <code class="language-plaintext highlighter-rouge">redirectTo</code>.
+L’attribut <code class="language-plaintext highlighter-rouge">pathMatch</code> mis à la valeur <code class="language-plaintext highlighter-rouge">'full'</code> permet de déterminer que ce cas ne doit être exécuté que si le path est complètement vide (soit “/” ou “”), mais absolument rien d’autre.</p>
 
 <p>Concentrons-nous maintenant sur les paths connus (“home” et “contact”). Vous pouvez voir que nous spécifions le composant à afficher dans ces deux cas, mais où vont-ils s’afficher ?
-C’est là que le composant <code class="highlighter-rouge">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code> entre en jeux. Ce composant vous permet de choisir où le composant géré par le router s’affichera dans votre application.</p>
+C’est là que le composant <code class="language-plaintext highlighter-rouge">&lt;router-outlet&gt;&lt;/router-outlet&gt;</code> entre en jeux. Ce composant vous permet de choisir où le composant géré par le router s’affichera dans votre application.</p>
 
 <h3 id="utilisation-de-router-outlet-imbriqués">Utilisation de router-outlet imbriqués</h3>
 
-<p>Prenons par exemple le fait que nous voulons le même header et le même footer sur toutes les pages de notre application sauf sur la page de connexion. Un premier réflex pourrait être d’ajouter ces composants dans l’<code class="highlighter-rouge">AppComponent</code> au même niveau que notre router-outlet.</p>
+<p>Prenons par exemple le fait que nous voulons le même header et le même footer sur toutes les pages de notre application sauf sur la page de connexion. Un premier réflex pourrait être d’ajouter ces composants dans l’<code class="language-plaintext highlighter-rouge">AppComponent</code> au même niveau que notre router-outlet.</p>
 
 <p><em>app.component.html :</em></p>
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;app-header&gt;&lt;/app-header&gt;</span>
 <span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span>
 <span class="nt">&lt;app-footer&gt;&lt;/app-footer&gt;</span>
 </code></pre></div></div>
-<p>Mais comment peut-on masquer ces éléments dans le cas où nous nous trouvons sur la page de connexion ? Non nous n’utiliserons pas de <del><code class="highlighter-rouge">*ngIf</code></del>  pour arriver à nos fins. Heureusement Angular nous permet de faire cela avec plusieurs router-outlet imbriqués.</p>
+<p>Mais comment peut-on masquer ces éléments dans le cas où nous nous trouvons sur la page de connexion ? Non nous n’utiliserons pas de <del><code class="language-plaintext highlighter-rouge">*ngIf</code></del>  pour arriver à nos fins. Heureusement Angular nous permet de faire cela avec plusieurs router-outlet imbriqués.</p>
 
 <p>Créons alors un nouveau composant “container” qui s’occupera d’ajouter le header ainsi que le footer seulement dans certains cas et nettoyons notre AppComponent.</p>
 
@@ -345,7 +345,7 @@ C’est là que le composant <code class="highlighter-rouge">&lt;router-outlet&g
 <span class="nt">&lt;app-footer&gt;&lt;/app-footer&gt;</span>
 </code></pre></div></div>
 
-<p>Regardons maintenant comment arriver à remplir plusieurs router-outlet. Cela est possible grâce aux attributs <code class="highlighter-rouge">children</code> et <code class="highlighter-rouge">loadChildren</code> <sup>(lazy-loading)</sup>.</p>
+<p>Regardons maintenant comment arriver à remplir plusieurs router-outlet. Cela est possible grâce aux attributs <code class="language-plaintext highlighter-rouge">children</code> et <code class="language-plaintext highlighter-rouge">loadChildren</code> <sup>(lazy-loading)</sup>.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">routes</span><span class="p">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="nx">ContainerComponent</span><span class="p">,</span> <span class="na">children</span><span class="p">:</span> <span class="p">[</span>
@@ -359,8 +359,8 @@ C’est là que le composant <code class="highlighter-rouge">&lt;router-outlet&g
 
 <p>Avec cette configuration nous pourrons retrouver dans les router-outlet</p>
 <ul>
-  <li>de <code class="highlighter-rouge">app.component.html</code>: les éléments de premier niveau (ContainerComponent ou SigninComponent);</li>
-  <li>de <code class="highlighter-rouge">container.component.html</code>: les éléments de second niveau (HomeComponent, ContactComponent).</li>
+  <li>de <code class="language-plaintext highlighter-rouge">app.component.html</code>: les éléments de premier niveau (ContainerComponent ou SigninComponent);</li>
+  <li>de <code class="language-plaintext highlighter-rouge">container.component.html</code>: les éléments de second niveau (HomeComponent, ContactComponent).</li>
 </ul>
 
 <h3 id="paramètres">Paramètres</h3>
@@ -369,15 +369,15 @@ C’est là que le composant <code class="highlighter-rouge">&lt;router-outlet&g
 
 <p>Deux solutions sont possibles:</p>
 <ul>
-  <li><strong>Path param</strong> pour les paramètres requis (exemple: <code class="highlighter-rouge">/users/12345</code>)</li>
-  <li><strong>Query param</strong> pour les paramètres optionels (exemple: <code class="highlighter-rouge">/login?referrer=/profile</code>)</li>
+  <li><strong>Path param</strong> pour les paramètres requis (exemple: <code class="language-plaintext highlighter-rouge">/users/12345</code>)</li>
+  <li><strong>Query param</strong> pour les paramètres optionels (exemple: <code class="language-plaintext highlighter-rouge">/login?referrer=/profile</code>)</li>
 </ul>
 
 <p><em>Cela respecte encore une fois la norme REST.</em></p>
 
 <h4 id="path-param">Path param</h4>
 
-<p>Les path params se définissent à l’aide du préfix <code class="highlighter-rouge">:</code> suivi de son nom.</p>
+<p>Les path params se définissent à l’aide du préfix <code class="language-plaintext highlighter-rouge">:</code> suivi de son nom.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Paramètre unique</span>
 <span class="p">{</span> <span class="nl">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">users/:id</span><span class="dl">'</span><span class="p">,</span> <span class="nx">component</span><span class="p">:</span> <span class="nx">UserListComponent</span> <span class="p">}</span>
@@ -408,18 +408,18 @@ Nous n’avons cas essayer de récupérer le paramètre optionnel.</p>
 
 <p>Le lazy-loading permet de scinder votre “dist” en plusieurs fichiers qui ne seront chargés que si, et quand, une utilisation est nécessaire.</p>
 
-<p>Si vous faite une recherche à ce propos sur google, vous tomberez probablement sur un syntaxe de ce type: <code class="highlighter-rouge">loadChildren: './admin/admin.module#AdminModule'</code>. Il s’agit d’une syntaxe maintenant dépréciée qui a été créée par Angular afin d’être décortiquée et d’utiliser les informations avec SystemJS.</p>
+<p>Si vous faite une recherche à ce propos sur google, vous tomberez probablement sur un syntaxe de ce type: <code class="language-plaintext highlighter-rouge">loadChildren: './admin/admin.module#AdminModule'</code>. Il s’agit d’une syntaxe maintenant dépréciée qui a été créée par Angular afin d’être décortiquée et d’utiliser les informations avec SystemJS.</p>
 
 <p>À partir de la version 8 d’Angular, nous allons éviter SystemJS et utiliser la puissance du mécanisme d’<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">import de l’ES6</a>.</p>
 
 <p>Cependant le principe est le même dans les deux cas. Il s’agit de définir:</p>
 <ul>
-  <li>où trouver le fichier à charger (<code class="highlighter-rouge">import('./admin/admin.module')</code>),</li>
-  <li>quelle classe du fichier représente le NgModule (<code class="highlighter-rouge">.then(m =&gt; m.AdminModule)</code>).</li>
+  <li>où trouver le fichier à charger (<code class="language-plaintext highlighter-rouge">import('./admin/admin.module')</code>),</li>
+  <li>quelle classe du fichier représente le NgModule (<code class="language-plaintext highlighter-rouge">.then(m =&gt; m.AdminModule)</code>).</li>
 </ul>
 
-<p>La nouvelle syntaxe complète est donc la suivante: <code class="highlighter-rouge">loadChildren: import('./admin/admin.module').then(m =&gt; m.AdminModule)</code>.
-<em>Attention que vous ne pouvez pas modifier cette syntaxe (en ajoutant par exemple plus de code dans le <code class="highlighter-rouge">then</code>), car le build AOT ne la comprendra pas. Il est donc impératif de la respecter.</em></p>
+<p>La nouvelle syntaxe complète est donc la suivante: <code class="language-plaintext highlighter-rouge">loadChildren: import('./admin/admin.module').then(m =&gt; m.AdminModule)</code>.
+<em>Attention que vous ne pouvez pas modifier cette syntaxe (en ajoutant par exemple plus de code dans le <code class="language-plaintext highlighter-rouge">then</code>), car le build AOT ne la comprendra pas. Il est donc impératif de la respecter.</em></p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">routes</span><span class="p">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">...</span>
@@ -433,7 +433,7 @@ Nous n’avons cas essayer de récupérer le paramètre optionnel.</p>
 <p>Si vous avez besoin de déterminer des données comme le titre dans la page selon l’url, il n’est pas conseillé de décortiquer l’url afin de comprendre le contexte.
 Pour pouvoir faire cela, nous pourrions directement associer le titre à une route.</p>
 
-<p>Cela est possible à l’aide de l’attribut <code class="highlighter-rouge">data</code> des routes.</p>
+<p>Cela est possible à l’aide de l’attribut <code class="language-plaintext highlighter-rouge">data</code> des routes.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">routes</span><span class="p">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="dl">''</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="nx">ContainerComponent</span><span class="p">,</span> <span class="na">children</span><span class="p">:</span> <span class="p">[</span>
@@ -444,7 +444,7 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 <span class="p">];</span>
 </code></pre></div></div>
 
-<p>La donnée est récupérable à l’aide de l’<code class="highlighter-rouge">ActivatedRoute</code>.</p>
+<p>La donnée est récupérable à l’aide de l’<code class="language-plaintext highlighter-rouge">ActivatedRoute</code>.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">route</span><span class="p">:</span> <span class="nx">ActivatedRoute</span><span class="p">,</span> <span class="k">private</span> <span class="nx">title</span><span class="p">:</span> <span class="nx">Title</span><span class="p">)</span> <span class="p">{}</span>
 
@@ -459,9 +459,9 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 
 <h3 id="html">HTML</h3>
 
-<p>Pour naviguer, nous allons utiliser la directive <a href="https://angular.io/api/router/RouterLink"><code class="highlighter-rouge">routerLink</code></a>.</p>
+<p>Pour naviguer, nous allons utiliser la directive <a href="https://angular.io/api/router/RouterLink"><code class="language-plaintext highlighter-rouge">routerLink</code></a>.</p>
 
-<p>Cette directive devrait être uniquement utilisée sur des balises de lien (<code class="highlighter-rouge">a</code>), mais elle peut en réalité se mettre sur n’importe quelle balise HTML. Cependant, le fait de le mettre en attribut d’un <code class="highlighter-rouge">a</code> génère également un <code class="highlighter-rouge">href</code> afin de pouvoir naviguer même si le JavaScript est désactivé côté client et que vous utilisez Universal.</p>
+<p>Cette directive devrait être uniquement utilisée sur des balises de lien (<code class="language-plaintext highlighter-rouge">a</code>), mais elle peut en réalité se mettre sur n’importe quelle balise HTML. Cependant, le fait de le mettre en attribut d’un <code class="language-plaintext highlighter-rouge">a</code> génère également un <code class="language-plaintext highlighter-rouge">href</code> afin de pouvoir naviguer même si le JavaScript est désactivé côté client et que vous utilisez Universal.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/admin','users']"</span><span class="nt">&gt;</span>Go to user list<span class="nt">&lt;/a&gt;</span>
 </code></pre></div></div>
@@ -477,8 +477,8 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 
 <p>Nous pouvons ajouter des éléments dans l’url:</p>
 <ul>
-  <li><code class="highlighter-rouge">queryParams</code>: permet d’utiliser les query params (exemple: <code class="highlighter-rouge">?param1=test1&amp;param2=test2</code>)</li>
-  <li><code class="highlighter-rouge">fragment</code>: permet d’ajouter une ancre dans l’url (exemple: <code class="highlighter-rouge">#mon-ancre</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">queryParams</code>: permet d’utiliser les query params (exemple: <code class="language-plaintext highlighter-rouge">?param1=test1&amp;param2=test2</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">fragment</code>: permet d’ajouter une ancre dans l’url (exemple: <code class="language-plaintext highlighter-rouge">#mon-ancre</code>)</li>
 </ul>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/admin','users', id]"</span> <span class="na">[queryParams]=</span><span class="s">"{param1: 'test1', param2: 'test2'}"</span> <span class="na">fragment=</span><span class="s">"email"</span> <span class="nt">&gt;</span>
@@ -488,9 +488,9 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 
 <p>Ou gérer notre stratégie de “préservation de données” en cas de changement d’url</p>
 <ul>
-  <li><code class="highlighter-rouge">preserveQueryParams</code>: préserve les query params actuels (ne tient pas en compte les nouveaux)</li>
-  <li><code class="highlighter-rouge">mergeQueryParams</code>: merge les query params actuels et les nouveaux</li>
-  <li><code class="highlighter-rouge">preserveFragment</code>: garder le fragment au changement d’url</li>
+  <li><code class="language-plaintext highlighter-rouge">preserveQueryParams</code>: préserve les query params actuels (ne tient pas en compte les nouveaux)</li>
+  <li><code class="language-plaintext highlighter-rouge">mergeQueryParams</code>: merge les query params actuels et les nouveaux</li>
+  <li><code class="language-plaintext highlighter-rouge">preserveFragment</code>: garder le fragment au changement d’url</li>
 </ul>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">[routerLink]=</span><span class="s">"['/admin','users', otherId]"</span>  <span class="na">preserveQueryParams</span> <span class="na">preserveFragment</span> <span class="nt">&gt;</span>
@@ -502,11 +502,11 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 
 <p>L’API TypeScript pour la navigation (<a href="https://angular.io/api/router/Router">Router</a>) permet de naviguer dans notre application de deux façons (via deux fonctions):</p>
 <ul>
-  <li><code class="highlighter-rouge">navigate</code>: utilisation similaire au routerLink</li>
-  <li><code class="highlighter-rouge">navigateByUrl</code>: naviguer à l’aide d’une url déjà construite (exemple: <code class="highlighter-rouge">/admin/users/1?param1=test1</code>)</li>
+  <li><code class="language-plaintext highlighter-rouge">navigate</code>: utilisation similaire au routerLink</li>
+  <li><code class="language-plaintext highlighter-rouge">navigateByUrl</code>: naviguer à l’aide d’une url déjà construite (exemple: <code class="language-plaintext highlighter-rouge">/admin/users/1?param1=test1</code>)</li>
 </ul>
 
-<p>Pour avoir accès à cette API, il vous suffit d’injecter <code class="highlighter-rouge">Router</code>.</p>
+<p>Pour avoir accès à cette API, il vous suffit d’injecter <code class="language-plaintext highlighter-rouge">Router</code>.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">router</span><span class="p">:</span> <span class="nx">Router</span><span class="p">)</span><span class="err"> </span><span class="p">{}</span>
 </code></pre></div></div>
@@ -525,14 +525,14 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 
 <p>Jetons alors un coup d’oeil sur les paramètres additionnels que le navigate nous fournis:</p>
 <ul>
-  <li><code class="highlighter-rouge">skipLocationChange</code>: Naviguer vers une page sans que cela n’impact l’URL.</li>
-  <li><code class="highlighter-rouge">replaceUrl</code>: Remplacer l’url courante par la nouvelle (l’ancienne url ne sera plus disponible dans l’historique du navigateur).</li>
-  <li><code class="highlighter-rouge">relativeTo</code>: Faire une navigation relative à une route.</li>
+  <li><code class="language-plaintext highlighter-rouge">skipLocationChange</code>: Naviguer vers une page sans que cela n’impact l’URL.</li>
+  <li><code class="language-plaintext highlighter-rouge">replaceUrl</code>: Remplacer l’url courante par la nouvelle (l’ancienne url ne sera plus disponible dans l’historique du navigateur).</li>
+  <li><code class="language-plaintext highlighter-rouge">relativeTo</code>: Faire une navigation relative à une route.</li>
 </ul>
 
 <p>Il n’y a pas vraiment besoin de plus d’explication pour les deux premières options, mais la dernière demande peut-être un petit exemple:</p>
 <blockquote>
-  <p>Nous sommes sur un utilisateur précis <code class="highlighter-rouge">/admin/users/1</code> et nous voulons faire un bouton transversal qui permet de remonter le “fil d’ariane” (autrement dit, nous voulons naviguer vers <code class="highlighter-rouge">/admin/users</code> sans connaitre cette url).</p>
+  <p>Nous sommes sur un utilisateur précis <code class="language-plaintext highlighter-rouge">/admin/users/1</code> et nous voulons faire un bouton transversal qui permet de remonter le “fil d’ariane” (autrement dit, nous voulons naviguer vers <code class="language-plaintext highlighter-rouge">/admin/users</code> sans connaitre cette url).</p>
 </blockquote>
 
 <p>Nous allons pouvoir récupérer le parent de l’url active et demander une navigation relative à cette route.</p>
@@ -547,17 +547,17 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 
 <h4 id="navigatebyurl">NavigateByUrl</h4>
 
-<p>Si vous connaissez déjà l’url de destination (exemple: <code class="highlighter-rouge">/admin/users/1?param1=test1</code>), utilisez la fonction <code class="highlighter-rouge">navigateByUrl</code>.</p>
+<p>Si vous connaissez déjà l’url de destination (exemple: <code class="language-plaintext highlighter-rouge">/admin/users/1?param1=test1</code>), utilisez la fonction <code class="language-plaintext highlighter-rouge">navigateByUrl</code>.</p>
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">navigateByUrl</span><span class="p">(</span><span class="s2">`/admin/users/1?param1=test1`</span><span class="p">,</span> <span class="p">{</span> <span class="na">preserveFragment</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 </code></pre></div></div>
 
-<p>Les options sont identiques à celles de la fonction <code class="highlighter-rouge">navigate</code> à l’exception prêt que les options modifiants l’url fournie en premier paramètre (comme <code class="highlighter-rouge">queryParams</code>, <code class="highlighter-rouge">fragment</code> ou <code class="highlighter-rouge">relativeTo</code>) ne fonctionneront pas.</p>
+<p>Les options sont identiques à celles de la fonction <code class="language-plaintext highlighter-rouge">navigate</code> à l’exception prêt que les options modifiants l’url fournie en premier paramètre (comme <code class="language-plaintext highlighter-rouge">queryParams</code>, <code class="language-plaintext highlighter-rouge">fragment</code> ou <code class="language-plaintext highlighter-rouge">relativeTo</code>) ne fonctionneront pas.</p>
 
 <h2 id="configuration">Configuration</h2>
 
 <h3 id="globale">Globale</h3>
 
-<p>La configuration globale se fait au niveau de l’utilisation de la fonction statique <code class="highlighter-rouge">forRoot</code> du <code class="highlighter-rouge">RouterModule</code>.</p>
+<p>La configuration globale se fait au niveau de l’utilisation de la fonction statique <code class="language-plaintext highlighter-rouge">forRoot</code> du <code class="language-plaintext highlighter-rouge">RouterModule</code>.</p>
 
 <p>Comme pour les routes, concentrons-nous sur les options les plus utilisés (l’interface est disponible <a href="https://angular.io/api/router/ExtraOptions">ici</a>):</p>
 
@@ -571,11 +571,11 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Comme expliqué <a href="#C'est-quoi-le-routing-?">précédemment</a>, il est possible de changer la stratégie de routing de l’API HTML5 en ancres, cela est possible via l’option <code class="highlighter-rouge">useHash</code>.</p>
+<p>Comme expliqué <a href="#C'est-quoi-le-routing-?">précédemment</a>, il est possible de changer la stratégie de routing de l’API HTML5 en ancres, cela est possible via l’option <code class="language-plaintext highlighter-rouge">useHash</code>.</p>
 
 <h4 id="lazy-load-preloading">Lazy-load preloading</h4>
 
-<p>L’option <code class="highlighter-rouge">preloadingStrategy</code> permet de changer la stratégie de “préloading” pour les modules qui sont en lazy-loading. Le fait de changer cette option en <code class="highlighter-rouge">PreloadAllModules</code> ( <code class="highlighter-rouge">NoPreloading</code> est utilisé par défaut ) chargera tous les modules une fois que l’application sera est fonctionnelle.</p>
+<p>L’option <code class="language-plaintext highlighter-rouge">preloadingStrategy</code> permet de changer la stratégie de “préloading” pour les modules qui sont en lazy-loading. Le fait de changer cette option en <code class="language-plaintext highlighter-rouge">PreloadAllModules</code> ( <code class="language-plaintext highlighter-rouge">NoPreloading</code> est utilisé par défaut ) chargera tous les modules une fois que l’application sera est fonctionnelle.</p>
 
 <h4 id="rafraichissement">Rafraichissement</h4>
 
@@ -585,7 +585,7 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">filter</span><span class="p">(</span><span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">e</span> <span class="k">instanceof</span> <span class="nx">NavigationEnd</span><span class="p">).</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="p">...</span> <span class="p">});</span>
 </code></pre></div></div>
 
-<p>Pour éviter de devoir faire cela, nous pouvons appliquer l’option: <code class="highlighter-rouge">onSameUrlNavigation: 'reload'</code>.</p>
+<p>Pour éviter de devoir faire cela, nous pouvons appliquer l’option: <code class="language-plaintext highlighter-rouge">onSameUrlNavigation: 'reload'</code>.</p>
 
 <h4 id="scroll">Scroll</h4>
 
@@ -597,16 +597,16 @@ De plus, l’ancre n’a aucune influence sur le comportement du scroll tant que
 <p>Vous avez de la chance, deux options sont maintenant disponibles pour éviter ces problèmes et leur valeur par défaut va bientôt changer.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">scrollPositionRestoration</code>: le comportent devient normal une fois mis à <code class="highlighter-rouge">'enabled'</code>.</li>
-  <li><code class="highlighter-rouge">anchorScrolling</code>: le scroll sur les ancres ne fonctionnera que si vous l’activez en lui attribuant la valeur <code class="highlighter-rouge">'enabled'</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">scrollPositionRestoration</code>: le comportent devient normal une fois mis à <code class="language-plaintext highlighter-rouge">'enabled'</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">anchorScrolling</code>: le scroll sur les ancres ne fonctionnera que si vous l’activez en lui attribuant la valeur <code class="language-plaintext highlighter-rouge">'enabled'</code>.</li>
 </ul>
 
 <h3 id="déployement-sous-dossier">Déployement sous dossier</h3>
-<p>Si votre url de base de votre site ressemble à <code class="highlighter-rouge">http://mondomaine.com/blog</code>, vous utilisez un sous-dossier (ici “blog”).</p>
+<p>Si votre url de base de votre site ressemble à <code class="language-plaintext highlighter-rouge">http://mondomaine.com/blog</code>, vous utilisez un sous-dossier (ici “blog”).</p>
 
-<p>Angular arrive à s’y retrouver grâce à la balise HTML <a href="https://www.w3schools.com/TAGs/tag_base.asp">base</a>. Ça valeur par défaut est <code class="highlighter-rouge">&lt;base href="/"&gt;</code> ce qui définit qu’il n’y pas de sous dossier.</p>
+<p>Angular arrive à s’y retrouver grâce à la balise HTML <a href="https://www.w3schools.com/TAGs/tag_base.asp">base</a>. Ça valeur par défaut est <code class="language-plaintext highlighter-rouge">&lt;base href="/"&gt;</code> ce qui définit qu’il n’y pas de sous dossier.</p>
 
-<p>Vous pourriez directement changer cette valeur dans votre fichier <code class="highlighter-rouge">index.hml</code>, je préconise d’utiliser une configuration dynamique au moment du build dans votre <code class="highlighter-rouge">package.json</code>.</p>
+<p>Vous pourriez directement changer cette valeur dans votre fichier <code class="language-plaintext highlighter-rouge">index.hml</code>, je préconise d’utiliser une configuration dynamique au moment du build dans votre <code class="language-plaintext highlighter-rouge">package.json</code>.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ng build <span class="nt">--base-href</span><span class="o">=</span>/blog
 </code></pre></div></div>
@@ -619,9 +619,9 @@ La raison et que ces trois paramètres restants méritent de créer une nouvelle
 <p>Le fait de supprimer le lien vers certaines routes n’est pas suffisant, car les utilisateurs pourraient se partager un lien ou sauver celui-ci en favoris. Il faut donc également bloquer l’accès à ces urls, et c’est là que les derniers paramètres interviennent.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">canActivate</code>: vérifie si l’utilisateur peut accéder à la route.</li>
-  <li><code class="highlighter-rouge">canDeactivate</code>: vérifie si l’utilisateur peut quitter à la route. <em>Cela ne bloque la navigation que dans le contexte de l’application, mais n’a aucun impact pour l’accès à un autre site (via le bouton back ou depuis un href par exemple)</em>.</li>
-  <li><code class="highlighter-rouge">canLoad</code>: vérifie si l’utilisateur peut charger un module qui a la stratégie du lazy-loading.</li>
+  <li><code class="language-plaintext highlighter-rouge">canActivate</code>: vérifie si l’utilisateur peut accéder à la route.</li>
+  <li><code class="language-plaintext highlighter-rouge">canDeactivate</code>: vérifie si l’utilisateur peut quitter à la route. <em>Cela ne bloque la navigation que dans le contexte de l’application, mais n’a aucun impact pour l’accès à un autre site (via le bouton back ou depuis un href par exemple)</em>.</li>
+  <li><code class="language-plaintext highlighter-rouge">canLoad</code>: vérifie si l’utilisateur peut charger un module qui a la stratégie du lazy-loading.</li>
 </ul>
 
 <p>Chacun de ces paramètres attend un tableau de ce qu’on appelle des <strong>guards</strong>.</p>
@@ -652,7 +652,7 @@ La raison et que ces trois paramètres restants méritent de créer une nouvelle
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
-<p>Il est possible de retourner un <code class="highlighter-rouge">boolean</code> ou un <code class="highlighter-rouge">Observable</code> de boolean. Cela dépend si vous savez calculer directement la valeur ou si elle nécessite un appel asynchrone.</p>
+<p>Il est possible de retourner un <code class="language-plaintext highlighter-rouge">boolean</code> ou un <code class="language-plaintext highlighter-rouge">Observable</code> de boolean. Cela dépend si vous savez calculer directement la valeur ou si elle nécessite un appel asynchrone.</p>
 
 <p>Il ne nous reste plus qu’à les utiliser dans nos routes.</p>
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
@@ -1538,7 +1538,7 @@ Table des matières
   Sécurité
 
 ",
-            "wordcount": "3643",
+            "wordcount": "3727",
             "inLanguage": "fr",
             "dateCreated": "2019-08-29/",
             "datePublished": "2019-08-29/",

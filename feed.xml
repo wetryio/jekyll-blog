@@ -5,9 +5,27 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 25 Jun 2020 22:56:45 +0000</pubDate>
-    <lastBuildDate>Thu, 25 Jun 2020 22:56:45 +0000</lastBuildDate>
-    <generator>Jekyll v3.8.7</generator>
+    <pubDate>Fri, 07 Aug 2020 16:10:19 +0000</pubDate>
+    <lastBuildDate>Fri, 07 Aug 2020 16:10:19 +0000</lastBuildDate>
+    <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>Pourquoi deno existe</title>
+        <description>&lt;blockquote&gt; &lt;p&gt;Cet article utilise du code qui exécute deno 1.1.1, sur ubuntu 20.04. Pour la lecture de cet article, des connaissances basiques en javascript ou typescript et nodejs sont nécessaires. Lors de la rédaction de l’article, le package standard deno (expliquée plus tard) était en version 0.58.0&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;J’aime nodejs, j’adore le typescript et j’aime surtout tout le go. Cet article vous présente les deno, avec les corrections apportées à nodejs, le typescript intégré et l’écosystème similaire à go.&lt;/p&gt; &lt;h1 id=&quot;deno-cest-quoi&quot;&gt;Deno, c’est quoi?&lt;/h1&gt; &lt;p&gt;Deno (un anagramme de node!) est créé pour corriger les regrets d’un créateur de nodejs, Ryan Dahl....</description>
+        <pubDate>Fri, 07 Aug 2020 11:00:00 +0000</pubDate>
+        <link>https://wetry.tech/pourquoi-deno-existe/</link>
+        <guid isPermaLink="true">https://wetry.tech/pourquoi-deno-existe/</guid>
+        
+        <category>deno</category>
+        
+        <category>node</category>
+        
+        <category>javascript</category>
+        
+        <category>typescript</category>
+        
+        <category>decouverte</category>
+      </item>
     
       <item>
         <title>MicroPaaS avec Rio de Rancher</title>
@@ -119,7 +137,7 @@
     
       <item>
         <title>Fonctionnement d'Angular: HttpClient</title>
-        <description>&lt;p&gt;Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest&quot;&gt;XMLHttpRequest&lt;/a&gt;, l’API plus récente &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/Fetch_API&quot;&gt;Fetch&lt;/a&gt; ou encore une librairie externe (utilisant une de ces APIs) comme &lt;a href=&quot;https://github.com/axios/axios&quot;&gt;Axios&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (&lt;code class=&quot;highlighter-rouge&quot;&gt;HttpModule&lt;/code&gt;) ayant été dépréciée depuis la...</description>
+        <description>&lt;p&gt;Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest&quot;&gt;XMLHttpRequest&lt;/a&gt;, l’API plus récente &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/Fetch_API&quot;&gt;Fetch&lt;/a&gt; ou encore une librairie externe (utilisant une de ces APIs) comme &lt;a href=&quot;https://github.com/axios/axios&quot;&gt;Axios&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpModule&lt;/code&gt;) ayant été dépréciée depuis...</description>
         <pubDate>Wed, 25 Dec 2019 18:33:43 +0000</pubDate>
         <link>https://wetry.tech/fonctionnement-d-angular-httpclient/</link>
         <guid isPermaLink="true">https://wetry.tech/fonctionnement-d-angular-httpclient/</guid>
@@ -231,7 +249,7 @@
     
       <item>
         <title>Comprendre le ngModel</title>
-        <description>&lt;p&gt;Si vous utilisez les formulaires de type “template driven”, vous utilisez également le ngModel, mais savez-vous ce qui se cache derrière ? Sauriez-vous créer votre propre ngModel ?&lt;/p&gt; &lt;p&gt;Dans cet article, nous allons passer en revue sa syntaxe, mais allons également voir qu’il s’agit d’un cas particulier.&lt;/p&gt; &lt;h2 id=&quot;syntaxe&quot;&gt;Syntaxe&lt;/h2&gt; &lt;p&gt;Dans Angular nous trouvons quatre (3 + l’interpolation) types de bindings:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Property binding&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt;: permet de passer une information d’un composant parent à un composant enfant;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Event binding&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;()&lt;/code&gt;: permet d’écouter un évènement JavaScript ou de passer une information d’un composant enfant à un composant parent (via un...</description>
+        <description>&lt;p&gt;Si vous utilisez les formulaires de type “template driven”, vous utilisez également le ngModel, mais savez-vous ce qui se cache derrière ? Sauriez-vous créer votre propre ngModel ?&lt;/p&gt; &lt;p&gt;Dans cet article, nous allons passer en revue sa syntaxe, mais allons également voir qu’il s’agit d’un cas particulier.&lt;/p&gt; &lt;h2 id=&quot;syntaxe&quot;&gt;Syntaxe&lt;/h2&gt; &lt;p&gt;Dans Angular nous trouvons quatre (3 + l’interpolation) types de bindings:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Property binding&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[]&lt;/code&gt;: permet de passer une information d’un composant parent à un composant enfant;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Event binding&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;()&lt;/code&gt;: permet d’écouter un évènement JavaScript ou de passer une information d’un composant enfant à un composant parent...</description>
         <pubDate>Tue, 03 Sep 2019 21:09:24 +0000</pubDate>
         <link>https://wetry.tech/comprendre-le-ng-model/</link>
         <guid isPermaLink="true">https://wetry.tech/comprendre-le-ng-model/</guid>
@@ -245,7 +263,7 @@
     
       <item>
         <title>Les secrets du Router d'Angular</title>
-        <description>&lt;p&gt;Le routing est un élément inévitable dans une Application Web. Nous allons donc nous concentrer sur cette partie du framework Angular.&lt;/p&gt; &lt;p&gt;Si vous êtes uniquement intéressé pas un point précis du routing, n’hésitez pas à aller voir la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt;.&lt;/p&gt; &lt;h2 id=&quot;cest-quoi-le-routing-&quot;&gt;C’est quoi le routing ?&lt;/h2&gt; &lt;p&gt;Le système de routing est la gestion de l’affichage via l’URL dans le navigateur. Le fait d’avoir l’url &lt;code class=&quot;highlighter-rouge&quot;&gt;/home&lt;/code&gt; affichera des informations différentes de l’url &lt;code class=&quot;highlighter-rouge&quot;&gt;/contact&lt;/code&gt; par exemple.&lt;/p&gt; &lt;p&gt;Pour que cela fonctionne, il faut que ça soit le JavaScript qui ait la main sur l’url à la place du navigateur....</description>
+        <description>&lt;p&gt;Le routing est un élément inévitable dans une Application Web. Nous allons donc nous concentrer sur cette partie du framework Angular.&lt;/p&gt; &lt;p&gt;Si vous êtes uniquement intéressé pas un point précis du routing, n’hésitez pas à aller voir la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt;.&lt;/p&gt; &lt;h2 id=&quot;cest-quoi-le-routing-&quot;&gt;C’est quoi le routing ?&lt;/h2&gt; &lt;p&gt;Le système de routing est la gestion de l’affichage via l’URL dans le navigateur. Le fait d’avoir l’url &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/home&lt;/code&gt; affichera des informations différentes de l’url &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/contact&lt;/code&gt; par exemple.&lt;/p&gt; &lt;p&gt;Pour que cela fonctionne, il faut que ça soit le JavaScript qui ait la main sur l’url à la place...</description>
         <pubDate>Thu, 29 Aug 2019 19:22:26 +0000</pubDate>
         <link>https://wetry.tech/les-secrets-du-router-d-angular/</link>
         <guid isPermaLink="true">https://wetry.tech/les-secrets-du-router-d-angular/</guid>

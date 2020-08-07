@@ -275,7 +275,7 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
     codercom/code-server:v2
 </code></pre></div></div>
 
-<p><em>Comme vous l’aurez remarqué, la différence entre linux/MacOs et Windows se fait principalement au niveau du chemin <code class="highlighter-rouge">pwd</code>. Si vous êtes sur <strong>Windows</strong>, il faudra que vous remplaciez les <code class="highlighter-rouge">$PWD</code> par des <code class="highlighter-rouge">${pwd}</code> dans les prochaines commandes.</em></p>
+<p><em>Comme vous l’aurez remarqué, la différence entre linux/MacOs et Windows se fait principalement au niveau du chemin <code class="language-plaintext highlighter-rouge">pwd</code>. Si vous êtes sur <strong>Windows</strong>, il faudra que vous remplaciez les <code class="language-plaintext highlighter-rouge">$PWD</code> par des <code class="language-plaintext highlighter-rouge">${pwd}</code> dans les prochaines commandes.</em></p>
 
 <p>Super, on a déjà plus que du concret!</p>
 
@@ -283,7 +283,7 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
 
 <p>Mais nous allons vite faire face à un “problème”: le terminal fonctionne, mais il n’y a aucun outil de build disponible comme <em>npm</em> ou <em>maven</em>.</p>
 
-<p>Pas de panique ! Je vous rappelle qu’il s’agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle fournie (<code class="highlighter-rouge">codercom/code-server:v2</code>).</p>
+<p>Pas de panique ! Je vous rappelle qu’il s’agit de Docker. Nous allons donc simplement pouvoir créer notre propre image en se basant sur celle fournie (<code class="language-plaintext highlighter-rouge">codercom/code-server:v2</code>).</p>
 
 <p>Voici un exemple de <strong>Dockerfile</strong> qui installe automatiquement une <strong>extension</strong> et installe <strong>NodeJs</strong>, afin d’avoir un environnement près pour le développement:</p>
 
@@ -303,7 +303,7 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
 <span class="k">CMD</span><span class="s"> ["code-server", "--allow-http", "--no-auth"]</span>
 </code></pre></div></div>
 
-<p>J’ai décidé de nommer le Dockerfile “<code class="highlighter-rouge">code-server-test</code>” de façon totalement arbitraire.</p>
+<p>J’ai décidé de nommer le Dockerfile “<code class="language-plaintext highlighter-rouge">code-server-test</code>” de façon totalement arbitraire.</p>
 
 <p>Il faudra alors construire (builder) notre image:</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build <span class="nb">.</span> <span class="nt">-t</span> code-server-test
@@ -336,7 +336,7 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
 
 <p>Si votre technologie n’est pas prise en charge ou que vous voulez customiser votre environnement (avec d’autres outils ou des extensions par exemple), cela reste tout à fait possible.</p>
 
-<p>Pour cela il faudra créer un dossier <code class="highlighter-rouge">.sail</code>, dans votre repo GIT, dans lequel vous allez mettre votre fichier <code class="highlighter-rouge">Dockerfile</code> (<code class="highlighter-rouge">.sail/Dockerfile</code>) et y ajouter ce que vous souhaitez. Vous devrez, cette fois, partir de l’image <code class="highlighter-rouge">codercom/ubuntu-dev</code>. Exemple:</p>
+<p>Pour cela il faudra créer un dossier <code class="language-plaintext highlighter-rouge">.sail</code>, dans votre repo GIT, dans lequel vous allez mettre votre fichier <code class="language-plaintext highlighter-rouge">Dockerfile</code> (<code class="language-plaintext highlighter-rouge">.sail/Dockerfile</code>) et y ajouter ce que vous souhaitez. Vous devrez, cette fois, partir de l’image <code class="language-plaintext highlighter-rouge">codercom/ubuntu-dev</code>. Exemple:</p>
 
 <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> codercom/ubuntu-dev:latest</span>
 <span class="k">RUN </span><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nt">-y</span> upgrade
@@ -361,7 +361,7 @@ docker run <span class="nt">-it</span> <span class="nt">-p</span> 127.0.0.1:8080
 
 <p><img src="/assets/img/docker-posts/sail-hub2.png" alt="stail-add-repo" /></p>
 
-<p>Cela vous permettra d’ouvrir un VS Code en ligne en cliquant sur <code class="highlighter-rouge">open</code>:</p>
+<p>Cela vous permettra d’ouvrir un VS Code en ligne en cliquant sur <code class="language-plaintext highlighter-rouge">open</code>:</p>
 
 <p><img src="/assets/img/docker-posts/sail-hub1.png" alt="stail-list" /></p>
 
@@ -900,7 +900,7 @@ Table des matières
   Conclusion
 
 ",
-            "wordcount": "1288",
+            "wordcount": "1298",
             "inLanguage": "fr",
             "dateCreated": "2019-10-15/",
             "datePublished": "2019-10-15/",

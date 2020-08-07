@@ -253,7 +253,7 @@ C’est en cherchant comment “annuler” une navigation de manière globale (s
 <h3 id="mais-quest-ce-que-jentends-par-caché-">Mais qu’est ce que j’entends par “caché” ?</h3>
 
 <p>Il vous est surement déjà arrivé de voir un attribut / une méthode Angular sans pouvoir vraiment y accéder à cause de son accès privé.
-Dans ce cas si, ils ne l’ont pas mise en privée, mais en <code class="highlighter-rouge">internal</code>, ce qui a comme résultat de ne pas générer l’élément dans la définition (.d.ts). Impossible, donc, pour ces utilisateurs de savoir qu’elle existe.</p>
+Dans ce cas si, ils ne l’ont pas mise en privée, mais en <code class="language-plaintext highlighter-rouge">internal</code>, ce qui a comme résultat de ne pas générer l’élément dans la définition (.d.ts). Impossible, donc, pour ces utilisateurs de savoir qu’elle existe.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
   * Hooks that enable you to pause navigation,
@@ -272,19 +272,19 @@ Dans ce cas si, ils ne l’ont pas mise en privée, mais en <code class="highlig
 
 <p>Il ne faut pas oublier que nous travaillons en JavaScript.</p>
 
-<p>Nous avons dès lors deux moyens d’accéder à cette propriété <code class="highlighter-rouge">hooks</code> et donc de bypasser la vérification TypeScript.</p>
+<p>Nous avons dès lors deux moyens d’accéder à cette propriété <code class="language-plaintext highlighter-rouge">hooks</code> et donc de bypasser la vérification TypeScript.</p>
 
 <ol>
-  <li>Utiliser un <code class="highlighter-rouge">as any</code>: ça fonctionne, mais ça pollue notre code.</li>
-  <li>Utiliser le commentaire <code class="highlighter-rouge">@ts-ignore</code>: ignore les problèmes TypeScript uniquement pour la ligne qui suit.</li>
+  <li>Utiliser un <code class="language-plaintext highlighter-rouge">as any</code>: ça fonctionne, mais ça pollue notre code.</li>
+  <li>Utiliser le commentaire <code class="language-plaintext highlighter-rouge">@ts-ignore</code>: ignore les problèmes TypeScript uniquement pour la ligne qui suit.</li>
 </ol>
 
-<p>Une chose à laquelle il faut également faire attention est le fait que, comme indiqué dans le commentaire de la propriété <strong>hooks</strong>, ces fonctions sont utilisées dans le <code class="highlighter-rouge">RouterModule</code>. Pour être plus précis, il n’y a que la méthode <strong>afterPreactivation</strong> qui soit utilisée hors tests unitaires pour le moment.
+<p>Une chose à laquelle il faut également faire attention est le fait que, comme indiqué dans le commentaire de la propriété <strong>hooks</strong>, ces fonctions sont utilisées dans le <code class="language-plaintext highlighter-rouge">RouterModule</code>. Pour être plus précis, il n’y a que la méthode <strong>afterPreactivation</strong> qui soit utilisée hors tests unitaires pour le moment.
 Cela veut dire qu’il ne faut pas oublier d’appeler la fonction de base en plus de notre surcharge, un peu comme l’obligation d’appeler la méthode “super()” dans un constructeur en cas d’extension de classe.</p>
 
 <h3 id="à-quoi-ressemblent-ces-hooks-">À quoi ressemblent ces hooks ?</h3>
 
-<p>Ce hook n’est rien d’autre qu’une lambda retournant une instance de <code class="highlighter-rouge">Observable&lt;void&gt;</code>.</p>
+<p>Ce hook n’est rien d’autre qu’une lambda retournant une instance de <code class="language-plaintext highlighter-rouge">Observable&lt;void&gt;</code>.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">type</span> <span class="nx">RouterHook</span> <span class="o">=</span> <span class="p">(</span><span class="nx">snapshot</span><span class="p">:</span> <span class="nx">RouterStateSnapshot</span><span class="p">,</span> <span class="nx">runExtras</span><span class="p">:</span> <span class="p">{</span>
     <span class="nl">appliedUrlTree</span><span class="p">:</span> <span class="nx">UrlTree</span><span class="p">,</span>
@@ -295,13 +295,13 @@ Cela veut dire qu’il ne faut pas oublier d’appeler la fonction de base en pl
 <span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>Nous ne devons donc rien “calculer”, nous avons uniquement la main sur si ou quand le routeur pourra continuer plus loin (ici l’activation de la route dans le(s) <code class="highlighter-rouge">router-outlet</code>).</p>
+<p>Nous ne devons donc rien “calculer”, nous avons uniquement la main sur si ou quand le routeur pourra continuer plus loin (ici l’activation de la route dans le(s) <code class="language-plaintext highlighter-rouge">router-outlet</code>).</p>
 
 <p>En effet j’aimerais que dans certains cas, il n’affiche pas lui-même le composant, mais qu’il me laisse le gérer.</p>
 
 <h3 id="implémentation">Implémentation</h3>
 
-<p>Pour créer ce hook nous allons travailler dans le module <code class="highlighter-rouge">app-routing.module.ts</code>.</p>
+<p>Pour créer ce hook nous allons travailler dans le module <code class="language-plaintext highlighter-rouge">app-routing.module.ts</code>.</p>
 
 <p>Pour commencer, nous aurons besoin du router, nous l’injectons alors dans le constructeur.</p>
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">constructor</span><span class="p">(</span><span class="nx">router</span><span class="p">:</span> <span class="nx">Router</span><span class="p">)</span><span class="err"> </span><span class="p">{}</span>
@@ -309,8 +309,8 @@ Cela veut dire qu’il ne faut pas oublier d’appeler la fonction de base en pl
 
 <p>Cela nous permet de préparer tout ce dont on a besoin:</p>
 <ol>
-  <li>Le dictionnaire <code class="highlighter-rouge">hooks</code>,</li>
-  <li>Le sujet <code class="highlighter-rouge">events</code> que vous avez plutôt l’habitude d’utiliser en tant qu’Observable.</li>
+  <li>Le dictionnaire <code class="language-plaintext highlighter-rouge">hooks</code>,</li>
+  <li>Le sujet <code class="language-plaintext highlighter-rouge">events</code> que vous avez plutôt l’habitude d’utiliser en tant qu’Observable.</li>
 </ol>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @ts-ignore</span>
@@ -328,9 +328,9 @@ Cela veut dire qu’il ne faut pas oublier d’appeler la fonction de base en pl
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>Enfin il nous reste à annuler la suite de l’activation de la route en stoppant le sujet. Cela est possible simplement grâce à l’opérateur <code class="highlighter-rouge">filter</code> de <strong>RXJS</strong>.</p>
+<p>Enfin il nous reste à annuler la suite de l’activation de la route en stoppant le sujet. Cela est possible simplement grâce à l’opérateur <code class="language-plaintext highlighter-rouge">filter</code> de <strong>RXJS</strong>.</p>
 
-<p>Cependant, si vous décidez d’annuler la suite, je vous conseille d’au minimum émettre un évènement de type <code class="highlighter-rouge">NavigationCancel</code> afin de garder une cohérence dans le reste de l’application.</p>
+<p>Cependant, si vous décidez d’annuler la suite, je vous conseille d’au minimum émettre un évènement de type <code class="language-plaintext highlighter-rouge">NavigationCancel</code> afin de garder une cohérence dans le reste de l’application.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">routerHooks</span><span class="p">.</span><span class="nx">afterPreactivation</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">canNavigate</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
@@ -888,7 +888,7 @@ Table des matières
 
 
 ",
-            "wordcount": "1262",
+            "wordcount": "1274",
             "inLanguage": "fr",
             "dateCreated": "2020-03-31/",
             "datePublished": "2020-03-31/",

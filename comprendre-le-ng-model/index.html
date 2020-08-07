@@ -243,17 +243,17 @@ Septembre 3, 2019
 
 <p>Dans Angular nous trouvons quatre (3 + l’interpolation) types de bindings:</p>
 <ul>
-  <li><strong>Property binding</strong> <code class="highlighter-rouge">[]</code>: permet de passer une information d’un composant parent à un composant enfant;</li>
-  <li><strong>Event binding</strong> <code class="highlighter-rouge">()</code>: permet d’écouter un évènement JavaScript ou de passer une information d’un composant enfant à un composant parent (via un évènement);</li>
-  <li><strong>Two ways binding</strong> <code class="highlighter-rouge">[()]</code>: permet une synchronisation complète d’une information entre un composant parent et un composant enfant en utilisant les deux types de binding précédemment cités;</li>
-  <li><strong>Interpolation</strong> <code class="highlighter-rouge">{{}}</code>: permet d’afficher une donnée dans le HTML depuis le TypeScript.</li>
+  <li><strong>Property binding</strong> <code class="language-plaintext highlighter-rouge">[]</code>: permet de passer une information d’un composant parent à un composant enfant;</li>
+  <li><strong>Event binding</strong> <code class="language-plaintext highlighter-rouge">()</code>: permet d’écouter un évènement JavaScript ou de passer une information d’un composant enfant à un composant parent (via un évènement);</li>
+  <li><strong>Two ways binding</strong> <code class="language-plaintext highlighter-rouge">[()]</code>: permet une synchronisation complète d’une information entre un composant parent et un composant enfant en utilisant les deux types de binding précédemment cités;</li>
+  <li><strong>Interpolation</strong> <code class="language-plaintext highlighter-rouge">{{}}</code>: permet d’afficher une donnée dans le HTML depuis le TypeScript.</li>
 </ul>
 
-<p>Vous aurez vite fait le lien entre le Two ways binding et le sujet qui nous intéresse ici, le <code class="highlighter-rouge">[(ngModel)]</code>.</p>
+<p>Vous aurez vite fait le lien entre le Two ways binding et le sujet qui nous intéresse ici, le <code class="language-plaintext highlighter-rouge">[(ngModel)]</code>.</p>
 
-<p>Il est possible de créer son propre property bindig via un <code class="highlighter-rouge">@Input()</code> comme il est possible de créer son propre event binding via un <code class="highlighter-rouge">@Output()</code>, mais est-il possible de créer un binding Two way ?</p>
+<p>Il est possible de créer son propre property bindig via un <code class="language-plaintext highlighter-rouge">@Input()</code> comme il est possible de créer son propre event binding via un <code class="language-plaintext highlighter-rouge">@Output()</code>, mais est-il possible de créer un binding Two way ?</p>
 
-<p>Tout à fait ! Il s’agit en réalité d’une simple combinaison des deux. En effet il nous faut créer un input ainsi qu’un output, mais en respectant une règle: l’output doit avoir le même nom que l’input suivi du mot <code class="highlighter-rouge">Change</code>. Cela donnera par exemple:</p>
+<p>Tout à fait ! Il s’agit en réalité d’une simple combinaison des deux. En effet il nous faut créer un input ainsi qu’un output, mais en respectant une règle: l’output doit avoir le même nom que l’input suivi du mot <code class="language-plaintext highlighter-rouge">Change</code>. Cela donnera par exemple:</p>
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Input</span><span class="p">()</span> <span class="nx">myData</span><span class="p">:</span> <span class="kr">string</span><span class="p">[];</span>
 <span class="p">@</span><span class="nd">Output</span><span class="p">()</span> <span class="nx">myDataChange</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="o">&lt;</span><span class="kr">string</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">();</span>
 </code></pre></div></div>
@@ -262,19 +262,19 @@ Septembre 3, 2019
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;my-component</span> <span class="na">[(myData)]=</span><span class="s">"data"</span><span class="nt">&gt;&lt;/my-component&gt;</span>
 </code></pre></div></div>
 
-<p>Il est évidemment toujours possible d’écouter l’évènement émis par l’output. Tout comme nous pouvons utiliser le <code class="highlighter-rouge">(ngModelChange)</code>.</p>
+<p>Il est évidemment toujours possible d’écouter l’évènement émis par l’output. Tout comme nous pouvons utiliser le <code class="language-plaintext highlighter-rouge">(ngModelChange)</code>.</p>
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;my-component</span> <span class="na">[(myData)]=</span><span class="s">"data"</span> <span class="na">(myDataChange)=</span><span class="s">"dataHasChange($event)"</span><span class="nt">&gt;&lt;/my-component&gt;</span>
 </code></pre></div></div>
 
 <h2 id="utilisation-dans-un-formulaire">Utilisation dans un formulaire</h2>
 
-<p>Comme dit précédemment, le ngModel n’est utile que dans le cas d’un formulaire “template driven”. Pourtant Angular nous laisse le choix d’utiliser <code class="highlighter-rouge">[(ngModel)]</code> ou <code class="highlighter-rouge">formControlName</code> pour arriver au même résultat avec les textarea par exemple.</p>
+<p>Comme dit précédemment, le ngModel n’est utile que dans le cas d’un formulaire “template driven”. Pourtant Angular nous laisse le choix d’utiliser <code class="language-plaintext highlighter-rouge">[(ngModel)]</code> ou <code class="language-plaintext highlighter-rouge">formControlName</code> pour arriver au même résultat avec les textarea par exemple.</p>
 
-<p>Cela est possible, car en plus d’être un input/output, le <code class="highlighter-rouge">ngModel</code> est une directive tout comme le <code class="highlighter-rouge">formControlName</code>.</p>
+<p>Cela est possible, car en plus d’être un input/output, le <code class="language-plaintext highlighter-rouge">ngModel</code> est une directive tout comme le <code class="language-plaintext highlighter-rouge">formControlName</code>.</p>
 
-<p>Voyons alors comment créer notre propre <strong>composant de formulaire</strong> en créer par exemple un <code class="highlighter-rouge">YesNoComponent</code>. Nous allons nous concentrer sur la partie TypeScript, car c’est la partie qui nous intéresse vraiment.</p>
+<p>Voyons alors comment créer notre propre <strong>composant de formulaire</strong> en créer par exemple un <code class="language-plaintext highlighter-rouge">YesNoComponent</code>. Nous allons nous concentrer sur la partie TypeScript, car c’est la partie qui nous intéresse vraiment.</p>
 
-<p>Pour être compatibles avec les deux types de formulaires, nous allons devoir implémenter le provider <code class="highlighter-rouge">NG_VALUE_ACCESSOR</code> dans le composant cible.
+<p>Pour être compatibles avec les deux types de formulaires, nous allons devoir implémenter le provider <code class="language-plaintext highlighter-rouge">NG_VALUE_ACCESSOR</code> dans le composant cible.
 La syntaxe est un peu particulière, mais très importante.</p>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
@@ -292,14 +292,14 @@ La syntaxe est un peu particulière, mais très importante.</p>
 <span class="k">export</span> <span class="kd">class</span> <span class="nx">YesNoComponent</span>
 </code></pre></div></div>
 
-<p>Il faut alors que notre composant soit compatible avec ce provider. Pour ce faire, nous devons implémenter l’interface <code class="highlighter-rouge">ControlValueAccessor</code>.</p>
+<p>Il faut alors que notre composant soit compatible avec ce provider. Pour ce faire, nous devons implémenter l’interface <code class="language-plaintext highlighter-rouge">ControlValueAccessor</code>.</p>
 
 <p>ControlValueAccessor contient 4 fonctions à implémenter:</p>
 <ul>
-  <li><code class="highlighter-rouge">writeValue</code>: nous fournit la valeur connue par le formulaire (IN);</li>
-  <li><code class="highlighter-rouge">registerOnChange</code>: nous fournit le “callback” à appeler en cas de changement de valeur (OUT);</li>
-  <li><code class="highlighter-rouge">registerOnTouched</code>: nous fournit le “callback” à appeler quand le composant doit être considéré comme “touché”;</li>
-  <li><code class="highlighter-rouge">setDisabledState</code> (optionel): permet au formulaire de demander au composant de s’activer ou de se désactiver.</li>
+  <li><code class="language-plaintext highlighter-rouge">writeValue</code>: nous fournit la valeur connue par le formulaire (IN);</li>
+  <li><code class="language-plaintext highlighter-rouge">registerOnChange</code>: nous fournit le “callback” à appeler en cas de changement de valeur (OUT);</li>
+  <li><code class="language-plaintext highlighter-rouge">registerOnTouched</code>: nous fournit le “callback” à appeler quand le composant doit être considéré comme “touché”;</li>
+  <li><code class="language-plaintext highlighter-rouge">setDisabledState</code> (optionel): permet au formulaire de demander au composant de s’activer ou de se désactiver.</li>
 </ul>
 
 <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">YesNoComponent</span> <span class="k">implements</span> <span class="nx">ControlValueAccessor</span>
@@ -344,7 +344,7 @@ La syntaxe est un peu particulière, mais très importante.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>Angular permet l’utilisation de directives telle que <code class="highlighter-rouge">ngModel</code> ou <code class="highlighter-rouge">formControlName,</code> mais nécessite le service <code class="highlighter-rouge">NG_VALUE_ACCESSOR</code>.</p>
+<p>Angular permet l’utilisation de directives telle que <code class="language-plaintext highlighter-rouge">ngModel</code> ou <code class="language-plaintext highlighter-rouge">formControlName,</code> mais nécessite le service <code class="language-plaintext highlighter-rouge">NG_VALUE_ACCESSOR</code>.</p>
 
 <p>Ce service a déjà été implémenté par Angular pour tous les types de contrôle (input, textarea, select…) built-in.</p>
 
@@ -838,7 +838,7 @@ Table des matières
   Conclusion
 
 ",
-            "wordcount": "960",
+            "wordcount": "983",
             "inLanguage": "fr",
             "dateCreated": "2019-09-03/",
             "datePublished": "2019-09-03/",
