@@ -5,9 +5,29 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 11 Aug 2020 16:36:19 +0000</pubDate>
-    <lastBuildDate>Tue, 11 Aug 2020 16:36:19 +0000</lastBuildDate>
+    <pubDate>Sun, 11 Oct 2020 13:59:07 +0000</pubDate>
+    <lastBuildDate>Sun, 11 Oct 2020 13:59:07 +0000</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>gRPC, sa philosophie et son dev feeling</title>
+        <description>&lt;p&gt;Les web api REST aujourd’hui sont privilégiés à tous les autres protocoles. Une base relativement simple, capable d’être load balancée, un standard éprouvé grâce à l’expérience du protocole HTTP dans la communauté de développeurs. Pas de doute, savoir construire une web api REST est indispensable pour le développeur moderne.&lt;/p&gt; &lt;p&gt;Toutefois, deux limitations sont présentes :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;La structure de requête et de réponse est relativement statique. GraphQL résout déjà cette limitation.&lt;/li&gt; &lt;li&gt;Les performances network sont aujourd’hui impressionantes, mais encore insuffisantes dans certains cas, notamment avec le protocole HTTP.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;gRPC répond à la deuxième problématique. Il diminue le volume de...</description>
+        <pubDate>Sun, 11 Oct 2020 11:00:00 +0000</pubDate>
+        <link>https://wetry.tech/grpc-en-node-et-c-sharp/</link>
+        <guid isPermaLink="true">https://wetry.tech/grpc-en-node-et-c-sharp/</guid>
+        
+        <category>gRPC</category>
+        
+        <category>node</category>
+        
+        <category>dotnet core</category>
+        
+        <category>javascript</category>
+        
+        <category>network</category>
+        
+        <category>documentation</category>
+      </item>
     
       <item>
         <title>Pourquoi deno existe</title>

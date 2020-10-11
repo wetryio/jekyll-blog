@@ -134,7 +134,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2020-08-11</lastmod>
+                <lastmod>2020-10-11</lastmod>
             
         </url>
     
@@ -242,6 +242,13 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/grpc-en-node-et-c-sharp/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2020-10-11</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/pourquoi-deno-existe/</loc>
