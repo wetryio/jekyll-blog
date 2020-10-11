@@ -2,7 +2,7 @@
 author: mscolas
 layout: post
 title: gRPC, sa philosophie et son dev feeling
-date: 2019-12-06 07:00:00
+date: 2020-10-11 11:00:00
 image: '/images/grpc/grpc-integration.png'
 description: Présentation de gRPC avec intégration en node & dotnet core
 category: 'documentation'
@@ -15,14 +15,14 @@ tags:
 introduction: gRPC, sa philosophie et son dev feeling
 ---
 
-Les WEB API REST aujourd'hui sont privilégiés à tous les autres protocoles. Une base relativement simple, capable d'être load balancé, un standard éprouvé grâce à l'expérience du protocole HTTP dans la communauté de développeurs. Pas de doute, savoir construire une WEB API REST est indispensable pour le développeur moderne.
+Les web api REST aujourd'hui sont privilégiés à tous les autres protocoles. Une base relativement simple, capable d'être load balancée, un standard éprouvé grâce à l'expérience du protocole HTTP dans la communauté de développeurs. Pas de doute, savoir construire une web api REST est indispensable pour le développeur moderne.
 
-Toutefois, 2 limitations sont présente :
+Toutefois, deux limitations sont présentes :
 
 * La structure de requête et de réponse est relativement statique. GraphQL résout déjà cette limitation.
-* Les performances network sont aujourd'hui impressionante. Mais encore insuffisant dans certains cas, nottament avec le protocole HTTP.
+* Les performances network sont aujourd'hui impressionantes, mais encore insuffisantes dans certains cas, notamment avec le protocole HTTP.
 
-gRPC répond à la deuxième problématique. Il diminue le volume de donnée en transit pour améliorer les performances. De plus, il facilite l'intégration client-serveur via un système de création de librairie et un fichier unique qui définit les interfaces entre les services. Et tout ceci en faisant **abstraction des langages utilisés**. Et la liste des langages qui intègre gRPC longue :
+gRPC répond à la deuxième problématique. Il diminue le volume de données en transit pour améliorer les performances. De plus, il facilite l'intégration client-serveur via un système de création de librairie et un fichier unique qui définit les interfaces entre les services. Et tout ceci en faisant **abstraction des langages utilisés**. Et la liste des langages qui intègre gRPC est longue :
 C++, Java, Python,  Go, Ruby, C#, Node, Objective-C, PHP, Dart et le reverse-proxy Envoy.
 
 ```text
@@ -48,7 +48,7 @@ option csharp_namespace = "TodoApi";
 
 package TodoApi;
 
-// Définition du service. Contient deux méthodes avec un objet d'entré et un objet de sortie.
+// Définition du service. Contient deux méthodes avec un objet d'entrée et un objet de sortie.
 service TodoService {
     rpc AddTodo(AddTodoRequest) returns (AddTodoResponse);
     rpc GetAllTodo(google.protobuf.Empty) returns (GetAllTodoResponse);
@@ -76,7 +76,7 @@ message Todo {
 }
 ```
 
-Ce fichier dirigera la génération du serveur dotnet et du client c#. Il contient la définition complète des méthodes du service à implémenter.
+Ce fichier dirigera la génération du serveur dotnet et du client C#. Il contient la définition complète des méthodes du service à implémenter.
 
 ## Génération du serveur dotnet
 
@@ -88,12 +88,12 @@ Ce fichier dirigera la génération du serveur dotnet et du client c#. Il contie
 
 Lancez la commande `dotnet build`. Grâce à vos modifications, la dotnet a généré tous les nécessaire network pour implémenter votre service !
 
-Créez une nouvelle classe `TodoService` qui hérite de `TodoApi.TodoService.TodoServiceBase`. A cette classe, faites un override de la méthode `AddTodo` ainsi que de `GetAllTodo`. Implémentez la logique comme bon vous semple. Un exemple est partagé sur github, le lien est en fin d'article. Pour cette démo je n'ai pas lancer de service DB, un système de fichier suffisant.
+Créez une nouvelle classe `TodoService` qui hérite de `TodoApi.TodoService.TodoServiceBase`. A cette classe, faites un override de la méthode `AddTodo` ainsi que de `GetAllTodo`. Implémentez la logique comme bon vous semple. Un exemple est partagé sur github, le lien est en fin d'article. Pour cette démo je n'ai pas lancé de DB, un système de fichier est suffisant.
 
 Votre serveur est prêt !
 
-```text
-Pour cette démo, j'utilise gRPC avec le protocole HTTP2. Vous devriez configurer votre serveur kestrel pour forcer le http via
+```c#
+// Pour cette démo, j'utilise gRPC avec le protocole HTTP2. Vous devriez configurer votre serveur kestrel pour forcer le http via
 
 webBuilder.ConfigureKestrel(serverOptions =>
 {
@@ -106,7 +106,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### Tester immédiatement votre serveur sur votre browser ? Un client gRPC est nécessaire
 
-Malheureusement, les impatients ne peuvent pas encore tester ce nouveau serveur sans client gRPC. Les requêtes et les réponses sont sérialisé pour prendre le minimum de place possible. Un client qui serialise de la manière gRPC est nécessaire pour formatter correctement les requêtes et réponses. Si vous aviez l'habitude de tester vos serveurs HTTP via postman ou directement votre navigateur, j’ai le regret de vous annoncer que nous ne le pourrez pas. Le chapitre suivant vous donne la marche à suivre.
+Malheureusement, les impatients ne peuvent pas encore tester ce nouveau serveur sans client gRPC. Les requêtes et les réponses sont sérialisées pour prendre le minimum de place possible. Un client qui serialise de la manière gRPC est nécessaire pour formater correctement les requêtes et réponses. Si vous aviez l'habitude de tester vos serveurs HTTP via postman ou directement via votre navigateur, j’ai le regret de vous annoncer que vous ne le pourrez pas. Le chapitre suivant vous donne la marche à suivre.
 
 ## Génération du client node
 
@@ -114,7 +114,7 @@ L'un des atouts de gRPC est qu'il n'est lié à aucun langage. Dans cette démo,
 
 ### 4 packages à installer
 
-3 packages sont nécessaire pour notre client gRPC. Un autre est une librairie pour parser les arguments d'entré.
+3 packages sont nécessaires pour notre client gRPC. Un autre est une librairie pour parser les arguments d'entrée.
 
 ```ps1
 npm install @grpc/grpc-js @grpc/proto-loader grpc minimist
@@ -122,7 +122,7 @@ npm install @grpc/grpc-js @grpc/proto-loader grpc minimist
 
 ## gRPC client création
 
-Créez un fichier `get-todo-service.js` qui retourne un service prêt à l'emploi. Voici le minimum, les commentaires y sont directement intégré.
+Créez un fichier `get-todo-service.js` qui retourne un service prêt à l'emploi.
 
 ```js
 // Chemin d'accès au fichier proto. Modifiez la valeur selon la position de votre fichier protobuffer.
@@ -143,8 +143,8 @@ const packageDefinition = protoLoader.loadSync(
 );
 
 const api = grpc.loadPackageDefinition(packageDefinition).TodoApi;
-// Pour faciliter notre démo, nous n'utiliserons pas de crédential.
-// Nous avions forcé le serveur gRPC d'utiliser le port 5001.
+// Pour faciliter notre démo, nous n'utiliserons pas de credential.
+// Nous avions forcé le serveur gRPC à utiliser le port 5001.
 const todoService = new api.TodoService('localhost:5001', grpc.credentials.createInsecure());
 
 module.exports = todoService;
@@ -157,12 +157,12 @@ Et un exemple de call:
 ```js
 const todoService = require('./get-todo-service')
 
-// la définition de la requête est dans le fichier proto, le message AddTodoRequest
+// La définition de la requête est dans le fichier proto, le message AddTodoRequest.
 const addTodoRequest = {name: 'FIRST', content: 'Mon premier todo'};
 
 // L'asynchrone du gRPC s'exprime via une méthode de callback.
 todoService.AddTodo(addTodoRequest, (err, resp) => {
-    // La requêtes du GetAllTodo est un objet vide comme définit dans le fichier proto
+    // La requête du GetAllTodo est un objet vide comme défini dans le fichier proto.
     todoService.GetAllTodo({}, (error, res) => {
         console.log(res)
     });
@@ -171,14 +171,18 @@ todoService.AddTodo(addTodoRequest, (err, resp) => {
 
 Il ne vous reste qu'à lancer votre application via `node .\app.js` et voilà.
 
-Un exemple mieux fournis se trouve sur [https://github.com/wetryio/grpc-publication](https://github.com/wetryio/grpc-publication)
+Un exemple mieux fourni se trouve sur [https://github.com/wetryio/grpc-publication](https://github.com/wetryio/grpc-publication)
 
 ## Protobuffer, libre de langage et principe DRY
 
-Les web api REST offrent la documentation (swagger par exemple), des conventions via les chemins, les actions, les méthodes, les statuts HTTP, etc ... Mais la tâche n'est pas évidente. Le développeur a la responsabilité de maintenir toutes ces conventions pour la durabilité, une erreur de frappe dans la route et l'appel http ne fonctionne plus.
+Les web api REST offrent la documentation (swagger par exemple), des conventions via les chemins, les actions, les méthodes, les statuts HTTP, etc. Mais la tâche n'est pas évidente. Le développeur a la responsabilité de maintenir toutes ces conventions pour la durabilité: une erreur de frappe dans la route et l'appel http ne fonctionne plus.
 
-gRPC ignore ces contraintes en **appliquant un type et des méthodes**. Nous l'avons vu via la génération du serveur C#. Nous retrouvons cette qualité dans les langages typé fort.
-Les langages typés faible comme le javascript sont capable d'implémenter gRPC. Mais nous avons grandement perdu cette qualité de typage comme cet article l'a démontré.
+gRPC surpasse ces contraintes en **appliquant un type et des méthodes**. Nous l'avons vu via la génération du serveur C#. Nous retrouvons cette qualité dans les langages typés fort.
+Les langages typés faible comme le javascript sont capables d'implémenter gRPC. Mais nous avons grandement perdu cette qualité de typage comme cet article l'a démontrée.
+
+```text
+D'autres librairies javascript permettent de typer les objets. Je n'ai malheureusement pas exploré cette possibilité à travers cet article.
+```
 
 Une autre qualité de gRPC réside dans le fichier protobuffer. Il contient à lui seul **la définition des interfaces client-serveur**. Ni votre serveur, ni votre client doit implémenter les spécifications du protocole HTTP à la main car une source unique d'information génère le code nécessaire.
 
@@ -186,21 +190,21 @@ Une autre qualité de gRPC réside dans le fichier protobuffer. Il contient à l
 
 Nous n'avons pas vu en détail, mais gRPC intègre lui-même le nécessaire pour la gestion d'exception et d'erreur.
 
-* Python, C#, Java utilise le système d'exception du langage
-* Go utilise les erreurs interne et un parseur de statuts
-* Javascript a un paramètre d'erreur, nécessaire car la réponse est gérée en callback
+* Python, C#, Java utilisent le système d'exception du langage.
+* Go utilise les erreurs et un parseur de statuts.
+* Javascript a un paramètre d'erreur nécessaire car la réponse est gérée en callback.
 
-Encore une fois, il n'est pas nécessaire de suivre les conventions http pour interpréter les erreurs. La gestion des exceptions du langage dirige le flow d'erreur.
+Encore une fois, il n'est pas nécessaire de suivre les conventions http pour interpréter les erreurs. La gestion des exceptions du langage dirige le flow d'erreurs. Sachez que gRPC répondra presque toujours avec un status 200.
 
 ## Toujours pas une balle en argent
 
-gRPC n'est pas non plus la solution à tous les problèmes. Il propose une nouvelle manière d'interfacer les services entre eux. Là où l'architecture micro-service a une popularité forte, améliorer significativement le temps d'intégration de plusieurs clients dans plusieurs langage a du sens. Mais ne résout pas tous les autres défis liés aux autres principes du micro-service.
+gRPC n'est pas non plus la solution à tous les problèmes. Il propose une nouvelle manière d'interfacer les services entre eux. Là où l'architecture micro-service a une popularité forte, améliorer significativement le temps d'intégration de plusieurs clients dans plusieurs langages a du sens, mais ne résout pas tous les autres défis liés aux autres principes du micro-service.
 
-Il a aussi sa place dans un monde entreprise, ou les différentes équipes doivent s'échanger continuellement des informations. Proposer un fichier unique d'interface facilite le travail d'intégration.
+Il a aussi sa place dans une entreprise où les différentes équipes doivent s'échanger continuellement des informations. Proposer un fichier unique d'interface facilite le travail d'intégration.
 
-Toutefois, les propriétés stateless des principes REST restent nécessaire pour le load-balancing. Bannissez vos variables serveurs liés à vos requêtes.
+Toutefois, les propriétés stateless des principes REST restent nécessaires pour le load-balancing. Bannissez vos variables serveurs liés à vos sessions.
 
-En conclusion, gRPC peut être utilisé à la place du webapi REST, mais ne remplace pas son concurrent pour autant. Il apporte sa philosophie, ses qualités et ses défauts.
+En conclusion, gRPC peut être utilisé à la place du webapi REST, mais ne remplace pas son concurrent dans toutes les situations. Il apporte sa philosophie, ses qualités et ses défauts.
 
 ---
 
