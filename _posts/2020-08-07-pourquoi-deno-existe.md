@@ -5,7 +5,6 @@ title: "Pourquoi deno existe"
 subtitle: "typescript, asynchrone, sandbox de sécurité, deno est notre ami"
 description: "deno vient répondre à des problèmes de design de nodejs, et apporte son lot de modernité"
 image: /assets/img/deno/deno-logo.svg
-optimized_image:
 category: decouverte
 tags:
     - deno
