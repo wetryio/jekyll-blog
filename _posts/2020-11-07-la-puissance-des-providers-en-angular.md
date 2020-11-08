@@ -84,11 +84,11 @@ Ce simple bout de code illustre déjà beaucoup de choses:
 
     *Malheureusement dans cet exemple il n'a pas beaucoup de sens, car nous créons nous-mêmes le provider. [Plus d'infos ici](#providedin)*
 
-2. Il est possible d'écraser un provider. Vous pouvez remarquer que dans cette exemple, il y a deux provider pour `MonModuleConfiguration`. Une crée depuis `@NgModule` qui représente la valeur config par défaut et l'autre depuis `params`. Cela permet à l'utilisateur du module de pouvoir l'importer dans l'AppModule en appelant `MonModule` (prenant la **config par défaut**) ou `MonModule.forRoot({...})` imposant **sa propre configuration**.
+2. Il est possible d'écraser un provider. Vous pouvez remarquer que dans cette exemple, il y a deux providers pour `MonModuleConfiguration`. Un créé depuis `@NgModule` qui représente la valeur de config par défaut et l'autre depuis `params`. Cela permet à l'utilisateur du module de pouvoir l'importer dans l'AppModule en appelant `MonModule` (prenant la **config par défaut**) ou `MonModule.forRoot({...})` imposant **sa propre configuration**.
 3. L'utilisation de `useValue`. Comme son nom l'indique, cela permet de forcer une valeur pour un provider.
 4. `ModuleWithProviders` contient le module ainsi que des providers à y ajouter ou remplacer.
 
-**Attention** que comme son nom l'indique, il ne faut utiliser le `.forRoot()` qu'au module le plus "haut" où sera utilisé notre module. AppModule et le module le plus haut de l'application donc le mettre ici permet évite tout problème.
+**Attention** que comme son nom l'indique, il ne faut utiliser le `.forRoot()` qu'au module le plus "haut" où sera utilisé notre module. AppModule et le module le plus haut de l'application donc le mettre ici permet d'évite tout problème.
 
 *[Testez le code ici](https://stackblitz.com/edit/simple-module-config?file=src%2Fapp%2Fapp.module.ts)*
 
@@ -98,7 +98,7 @@ Dans cet exemple, nous allons traiter la gestion de loggers multiples.
 
 Pour ce faire nous allons avoir besoin de deux niveaux:
 1. Un **logger global** qui pourra être utilisé en tant que service,
-2. Un ensemble de **sous logger** qui vont réellement logger en étant utilisés par le "logger global".
+2. Un ensemble de **sous loggers** qui vont réellement logger en étant utilisés par le "logger global".
 
 ![logger-schema](/assets/img/angular-posts/loggers.png)
 
@@ -119,8 +119,8 @@ export abstract class BaseLogger {
 }
 ```
 
-* Vous pouvez remarquer l'attribut `@Injectable()` malgré qu'il s'agisse d'une classe abstraite. En effet, cela est obligatoire depuis Angular 9 (Ivy). Cela ne veut cependant pas dire que nous allons pouvoir l'injecter!
-* Vous pouvez également remarquer l'utilisation d'un `InjectionToken`. Cela permettra un accès à des providers typé (ici BaseLogger) à l'aide de l'attribut `@Inject()`. Nous allons voir son utilisation dans parties de codes qui vont suivre.
+* Vous pouvez remarquer l'attribut `@Injectable()` malgré qu'il s'agisse d'une classe abstraite. En effet, cela est obligatoire depuis Angular 9 (Ivy). Cela ne veut cependant pas dire que nous allons pouvoir l'injecter !
+* Vous pouvez également remarquer l'utilisation d'un `InjectionToken`. Cela permettra un accès à des providers typé (ici BaseLogger) à l'aide de l'attribut `@Inject()`. Nous allons voir son utilisation dans les parties de codes qui vont suivre.
 
 *L'implémentation d'une classe qui hérite de celle-ci n'a rien de spécial, nous n'allons donc pas nous attarder dessus, mais vous pourrez tout de même voir des exemples via le lien en fin de chapitre.*
 
@@ -146,7 +146,7 @@ Remarquez également l'utilisation de `useClass` qui nous permet cette fois de d
 
 ### Le "logger global"
 
-Ce provider exploite ceux précédemment créés et est le seul qui sera utilisé au travers de l'application.
+Ce provider exploite ceux précédemment créés et est le seul qui sera utilisé a travers l'application.
 
 ```ts
 @Injectable()
@@ -169,7 +169,7 @@ Avec l'option `multi: true` nous pouvons voir que l'injection via `@Inject(LOGGE
 Nous pouvons alors l'exploiter à l'aide d'un simple `forEach`.
 
 Vous pouvez maintenant vous demander pourquoi ne pas faire un seul service qui fait tout ?
-Le fait de les séparer en providers vous permet non seulement de pouvoir en ajouter un sans touché aux loggers déjà fonctionnels mais de pouvoir en activer/désactiver facilement.
+Le fait de les séparer en providers vous permet non seulement de pouvoir en ajouter un sans touché aux loggers déjà fonctionnels mais aussi de pouvoir en activer/désactiver facilement.
 
 Dans *[cet exemple ](https://stackblitz.com/edit/multi-loggers?file=src%2Fapp%2Fapp.module.ts)*, j'ai poussé les choses encore un peu plus loin en fournissant la liste des loggers dans le forRoot.
 
@@ -273,7 +273,7 @@ export class HttpInterceptorHandler implements HttpHandler {
 
 ```
 
-Si vous ne conaissez pas la méthode `reduceRight` voici une illustration de ce qu'elle génère:
+Si vous ne connaissez pas la méthode `reduceRight` voici une illustration de ce qu'elle génère:
 
 ![reduce-right](/assets/img/angular-posts/reduce-right.png)
 
@@ -284,7 +284,7 @@ Enfin, cet exemple nous propose une troisième manière d'injecter un provider:
 
 ## Base(Component/Service)
 
-Il vous est probablement déjà venu à l'esprit de faire une classe de "base" (classe parente) pour des composants ou des services. Cela ne semble pas une être une mauvaise idée, cependant je vous conseille fortement de n'injecter qu'une seule chose dans votre parent: `Injector`.
+Il vous est probablement déjà venu à l'esprit de faire une classe de "base" (classe parente) pour des composants ou des services. Cela ne semble pas être une mauvaise idée, cependant je vous conseille fortement de n'injecter qu'une seule chose dans votre parent: `Injector`.
 
 Pourquoi ? Pour préparer l'avenir de votre application. Si votre "parent" a besoin un jour de plus d'injections, vous n'aurez pas à refactoriser tous ces enfants !
 
@@ -350,7 +350,7 @@ Notez que le tableau `deps: [ AuthService ]` permet de récupérer/injecter une 
 Cette option a été ajoutée pour permettre de faire du lazy-loading de provider tout en faisant du singleton.
 Malheureusement elle n'a pas encore été ajoutée partout, et n'est utilisable que via l'attribut `@Injectable()`.
 
-Pour démontrer ceci par exemple, nous allons utiliser la dernière possibilité d'injecter un provider: `useExisting`.
+Pour démontrer ceci via un exemple, nous allons utiliser la dernière possibilité pour injecter un provider: `useExisting`.
 
 ```ts
 @Injectable({
