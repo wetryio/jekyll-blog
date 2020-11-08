@@ -88,7 +88,7 @@ Ce simple bout de code illustre déjà beaucoup de choses:
 3. L'utilisation de `useValue`. Comme son nom l'indique, cela permet de forcer une valeur pour un provider.
 4. `ModuleWithProviders` contient le module ainsi que des providers à y ajouter ou remplacer.
 
-**Attention** que comme son nom l'indique, il ne faut utiliser le `.forRoot()` qu'au module le plus "haut" où sera utilisé notre module. AppModule et le module le plus haut de l'application donc le mettre ici permet d'évite tout problème.
+**Attention** que comme son nom l'indique, il ne faut utiliser le `.forRoot()` que dans module le plus "haut" où sera utilisé notre module. `AppModule` est le module le plus haut de l'application donc le mettre là permet d'évite tout problème.
 
 *[Testez le code ici](https://stackblitz.com/edit/simple-module-config?file=src%2Fapp%2Fapp.module.ts)*
 
