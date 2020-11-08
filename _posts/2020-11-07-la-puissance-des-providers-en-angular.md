@@ -19,17 +19,29 @@ Nous avons déjà pu voir un cas concret d'utilisation interne de poviders de An
 
 Si vous souhaitez d'abord voir la liste des cas vus dans cet article, vous pouvez vous rendre sur la [table des matières](#toc). Mais je vous invite à lire tout l'article car chaque concept met en avant une façon différente d'utiliser les providers.
 
+## Explications préalables
+
+Dans cet article vous allez voir les deux façon de créer un provider:
+1. En utilisant l'attribut `@Injectable()` : Le provider sera créé automatiquement,
+2. En créan un objet depuis le type [Provider](https://github.com/angular/angular/blob/494a2f3be4b95c7dda8aea31e8cba8728280e24b/packages/core/src/di/interface/provider.ts#L332).
+    ```ts
+    {
+        provide: ...,
+        ...
+    }
+    ```
+
 ## Configuration de modules
 
-Commençon par voir comment il est possible de rengre un module (souvent une librairie) configurable, et nous allons prendre comme exemple la librairie [ng-openapi-gen](https://github.com/cyclosproject/ng-openapi-gen) qui permet de générer des services http ainsi que ces modèles (DTO) depuis un contract [openapi](https://swagger.io/) (anciennement swagger).
+Commençon par voir comment il est possible de rendre un module (souvent une librairie) configurable, et nous allons prendre comme exemple la librairie [ng-openapi-gen](https://github.com/cyclosproject/ng-openapi-gen) qui permet de générer des services http ainsi que ces modèles (DTO) depuis un contract [openapi](https://swagger.io/) (anciennement swagger).
 
-Ce que nous utilisons généralement est apellé **[forRoot pattern](https://angular.io/guide/singleton-services#the-forroot-pattern)** et a pour but de permettre de créer un singleton (instance unique) pour toutes les utilisations de ce module.
+Ce que nous utilisons généralement est apellé **[forRoot pattern](https://angular.io/guide/singleton-services#the-forroot-pattern)** qui a pour but de créer un singleton (instance unique) de providers pour toutes les utilisations de ce module.
 
-La fonction `forRoot` est "simplement" une fonction statique se trouvant dans le module et doit obligatoirement retourner un `ModuleWithProviders`. Attention qu'aucun appel à une autre fonction ne peut être fait dans celle-ci, elle doit donc être [pure](/des-fonctions-pures-pour-plus-de-lisibilite).
+La fonction `forRoot` est "simplement" une fonction statique qui se trouve dans le module et doit obligatoirement retourner un `ModuleWithProviders`. Attention que cette fonction doit obligatoirement être [pure](/des-fonctions-pures-pour-plus-de-lisibilite).
 
 ```ts
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class MonModuleConfiguration {
   rootUrl: string = 'http://google.be';
@@ -39,10 +51,7 @@ export class MonModuleConfiguration {
 
 @NgModule({
   providers: [
-    {
-        provide: MonModuleConfiguration,
-        useValue: defaultConfiguration
-    }
+    MonModuleConfiguration
   ]
 })
 export class MonModule {
@@ -71,9 +80,13 @@ export class AppModule {}
 
 Ce simple bout de code illustre déjà beaucoup de choses:
 
-1. La notion de `providedIn`. Il s'agit du "scope de disponibilité de l'instance" (en d'autres terme, il donne à Angular une indication sur le choix de l'Injector où placer cette instance). ça valeur peut être un nom de module ou `"root"`. Cette dernière valeur permetant de rendre disponible l'instance dans l'application entière.+
-2. Il est possible d'écraser un provider. Vous pouvez remarquer que dans cette exemple, il y a deux provider pour `MonModuleConfiguration`. Une crée depuis `defaultConfiguration` et l'autre depuis `params`. Cela permet à l'utilisateur du module de pouvoir l'importer dans l'AppModule en appellant `MonModule` (prenant la **config par défaut**) ou `MonModule.forRoot({...})` imposant **sa propre configuration**.
-3. `ModuleWithProviders` contient le module ainsi que des providers à y ajouter ou remplacer.
+1. La notion de `providedIn`. Il s'agit du "scope de disponibilité de l'instance" (en d'autres terme, il donne à Angular une indication sur le choix de l'Injector où placer cette instance). ça valeur peut être un nom de module ou `"root"`. Cette dernière valeur permetant de rendre disponible l'instance dans l'application entière.
+
+    *Malheureusement dans cet exemple il n'a pas beaucoup de sens, car nous créons nous même le provider. [Plus d'infos ici](#providedin)*
+
+2. Il est possible d'écraser un provider. Vous pouvez remarquer que dans cette exemple, il y a deux provider pour `MonModuleConfiguration`. Une crée depuis `@NgModule` qui représente la valeur config par défaut et l'autre depuis `params`. Cela permet à l'utilisateur du module de pouvoir l'importer dans l'AppModule en appellant `MonModule` (prenant la **config par défaut**) ou `MonModule.forRoot({...})` imposant **sa propre configuration**.
+3. L'utilisation de `useValue`. Comme son nom l'indique, cela permet de forcer une valeur pour un provider.
+4. `ModuleWithProviders` contient le module ainsi que des providers à y ajouter ou remplacer.
 
 **Attention** que comme son nom l'indique, il ne faut utiliser le `.forRoot()` qu'au module le plus "haut" où sera utilisé notre module. AppModule et le module le plus haut de l'application donc le mettre ici permet évite tout problème.
 
@@ -94,7 +107,7 @@ Pour ce faire nous allons avoir besoin de deux niveaux:
 Pour être certain que tous les providers utilisé possèdes les bonnes méthodes, j'utilise une **classe abstraite** (vous pouvez également utiliser une **interface**).
 
 ```ts
-export const LOGGER = new InjectionToken<BaseLogger>("LOGGER");
+export const LOGGERS = new InjectionToken<BaseLogger>("LOGGERS");
 
 @Injectable()
 export abstract class BaseLogger {
@@ -117,17 +130,19 @@ Pour ce faire nous allons utiliser une fonctionnalité également utilisée par 
 ```ts
 providers: [
     {
-        provide: LOGGER,
+        provide: LOGGERS,
         useClass: ConsoleLogger,
         multi: true
     },
     {
-        provide: LOGGER,
+        provide: LOGGERS,
         useClass: MyLogger,
         multi: true
     }
 ]
 ```
+
+Remarquez également l'utilisation de `useClass` qui nous permet cette fois de donner un type à créer. Cette méthode permet l'utilisation de l'injection de dépendance dans les classes fournies alors que `useValue` est utilisé pour donner des données fixes.
 
 ### Le "logger global"
 
@@ -136,15 +151,21 @@ Ce provider exploite ceux précédement créé et est le seul qui sera utilisé 
 ```ts
 @Injectable()
 export class Logger {
-  constructor(@Inject(LOGGER) private loggers: BaseLogger[]) {}
+  constructor(@Inject(LOGGERS) private loggers: BaseLogger[]) {}
 
   public log(message: string): void {
     this.loggers.forEach(logger => logger.log(message));
   }
 }
+
+// -----------------
+
+providers: [
+    Logger
+]
 ```
 
-Avec l'option `multi: true` nous pouvons voir que l'injection via `@Inject(LOGGER)` ne nous fournis pas un seul provider, mais une liste `BaseLogger[]`.
+Avec l'option `multi: true` nous pouvons voir que l'injection via `@Inject(LOGGERS)` ne nous fournis pas un seul provider, mais une liste `BaseLogger[]`.
 Nous pouvons alors l'exploiter à l'aide d'un simple `forEach`.
 
 Vous pouvez maintenant vous demander pourquoi ne pas faire un seul service qui fait tout ?
@@ -163,9 +184,11 @@ LoggerModule.forRoot({
 
 ## Multiplateforme
 
-Votre application doit fonctionner sur Mobile et en version Web ? Voilà encore un excelent exemple d'utilisation des provider.
+Votre application doit fonctionner sur Mobile et en version Web ? Voilà encore un excellent exemple d'utilisation des provider.
 
 Il est en effet possible de conditionner le provider à utiliser au moment du build en utilisant le mécanisme d'environement/configuration d'Angular.
+
+Prenons par exemple l'ouverture d'un explorateur de fichier :
 
 ```ts
 providers: [
@@ -176,11 +199,189 @@ providers: [
 ]
 ```
 
-Cet exemple démontre aussi qu'il n'est pas toujours nécessaire de passer par un token d'injection. En effet ici `FileExplorerService` étant abstraite (cela ne fonctionne pas avec des interfaces) et n'utilisant pas l'option ~~`multiple: true`~~, nous pouvons utiliser cette classe **comme un token**.
+Cet exemple démontre aussi qu'il n'est pas toujours nécessaire de passer par un token d'injection. En effet ici `FileExplorerService` étant une classe abstraite (cela ne fonctionne pas avec des interfaces) et n'utilisant pas l'option ~~`multiple: true`~~, nous pouvons l'utiliser **comme un token**.
 
 *[Testez le code ici](https://stackblitz.com/edit/conditional-provider?file=src/app/app.module.ts)*
 
 ## Mocks
+
+Pour cette partie, nous allons nous concentré à démontrer que ces principes sont utilisés en interne à Angular.
+
+Nous allons utilisé le token d'injection `HTTP_INTERCEPTORS` qui nécessite aussi `multi: true`. Il y a un air de déjà vu avec ce que nous avons mis en place pour le logger n'est-ce pas ?
+
+```ts
+@Injectable()
+export class MockHttpInterceptor implements HttpInterceptor {
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const url = request.url;
+        const method = request.method;
+        return myMock(url, method, request) || next.handle(request);
+    }
+}
+
+export const mockInterceptorProvider = {
+    provide: HTTP_INTERCEPTORS,
+    useClass: MockHttpInterceptor,
+    multi: true
+};
+
+// -----------------
+
+export function myMock(
+        url: string, method: string,
+        request: HttpRequest<any>
+    ): Observable<HttpEvent<any>> | false {
+
+    let result: Observable<HttpEvent<any>> | false = false;
+
+    if ((environment.mock.all || environment.mock.services.getMy)
+        && url.includes('api/my') && method === 'GET') {
+        result = of(
+            new HttpResponse({
+                status: 200,
+                body: {
+                    ...
+                }
+            })
+        );
+    }
+
+    return result;
+}
+```
+
+La différence entre `HttpInterceptor` et notre logger est que les méthode `intercept` s'exécutent en cascade.
+
+Voici comment Angular crée cette cascade plutot que de faire un simple forEach:
+
+```ts
+const interceptors = this.injector.get(HTTP_INTERCEPTORS, []);
+this.chain = interceptors.reduceRight(
+    (next, interceptor) => new HttpInterceptorHandler(next, interceptor),
+    this.backend
+);
+
+// -----------------
+
+export class HttpInterceptorHandler implements HttpHandler {
+  constructor(private next: HttpHandler, private interceptor: HttpInterceptor) {}
+
+  handle(req: HttpRequest<any>): Observable<HttpEvent<any>> {
+    return this.interceptor.intercept(req, this.next);
+  }
+}
+
+```
+
+Si vous ne conaissez pas la méthode `reduceRight` voici une illustration de ce qu'elle génère:
+
+![reduce-right](/assets/img/angular-posts/reduce-right.png)
+
+Enfin, cet exemple nous propose une troisième maninière d'injecter un provider:
+1. `constructor(private myService: MyService)` le plus utilisé
+2. `constructor(private @Inject(MY_SERVICE) myService: MyService)` en cas d'utilisation d'un token
+3. `this.myService = this.injector.get(MY_SERVICE)` ou `this.myService = this.injector.get(MyService)` via une injection "manuelle"
+
+## Base(Component/Service)
+
+Il vous est probablement déjà venu à l'esprit de faire une classe de "base" (classe parrent) pour des composants ou des services. Cela ne semble pas une être une mauvaise idée, cependant je vous conseil fortement de n'injecter qu'une seule chose dans votre parent: `Injector`.
+
+Pourquoi ? Pour préparer l'avenir de votre application. Si votre "parent" a besoin un jour de plus d'injections, vous n'aurez pas à refactoriser tous ces enfants !
+
+```ts
+@Component({})
+export abstract class BaseComponent {
+
+    protected myService: MyService;
+
+    constructor(
+        injector: Injector
+    ) {
+        this.myService = injector.get(MyService);
+    }
+
+}
+
+// -----------------
+
+@Component({
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
+})
+export class HomeComponent extends BaseComponent {
+
+    constructor(
+        injector: Injector,
+        private myOtherService: MyOtherService
+    ) {
+        super(injector);
+    }
+
+}
+  
+```
+
+## Authentification
+
+Nous n'allons pas voir jusqu'au bout comment faire une authentification dans une application angular mais nous concentrer sur une posiblité de créer une instance de provider (`APP_INITIALIZER`) non repris par les autres exemples.
+
+```ts
+export const authInitializerFactory = (authService: AuthService) => () => authService.initAuthentication();
+
+export const AuthInitializerProvider = {
+    provide: APP_INITIALIZER,
+    useFactory: authInitializerFactory,
+    deps: [ AuthService ],
+    multi: true
+};
+```
+
+Je préfère centraliser toute la logique d'authentification dans un service (`AuthService`) mais celui-ci ne peut pas directement être utilisé en tant que `APP_INITIALIZER`. Nous utilisons alors `useFactory`.
+
+Ce `useFactory` est un peu entre `useValue` et `useClass`. Il permet d'utiliser une valeur tout en pouvant utiliser l'injection de dépendance.
+
+Notez que le tableau `deps: [ AuthService ]` permet de récupérer/injecter une instance à fournir à notre factory `(authService: AuthService) =>`. L'ordre des paramètres de la factory est l'ordre des éléments du tableau `deps`.
+
+## Encore quelques petites explications
+
+### providedIn
+
+Cette option a été ajoutée pour permettre de faire du lazy-loading de provider tout en faisant du singleton.
+Malheureusement elle n'a pas encore été ajoutée partout, et n'est utilisable que via l'attribut `@Injectable()`.
+
+Pour démontrer ceci par exemple, nous allons utiliser la dernière possiblité d'injecter un provider: `useExisting`.
+
+```ts
+@Injectable({
+    providedIn: 'root'
+})
+export class MyService {
+}
+
+// -----------------
+
+providers: [
+    MyService,
+    {
+        provide: 'TEST',
+        useExisting: MyService
+    }
+]
+```
+
+En faisant cela, `MyService` est bien injecté dans l'`Injector` principale, mais pas `TEST` ! Même si la valeur derrière est la même, d'autres modules ne connaitrons pas `TEST` alors que tout le monde connaitra `MyService`.
+
+*PS: Oui il y a bien un **string** comme valeur de `provide`. Cela rend évidement impossible le typage fort de ce provider contrairement à l'utilisation d'un `token d'injection`. Je ne l'utilise que quand il est difficile de partager le token entre les modules (qui nécessiterait une librairie ne contenant que ce token par exemple).*
+
+### Résumé méthodes de création de provider
+
+Tout au long de cet article nous avons vu les 4 façon de créer un provider manuellement.
+
+1. `useValue` : Fournir une valeur statique
+2. `useClass` : Fournir un type dont Angular va créer une instance
+3. `useFactory` : Fournir une méthode permetant de créer la valeur finale du provider (compable DI)
+4. `useExisting` : Créer un alias vers un un provider déjà existant
 
 ---
 <div class="gratitude">
