@@ -4,7 +4,7 @@ layout: post
 title: "La puissance des providers en Angular"
 subtitle:
 description: Comprendre toute la puissance de la dépencande d'injection d'Angular
-image:
+image: /assets/img/angular-posts/provider.png
 category: 'documentation'
 tags:
 - angular
