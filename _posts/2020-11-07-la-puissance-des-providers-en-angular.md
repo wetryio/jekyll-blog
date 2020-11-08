@@ -146,7 +146,7 @@ Remarquez également l'utilisation de `useClass` qui nous permet cette fois de d
 
 ### Le "logger global"
 
-Ce provider exploite ceux précédemment créés et est le seul qui sera utilisé a travers l'application.
+Ce provider exploite ceux précédemment créés et est le seul qui sera utilisé à travers l'application.
 
 ```ts
 @Injectable()
