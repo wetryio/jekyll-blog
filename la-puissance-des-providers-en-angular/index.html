@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    <title>La puissance des providers en Angular | WeTry</title>
+    <meta name="description" content="Comprendre toute la puissance de la dépencande d'injection d'Angular">
+    
+        <meta name="keywords" content="angular, provider">
+    
+
+    <!-- Social: Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La puissance des providers en Angular | WeTry">
+    <meta name="twitter:description" content="Comprendre toute la puissance de la dépencande d'injection d'Angular">
+    <meta property="twitter:image:src" content="https://wetry.tech/assets/img/angular-posts/provider.png">
+    
+
+    <!-- Social: Facebook / Open Graph -->
+    <meta property="og:url" content="https://wetry.tech/la-puissance-des-providers-en-angular/">
+    <meta property="og:title" content="La puissance des providers en Angular | WeTry">
+    <meta property="og:image" content="https://wetry.tech/assets/img/angular-posts/provider.png">
+    <meta property="og:description" content="Comprendre toute la puissance de la dépencande d'injection d'Angular">
+    <meta property="og:site_name" content="WeTry | Encore un autre blog de développeur">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/icons/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/icons/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/icons/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/icons/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/icons/apple-touch-icon-152x152.png" />
+
+    <!-- Windows 8 Tile Icons -->
+    <meta name="application-name" content="WeTry">
+    <meta name="msapplication-TileColor" content="#ff0a16">
+    <meta name="msapplication-square70x70logo" content="smalltile.png" />
+    <meta name="msapplication-square150x150logo" content="mediumtile.png" />
+    <meta name="msapplication-wide310x150logo" content="widetile.png" />
+    <meta name="msapplication-square310x310logo" content="largetile.png" />
+    
+    <!-- Android Lolipop Theme Color -->
+    <meta name="theme-color" content="#ff0a16">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="canonical" href="https://wetry.tech/la-puissance-des-providers-en-angular/">
+    <link rel="alternate" type="application/rss+xml" title="WeTry | Encore un autre blog de développeur" href="https://wetry.tech/feed.xml" />
+</head>
+
+    <body class="has-push-menu">
+        
+
+
+
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="none" version="1.1"><defs><symbol id="icon-menu" viewBox="0 0 1024 1024"><path class="path1" d="M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"/></symbol><symbol id="icon-search" viewBox="0 0 951 1024"><path class="path1" d="M658.286 475.429q0-105.714-75.143-180.857t-180.857-75.143-180.857 75.143-75.143 180.857 75.143 180.857 180.857 75.143 180.857-75.143 75.143-180.857zM950.857 950.857q0 29.714-21.714 51.429t-51.429 21.714q-30.857 0-51.429-21.714l-196-195.429q-102.286 70.857-228 70.857-81.714 0-156.286-31.714t-128.571-85.714-85.714-128.571-31.714-156.286 31.714-156.286 85.714-128.571 128.571-85.714 156.286-31.714 156.286 31.714 128.571 85.714 85.714 128.571 31.714 156.286q0 125.714-70.857 228l196 196q21.143 21.143 21.143 51.429z"/></symbol><symbol id="icon-close" viewBox="0 0 1000 1000"><path d="M969.8,870.3c27,27.7,27,71.8,0,99.1C955.7,983,937.9,990,920,990c-17.9,0-35.7-7-49.7-20.7L500,599L129.6,969.4C115.6,983,97.8,990,79.9,990s-35.7-7-49.7-20.7c-27-27.3-27-71.4,0-99.1L400.9,500L30.3,129.3c-27-27.3-27-71.4,0-99.1c27.3-27,71.8-27,99.4,0L500,400.9L870.4,30.2c27.7-27,71.8-27,99.4,0c27,27.7,27,71.8,0,99.1L599.1,500L969.8,870.3z"/></symbol><symbol id="icon-twitter" viewBox="0 0 951 1024"><path class="path1" d="M925.714 233.143q-38.286 56-92.571 95.429 0.571 8 0.571 24 0 74.286-21.714 148.286t-66 142-105.429 120.286-147.429 83.429-184.571 31.143q-154.857 0-283.429-82.857 20 2.286 44.571 2.286 128.571 0 229.143-78.857-60-1.143-107.429-36.857t-65.143-91.143q18.857 2.857 34.857 2.857 24.571 0 48.571-6.286-64-13.143-106-63.714t-42-117.429v-2.286q38.857 21.714 83.429 23.429-37.714-25.143-60-65.714t-22.286-88q0-50.286 25.143-93.143 69.143 85.143 168.286 136.286t212.286 56.857q-4.571-21.714-4.571-42.286 0-76.571 54-130.571t130.571-54q80 0 134.857 58.286 62.286-12 117.143-44.571-21.143 65.714-81.143 101.714 53.143-5.714 106.286-28.571z"/></symbol><symbol id="icon-facebook" viewBox="0 0 585 1024"><path class="path1" d="M548 6.857v150.857h-89.714q-49.143 0-66.286 20.571t-17.143 61.714v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571q0-106.286 59.429-164.857t158.286-58.571q84 0 130.286 6.857z"/></symbol><symbol id="icon-clock" viewBox="0 0 1000 1000"><path d="M500,10C229.8,10,10,229.8,10,500c0,270.2,219.8,490,490,490c270.2,0,490-219.8,490-490C990,229.8,770.2,10,500,10z M500,910.2c-226.2,0-410.2-184-410.2-410.2c0-226.2,184-410.2,410.2-410.2c226.2,0,410.2,184,410.2,410.2C910.2,726.1,726.2,910.2,500,910.2z M753.1,374c8.2,11.9,5.2,28.1-6.6,36.3L509.9,573.7c-4.4,3.1-9.6,4.6-14.8,4.6c-4.1,0-8.3-1-12.1-3c-8.6-4.5-14-13.4-14-23.1V202.5c0-14.4,11.7-26.1,26.1-26.1c14.4,0,26.1,11.7,26.1,26.1v300l195.6-135.1C728.7,359.2,744.9,362.1,753.1,374z"/></symbol><symbol id="icon-calendar" viewBox="0 0 1000 1000"><path d="M920,500v420H80V500H920 M990,430H10v490c0,38.7,31.3,70,70,70h840c38.7,0,70-31.3,70-70V430L990,430z"/><path d="M850,80v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80H360v105c0,57.9-47.2,105-105,105c-58,0-105-47.1-105-105V80C72.8,80,10,142.7,10,220v140h980V220C990,142.7,927.2,80,850,80z"/><path d="M255,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C290,25.8,274.3,10,255,10z"/><path d="M745,10c-19.3,0-35,15.8-35,35v140c0,19.2,15.7,35,35,35c19.3,0,35-15.8,35-35V45C780,25.8,764.3,10,745,10z"/></symbol><symbol id="icon-github" viewBox="0 0 12 14"><path d="M6 1q1.633 0 3.012 0.805t2.184 2.184 0.805 3.012q0 1.961-1.145 3.527t-2.957 2.168q-0.211 0.039-0.312-0.055t-0.102-0.234q0-0.023 0.004-0.598t0.004-1.051q0-0.758-0.406-1.109 0.445-0.047 0.801-0.141t0.734-0.305 0.633-0.52 0.414-0.82 0.16-1.176q0-0.93-0.617-1.609 0.289-0.711-0.062-1.594-0.219-0.070-0.633 0.086t-0.719 0.344l-0.297 0.187q-0.727-0.203-1.5-0.203t-1.5 0.203q-0.125-0.086-0.332-0.211t-0.652-0.301-0.664-0.105q-0.352 0.883-0.062 1.594-0.617 0.68-0.617 1.609 0 0.664 0.16 1.172t0.41 0.82 0.629 0.523 0.734 0.305 0.801 0.141q-0.305 0.281-0.383 0.805-0.164 0.078-0.352 0.117t-0.445 0.039-0.512-0.168-0.434-0.488q-0.148-0.25-0.379-0.406t-0.387-0.187l-0.156-0.023q-0.164 0-0.227 0.035t-0.039 0.090 0.070 0.109 0.102 0.094l0.055 0.039q0.172 0.078 0.34 0.297t0.246 0.398l0.078 0.18q0.102 0.297 0.344 0.48t0.523 0.234 0.543 0.055 0.434-0.027l0.18-0.031q0 0.297 0.004 0.691t0.004 0.426q0 0.141-0.102 0.234t-0.312 0.055q-1.812-0.602-2.957-2.168t-1.145-3.527q0-1.633 0.805-3.012t2.184-2.184 3.012-0.805zM2.273 9.617q0.023-0.055-0.055-0.094-0.078-0.023-0.102 0.016-0.023 0.055 0.055 0.094 0.070 0.047 0.102-0.016zM2.516 9.883q0.055-0.039-0.016-0.125-0.078-0.070-0.125-0.023-0.055 0.039 0.016 0.125 0.078 0.078 0.125 0.023zM2.75 10.234q0.070-0.055 0-0.148-0.062-0.102-0.133-0.047-0.070 0.039 0 0.141t0.133 0.055zM3.078 10.562q0.062-0.062-0.031-0.148-0.094-0.094-0.156-0.023-0.070 0.062 0.031 0.148 0.094 0.094 0.156 0.023zM3.523 10.758q0.023-0.086-0.102-0.125-0.117-0.031-0.148 0.055t0.102 0.117q0.117 0.047 0.148-0.047zM4.016 10.797q0-0.102-0.133-0.086-0.125 0-0.125 0.086 0 0.102 0.133 0.086 0.125 0 0.125-0.086zM4.469 10.719q-0.016-0.086-0.141-0.070-0.125 0.023-0.109 0.117t0.141 0.062 0.109-0.109z"></path></symbol><symbol id="icon-medium" viewBox="0 0 1000 1000"><path d="M336.5,240.2v641.5c0,9.1-2.3,16.9-6.8,23.2s-11.2,9.6-20,9.6c-6.2,0-12.2-1.5-18-4.4L37.3,782.7c-7.7-3.6-14.1-9.8-19.4-18.3S10,747.4,10,739V115.5c0-7.3,1.8-13.5,5.5-18.6c3.6-5.1,8.9-7.7,15.9-7.7c5.1,0,13.1,2.7,24.1,8.2l279.5,140C335.9,238.6,336.5,239.5,336.5,240.2L336.5,240.2z M371.5,295.5l292,473.6l-292-145.5V295.5z M990,305.3v576.4c0,9.1-2.6,16.5-7.7,22.1c-5.1,5.7-12,8.5-20.8,8.5s-17.3-2.4-25.7-7.1L694.7,784.9L990,305.3z M988.4,239.7c0,1.1-46.8,77.6-140.3,229.4C754.6,621,699.8,709.8,683.8,735.7L470.5,389l177.2-288.2c6.2-10.2,15.7-15.3,28.4-15.3c5.1,0,9.8,1.1,14.2,3.3l295.9,147.7C987.6,237.1,988.4,238.2,988.4,239.7L988.4,239.7z"/></symbol><symbol id="icon-instagram" viewBox="0 0 489.84 489.84"><path d="M249.62,50.46c65.4,0,73.14.25,99,1.43C372.47,53,385.44,57,394.07,60.32a75.88,75.88,0,0,1,28.16,18.32,75.88,75.88,0,0,1,18.32,28.16c3.35,8.63,7.34,21.6,8.43,45.48,1.18,25.83,1.43,33.57,1.43,99s-0.25,73.14-1.43,99c-1.09,23.88-5.08,36.85-8.43,45.48a81.11,81.11,0,0,1-46.48,46.48c-8.63,3.35-21.6,7.34-45.48,8.43-25.82,1.18-33.57,1.43-99,1.43s-73.15-.25-99-1.43c-23.88-1.09-36.85-5.08-45.48-8.43A75.88,75.88,0,0,1,77,423.86,75.88,75.88,0,0,1,58.69,395.7c-3.35-8.63-7.34-21.6-8.43-45.48-1.18-25.83-1.43-33.57-1.43-99s0.25-73.14,1.43-99c1.09-23.88,5.08-36.85,8.43-45.48A75.88,75.88,0,0,1,77,78.64a75.88,75.88,0,0,1,28.16-18.32c8.63-3.35,21.6-7.34,45.48-8.43,25.83-1.18,33.57-1.43,99-1.43m0-44.13c-66.52,0-74.86.28-101,1.47s-43.87,5.33-59.45,11.38A120.06,120.06,0,0,0,45.81,47.44,120.06,120.06,0,0,0,17.56,90.82C11.5,106.4,7.36,124.2,6.17,150.27s-1.47,34.46-1.47,101,0.28,74.86,1.47,101,5.33,43.87,11.38,59.45a120.06,120.06,0,0,0,28.25,43.38,120.06,120.06,0,0,0,43.38,28.25c15.58,6.05,33.38,10.19,59.45,11.38s34.46,1.47,101,1.47,74.86-.28,101-1.47,43.87-5.33,59.45-11.38a125.24,125.24,0,0,0,71.63-71.63c6.05-15.58,10.19-33.38,11.38-59.45s1.47-34.46,1.47-101-0.28-74.86-1.47-101-5.33-43.87-11.38-59.45a120.06,120.06,0,0,0-28.25-43.38,120.06,120.06,0,0,0-43.38-28.25C394.47,13.13,376.67,9,350.6,7.8s-34.46-1.47-101-1.47h0Z" transform="translate(-4.7 -6.33)" /><path d="M249.62,125.48A125.77,125.77,0,1,0,375.39,251.25,125.77,125.77,0,0,0,249.62,125.48Zm0,207.41a81.64,81.64,0,1,1,81.64-81.64A81.64,81.64,0,0,1,249.62,332.89Z" transform="translate(-4.7 -6.33)"/><circle cx="375.66" cy="114.18" r="29.39" /></symbol><symbol id="icon-linkedin" viewBox="0 0 12 14"><path d="M2.727 4.883v7.742h-2.578v-7.742h2.578zM2.891 2.492q0.008 0.57-0.395 0.953t-1.059 0.383h-0.016q-0.641 0-1.031-0.383t-0.391-0.953q0-0.578 0.402-0.957t1.051-0.379 1.039 0.379 0.398 0.957zM12 8.187v4.437h-2.57v-4.141q0-0.82-0.316-1.285t-0.988-0.465q-0.492 0-0.824 0.27t-0.496 0.668q-0.086 0.234-0.086 0.633v4.32h-2.57q0.016-3.117 0.016-5.055t-0.008-2.313l-0.008-0.375h2.57v1.125h-0.016q0.156-0.25 0.32-0.438t0.441-0.406 0.68-0.34 0.895-0.121q1.336 0 2.148 0.887t0.813 2.598z"></path></symbol><symbol id="icon-heart" viewBox="0 0 34 30"><path d="M17,29.7 L16.4,29.2 C3.5,18.7 0,15 0,9 C0,4 4,0 9,0 C13.1,0 15.4,2.3 17,4.1 C18.6,2.3 20.9,0 25,0 C30,0 34,4 34,9 C34,15 30.5,18.7 17.6,29.2 L17,29.7 Z M9,2 C5.1,2 2,5.1 2,9 C2,14.1 5.2,17.5 17,27.1 C28.8,17.5 32,14.1 32,9 C32,5.1 28.9,2 25,2 C21.5,2 19.6,4.1 18.1,5.8 L17,7.1 L15.9,5.8 C14.4,4.1 12.5,2 9,2 Z" id="Shape"></path></symbol><symbol id="icon-arrow-right" viewBox="0 0 25.452 25.452"><path d="M4.471,24.929v-2.004l12.409-9.788c0.122-0.101,0.195-0.251,0.195-0.411c0-0.156-0.073-0.31-0.195-0.409L4.471,2.526V0.522c0-0.2,0.115-0.384,0.293-0.469c0.18-0.087,0.396-0.066,0.552,0.061l15.47,12.202c0.123,0.1,0.195,0.253,0.195,0.409c0,0.16-0.072,0.311-0.195,0.411L5.316,25.34c-0.155,0.125-0.372,0.147-0.552,0.061C4.586,25.315,4.471,25.13,4.471,24.929z"/></symbol></defs></svg>
+
+        <header class="bar-header">
+    <a id="menu" role="button">
+        <svg id="open" class="icon-menu"><use xlink:href="#icon-menu"></use></svg>
+    </a>
+    <h1 class="logo">
+        <a href="/">
+            WeTry
+        </a>
+    </h1>
+    <a class="header-action" href="https://gitter.im/wetryio/community?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge" target="_blank" style="margin-left: 1rem;">
+        <img src="https://badges.gitter.im/wetryio/community.svg" alt="Gitter">
+    <a id="search" class="dosearch" role="button">
+        <svg class="icon-search"><use xlink:href="#icon-search"></use></svg>
+    </a>
+</header>
+
+<div id="mask" class="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+    <nav id="navigation">
+      <h2>Menu</h2>
+      <ul>
+  <li>
+    <a href="https://wetry.tech/">Home</a>
+  </li>
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/about/">À propos de nous</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/craftlab-it/">CraftLab IT</a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/devday2019/">DevDay 2019</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/hitw2019/">HITW 2019</a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/merci-correcteurs/">Merci à nos correcteurs</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/wetry-conf/">WeTry.Conf</a>
+      </li>
+    
+  
+    
+  
+    
+  
+  
+  <li>
+    <a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a>
+  </li>
+</ul>
+
+    </nav>
+</aside>
+
+<div class="search-wrapper">
+    <div class="search-form">
+        <input type="text" class="search-field" placeholder="Search">
+        <svg class="icon-remove-sign"><use xlink:href="#icon-close"></use></svg>
+        <ul class="search-results search-list"></ul>
+    </div>
+</div>
+
+
+
+        <section class="post one-column">
+            <article role="article" class="post-content">
+                <p class="post-info">
+                    
+                        <svg class="icon-calendar" id="date"><use xlink:href="#icon-calendar"></use></svg>
+                        <time class="date" datetime="2020-11-07T11:56:18+00:00">
+                            
+
+
+Novembre 7, 2020
+
+                        </time>
+                    
+                    <svg id="clock" class="icon-clock"><use xlink:href="#icon-clock"></use></svg>
+                    <span>15 min to read</span>
+                </p>
+                <h1 class="post-title">La puissance des providers en Angular</h1>
+                <p class="post-subtitle"></p>
+
+                
+                    <img src="/assets/img/angular-posts/provider.png" alt="Featured image" class="post-cover">
+                
+
+                <!-- Pagination links -->
+
+
+
+                <p>Dans cet article, nous allons passer en revue des solutions concrètes qui utilisent les providers et voir ensemble le pourquoi et le comment.</p>
+
+<p>Nous avons déjà pu voir un cas concret d’utilisation interne de poviders de Angular dans <a href="/fonctionnement-d-angular-httpclient">l’article parlant du fonctionnement de HttpClient</a>.</p>
+
+<p>Si vous souhaitez d’abord voir la liste des cas vus dans cet article, vous pouvez vous rendre sur la <a href="#toc">table des matières</a>. Mais je vous invite à lire tout l’article, car chaque concept met en avant une façon différente d’utiliser les providers.</p>
+
+<h2 id="explications-préalables">Explications préalables</h2>
+
+<p>Dans cet article vous allez voir les deux façons de créer un provider:</p>
+<ol>
+  <li>En utilisant l’attribut <code class="language-plaintext highlighter-rouge">@Injectable()</code> : Le provider sera créé automatiquement,</li>
+  <li>En créant un objet depuis le type <a href="https://github.com/angular/angular/blob/494a2f3be4b95c7dda8aea31e8cba8728280e24b/packages/core/src/di/interface/provider.ts#L332">Provider</a>.
+    <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">{</span>
+     <span class="nl">provide</span><span class="p">:</span> <span class="p">...,</span>
+     <span class="p">...</span>
+ <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="configuration-de-modules">Configuration de modules</h2>
+
+<p>Commençons par voir comment il est possible de rendre un module (souvent une librairie) configurable, et nous allons prendre comme exemple la librairie <a href="https://github.com/cyclosproject/ng-openapi-gen">ng-openapi-gen</a> qui permet de générer des services http ainsi que ces modèles (DTO) depuis un contract <a href="https://swagger.io/">openapi</a> (anciennement swagger).</p>
+
+<p>Ce que nous utilisons généralement est appelé <strong><a href="https://angular.io/guide/singleton-services#the-forroot-pattern">forRoot pattern</a></strong> qui a pour but de créer un singleton (instance unique) de providers pour toutes les utilisations de ce module.</p>
+
+<p>La fonction <code class="language-plaintext highlighter-rouge">forRoot</code> est “simplement” une fonction statique qui se trouve dans le module et doit obligatoirement retourner un <code class="language-plaintext highlighter-rouge">ModuleWithProviders</code>. Attention que cette fonction doit obligatoirement être <a href="/des-fonctions-pures-pour-plus-de-lisibilite">pure</a>.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">({</span>
+  <span class="na">providedIn</span><span class="p">:</span> <span class="dl">'</span><span class="s1">root</span><span class="dl">'</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">MonModuleConfiguration</span> <span class="p">{</span>
+  <span class="nl">rootUrl</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">http://google.be</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// -----------------</span>
+
+<span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">MonModuleConfiguration</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">MonModule</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="nx">forRoot</span><span class="p">(</span><span class="nx">params</span><span class="p">:</span> <span class="nb">Partial</span><span class="o">&lt;</span><span class="nx">MonModuleConfiguration</span><span class="o">&gt;</span><span class="p">):</span> <span class="nx">ModuleWithProviders</span><span class="o">&lt;</span><span class="nx">MonModule</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">ngModule</span><span class="p">:</span> <span class="nx">MonModule</span><span class="p">,</span>
+      <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">provide</span><span class="p">:</span> <span class="nx">MonModuleConfiguration</span><span class="p">,</span>
+          <span class="na">useValue</span><span class="p">:</span> <span class="nx">params</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// -----------------</span>
+
+<span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">SubModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span> <span class="na">rootUrl</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://wetry.tech</span><span class="dl">"</span> <span class="p">})</span>
+  <span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p>Ce simple bout de code illustre déjà beaucoup de choses:</p>
+
+<ol>
+  <li>
+    <p>La notion de <code class="language-plaintext highlighter-rouge">providedIn</code>. Il s’agit du “scope de disponibilité de l’instance” (en d’autres termes, il donne à Angular une indication sur le choix de l’Injector où placer cette instance). Sa valeur peut être un nom de module ou <code class="language-plaintext highlighter-rouge">"root"</code>. Cette dernière valeur permettant de rendre disponible l’instance dans l’application entière.</p>
+
+    <p><em>Malheureusement dans cet exemple il n’a pas beaucoup de sens, car nous créons nous-mêmes le provider. <a href="#providedin">Plus d’infos ici</a></em></p>
+  </li>
+  <li>Il est possible d’écraser un provider. Vous pouvez remarquer que dans cette exemple, il y a deux providers pour <code class="language-plaintext highlighter-rouge">MonModuleConfiguration</code>. Un créé depuis <code class="language-plaintext highlighter-rouge">@NgModule</code> qui représente la valeur de config par défaut et l’autre depuis <code class="language-plaintext highlighter-rouge">params</code>. Cela permet à l’utilisateur du module de pouvoir l’importer dans l’AppModule en appelant <code class="language-plaintext highlighter-rouge">MonModule</code> (prenant la <strong>config par défaut</strong>) ou <code class="language-plaintext highlighter-rouge">MonModule.forRoot({...})</code> imposant <strong>sa propre configuration</strong>.</li>
+  <li>L’utilisation de <code class="language-plaintext highlighter-rouge">useValue</code>. Comme son nom l’indique, cela permet de forcer une valeur pour un provider.</li>
+  <li><code class="language-plaintext highlighter-rouge">ModuleWithProviders</code> contient le module ainsi que des providers à y ajouter ou remplacer.</li>
+</ol>
+
+<p><strong>Attention</strong> que comme son nom l’indique, il ne faut utiliser le <code class="language-plaintext highlighter-rouge">.forRoot()</code> que dans module le plus “haut” où sera utilisé notre module. <code class="language-plaintext highlighter-rouge">AppModule</code> est le module le plus haut de l’application donc le mettre là permet d’évite tout problème.</p>
+
+<p><em><a href="https://stackblitz.com/edit/simple-module-config?file=src%2Fapp%2Fapp.module.ts">Testez le code ici</a></em></p>
+
+<h2 id="logger">Logger</h2>
+
+<p>Dans cet exemple, nous allons traiter la gestion de loggers multiples.</p>
+
+<p>Pour ce faire nous allons avoir besoin de deux niveaux:</p>
+<ol>
+  <li>Un <strong>logger global</strong> qui pourra être utilisé en tant que service,</li>
+  <li>Un ensemble de <strong>sous loggers</strong> qui vont réellement logger en étant utilisés par le “logger global”.</li>
+</ol>
+
+<p><img src="/assets/img/angular-posts/loggers.png" alt="logger-schema" /></p>
+
+<h3 id="les-sous-loggers">Les “sous loggers”</h3>
+
+<p>Pour être certain que tous les providers utilisés possèdent les bonnes méthodes, j’utilise une <strong>classe abstraite</strong> (vous pouvez également utiliser une <strong>interface</strong>).</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">LOGGERS</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">InjectionToken</span><span class="o">&lt;</span><span class="nx">BaseLogger</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">"</span><span class="s2">LOGGERS</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nx">BaseLogger</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">processLog</span><span class="p">(</span><span class="nx">LogLevelEnum</span><span class="p">.</span><span class="nx">Info</span><span class="p">,</span> <span class="nx">message</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">protected</span> <span class="kd">abstract</span> <span class="nx">processLog</span><span class="p">(</span><span class="nx">level</span><span class="p">:</span> <span class="nx">LogLevelEnum</span><span class="p">,</span> <span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Vous pouvez remarquer l’attribut <code class="language-plaintext highlighter-rouge">@Injectable()</code> malgré qu’il s’agisse d’une classe abstraite. En effet, cela est obligatoire depuis Angular 9 (Ivy). Cela ne veut cependant pas dire que nous allons pouvoir l’injecter !</li>
+  <li>Vous pouvez également remarquer l’utilisation d’un <code class="language-plaintext highlighter-rouge">InjectionToken</code>. Cela permettra un accès à des providers typé (ici BaseLogger) à l’aide de l’attribut <code class="language-plaintext highlighter-rouge">@Inject()</code>. Nous allons voir son utilisation dans les parties de codes qui vont suivre.</li>
+</ul>
+
+<p><em>L’implémentation d’une classe qui hérite de celle-ci n’a rien de spécial, nous n’allons donc pas nous attarder dessus, mais vous pourrez tout de même voir des exemples via le lien en fin de chapitre.</em></p>
+
+<p>Voyons maintenant comment rendre des loggers disponibles.
+Pour ce faire, nous allons utiliser une fonctionnalité également utilisée par <code class="language-plaintext highlighter-rouge">APP_INITIALIZER</code> : <code class="language-plaintext highlighter-rouge">multi: true</code>.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="na">provide</span><span class="p">:</span> <span class="nx">LOGGERS</span><span class="p">,</span>
+        <span class="na">useClass</span><span class="p">:</span> <span class="nx">ConsoleLogger</span><span class="p">,</span>
+        <span class="na">multi</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="na">provide</span><span class="p">:</span> <span class="nx">LOGGERS</span><span class="p">,</span>
+        <span class="na">useClass</span><span class="p">:</span> <span class="nx">MyLogger</span><span class="p">,</span>
+        <span class="na">multi</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>Remarquez également l’utilisation de <code class="language-plaintext highlighter-rouge">useClass</code> qui nous permet cette fois de donner un type à créer. Cette méthode permet l’utilisation de l’injection de dépendance dans les classes fournies alors que <code class="language-plaintext highlighter-rouge">useValue</code> est utilisé pour donner des données fixes.</p>
+
+<h3 id="le-logger-global">Le “logger global”</h3>
+
+<p>Ce provider exploite ceux précédemment créés et est le seul qui sera utilisé à travers l’application.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">Logger</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(@</span><span class="nd">Inject</span><span class="p">(</span><span class="nx">LOGGERS</span><span class="p">)</span> <span class="k">private</span> <span class="nx">loggers</span><span class="p">:</span> <span class="nx">BaseLogger</span><span class="p">[])</span> <span class="p">{}</span>
+
+  <span class="k">public</span> <span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">:</span> <span class="kr">string</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">loggers</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">logger</span> <span class="o">=&gt;</span> <span class="nx">logger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// -----------------</span>
+
+<span class="nl">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">Logger</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>Avec l’option <code class="language-plaintext highlighter-rouge">multi: true</code> nous pouvons voir que l’injection via <code class="language-plaintext highlighter-rouge">@Inject(LOGGERS)</code> ne nous fournit pas un seul provider, mais une liste <code class="language-plaintext highlighter-rouge">BaseLogger[]</code>.
+Nous pouvons alors l’exploiter à l’aide d’un simple <code class="language-plaintext highlighter-rouge">forEach</code>.</p>
+
+<p>Vous pouvez maintenant vous demander pourquoi ne pas faire un seul service qui fait tout ?
+Le fait de les séparer en providers vous permet non seulement de pouvoir en ajouter un sans touché aux loggers déjà fonctionnels mais aussi de pouvoir en activer/désactiver facilement.</p>
+
+<p>Dans <em><a href="https://stackblitz.com/edit/multi-loggers?file=src%2Fapp%2Fapp.module.ts">cet exemple </a></em>, j’ai poussé les choses encore un peu plus loin en fournissant la liste des loggers dans le forRoot.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">LoggerModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">({</span>
+    <span class="na">loggers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="nx">ConsoleLogger</span><span class="p">,</span>
+        <span class="nx">MyLogger</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="multiplateforme">Multiplateforme</h2>
+
+<p>Votre application doit fonctionner sur Mobile et en version Web ? Voilà encore un excellent exemple d’utilisation des providers.</p>
+
+<p>Il est en effet possible de conditionner le provider à utiliser au moment du build en utilisant le mécanisme d’environnement/configuration d’Angular.</p>
+
+<p>Prenons par exemple l’ouverture d’un explorateur de fichier :</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="na">provide</span><span class="p">:</span> <span class="nx">FileExplorerService</span><span class="p">,</span>
+        <span class="na">useClass</span><span class="p">:</span> <span class="nx">environment</span><span class="p">.</span><span class="nx">isMobile</span> <span class="p">?</span> <span class="nx">FileExplorerMobileService</span> <span class="p">:</span> <span class="nx">FileExplorerWebService</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>Cet exemple démontre aussi qu’il n’est pas toujours nécessaire de passer par un token d’injection. En effet ici <code class="language-plaintext highlighter-rouge">FileExplorerService</code> étant une classe abstraite (cela ne fonctionne pas avec des interfaces) et n’utilisant pas l’option <del><code class="language-plaintext highlighter-rouge">multiple: true</code></del>, nous pouvons l’utiliser <strong>comme un token</strong>.</p>
+
+<p><em><a href="https://stackblitz.com/edit/conditional-provider?file=src/app/app.module.ts">Testez le code ici</a></em></p>
+
+<h2 id="mocks">Mocks</h2>
+
+<p>Pour cette partie, nous allons nous concentrer à démontrer que ces principes sont utilisés en interne à Angular.</p>
+
+<p>Nous allons utilisé le token d’injection <code class="language-plaintext highlighter-rouge">HTTP_INTERCEPTORS</code> qui nécessite aussi <code class="language-plaintext highlighter-rouge">multi: true</code>. Il y a un air de déjà vu avec ce que nous avons mis en place pour le logger n’est-ce pas ?</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">MockHttpInterceptor</span> <span class="k">implements</span> <span class="nx">HttpInterceptor</span> <span class="p">{</span>
+    <span class="nx">intercept</span><span class="p">(</span><span class="nx">request</span><span class="p">:</span> <span class="nx">HttpRequest</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;</span><span class="p">,</span> <span class="nx">next</span><span class="p">:</span> <span class="nx">HttpHandler</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">HttpEvent</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">;</span>
+        <span class="kd">const</span> <span class="nx">method</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">myMock</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">method</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span> <span class="o">||</span> <span class="nx">next</span><span class="p">.</span><span class="nx">handle</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">mockInterceptorProvider</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">provide</span><span class="p">:</span> <span class="nx">HTTP_INTERCEPTORS</span><span class="p">,</span>
+    <span class="na">useClass</span><span class="p">:</span> <span class="nx">MockHttpInterceptor</span><span class="p">,</span>
+    <span class="na">multi</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+
+<span class="c1">// -----------------</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">myMock</span><span class="p">(</span>
+        <span class="nx">url</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">method</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span>
+        <span class="nx">request</span><span class="p">:</span> <span class="nx">HttpRequest</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;</span>
+    <span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">HttpEvent</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;&gt;</span> <span class="o">|</span> <span class="kc">false</span> <span class="p">{</span>
+
+    <span class="kd">let</span> <span class="nx">result</span><span class="p">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">HttpEvent</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;&gt;</span> <span class="o">|</span> <span class="kc">false</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="nx">environment</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">all</span> <span class="o">||</span> <span class="nx">environment</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">services</span><span class="p">.</span><span class="nx">getMy</span><span class="p">)</span>
+        <span class="o">&amp;&amp;</span> <span class="nx">url</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="dl">'</span><span class="s1">api/my</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">method</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span> <span class="o">=</span> <span class="k">of</span><span class="p">(</span>
+            <span class="k">new</span> <span class="nx">HttpResponse</span><span class="p">({</span>
+                <span class="na">status</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+                <span class="na">body</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="p">...</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>La différence entre <code class="language-plaintext highlighter-rouge">HttpInterceptor</code> et notre logger est que les méthodes <code class="language-plaintext highlighter-rouge">intercept</code> s’exécutent en cascade.</p>
+
+<p>Voici comment Angular crée cette cascade plutôt que de faire un simple forEach:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">interceptors</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">injector</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">HTTP_INTERCEPTORS</span><span class="p">,</span> <span class="p">[]);</span>
+<span class="k">this</span><span class="p">.</span><span class="nx">chain</span> <span class="o">=</span> <span class="nx">interceptors</span><span class="p">.</span><span class="nx">reduceRight</span><span class="p">(</span>
+    <span class="p">(</span><span class="nx">next</span><span class="p">,</span> <span class="nx">interceptor</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">HttpInterceptorHandler</span><span class="p">(</span><span class="nx">next</span><span class="p">,</span> <span class="nx">interceptor</span><span class="p">),</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">backend</span>
+<span class="p">);</span>
+
+<span class="c1">// -----------------</span>
+
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">HttpInterceptorHandler</span> <span class="k">implements</span> <span class="nx">HttpHandler</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">next</span><span class="p">:</span> <span class="nx">HttpHandler</span><span class="p">,</span> <span class="k">private</span> <span class="nx">interceptor</span><span class="p">:</span> <span class="nx">HttpInterceptor</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="nx">handle</span><span class="p">(</span><span class="nx">req</span><span class="p">:</span> <span class="nx">HttpRequest</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">HttpEvent</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">interceptor</span><span class="p">.</span><span class="nx">intercept</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">next</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>Si vous ne connaissez pas la méthode <code class="language-plaintext highlighter-rouge">reduceRight</code> voici une illustration de ce qu’elle génère:</p>
+
+<p><img src="/assets/img/angular-posts/reduce-right.png" alt="reduce-right" /></p>
+
+<p>Enfin, cet exemple nous propose une troisième manière d’injecter un provider:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">constructor(private myService: MyService)</code> le plus utilisé</li>
+  <li><code class="language-plaintext highlighter-rouge">constructor(private @Inject(MY_SERVICE) myService: MyService)</code> en cas d’utilisation d’un token</li>
+  <li><code class="language-plaintext highlighter-rouge">this.myService = this.injector.get(MY_SERVICE)</code> ou <code class="language-plaintext highlighter-rouge">this.myService = this.injector.get(MyService)</code> via une injection “manuelle”</li>
+</ol>
+
+<h2 id="basecomponentservice">Base(Component/Service)</h2>
+
+<p>Il vous est probablement déjà venu à l’esprit de faire une classe de “base” (classe parente) pour des composants ou des services. Cela ne semble pas être une mauvaise idée, cependant je vous conseille fortement de n’injecter qu’une seule chose dans votre parent: <code class="language-plaintext highlighter-rouge">Injector</code>.</p>
+
+<p>Pourquoi ? Pour préparer l’avenir de votre application. Si votre “parent” a besoin un jour de plus d’injections, vous n’aurez pas à refactoriser tous ces enfants !</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Component</span><span class="p">({})</span>
+<span class="k">export</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nx">BaseComponent</span> <span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nx">myService</span><span class="p">:</span> <span class="nx">MyService</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span>
+        <span class="nx">injector</span><span class="p">:</span> <span class="nx">Injector</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">myService</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">MyService</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// -----------------</span>
+
+<span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+    <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app-home</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./home.component.html</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">./home.component.css</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">HomeComponent</span> <span class="kd">extends</span> <span class="nx">BaseComponent</span> <span class="p">{</span>
+
+    <span class="kd">constructor</span><span class="p">(</span>
+        <span class="nx">injector</span><span class="p">:</span> <span class="nx">Injector</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">myOtherService</span><span class="p">:</span> <span class="nx">MyOtherService</span>
+    <span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">(</span><span class="nx">injector</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+  
+</code></pre></div></div>
+
+<h2 id="authentification">Authentification</h2>
+
+<p>Nous n’allons pas voir jusqu’au bout comment faire une authentification dans une application Angular mais nous concentrer sur une possibilité de créer une instance de provider (<code class="language-plaintext highlighter-rouge">APP_INITIALIZER</code>) non repris par les autres exemples.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">authInitializerFactory</span> <span class="o">=</span> <span class="p">(</span><span class="nx">authService</span><span class="p">:</span> <span class="nx">AuthService</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">authService</span><span class="p">.</span><span class="nx">initAuthentication</span><span class="p">();</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">AuthInitializerProvider</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">provide</span><span class="p">:</span> <span class="nx">APP_INITIALIZER</span><span class="p">,</span>
+    <span class="na">useFactory</span><span class="p">:</span> <span class="nx">authInitializerFactory</span><span class="p">,</span>
+    <span class="na">deps</span><span class="p">:</span> <span class="p">[</span> <span class="nx">AuthService</span> <span class="p">],</span>
+    <span class="na">multi</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Je préfère centraliser toute la logique d’authentification dans un service (<code class="language-plaintext highlighter-rouge">AuthService</code>), mais celui-ci ne peut pas directement être utilisé en tant que <code class="language-plaintext highlighter-rouge">APP_INITIALIZER</code>. Nous utilisons alors <code class="language-plaintext highlighter-rouge">useFactory</code>.</p>
+
+<p>Ce <code class="language-plaintext highlighter-rouge">useFactory</code> est un peu entre <code class="language-plaintext highlighter-rouge">useValue</code> et <code class="language-plaintext highlighter-rouge">useClass</code>. Il permet d’utiliser une valeur tout en pouvant utiliser l’injection de dépendance.</p>
+
+<p>Notez que le tableau <code class="language-plaintext highlighter-rouge">deps: [ AuthService ]</code> permet de récupérer/injecter une instance à fournir à notre factory <code class="language-plaintext highlighter-rouge">(authService: AuthService) =&gt;</code>. L’ordre des paramètres de la factory est l’ordre des éléments du tableau <code class="language-plaintext highlighter-rouge">deps</code>.</p>
+
+<h2 id="encore-quelques-petites-explications">Encore quelques petites explications</h2>
+
+<h3 id="providedin">providedIn</h3>
+
+<p>Cette option a été ajoutée pour permettre de faire du lazy-loading de provider tout en faisant du singleton.
+Malheureusement elle n’a pas encore été ajoutée partout, et n’est utilisable que via l’attribut <code class="language-plaintext highlighter-rouge">@Injectable()</code>.</p>
+
+<p>Pour démontrer ceci via un exemple, nous allons utiliser la dernière possibilité pour injecter un provider: <code class="language-plaintext highlighter-rouge">useExisting</code>.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">({</span>
+    <span class="na">providedIn</span><span class="p">:</span> <span class="dl">'</span><span class="s1">root</span><span class="dl">'</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">MyService</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="c1">// -----------------</span>
+
+<span class="nl">providers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">MyService</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="na">provide</span><span class="p">:</span> <span class="dl">'</span><span class="s1">TEST</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">useExisting</span><span class="p">:</span> <span class="nx">MyService</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>En faisant cela, <code class="language-plaintext highlighter-rouge">MyService</code> est bien injecté dans l’<code class="language-plaintext highlighter-rouge">Injector</code> principale, mais pas <code class="language-plaintext highlighter-rouge">TEST</code> ! Même si la valeur derrière est la même, d’autres modules ne connaitront pas <code class="language-plaintext highlighter-rouge">TEST</code> alors que tout le monde connaitra <code class="language-plaintext highlighter-rouge">MyService</code>.</p>
+
+<p><em>PS: Oui il y a bien un <strong>string</strong> comme valeur de <code class="language-plaintext highlighter-rouge">provide</code>. Cela rend évidement impossible le typage fort de ce provider contrairement à l’utilisation d’un <code class="language-plaintext highlighter-rouge">token d'injection</code>. Je ne l’utilise que quand il est difficile de partager le token entre les modules (qui nécessiterait une librairie ne contenant que ce token par exemple).</em></p>
+
+<h3 id="résumé-méthodes-de-création-de-provider">Résumé méthodes de création de provider</h3>
+
+<p>Tout au long de cet article, nous avons vu les 4 façons de créer un provider manuellement.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">useValue</code> : Fournir une valeur statique</li>
+  <li><code class="language-plaintext highlighter-rouge">useClass</code> : Fournir un type dont Angular va créer une instance</li>
+  <li><code class="language-plaintext highlighter-rouge">useFactory</code> : Fournir une méthode permettant de créer la valeur finale du provider (compatible DI)</li>
+  <li><code class="language-plaintext highlighter-rouge">useExisting</code> : Créer un alias vers un provider déjà existant</li>
+</ol>
+
+<hr />
+<div class="gratitude">
+    <span>MERCI</span>
+    <p>d'avoir pris le temps de lire cet article</p>
+</div>
+
+<hr />
+
+<div id="toc"></div>
+<p><strong>Table des matières</strong></p>
+<ol id="markdown-toc">
+  <li><a href="#explications-préalables" id="markdown-toc-explications-préalables">Explications préalables</a></li>
+  <li><a href="#configuration-de-modules" id="markdown-toc-configuration-de-modules">Configuration de modules</a></li>
+  <li><a href="#logger" id="markdown-toc-logger">Logger</a>    <ol>
+      <li><a href="#les-sous-loggers" id="markdown-toc-les-sous-loggers">Les “sous loggers”</a></li>
+      <li><a href="#le-logger-global" id="markdown-toc-le-logger-global">Le “logger global”</a></li>
+    </ol>
+  </li>
+  <li><a href="#multiplateforme" id="markdown-toc-multiplateforme">Multiplateforme</a></li>
+  <li><a href="#mocks" id="markdown-toc-mocks">Mocks</a></li>
+  <li><a href="#basecomponentservice" id="markdown-toc-basecomponentservice">Base(Component/Service)</a></li>
+  <li><a href="#authentification" id="markdown-toc-authentification">Authentification</a></li>
+  <li><a href="#encore-quelques-petites-explications" id="markdown-toc-encore-quelques-petites-explications">Encore quelques petites explications</a>    <ol>
+      <li><a href="#providedin" id="markdown-toc-providedin">providedIn</a></li>
+      <li><a href="#résumé-méthodes-de-création-de-provider" id="markdown-toc-résumé-méthodes-de-création-de-provider">Résumé méthodes de création de provider</a></li>
+    </ol>
+  </li>
+</ol>
+
+
+
+                <!-- Pagination links -->
+
+
+            </article>
+
+            
+
+        </section>
+
+        <!-- Add time bar only for pages without pagination -->
+        
+            <div class="time-bar" data-minutes="15">
+    <span class="time-completed"></span>
+    <span class="time-remaining"></span>
+    <div class="bar">
+        <span class="completed" style="width:0%;"></span>
+        <span class="remaining" style="width:100%;"></span>
+    </div>
+</div>
+
+            <div class="recommendation">
+    <div class="message">
+        <strong>Pourquoi ne pas lire autre chose?</strong>
+        <a href="javascript:void(0);">Revenir en haut</a>
+    </div>
+    
+    <a href="/micropaas-with-rio-from-rancher/" class="post-preview">
+        <div class="image">
+            
+                <img src="/assets/img/kubernetes/rio/top.png">
+            
+        </div>
+        <h3 class="title">MicroPaaS avec Rio de Rancher</h3>
+    </a>
+</div>
+
+        
+
+        <!-- Show modal if the post is the last one -->
+        
+
+        <!-- Show modal before user leaves the page -->
+        
+
+        <section class="share">
+    <h3>Share</h3>
+    <a aria-label="Share on Twitter" href="https://twitter.com/intent/tweet?text=&quot;Comprendre toute la puissance de la dépencande d'injection d'Angular&quot;%20https://wetry.tech/la-puissance-des-providers-en-angular/%20via%20&#64;&hashtags=angular,provider,"
+    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+        <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
+    </a>
+    <a aria-label="Share on Facebook"href="https://www.facebook.com/sharer/sharer.php?u=https://wetry.tech/la-puissance-des-providers-en-angular/"
+    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+        <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
+    </a>
+</section>
+
+        
+
+  <section class="author">
+    <div class="details">
+      
+        <img class="img-rounded" src="/assets/img/authors/dgilson.png" alt="David Gilson<br/>(Gilsdav)">
+      
+      <p class="def">Author</p>
+      <h3 class="name">
+        <a href="/authors/dgilson/">David Gilson<br/>(Gilsdav)</a>
+      </h3>
+      <p class="desc"></p>
+      <p>
+        
+          <a href="https://github.com/gilsdav" title="Github">
+            <svg><use xlink:href="#icon-github"></use></svg>
+          </a>
+        
+        
+        
+          <a href="https://twitter.com/gilsondavid5" title="Twitter">
+            <svg><use xlink:href="#icon-twitter"></use></svg>
+          </a>
+        
+        
+        
+        
+          <a href="https://www.linkedin.com/in/david-gilson-innovate" title="LinkedIn">
+            <svg><use xlink:href="#icon-linkedin"></use></svg>
+          </a>
+        
+      </p>
+    </div>
+  </section>
+
+  
+  
+  
+  
+  
+  
+  
+
+  <script type="application/ld+json">
+  {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "David Gilson<br/>(Gilsdav)",
+      
+      "image": "/assets/img/authors/dgilson.png",
+      
+      "jobTitle": "Développeur",
+      "url": "https://wetry.tech/authors/dgilson/",
+      "sameAs": [
+        "https://github.com/gilsdav","https://twitter.com/gilsondavid5","https://www.linkedin.com/in/david-gilson-innovate"
+      ]
+  }
+  </script>
+
+
+        
+
+<section class="comments">
+    <h3>Commentaires</h3>
+    <div id="disqus_thread"></div>
+</section>
+<script type="text/javascript">
+    var disqus_loaded = false;
+
+    function load_disqus()
+    {
+        disqus_loaded = true;
+        var disqus_shortname = 'wetry';
+        var disqus_title = '';
+        var disqus_url = '/la-puissance-des-providers-en-angular/';
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        var ldr = document.getElementById('disqus_loader');
+    };
+    window.onscroll = function(e) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 800)) {
+            //hit bottom of page
+            if (disqus_loaded==false)
+                load_disqus()
+        }
+    };
+</script>
+
+
+
+        <footer>
+    <p>
+      
+        <a href="https://github.com/wetryio" title="Github">
+          <svg><use xlink:href="#icon-github"></use></svg>
+        </a>
+      
+      
+        <a href="https://www.facebook.com/WeTry-103230437736535" title="Facebook">
+          <svg><use xlink:href="#icon-facebook"></use></svg>
+        </a>
+      
+      
+      
+      
+      
+    </p>
+
+    <ul>
+  <li>
+    <a href="https://wetry.tech/">Home</a>
+  </li>
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/about/">À propos de nous</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/craftlab-it/">CraftLab IT</a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/devday2019/">DevDay 2019</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/hitw2019/">HITW 2019</a>
+      </li>
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/merci-correcteurs/">Merci à nos correcteurs</a>
+      </li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li>
+        <a href="https://wetry.tech/wetry-conf/">WeTry.Conf</a>
+      </li>
+    
+  
+    
+  
+    
+  
+  
+  <li>
+    <a class="feed" href="https://wetry.tech/feed.xml" title="Atom/RSS feed">Feed</a>
+  </li>
+</ul>
+
+
+    <p>
+      <span>Jekflix</span> was made with <svg class="love"><use xlink:href="#icon-heart"></use></svg> by <a href="https://rossener.com" target="_blank" class="creator">Thiago Rossener</a>
+    </p>
+</footer>
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "WeTry",
+  "description": "Encore un autre blog de développeur.",
+  "url": "https://wetry.tech/",
+  "logo": {
+      "@type": "ImageObject",
+      "url": "https://wetry.tech/assets/img/icons/mediumtile.png",
+      "width": "600",
+      "height": "315"
+  },
+  "sameAs": [
+    "https://github.com/wetryio","https://www.facebook.com/WeTry-103230437736535"
+  ]
+}
+</script>
+
+<!-- Include the script that allows Netlify CMS login -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- Include the website scripts -->
+<script src="/assets/js/scripts.min.js"></script>
+
+<!-- Include Google Analytics script -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-145445435-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+
+
+
+        
+
+        
+        
+        
+        
+        
+        
+        
+
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "BlogPosting",
+            "name": "La puissance des providers en Angular",
+            "headline": "",
+            "description": "Comprendre toute la puissance de la dépencande d'injection d'Angular",
+            "image": "/assets/img/angular-posts/provider.png",
+            "url": "https://wetry.tech/la-puissance-des-providers-en-angular/",
+            "articleBody": "Dans cet article, nous allons passer en revue des solutions concrètes qui utilisent les providers et voir ensemble le pourquoi et le comment.
+
+Nous avons déjà pu voir un cas concret d’utilisation interne de poviders de Angular dans l’article parlant du fonctionnement de HttpClient.
+
+Si vous souhaitez d’abord voir la liste des cas vus dans cet article, vous pouvez vous rendre sur la table des matières. Mais je vous invite à lire tout l’article, car chaque concept met en avant une façon différente d’utiliser les providers.
+
+Explications préalables
+
+Dans cet article vous allez voir les deux façons de créer un provider:
+
+  En utilisant l’attribut @Injectable() : Le provider sera créé automatiquement,
+  En créant un objet depuis le type Provider.
+     {
+     provide: ...,
+     ...
+ }
+    
+  
+
+
+Configuration de modules
+
+Commençons par voir comment il est possible de rendre un module (souvent une librairie) configurable, et nous allons prendre comme exemple la librairie ng-openapi-gen qui permet de générer des services http ainsi que ces modèles (DTO) depuis un contract openapi (anciennement swagger).
+
+Ce que nous utilisons généralement est appelé forRoot pattern qui a pour but de créer un singleton (instance unique) de providers pour toutes les utilisations de ce module.
+
+La fonction forRoot est “simplement” une fonction statique qui se trouve dans le module et doit obligatoirement retourner un ModuleWithProviders. Attention que cette fonction doit obligatoirement être pure.
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MonModuleConfiguration {
+  rootUrl: string = 'http://google.be';
+}
+
+// -----------------
+
+@NgModule({
+  providers: [
+    MonModuleConfiguration
+  ]
+})
+export class MonModule {
+  static forRoot(params: Partial&amp;lt;MonModuleConfiguration&amp;gt;): ModuleWithProviders&amp;lt;MonModule&amp;gt; {
+    return {
+      ngModule: MonModule,
+      providers: [
+        {
+          provide: MonModuleConfiguration,
+          useValue: params
+        }
+      ]
+    }
+  }
+}
+
+// -----------------
+
+@NgModule({
+  imports: [
+    SubModule.forRoot({ rootUrl: &quot;https://wetry.tech&quot; })
+  ]
+})
+export class AppModule {}
+
+
+Ce simple bout de code illustre déjà beaucoup de choses:
+
+
+  
+    La notion de providedIn. Il s’agit du “scope de disponibilité de l’instance” (en d’autres termes, il donne à Angular une indication sur le choix de l’Injector où placer cette instance). Sa valeur peut être un nom de module ou &quot;root&quot;. Cette dernière valeur permettant de rendre disponible l’instance dans l’application entière.
+
+    Malheureusement dans cet exemple il n’a pas beaucoup de sens, car nous créons nous-mêmes le provider. Plus d’infos ici
+  
+  Il est possible d’écraser un provider. Vous pouvez remarquer que dans cette exemple, il y a deux providers pour MonModuleConfiguration. Un créé depuis @NgModule qui représente la valeur de config par défaut et l’autre depuis params. Cela permet à l’utilisateur du module de pouvoir l’importer dans l’AppModule en appelant MonModule (prenant la config par défaut) ou MonModule.forRoot({...}) imposant sa propre configuration.
+  L’utilisation de useValue. Comme son nom l’indique, cela permet de forcer une valeur pour un provider.
+  ModuleWithProviders contient le module ainsi que des providers à y ajouter ou remplacer.
+
+
+Attention que comme son nom l’indique, il ne faut utiliser le .forRoot() que dans module le plus “haut” où sera utilisé notre module. AppModule est le module le plus haut de l’application donc le mettre là permet d’évite tout problème.
+
+Testez le code ici
+
+Logger
+
+Dans cet exemple, nous allons traiter la gestion de loggers multiples.
+
+Pour ce faire nous allons avoir besoin de deux niveaux:
+
+  Un logger global qui pourra être utilisé en tant que service,
+  Un ensemble de sous loggers qui vont réellement logger en étant utilisés par le “logger global”.
+
+
+
+
+Les “sous loggers”
+
+Pour être certain que tous les providers utilisés possèdent les bonnes méthodes, j’utilise une classe abstraite (vous pouvez également utiliser une interface).
+
+export const LOGGERS = new InjectionToken&amp;lt;BaseLogger&amp;gt;(&quot;LOGGERS&quot;);
+
+@Injectable()
+export abstract class BaseLogger {
+  public log(message: string): void {
+    this.processLog(LogLevelEnum.Info, message);
+  }
+
+  protected abstract processLog(level: LogLevelEnum, message: string): void;
+}
+
+
+
+  Vous pouvez remarquer l’attribut @Injectable() malgré qu’il s’agisse d’une classe abstraite. En effet, cela est obligatoire depuis Angular 9 (Ivy). Cela ne veut cependant pas dire que nous allons pouvoir l’injecter !
+  Vous pouvez également remarquer l’utilisation d’un InjectionToken. Cela permettra un accès à des providers typé (ici BaseLogger) à l’aide de l’attribut @Inject(). Nous allons voir son utilisation dans les parties de codes qui vont suivre.
+
+
+L’implémentation d’une classe qui hérite de celle-ci n’a rien de spécial, nous n’allons donc pas nous attarder dessus, mais vous pourrez tout de même voir des exemples via le lien en fin de chapitre.
+
+Voyons maintenant comment rendre des loggers disponibles.
+Pour ce faire, nous allons utiliser une fonctionnalité également utilisée par APP_INITIALIZER : multi: true.
+
+providers: [
+    {
+        provide: LOGGERS,
+        useClass: ConsoleLogger,
+        multi: true
+    },
+    {
+        provide: LOGGERS,
+        useClass: MyLogger,
+        multi: true
+    }
+]
+
+
+Remarquez également l’utilisation de useClass qui nous permet cette fois de donner un type à créer. Cette méthode permet l’utilisation de l’injection de dépendance dans les classes fournies alors que useValue est utilisé pour donner des données fixes.
+
+Le “logger global”
+
+Ce provider exploite ceux précédemment créés et est le seul qui sera utilisé à travers l’application.
+
+@Injectable()
+export class Logger {
+  constructor(@Inject(LOGGERS) private loggers: BaseLogger[]) {}
+
+  public log(message: string): void {
+    this.loggers.forEach(logger =&amp;gt; logger.log(message));
+  }
+}
+
+// -----------------
+
+providers: [
+    Logger
+]
+
+
+Avec l’option multi: true nous pouvons voir que l’injection via @Inject(LOGGERS) ne nous fournit pas un seul provider, mais une liste BaseLogger[].
+Nous pouvons alors l’exploiter à l’aide d’un simple forEach.
+
+Vous pouvez maintenant vous demander pourquoi ne pas faire un seul service qui fait tout ?
+Le fait de les séparer en providers vous permet non seulement de pouvoir en ajouter un sans touché aux loggers déjà fonctionnels mais aussi de pouvoir en activer/désactiver facilement.
+
+Dans cet exemple , j’ai poussé les choses encore un peu plus loin en fournissant la liste des loggers dans le forRoot.
+
+LoggerModule.forRoot({
+    loggers: [
+        ConsoleLogger,
+        MyLogger
+    ]
+})
+
+
+Multiplateforme
+
+Votre application doit fonctionner sur Mobile et en version Web ? Voilà encore un excellent exemple d’utilisation des providers.
+
+Il est en effet possible de conditionner le provider à utiliser au moment du build en utilisant le mécanisme d’environnement/configuration d’Angular.
+
+Prenons par exemple l’ouverture d’un explorateur de fichier :
+
+providers: [
+    {
+        provide: FileExplorerService,
+        useClass: environment.isMobile ? FileExplorerMobileService : FileExplorerWebService
+    }
+]
+
+
+Cet exemple démontre aussi qu’il n’est pas toujours nécessaire de passer par un token d’injection. En effet ici FileExplorerService étant une classe abstraite (cela ne fonctionne pas avec des interfaces) et n’utilisant pas l’option multiple: true, nous pouvons l’utiliser comme un token.
+
+Testez le code ici
+
+Mocks
+
+Pour cette partie, nous allons nous concentrer à démontrer que ces principes sont utilisés en interne à Angular.
+
+Nous allons utilisé le token d’injection HTTP_INTERCEPTORS qui nécessite aussi multi: true. Il y a un air de déjà vu avec ce que nous avons mis en place pour le logger n’est-ce pas ?
+
+@Injectable()
+export class MockHttpInterceptor implements HttpInterceptor {
+    intercept(request: HttpRequest&amp;lt;any&amp;gt;, next: HttpHandler): Observable&amp;lt;HttpEvent&amp;lt;any&amp;gt;&amp;gt; {
+        const url = request.url;
+        const method = request.method;
+        return myMock(url, method, request) || next.handle(request);
+    }
+}
+
+export const mockInterceptorProvider = {
+    provide: HTTP_INTERCEPTORS,
+    useClass: MockHttpInterceptor,
+    multi: true
+};
+
+// -----------------
+
+export function myMock(
+        url: string, method: string,
+        request: HttpRequest&amp;lt;any&amp;gt;
+    ): Observable&amp;lt;HttpEvent&amp;lt;any&amp;gt;&amp;gt; | false {
+
+    let result: Observable&amp;lt;HttpEvent&amp;lt;any&amp;gt;&amp;gt; | false = false;
+
+    if ((environment.mock.all || environment.mock.services.getMy)
+        &amp;amp;&amp;amp; url.includes('api/my') &amp;amp;&amp;amp; method === 'GET') {
+        result = of(
+            new HttpResponse({
+                status: 200,
+                body: {
+                    ...
+                }
+            })
+        );
+    }
+
+    return result;
+}
+
+
+La différence entre HttpInterceptor et notre logger est que les méthodes intercept s’exécutent en cascade.
+
+Voici comment Angular crée cette cascade plutôt que de faire un simple forEach:
+
+const interceptors = this.injector.get(HTTP_INTERCEPTORS, []);
+this.chain = interceptors.reduceRight(
+    (next, interceptor) =&amp;gt; new HttpInterceptorHandler(next, interceptor),
+    this.backend
+);
+
+// -----------------
+
+export class HttpInterceptorHandler implements HttpHandler {
+  constructor(private next: HttpHandler, private interceptor: HttpInterceptor) {}
+
+  handle(req: HttpRequest&amp;lt;any&amp;gt;): Observable&amp;lt;HttpEvent&amp;lt;any&amp;gt;&amp;gt; {
+    return this.interceptor.intercept(req, this.next);
+  }
+}
+
+
+
+Si vous ne connaissez pas la méthode reduceRight voici une illustration de ce qu’elle génère:
+
+
+
+Enfin, cet exemple nous propose une troisième manière d’injecter un provider:
+
+  constructor(private myService: MyService) le plus utilisé
+  constructor(private @Inject(MY_SERVICE) myService: MyService) en cas d’utilisation d’un token
+  this.myService = this.injector.get(MY_SERVICE) ou this.myService = this.injector.get(MyService) via une injection “manuelle”
+
+
+Base(Component/Service)
+
+Il vous est probablement déjà venu à l’esprit de faire une classe de “base” (classe parente) pour des composants ou des services. Cela ne semble pas être une mauvaise idée, cependant je vous conseille fortement de n’injecter qu’une seule chose dans votre parent: Injector.
+
+Pourquoi ? Pour préparer l’avenir de votre application. Si votre “parent” a besoin un jour de plus d’injections, vous n’aurez pas à refactoriser tous ces enfants !
+
+@Component({})
+export abstract class BaseComponent {
+
+    protected myService: MyService;
+
+    constructor(
+        injector: Injector
+    ) {
+        this.myService = injector.get(MyService);
+    }
+
+}
+
+// -----------------
+
+@Component({
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
+})
+export class HomeComponent extends BaseComponent {
+
+    constructor(
+        injector: Injector,
+        private myOtherService: MyOtherService
+    ) {
+        super(injector);
+    }
+
+}
+  
+
+
+Authentification
+
+Nous n’allons pas voir jusqu’au bout comment faire une authentification dans une application Angular mais nous concentrer sur une possibilité de créer une instance de provider (APP_INITIALIZER) non repris par les autres exemples.
+
+export const authInitializerFactory = (authService: AuthService) =&amp;gt; () =&amp;gt; authService.initAuthentication();
+
+export const AuthInitializerProvider = {
+    provide: APP_INITIALIZER,
+    useFactory: authInitializerFactory,
+    deps: [ AuthService ],
+    multi: true
+};
+
+
+Je préfère centraliser toute la logique d’authentification dans un service (AuthService), mais celui-ci ne peut pas directement être utilisé en tant que APP_INITIALIZER. Nous utilisons alors useFactory.
+
+Ce useFactory est un peu entre useValue et useClass. Il permet d’utiliser une valeur tout en pouvant utiliser l’injection de dépendance.
+
+Notez que le tableau deps: [ AuthService ] permet de récupérer/injecter une instance à fournir à notre factory (authService: AuthService) =&amp;gt;. L’ordre des paramètres de la factory est l’ordre des éléments du tableau deps.
+
+Encore quelques petites explications
+
+providedIn
+
+Cette option a été ajoutée pour permettre de faire du lazy-loading de provider tout en faisant du singleton.
+Malheureusement elle n’a pas encore été ajoutée partout, et n’est utilisable que via l’attribut @Injectable().
+
+Pour démontrer ceci via un exemple, nous allons utiliser la dernière possibilité pour injecter un provider: useExisting.
+
+@Injectable({
+    providedIn: 'root'
+})
+export class MyService {
+}
+
+// -----------------
+
+providers: [
+    MyService,
+    {
+        provide: 'TEST',
+        useExisting: MyService
+    }
+]
+
+
+En faisant cela, MyService est bien injecté dans l’Injector principale, mais pas TEST ! Même si la valeur derrière est la même, d’autres modules ne connaitront pas TEST alors que tout le monde connaitra MyService.
+
+PS: Oui il y a bien un string comme valeur de provide. Cela rend évidement impossible le typage fort de ce provider contrairement à l’utilisation d’un token d'injection. Je ne l’utilise que quand il est difficile de partager le token entre les modules (qui nécessiterait une librairie ne contenant que ce token par exemple).
+
+Résumé méthodes de création de provider
+
+Tout au long de cet article, nous avons vu les 4 façons de créer un provider manuellement.
+
+
+  useValue : Fournir une valeur statique
+  useClass : Fournir un type dont Angular va créer une instance
+  useFactory : Fournir une méthode permettant de créer la valeur finale du provider (compatible DI)
+  useExisting : Créer un alias vers un provider déjà existant
+
+
+
+
+    MERCI
+    d'avoir pris le temps de lire cet article
+
+
+
+
+
+Table des matières
+
+  Explications préalables
+  Configuration de modules
+  Logger    
+      Les “sous loggers”
+      Le “logger global”
+    
+  
+  Multiplateforme
+  Mocks
+  Base(Component/Service)
+  Authentification
+  Encore quelques petites explications    
+      providedIn
+      Résumé méthodes de création de provider
+    
+  
+
+
+",
+            "wordcount": "2790",
+            "inLanguage": "fr",
+            "dateCreated": "2020-11-07/",
+            "datePublished": "2020-11-07/",
+            "dateModified": "2020-11-07/",
+            "author": {
+                "@type": "Person",
+                "name": "David Gilson<br/>(Gilsdav)",
+                
+                "image": "/assets/img/authors/dgilson.png",
+                
+                "jobTitle": "Développeur",
+                "url": "https://wetry.tech/authors/dgilson/",
+                "sameAs": [
+                    "https://github.com/gilsdav","https://twitter.com/gilsondavid5","https://www.linkedin.com/in/david-gilson-innovate"
+                ]
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "WeTry",
+                "url": "https://wetry.tech/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://wetry.tech/assets/img/blog-image-wt.png",
+                    "width": "600",
+                    "height": "315"
+                }
+            },
+            "mainEntityOfPage": "True",
+            "genre": "documentation",
+            "articleSection": "documentation",
+            "keywords": ["angular","provider"]
+        }
+        </script>
+    </body>
+</html>

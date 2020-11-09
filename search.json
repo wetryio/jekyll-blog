@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "La puissance des providers en Angular",
+      "tags"     : "angular and provider",
+      "categories" : "documentation",
+      "url"      : "/la-puissance-des-providers-en-angular/",
+      "date"     : "11/07/2020"
+    } ,
+  
+    {
       "title"    : "gRPC, sa philosophie et son dev feeling",
       "tags"     : "gRPC, node, dotnet core, javascript, and network",
       "categories" : "documentation",
