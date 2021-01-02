@@ -18,8 +18,7 @@ Il y a deux types de projets. Les projets avec des tests, et les projets sans. M
 Nous verrons dans cet article les avantages du TDD par rapport aux tests écrits après le développement.
 Tout au long de cet article, nous comparerons ces deux méthodes. Nous excluons l'apocalypse d'une application sans tests.
 
-Si vous êtes intéressés par un exemple de TDD, je vous renvoie vers la quick remote session du 27 janvier.
-<!-- TODO ajouter QRS link -->
+Si vous êtes intéressés par un exemple de TDD, je vous renvoie vers [la quick remote session du 27 janvier.](https://www.meetup.com/fr-FR/micbelgique/events/275210446/)
 
 ## En bref, c'est quoi le TDD
 
@@ -71,9 +70,7 @@ public class Boxer {
 Voici votre premier test vert. Le Boxer est créé.
 Toutefois, le développement est incomplet. La vie est hardcodé, le paramètre est ignoré, etc.
 
-Je saute volontairement quelques étapes. Si vous voulez en savoir plus sur comment faire du TDD, rejoignez le QRS du 27 janvier.
-
-<!-- TODO ajouter lien vers le QRS -->
+Je saute volontairement quelques étapes. Si vous voulez en savoir plus sur comment faire du TDD, [rejoignez le QRS du 27 janvier.](https://www.meetup.com/fr-FR/micbelgique/events/275210446/)
 
 Après quelques itérations, voici le dernier état
 
