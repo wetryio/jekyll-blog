@@ -5,7 +5,7 @@ layout: post
 title: "Pourquoi faire du TDD"
 subtitle: 
 description: Mais pourquoi écrire les tests avant le code ?
-image: TODO
+image: /assets/img/tdd/labyrinthe.png
 category: 'bonne-pratique'
 tags: 
 - bonne pratique
