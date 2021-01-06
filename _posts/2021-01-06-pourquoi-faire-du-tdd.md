@@ -1,6 +1,5 @@
-µµ---
-
-date: 2021-01-07 00:03:34
+---
+date: 2021-01-06 11:00:00
 layout: post
 title: "Pourquoi faire du TDD"
 subtitle: 
@@ -19,7 +18,7 @@ Il y a deux types de projets. Les projets avec des tests et les projets sans. M�
 Nous verrons dans cet article les avantages du TDD par rapport aux tests écrits après le développement.
 Tout au long de cet article, nous comparerons ces deux méthodes. Nous excluons l'apocalypse d'une application sans tests.
 
-Si vous êtes intéressés par un exemple de TDD, je vous renvoie vers [la quick remote session du 27 janvier.](https://www.meetup.com/fr-FR/micbelgique/events/275210446/)
+Si vous êtes intéressés par un exemple de TDD, je vous renvoie vers [la quick remote session du 13 janvier 2020.](https://www.meetup.com/fr-FR/micbelgique/events/275210446/)
 
 ## En bref, c'est quoi le TDD ?
 
@@ -71,7 +70,7 @@ public class Boxer {
 Voici votre premier test vert. Le Boxer est créé.
 Toutefois, le développement est incomplet. La vie est écrit en dur, le paramètre est ignoré, etc.
 
-Je saute volontairement quelques étapes. Si vous voulez en savoir plus sur comment faire du TDD, [rejoignez le QRS du 27 janvier.](https://www.meetup.com/fr-FR/micbelgique/events/275210446/)
+Je saute volontairement quelques étapes. Si vous voulez en savoir plus sur comment faire du TDD, [rejoignez le QRS du 13 janvier.](https://www.meetup.com/fr-FR/micbelgique/events/275210446/)
 
 Après quelques itérations, voici le dernier état :
 
