@@ -11,8 +11,6 @@ tags:
 author: mscolas
 ---
 
-# Pourquoi faire du TDD ?
-
 Il y a deux types de projets. Les projets avec des tests et les projets sans. Même si les projets avec tests sont majoritairement plus avantageux grâce à leur maintenabilité plus élevée, il subsiste encore des lacunes dans le filet de sécurité que sont les tests unitaires.
 
 Nous verrons dans cet article les avantages du TDD par rapport aux tests écrits après le développement.
