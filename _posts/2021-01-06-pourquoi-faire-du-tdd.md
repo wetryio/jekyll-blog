@@ -25,6 +25,9 @@ Le sujet du jour n'est pas comment faire du TDD, mais quels en sont ses bénéfi
 * Écrivez un test pour la prochaine portion de fonctionnalité que vous voulez ajouter.
 * Écrivez le code fonctionnel jusqu'à ce que le test passe.
 * Réécrivez l'ancien et le nouveau code pour le structurer correctement.
+
+> Même si Kent Beck est l'auteur des règles originales du TDD, Martin Fowler les a re-formulés une version plus compréhensible. C'est pourquoi je préfère cette version-ci dans le contexte de cet article.
+> 
  
 ## Vitesse de développement augmentée
 
