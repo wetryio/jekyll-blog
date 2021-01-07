@@ -139,7 +139,7 @@ Après quelques itérations, voici le dernier état :
 Cet exemple est volontairement overengineered. Toutefois il a tout à fait sa place dans des applications plus complexes.
 
 Les points à observer sont :
-* Le builder est créé depuis le Boxer. Les prochains développeurs sont invités à dérouvrir le builder via le boxer. C'est une cohésion haute.
+* Le builder est créé depuis le Boxer. Les prochains développeurs sont invités à découvrir le builder via le boxer. C'est une cohésion haute.
 * La création d'un objet est dissocié de son utilisation. C'est un couplage faible.
 * Les edgy cases sont testés. ...
 
