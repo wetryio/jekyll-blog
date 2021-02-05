@@ -1122,21 +1122,21 @@ Utilisation simple
 
 Voici une utilisation très simple:
 const routes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
-    { path: 'contact', component: ContactComponent },
-    { path: '**', redirectTo: '/home' }
+    { path: &apos;&apos;, redirectTo: &apos;/home&apos;, pathMatch: &apos;full&apos; },
+    { path: &apos;home&apos;, component: HomeComponent },
+    { path: &apos;contact&apos;, component: ContactComponent },
+    { path: &apos;**&apos;, redirectTo: &apos;/home&apos; }
 ];
 
 
 Vous pouvez remarquer deux paths étranges qui sont, en réalité, les seuls obligatoires pour le bon fonctionnement de notre routing:
 
-  '': représente la racine de l’application. (exemple: http://localhost:4200/)
-  '**': représente toutes les urls n’existants pas dans la liste des routes donnée. C’est en quelque sorte notre page “404”. (exemple: http://localhost/blabla)
+  &apos;&apos;: représente la racine de l’application. (exemple: http://localhost:4200/)
+  &apos;**&apos;: représente toutes les urls n’existants pas dans la liste des routes donnée. C’est en quelque sorte notre page “404”. (exemple: http://localhost/blabla)
 
 
 L’option choisie dans cet exemple est de les rediriger vers la page “home” à l’aide de l’attribut redirectTo.
-L’attribut pathMatch mis à la valeur 'full' permet de déterminer que ce cas ne doit être exécuté que si le path est complètement vide (soit “/” ou “”), mais absolument rien d’autre.
+L’attribut pathMatch mis à la valeur &apos;full&apos; permet de déterminer que ce cas ne doit être exécuté que si le path est complètement vide (soit “/” ou “”), mais absolument rien d’autre.
 
 Concentrons-nous maintenant sur les paths connus (“home” et “contact”). Vous pouvez voir que nous spécifions le composant à afficher dans ces deux cas, mais où vont-ils s’afficher ?
 C’est là que le composant &amp;lt;router-outlet&amp;gt;&amp;lt;/router-outlet&amp;gt; entre en jeux. Ce composant vous permet de choisir où le composant géré par le router s’affichera dans votre application.
@@ -1167,12 +1167,12 @@ container.component.html :
 Regardons maintenant comment arriver à remplir plusieurs router-outlet. Cela est possible grâce aux attributs children et loadChildren (lazy-loading).
 
 const routes: Routes = [
-    { path: '', component: ContainerComponent, children: [
-        { path: 'home', component: HomeComponent },
-        { path: 'contact', component: ContactComponent },
+    { path: &apos;&apos;, component: ContainerComponent, children: [
+        { path: &apos;home&apos;, component: HomeComponent },
+        { path: &apos;contact&apos;, component: ContactComponent },
     ] },
-    { path: 'signin', component: SigninComponent }, 
-    { path: '**', redirectTo: '/home' }
+    { path: &apos;signin&apos;, component: SigninComponent }, 
+    { path: &apos;**&apos;, redirectTo: &apos;/home&apos; }
 ];
 
 
@@ -1199,17 +1199,17 @@ Path param
 Les path params se définissent à l’aide du préfix : suivi de son nom.
 
 // Paramètre unique
-{ path: 'users/:id', component: UserListComponent }
+{ path: &apos;users/:id&apos;, component: UserListComponent }
 // Plusieurs paramètres
-{ path: 'users/:category/:id', component: UserListComponent }
+{ path: &apos;users/:category/:id&apos;, component: UserListComponent }
 
 
 Ce paramètre est alors récupérable via la route active.
 
 // Synchrone
-this.id = this.route.snapshot.params['id'];
+this.id = this.route.snapshot.params[&apos;id&apos;];
 // Asynchrone
-this.route.params.subscribe(params =&amp;gt; this.id = params['id']);
+this.route.params.subscribe(params =&amp;gt; this.id = params[&apos;id&apos;]);
 
 
 Query param
@@ -1218,31 +1218,31 @@ Dans ce cas, il n’y a rien à spécifier dans la configuration des routes.
 Nous n’avons cas essayer de récupérer le paramètre optionnel.
 
 // Synchrone
-this.referrer = this.route.snapshot.queryParams['referrer'];
+this.referrer = this.route.snapshot.queryParams[&apos;referrer&apos;];
 // Asynchrone
-this.route.queryParams.subscribe(params =&amp;gt; this.referrer = params['referrer']);
+this.route.queryParams.subscribe(params =&amp;gt; this.referrer = params[&apos;referrer&apos;]);
 
 
 Le lazy-loading
 
 Le lazy-loading permet de scinder votre “dist” en plusieurs fichiers qui ne seront chargés que si, et quand, une utilisation est nécessaire.
 
-Si vous faite une recherche à ce propos sur google, vous tomberez probablement sur un syntaxe de ce type: loadChildren: './admin/admin.module#AdminModule'. Il s’agit d’une syntaxe maintenant dépréciée qui a été créée par Angular afin d’être décortiquée et d’utiliser les informations avec SystemJS.
+Si vous faite une recherche à ce propos sur google, vous tomberez probablement sur un syntaxe de ce type: loadChildren: &apos;./admin/admin.module#AdminModule&apos;. Il s’agit d’une syntaxe maintenant dépréciée qui a été créée par Angular afin d’être décortiquée et d’utiliser les informations avec SystemJS.
 
 À partir de la version 8 d’Angular, nous allons éviter SystemJS et utiliser la puissance du mécanisme d’import de l’ES6.
 
 Cependant le principe est le même dans les deux cas. Il s’agit de définir:
 
-  où trouver le fichier à charger (import('./admin/admin.module')),
+  où trouver le fichier à charger (import(&apos;./admin/admin.module&apos;)),
   quelle classe du fichier représente le NgModule (.then(m =&amp;gt; m.AdminModule)).
 
 
-La nouvelle syntaxe complète est donc la suivante: loadChildren: import('./admin/admin.module').then(m =&amp;gt; m.AdminModule).
+La nouvelle syntaxe complète est donc la suivante: loadChildren: import(&apos;./admin/admin.module&apos;).then(m =&amp;gt; m.AdminModule).
 Attention que vous ne pouvez pas modifier cette syntaxe (en ajoutant par exemple plus de code dans le then), car le build AOT ne la comprendra pas. Il est donc impératif de la respecter.
 
 const routes: Routes = [
     ...
-    { path: 'admin', loadChildren: import('./admin/admin.module').then(m =&amp;gt; m.AdminModule) },
+    { path: &apos;admin&apos;, loadChildren: import(&apos;./admin/admin.module&apos;).then(m =&amp;gt; m.AdminModule) },
     ...
 ];
 
@@ -1255,9 +1255,9 @@ Pour pouvoir faire cela, nous pourrions directement associer le titre à une rou
 Cela est possible à l’aide de l’attribut data des routes.
 
 const routes: Routes = [
-    { path: '', component: ContainerComponent, children: [
-        { path: 'home', component: HomeComponent, data: { myTitle: 'accueil' } },
-        { path: 'contact', component: ContactComponent, data: { myTitle: 'contact' } },
+    { path: &apos;&apos;, component: ContainerComponent, children: [
+        { path: &apos;home&apos;, component: HomeComponent, data: { myTitle: &apos;accueil&apos; } },
+        { path: &apos;contact&apos;, component: ContactComponent, data: { myTitle: &apos;contact&apos; } },
     ] },
     ...
 ];
@@ -1282,12 +1282,12 @@ Pour naviguer, nous allons utiliser la directive routerLink.
 
 Cette directive devrait être uniquement utilisée sur des balises de lien (a), mais elle peut en réalité se mettre sur n’importe quelle balise HTML. Cependant, le fait de le mettre en attribut d’un a génère également un href afin de pouvoir naviguer même si le JavaScript est désactivé côté client et que vous utilisez Universal.
 
-&amp;lt;a [routerLink]=&quot;['/admin','users']&quot;&amp;gt;Go to user list&amp;lt;/a&amp;gt;
+&amp;lt;a [routerLink]=&quot;[&apos;/admin&apos;,&apos;users&apos;]&quot;&amp;gt;Go to user list&amp;lt;/a&amp;gt;
 
 
 Nous pouvons utiliser un string ou un tableau de string dans le routerLink (contrairement en TypeScript), cela revient au même résultat, mais je préconise le fait de toujours utiliser la même syntaxe et c’est le tableau qui se trouve être le plus utile. En effet cela permet de rendre une partie de l’url dynamique comme un paramètre.
 
-&amp;lt;a [routerLink]=&quot;['/admin','users', id]&quot;&amp;gt;Go to user&amp;lt;/a&amp;gt;
+&amp;lt;a [routerLink]=&quot;[&apos;/admin&apos;,&apos;users&apos;, id]&quot;&amp;gt;Go to user&amp;lt;/a&amp;gt;
 
 
 Paramètres
@@ -1300,7 +1300,7 @@ Nous pouvons ajouter des éléments dans l’url:
   fragment: permet d’ajouter une ancre dans l’url (exemple: #mon-ancre)
 
 
-&amp;lt;a [routerLink]=&quot;['/admin','users', id]&quot; [queryParams]=&quot;{param1: 'test1', param2: 'test2'}&quot; fragment=&quot;email&quot; &amp;gt;
+&amp;lt;a [routerLink]=&quot;[&apos;/admin&apos;,&apos;users&apos;, id]&quot; [queryParams]=&quot;{param1: &apos;test1&apos;, param2: &apos;test2&apos;}&quot; fragment=&quot;email&quot; &amp;gt;
     Go to user email
 &amp;lt;/a&amp;gt;
 
@@ -1312,7 +1312,7 @@ Ou gérer notre stratégie de “préservation de données” en cas de changeme
   preserveFragment: garder le fragment au changement d’url
 
 
-&amp;lt;a [routerLink]=&quot;['/admin','users', otherId]&quot;  preserveQueryParams preserveFragment &amp;gt;
+&amp;lt;a [routerLink]=&quot;[&apos;/admin&apos;,&apos;users&apos;, otherId]&quot;  preserveQueryParams preserveFragment &amp;gt;
     Go to other user
 &amp;lt;/a&amp;gt;
 
@@ -1333,9 +1333,9 @@ constructor(private router: Router) {}
 Navigate
 
 Commençons par reproduire un exemple complet du routerLink avec la fonction navigate.
-this.router.navigate(['/admin','users', this.id], {
-    queryParams: {param1: 'test1', param2: 'test2'},
-    queryParamsHandling: 'merge'
+this.router.navigate([&apos;/admin&apos;,&apos;users&apos;, this.id], {
+    queryParams: {param1: &apos;test1&apos;, param2: &apos;test2&apos;},
+    queryParamsHandling: &apos;merge&apos;
     preserveFragment: true
 });
 
@@ -1359,7 +1359,7 @@ Nous allons pouvoir récupérer le parent de l’url active et demander une navi
 constructor(private route: ActivatedRoute, private router: Router) {}
 ...
 // Navigation vers le parent
-this.router.navigate(['.'], { relativeTo: this.route.parent });
+this.router.navigate([&apos;.&apos;], { relativeTo: this.route.parent });
 // Navigation vers un autre enfant
 this.router.navigate([otherId], { relativeTo: this.route.parent });
 
@@ -1383,9 +1383,9 @@ Comme pour les routes, concentrons-nous sur les options les plus utilisés (l’
 interface ExtraOptions {
   useHash?: boolean
   preloadingStrategy?: PreloadAllModules | NoPreloading
-  onSameUrlNavigation?: 'reload' | 'ignore'
-  scrollPositionRestoration?: 'disabled' | 'enabled' | 'top'
-  anchorScrolling?: 'disabled' | 'enabled'
+  onSameUrlNavigation?: &apos;reload&apos; | &apos;ignore&apos;
+  scrollPositionRestoration?: &apos;disabled&apos; | &apos;enabled&apos; | &apos;top&apos;
+  anchorScrolling?: &apos;disabled&apos; | &apos;enabled&apos;
   ...
 }
 
@@ -1404,7 +1404,7 @@ Par défaut nous serons obligés d’écouter nous-mêmes les navigations:
 this.router.events.pipe(filter(e =&amp;gt; e instanceof NavigationEnd).subscribe((e) =&amp;gt; { ... });
 
 
-Pour éviter de devoir faire cela, nous pouvons appliquer l’option: onSameUrlNavigation: 'reload'.
+Pour éviter de devoir faire cela, nous pouvons appliquer l’option: onSameUrlNavigation: &apos;reload&apos;.
 
 Scroll
 
@@ -1416,8 +1416,8 @@ De plus, l’ancre n’a aucune influence sur le comportement du scroll tant que
 Vous avez de la chance, deux options sont maintenant disponibles pour éviter ces problèmes et leur valeur par défaut va bientôt changer.
 
 
-  scrollPositionRestoration: le comportent devient normal une fois mis à 'enabled'.
-  anchorScrolling: le scroll sur les ancres ne fonctionnera que si vous l’activez en lui attribuant la valeur 'enabled'.
+  scrollPositionRestoration: le comportent devient normal une fois mis à &apos;enabled&apos;.
+  anchorScrolling: le scroll sur les ancres ne fonctionnera que si vous l’activez en lui attribuant la valeur &apos;enabled&apos;.
 
 
 Déployement sous dossier
@@ -1450,21 +1450,21 @@ Le rôle d’un gard est de déterminer si, pour lui, l’utilisateur a le droit
 Un guard est un injectable qui implémente une interface (une interface par type de responsabilité).
 
 // canActivate
-@Injectable(providedIn: 'root')
+@Injectable(providedIn: &apos;root&apos;)
 class CanActivateGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable&amp;lt;boolean&amp;gt;|boolean {
         return true;
     }
 }
 // canDeactivate
-@Injectable(providedIn: 'root')
+@Injectable(providedIn: &apos;root&apos;)
 class CanDeactivateGuard implements CanDeactivate {
     canDeactivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable&amp;lt;boolean&amp;gt;|boolean {
         return true;
     }
 }
 // canLoad
-@Injectable(providedIn: 'root')
+@Injectable(providedIn: &apos;root&apos;)
 class CanLoadGuard implements CanLoad {
     canLoad(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable&amp;lt;boolean&amp;gt;|boolean {
         return true;
@@ -1475,14 +1475,14 @@ Il est possible de retourner un boolean ou un Observable de boolean. Cela dépen
 
 Il ne nous reste plus qu’à les utiliser dans nos routes.
 {
-    path: 'users/:id',
+    path: &apos;users/:id&apos;,
     component: UserListComponent,
     canActivate: [CanActivateGuard],
     canDeactivate: [CanDeactivateGuard]
 },
 {
-    path: 'admin',
-    loadChildren: import('./admin/admin.module').then(m =&amp;gt; m.AdminModule),
+    path: &apos;admin&apos;,
+    loadChildren: import(&apos;./admin/admin.module&apos;).then(m =&amp;gt; m.AdminModule),
     canLoad: [CanLoadGuard]
 },
 
@@ -1491,7 +1491,7 @@ Il ne nous reste plus qu’à les utiliser dans nos routes.
 
 
     MERCI
-    d'avoir pris le temps de lire cet article
+    d&apos;avoir pris le temps de lire cet article
 
 
 

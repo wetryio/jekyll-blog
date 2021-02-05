@@ -1001,10 +1001,10 @@ Ce que nous utilisons généralement est appelé forRoot pattern qui a pour but 
 La fonction forRoot est “simplement” une fonction statique qui se trouve dans le module et doit obligatoirement retourner un ModuleWithProviders. Attention que cette fonction doit obligatoirement être pure.
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: &apos;root&apos;
 })
 export class MonModuleConfiguration {
-  rootUrl: string = 'http://google.be';
+  rootUrl: string = &apos;http://google.be&apos;;
 }
 
 // -----------------
@@ -1196,7 +1196,7 @@ export function myMock(
     let result: Observable&amp;lt;HttpEvent&amp;lt;any&amp;gt;&amp;gt; | false = false;
 
     if ((environment.mock.all || environment.mock.services.getMy)
-        &amp;amp;&amp;amp; url.includes('api/my') &amp;amp;&amp;amp; method === 'GET') {
+        &amp;amp;&amp;amp; url.includes(&apos;api/my&apos;) &amp;amp;&amp;amp; method === &apos;GET&apos;) {
         result = of(
             new HttpResponse({
                 status: 200,
@@ -1266,9 +1266,9 @@ export abstract class BaseComponent {
 // -----------------
 
 @Component({
-    selector: 'app-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+    selector: &apos;app-home&apos;,
+    templateUrl: &apos;./home.component.html&apos;,
+    styleUrls: [&apos;./home.component.css&apos;]
 })
 export class HomeComponent extends BaseComponent {
 
@@ -1313,7 +1313,7 @@ Malheureusement elle n’a pas encore été ajoutée partout, et n’est utilisa
 Pour démontrer ceci via un exemple, nous allons utiliser la dernière possibilité pour injecter un provider: useExisting.
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: &apos;root&apos;
 })
 export class MyService {
 }
@@ -1323,7 +1323,7 @@ export class MyService {
 providers: [
     MyService,
     {
-        provide: 'TEST',
+        provide: &apos;TEST&apos;,
         useExisting: MyService
     }
 ]
@@ -1331,7 +1331,7 @@ providers: [
 
 En faisant cela, MyService est bien injecté dans l’Injector principale, mais pas TEST ! Même si la valeur derrière est la même, d’autres modules ne connaitront pas TEST alors que tout le monde connaitra MyService.
 
-PS: Oui il y a bien un string comme valeur de provide. Cela rend évidement impossible le typage fort de ce provider contrairement à l’utilisation d’un token d'injection. Je ne l’utilise que quand il est difficile de partager le token entre les modules (qui nécessiterait une librairie ne contenant que ce token par exemple).
+PS: Oui il y a bien un string comme valeur de provide. Cela rend évidement impossible le typage fort de ce provider contrairement à l’utilisation d’un token d&apos;injection. Je ne l’utilise que quand il est difficile de partager le token entre les modules (qui nécessiterait une librairie ne contenant que ce token par exemple).
 
 Résumé méthodes de création de provider
 
@@ -1347,7 +1347,7 @@ Tout au long de cet article, nous avons vu les 4 façons de créer un provider m
 
 
     MERCI
-    d'avoir pris le temps de lire cet article
+    d&apos;avoir pris le temps de lire cet article
 
 
 

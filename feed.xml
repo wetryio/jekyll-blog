@@ -5,8 +5,8 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 13 Jan 2021 13:43:20 +0000</pubDate>
-    <lastBuildDate>Wed, 13 Jan 2021 13:43:20 +0000</lastBuildDate>
+    <pubDate>Fri, 05 Feb 2021 12:33:48 +0000</pubDate>
+    <lastBuildDate>Fri, 05 Feb 2021 12:33:48 +0000</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
@@ -182,7 +182,7 @@
       </item>
     
       <item>
-        <title>Fonctionnement d'Angular: HttpClient</title>
+        <title>Fonctionnement d&apos;Angular: HttpClient</title>
         <description>&lt;p&gt;Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest&quot;&gt;XMLHttpRequest&lt;/a&gt;, l’API plus récente &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/Fetch_API&quot;&gt;Fetch&lt;/a&gt; ou encore une librairie externe (utilisant une de ces APIs) comme &lt;a href=&quot;https://github.com/axios/axios&quot;&gt;Axios&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpModule&lt;/code&gt;) ayant été dépréciée depuis...</description>
         <pubDate>Wed, 25 Dec 2019 18:33:43 +0000</pubDate>
         <link>https://wetry.tech/fonctionnement-d-angular-httpclient/</link>
@@ -214,7 +214,7 @@
       </item>
     
       <item>
-        <title>L'injection de dépendance au build</title>
+        <title>L&apos;injection de dépendance au build</title>
         <description>&lt;h1 id=&quot;wire-pour-créer-linjection-de-dépendance-pendant-le-build&quot;&gt;Wire pour créer l’injection de dépendance pendant le build&lt;/h1&gt; &lt;p&gt;Le langage go &lt;a href=&quot;https://www.tiobe.com/tiobe-index/go/&quot;&gt;gagne de la popularité d’année en année.&lt;/a&gt; et a atteint &lt;a href=&quot;https://fr.wikipedia.org/wiki/Cycle_du_hype&quot;&gt;la pente de l’illumination&lt;/a&gt;. Avec sa volonté d’être simple, performant et scalable, la communauté de développeurs s’intéresse à ce langage moderne made in Google.&lt;/p&gt; &lt;p&gt;Pour s’aider dans le principe d’Inversion of Controls, Go a deux librairies populaires qui remplissent le même objectif avec la même méthode: construire un container et le résoudre pendant le runtime. Voyez vous-même &lt;a href=&quot;https://github.com/facebookarchive/inject&quot;&gt;inject de Facebook&lt;/a&gt; ou bien &lt;a href=&quot;https://github.com/uber-go/dig&quot;&gt;dig&lt;/a&gt;. Cette méthode est aussi populaire dans le monde C#.&lt;/p&gt; &lt;p&gt;Google...</description>
         <pubDate>Fri, 25 Oct 2019 07:00:00 +0000</pubDate>
         <link>https://wetry.tech/go-wire-injection-dependance-au-build/</link>
@@ -264,7 +264,7 @@
       </item>
     
       <item>
-        <title>L'immuabilité pour un code sans bug</title>
+        <title>L&apos;immuabilité pour un code sans bug</title>
         <description>&lt;h2 id=&quot;mon-premier-titre-putaclick&quot;&gt;Mon premier titre putaclick&lt;/h2&gt; &lt;p&gt;Voilà un titre prétentieux. Je me dois déjà de préciser le contenu qui va suivre.&lt;/p&gt; &lt;p&gt;Seules les bonnes pratiques sont à l’origine de code sans bug et sans surprise. Elles sont nombreuses et toutes agissent sur différentes ficelles. Parfois sur l’extensibilité du code, sur la lisibilité, les performances …&lt;/p&gt; &lt;p&gt;Aujourd’hui, la bonne pratique que je vous partage facilite l’évolution des objets dans ses futures itérations.&lt;/p&gt; &lt;h2 id=&quot;un-exemple&quot;&gt;Un exemple&lt;/h2&gt; &lt;div class=&quot;language-ts highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_nom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_prenom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;...</description>
         <pubDate>Fri, 04 Oct 2019 07:00:00 +0000</pubDate>
         <link>https://wetry.tech/oriente-objet-et-immuabilite/</link>
@@ -308,7 +308,7 @@
       </item>
     
       <item>
-        <title>Les secrets du Router d'Angular</title>
+        <title>Les secrets du Router d&apos;Angular</title>
         <description>&lt;p&gt;Le routing est un élément inévitable dans une Application Web. Nous allons donc nous concentrer sur cette partie du framework Angular.&lt;/p&gt; &lt;p&gt;Si vous êtes uniquement intéressé pas un point précis du routing, n’hésitez pas à aller voir la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt;.&lt;/p&gt; &lt;h2 id=&quot;cest-quoi-le-routing-&quot;&gt;C’est quoi le routing ?&lt;/h2&gt; &lt;p&gt;Le système de routing est la gestion de l’affichage via l’URL dans le navigateur. Le fait d’avoir l’url &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/home&lt;/code&gt; affichera des informations différentes de l’url &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/contact&lt;/code&gt; par exemple.&lt;/p&gt; &lt;p&gt;Pour que cela fonctionne, il faut que ça soit le JavaScript qui ait la main sur l’url à la place...</description>
         <pubDate>Thu, 29 Aug 2019 19:22:26 +0000</pubDate>
         <link>https://wetry.tech/les-secrets-du-router-d-angular/</link>

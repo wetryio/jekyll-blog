@@ -830,7 +830,7 @@ routerHooks.afterPreactivation = (...args) =&amp;gt; {
     const canNavigate = false;
     if (!canNavigate) {
         eventsSubject.next(
-            new NavigationCancel(args[1].navigationId, router.serializeUrl(args[1].rawUrlTree), 'raison annulation')
+            new NavigationCancel(args[1].navigationId, router.serializeUrl(args[1].rawUrlTree), &apos;raison annulation&apos;)
         );
         // Le ActivatedRouteSnapshot est disponible via : args[0].root
     }
@@ -853,12 +853,12 @@ export class AppRoutingModule {
         // @ts-ignore
         const eventsSubject = (router.events as Subject&amp;lt;RouterEvent&amp;gt;);
         const previousAfterPreactivation = routerHooks.afterPreactivation;
-        // Mise en place d'un afterPreactivation personalisé
+        // Mise en place d&apos;un afterPreactivation personalisé
         routerHooks.afterPreactivation = (...args) =&amp;gt; {
-            const canNavigate = !args[0].url.includes('asTab=');
+            const canNavigate = !args[0].url.includes(&apos;asTab=&apos;);
             if (!canNavigate) {
                 eventsSubject.next(
-                    new NavigationCancel(args[1].navigationId, router.serializeUrl(args[1].rawUrlTree), 'tab')
+                    new NavigationCancel(args[1].navigationId, router.serializeUrl(args[1].rawUrlTree), &apos;tab&apos;)
                 );
                 console.log(args[0].root);
             }
@@ -871,7 +871,7 @@ export class AppRoutingModule {
 
 
     MERCI
-    d'avoir pris le temps de lire cet article
+    d&apos;avoir pris le temps de lire cet article
 
 
 

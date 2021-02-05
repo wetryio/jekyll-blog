@@ -815,8 +815,8 @@ class MyClass {
                     return new DataModel({
                         info1 = item.theInfo1,
                         info2 = item.theInfo2,
-                        opened = item.status === 'OPENED'
-                        rejected = item.status === 'REJECTED'
+                        opened = item.status === &apos;OPENED&apos;
+                        rejected = item.status === &apos;REJECTED&apos;
                     });
                 });
             }),
@@ -832,7 +832,7 @@ class MyClass {
         this.openedData$ = this.data$.pipe(
             map(data =&amp;gt; data.filter(item =&amp;gt; item.opened))
         );
-        // Vérifier s'il y a des données rejetées
+        // Vérifier s&apos;il y a des données rejetées
         this.hasRejectedData$ = this.data$.pipe(
             map(data =&amp;gt; data.some(item =&amp;gt; item.rejected));
         );
@@ -959,7 +959,7 @@ Enfin, un nouvel élément apporté par les fonctions pures est le fait que nous
 
 
     MERCI
-    d'avoir pris le temps de lire cet article
+    d&apos;avoir pris le temps de lire cet article
 
 ",
             "wordcount": "1490",

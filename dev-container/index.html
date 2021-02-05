@@ -753,7 +753,7 @@ C’est le fichier autour duquel tout tourne. Sans être compliqué, une explica
   &quot;dockerComposeFile&quot;: &quot;docker-compose.yml&quot;,
   // Nom du service container auquel se connecter. Mandatory si on utilise un docker-compose
   &quot;service&quot;: &quot;dev-container&quot;,
-  // Dans quel dossier vscode doit s'ouvrir dans le container
+  // Dans quel dossier vscode doit s&apos;ouvrir dans le container
   &quot;workspaceFolder&quot;: &quot;/workspace&quot;,
   // Les ports à exposés. Ici le debug de vscode est accessible depuis le host
   &quot;appPort&quot;: [5000, 5001],
@@ -762,7 +762,7 @@ C’est le fichier autour duquel tout tourne. Sans être compliqué, une explica
     // Quel shell est lancé quand nous ouvrons un terminal intégré
     &quot;terminal.integrated.shell.linux&quot;: &quot;/bin/bash&quot;
   },
-  // une commande à lancer après que les containers soient actifs ? C'est ici. Je l'utilise pour migrer mes schémas
+  // une commande à lancer après que les containers soient actifs ? C&apos;est ici. Je l&apos;utilise pour migrer mes schémas
   &quot;postCreateCommand&quot;: &quot;dotnet restore &amp;amp;&amp;amp; dotnet build &amp;amp;&amp;amp; dotnet ef database update --project ./DevContainer.Infrastructure --startup-project ./DevContainer&quot;,
 
   // Les extensions utiles pour le développement
@@ -788,7 +788,7 @@ Il profite aussi aux entreprises qui ont choisi une architecture micro-service. 
 
 
     MERCI
-    d'avoir pris le temps de lire cet article
+    d&apos;avoir pris le temps de lire cet article
 
 
 

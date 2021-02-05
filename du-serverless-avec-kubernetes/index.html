@@ -945,9 +945,9 @@ Pour illustrer un exemple, nous allons prendre un cas concret. (Post original ic
 Wassim CHEGHAM a imaginé une application qui:
 
     Prend une photo depuis une app angular
-    Uploads l'image dans le cloud
-    Extrait le texte de l'image via OCR
-    Traduit le texte dans la langue de l'utilisateur
+    Uploads l&apos;image dans le cloud
+    Extrait le texte de l&apos;image via OCR
+    Traduit le texte dans la langue de l&apos;utilisateur
     Sauve le résultat dans une DB NoSQL
     Envoie le text par SMS
 
@@ -1011,7 +1011,7 @@ Les commandes de l’article sont exécutables sur des serveurs linux. La créat
 Installez Kubeless en 4 étapes:
 
   Récupération de la version de la dernière release
-     export RELEASE=$(curl -s https://api.github.com/repos/kubeless/kubeless/releases/latest | grep tag_name | cut -d '&quot;' -f 4) 
+     export RELEASE=$(curl -s https://api.github.com/repos/kubeless/kubeless/releases/latest | grep tag_name | cut -d &apos;&quot;&apos; -f 4) 
     
   
   Création du namespace
@@ -1103,7 +1103,7 @@ Pour cet exemple, nous allons utiliser le mécanisme de message Kafka. Pour ce f
 
 
   Récupération de la version de la dernière release du trigger
-     export RELEASE=$(curl -s https://api.github.com/repos/kubeless/kafka-trigger/releases/latest | grep tag_name | cut -d '&quot;' -f 4) 
+     export RELEASE=$(curl -s https://api.github.com/repos/kubeless/kafka-trigger/releases/latest | grep tag_name | cut -d &apos;&quot;&apos; -f 4) 
     
   
   Installer Kafka et ZooKeeper
@@ -1167,7 +1167,7 @@ Enfin, j’ai préféré vous expliquer un framework FAAS open-source basé sur 
 
 
     MERCI
-    d'avoir pris le temps de lire cet article
+    d&apos;avoir pris le temps de lire cet article
 
 
 
