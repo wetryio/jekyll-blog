@@ -5,13 +5,13 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Jun 2021 22:46:00 +0000</pubDate>
-    <lastBuildDate>Fri, 11 Jun 2021 22:46:00 +0000</lastBuildDate>
+    <pubDate>Fri, 11 Jun 2021 23:08:46 +0000</pubDate>
+    <lastBuildDate>Fri, 11 Jun 2021 23:08:46 +0000</lastBuildDate>
     <generator>Jekyll v3.9.1</generator>
     
       <item>
         <title>Pourquoi faire du TDD</title>
-        <description>&lt;p&gt;Il y a deux types de projets. Les projets avec des tests et les projets sans. Même si les projets avec tests sont majoritairement plus avantageux grâce à leur maintenabilité plus élevée, il subsiste encore des lacunes dans le filet de sécurité que sont les tests unitaires.&lt;/p&gt; &lt;p&gt;Nous verrons dans cet article les avantages du TDD par rapport aux tests écrits après le développement. Tout au long de cet article, nous comparerons ces deux méthodes. Nous excluons l’apocalypse d’une application sans tests.&lt;/p&gt; &lt;p&gt;Si vous êtes intéressés par un exemple de TDD, je vous renvoie vers &lt;a href=&quot;https://www.twitch.tv/micbelgique&quot;&gt;la rediffusion du quick...</description>
+        <description>&lt;p&gt;Il y a deux types de projets. Les projets avec des tests et les projets sans. Même si les projets avec tests sont majoritairement plus avantageux grâce à leur maintenabilité plus élevée, il subsiste encore des lacunes dans le filet de sécurité que sont les tests unitaires.&lt;/p&gt; &lt;p&gt;Nous verrons dans cet article les avantages du TDD par rapport aux tests écrits après le développement. Tout au long de cet article, nous comparerons ces deux méthodes. Nous excluons l’apocalypse d’une application sans tests.&lt;/p&gt; &lt;h2 id=&quot;en-bref-cest-quoi-le-tdd-&quot;&gt;En bref, c’est quoi le TDD ?&lt;/h2&gt; &lt;p&gt;Le sujet du jour n’est pas comment faire du TDD,...</description>
         <pubDate>Wed, 06 Jan 2021 11:00:00 +0000</pubDate>
         <link>https://wetry.tech/pourquoi-faire-du-tdd/</link>
         <guid isPermaLink="true">https://wetry.tech/pourquoi-faire-du-tdd/</guid>
