@@ -8,7 +8,7 @@ menu: true
 
 ## À propos de nous
 
-### Patrick GRASSEELS
+### [Patrick GRASSEELS](/authors/pgrasseels/)
 
 Développeur depuis toujours.
 Azure Addict, Microsoft Fan Boy.
@@ -21,7 +21,7 @@ Azure Addict, Microsoft Fan Boy.
 
 ![placeholder](https://res.cloudinary.com/wetry/image/upload/v1567254611/wetry/about/48370796_10156575078393801_7019006602195763200_o_czvg64.jpg "Patrick GRASSEELS")
 
-### David GILSON
+### [David GILSON](/authors/dgilson/)
 
 Passionné par l'open source.
 Microsoft follower.
@@ -32,7 +32,7 @@ Microsoft follower.
 
 ![placeholder](/assets/img/gilsdav.jpg "David GILSON")
 
-### Mathieu Scolas
+### [Mathieu Scolas](/authors/mscolas/)
 
 Défenseur des méthodes d'extensibilité de code.
 Partage les valeurs agiles.
