@@ -1,4 +1,4 @@
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://wetry.craftlabit.be" # the base hostname & protocol for your site
+url: "https://wetry.tech" # the base hostname & protocol for your site
 google_analytics: "UA-145445435-1"
 language: "fr"
