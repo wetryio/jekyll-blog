@@ -3,18 +3,18 @@
   <channel>
     <title>WeTry | Encore un autre blog de développeur</title>
     <description>Encore un autre blog de développeur.</description>
-    <link>https://wetry.craftlabit.be/</link>
-    <atom:link href="https://wetry.craftlabit.be/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 24 Jul 2022 08:01:00 +0000</pubDate>
-    <lastBuildDate>Sun, 24 Jul 2022 08:01:00 +0000</lastBuildDate>
+    <link>https://wetry.tech/</link>
+    <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 24 Jul 2022 08:17:24 +0000</pubDate>
+    <lastBuildDate>Sun, 24 Jul 2022 08:17:24 +0000</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
     
       <item>
         <title>Pourquoi faire du TDD</title>
         <description>&lt;p&gt;Il y a deux types de projets. Les projets avec des tests et les projets sans. Même si les projets avec tests sont majoritairement plus avantageux grâce à leur maintenabilité plus élevée, il subsiste encore des lacunes dans le filet de sécurité que sont les tests unitaires.&lt;/p&gt; &lt;p&gt;Nous verrons dans cet article les avantages du TDD par rapport aux tests écrits après le développement. Tout au long de cet article, nous comparerons ces deux méthodes. Nous excluons l’apocalypse d’une application sans tests.&lt;/p&gt; &lt;h2 id=&quot;en-bref-cest-quoi-le-tdd-&quot;&gt;En bref, c’est quoi le TDD ?&lt;/h2&gt; &lt;p&gt;Le sujet du jour n’est pas comment faire du TDD,...</description>
         <pubDate>Wed, 06 Jan 2021 11:00:00 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/pourquoi-faire-du-tdd/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/pourquoi-faire-du-tdd/</guid>
+        <link>https://wetry.tech/pourquoi-faire-du-tdd/</link>
+        <guid isPermaLink="true">https://wetry.tech/pourquoi-faire-du-tdd/</guid>
         
         <category>bonne pratique</category>
         
@@ -25,8 +25,8 @@
         <title>La puissance des providers en Angular</title>
         <description>&lt;p&gt;Dans cet article, nous allons passer en revue des solutions concrètes qui utilisent les providers et voir ensemble le pourquoi et le comment.&lt;/p&gt; &lt;p&gt;Nous avons déjà pu voir un cas concret d’utilisation interne de poviders de Angular dans &lt;a href=&quot;/fonctionnement-d-angular-httpclient&quot;&gt;l’article parlant du fonctionnement de HttpClient&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Si vous souhaitez d’abord voir la liste des cas vus dans cet article, vous pouvez vous rendre sur la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt;. Mais je vous invite à lire tout l’article, car chaque concept met en avant une façon différente d’utiliser les providers.&lt;/p&gt; &lt;h2 id=&quot;explications-préalables&quot;&gt;Explications préalables&lt;/h2&gt; &lt;p&gt;Dans cet article vous allez voir les deux façons...</description>
         <pubDate>Sat, 07 Nov 2020 11:56:18 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/la-puissance-des-providers-en-angular/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/la-puissance-des-providers-en-angular/</guid>
+        <link>https://wetry.tech/la-puissance-des-providers-en-angular/</link>
+        <guid isPermaLink="true">https://wetry.tech/la-puissance-des-providers-en-angular/</guid>
         
         <category>angular</category>
         
@@ -39,8 +39,8 @@
         <title>gRPC, sa philosophie et son dev feeling</title>
         <description>&lt;p&gt;Les web api REST aujourd’hui sont privilégiés à tous les autres protocoles. Une base relativement simple, capable d’être load balancée, un standard éprouvé grâce à l’expérience du protocole HTTP dans la communauté de développeurs. Pas de doute, savoir construire une web api REST est indispensable pour le développeur moderne.&lt;/p&gt; &lt;p&gt;Toutefois, deux limitations sont présentes :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;La structure de requête et de réponse est relativement statique. GraphQL résout déjà cette limitation.&lt;/li&gt; &lt;li&gt;Les performances network sont aujourd’hui impressionantes, mais encore insuffisantes dans certains cas, notamment avec le protocole HTTP.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;gRPC répond à la deuxième problématique. Il diminue le volume de...</description>
         <pubDate>Sun, 11 Oct 2020 11:00:00 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/grpc-en-node-et-c-sharp/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/grpc-en-node-et-c-sharp/</guid>
+        <link>https://wetry.tech/grpc-en-node-et-c-sharp/</link>
+        <guid isPermaLink="true">https://wetry.tech/grpc-en-node-et-c-sharp/</guid>
         
         <category>gRPC</category>
         
@@ -59,8 +59,8 @@
         <title>Pourquoi deno existe</title>
         <description>&lt;blockquote&gt; &lt;p&gt;Cet article utilise du code qui exécute deno 1.1.1, sur ubuntu 20.04. Pour la lecture de cet article, des connaissances basiques en javascript ou typescript et nodejs sont nécessaires. Lors de la rédaction de l’article, le package standard deno (expliquée plus tard) était en version 0.58.0&lt;/p&gt; &lt;/blockquote&gt; &lt;p&gt;J’aime nodejs, j’adore le typescript et j’aime surtout tout le go. Cet article vous présente deno, avec les corrections apportées à nodejs, le typescript intégré et l’écosystème similaire à go.&lt;/p&gt; &lt;h1 id=&quot;deno-cest-quoi&quot;&gt;Deno, c’est quoi?&lt;/h1&gt; &lt;p&gt;Deno (un anagramme de node!) est créé pour corriger les regrets d’un créateur de nodejs, Ryan Dahl. Il...</description>
         <pubDate>Fri, 07 Aug 2020 11:00:00 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/pourquoi-deno-existe/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/pourquoi-deno-existe/</guid>
+        <link>https://wetry.tech/pourquoi-deno-existe/</link>
+        <guid isPermaLink="true">https://wetry.tech/pourquoi-deno-existe/</guid>
         
         <category>deno</category>
         
@@ -77,8 +77,8 @@
         <title>MicroPaaS avec Rio de Rancher</title>
         <description>&lt;p&gt;&lt;small&gt;&lt;em&gt;You can find the english version &lt;a href=&quot;/micropaas-with-rio-from-rancher-en&quot;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt; &lt;p&gt;Cet article vise à vous expliquer comment expérimenter l’outil Rio qui comprend beaucoup de fonctionnalités. N’hésitez pas à vous rendre sur la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt; si vous n’êtes intéressé que par certaines parties.&lt;/p&gt; &lt;h1 id=&quot;prélude&quot;&gt;Prélude&lt;/h1&gt; &lt;h2 id=&quot;quest-ce-que-rio-&quot;&gt;Qu’est-ce que Rio ?&lt;/h2&gt; &lt;p&gt;Rio se présente comme un moteur de déploiement d’applications pour Kubernetes ou encore comme du MicroPaaS. Il gère pour vous:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Ce qui touche au routing et au loadbalancing&lt;/li&gt; &lt;li&gt;L’auto scaling&lt;/li&gt; &lt;li&gt;Du déploiement continu depuis Git&lt;/li&gt; &lt;li&gt;Déploiement Blue/Green&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;img src=&quot;/assets/img/kubernetes/rio/how-it-works-rio.svg&quot; alt=&quot;how rio works&quot; /&gt;&lt;/p&gt; &lt;p&gt;Il s’inscrit typiquement dans le mouvement...</description>
         <pubDate>Tue, 05 May 2020 15:37:17 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/micropaas-with-rio-from-rancher/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/micropaas-with-rio-from-rancher/</guid>
+        <link>https://wetry.tech/micropaas-with-rio-from-rancher/</link>
+        <guid isPermaLink="true">https://wetry.tech/micropaas-with-rio-from-rancher/</guid>
         
         <category>kubernetes</category>
         
@@ -91,8 +91,8 @@
         <title>MicroPaaS with Rio from Rancher</title>
         <description>&lt;p&gt;&lt;small&gt;&lt;em&gt;Vous pouvez trouver la version française &lt;a href=&quot;/micropaas-with-rio-from-rancher&quot;&gt;ici&lt;/a&gt;.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt; &lt;p&gt;The purpose of this article is to explain how to experiment with the Rio tool which includes many features. Feel free to go to the &lt;a href=&quot;#toc&quot;&gt;table of contents&lt;/a&gt; if you are only interested in certain parts.&lt;/p&gt; &lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt; &lt;h2 id=&quot;what-is-rio&quot;&gt;What is Rio?&lt;/h2&gt; &lt;p&gt;Rio is an application deployment engine for Kubernetes or MicroPaaS. It manages for you:&lt;/p&gt; &lt;ol&gt; &lt;li&gt;Which relates to routing and load-balancing&lt;/li&gt; &lt;li&gt;The auto scaling&lt;/li&gt; &lt;li&gt;Continuous deployment from Git&lt;/li&gt; &lt;li&gt;Blue/Green deployment&lt;/li&gt; &lt;/ol&gt; &lt;p&gt;&lt;img src=&quot;/assets/img/kubernetes/rio/how-it-works-rio.svg&quot; alt=&quot;how rio works&quot; /&gt;&lt;/p&gt; &lt;p&gt;It’s typically part of the DevOps movement and can provide a simple...</description>
         <pubDate>Tue, 05 May 2020 15:37:17 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/micropaas-with-rio-from-rancher-en/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/micropaas-with-rio-from-rancher-en/</guid>
+        <link>https://wetry.tech/micropaas-with-rio-from-rancher-en/</link>
+        <guid isPermaLink="true">https://wetry.tech/micropaas-with-rio-from-rancher-en/</guid>
         
         <category>kubernetes</category>
         
@@ -105,8 +105,8 @@
         <title>Accès rapide à un environnement de développement</title>
         <description>&lt;p&gt;Il est indispensable que le développeur, dès son premier jour de travail, ait accès à l’environnement de développement. Or, le temps qu’un développeur passe pour mettre en place cet environnement représente un coût significatif pour l’employeur.&lt;/p&gt; &lt;p&gt;Microsoft propose depuis peu une solution: construire, dans une ou plusieurs images docker, son environnement de travail. On installe &lt;a href=&quot;https://www.docker.com/&quot;&gt;Docker&lt;/a&gt;, &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VSCode&lt;/a&gt;, &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack&quot;&gt;une extension&lt;/a&gt;. On configure l’environnement dans quelques fichiers et celui-ci se construit de lui-même.&lt;/p&gt; &lt;p&gt;Je vous présente aujourd’hui un exemple à l’aide d’une application custom (une Todo app, un classique), avec Entity Framework et MariaDB.&lt;/p&gt; &lt;h1 id=&quot;quelques-prérequis&quot;&gt;Quelques prérequis&lt;/h1&gt; &lt;p&gt;Quelques outils...</description>
         <pubDate>Fri, 10 Apr 2020 09:00:00 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/dev-container/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/dev-container/</guid>
+        <link>https://wetry.tech/dev-container/</link>
+        <guid isPermaLink="true">https://wetry.tech/dev-container/</guid>
         
         <category>devcontainer</category>
         
@@ -123,8 +123,8 @@
         <title>Hooks cachés du router Angular</title>
         <description>&lt;p&gt;Nous allons parler ici d’éléments tellement bien cachés, qu’il n’y a pas moyen de savoir que ça existe sans aller voir dans le code source d’Angular, et c’est bien dommage de la part des développeurs du Framework.&lt;/p&gt; &lt;h3 id=&quot;comment-et-pourquoi-avoir-découvert-ça-&quot;&gt;Comment et pourquoi avoir découvert ça ?&lt;/h3&gt; &lt;p&gt;Il est intéressant de savoir que la doc Angular que j’utilise n’est rien d’autre que le code source. Ça me permet de découvrir des fonctionnalités (même accessible sans hack) parfois absentes de la doc. C’est en cherchant comment “annuler” une navigation de manière globale (sans devoir appliquer un guard sur chaque route) que j’ai découvert...</description>
         <pubDate>Tue, 31 Mar 2020 21:10:21 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/hooks-caches-du-router-angular/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/hooks-caches-du-router-angular/</guid>
+        <link>https://wetry.tech/hooks-caches-du-router-angular/</link>
+        <guid isPermaLink="true">https://wetry.tech/hooks-caches-du-router-angular/</guid>
         
         <category>angular</category>
         
@@ -137,8 +137,8 @@
         <title>DotNet 5 sur Raspbian</title>
         <description>&lt;h2 id=&quot;dotnet-5-cest-quoi-&quot;&gt;DotNet 5 c’est quoi ?&lt;/h2&gt; &lt;p&gt;DotNet 5 c’est l’unification de la plateforme .Net avec les API disponible pour Windows / Linux / mcOsX / Android / iOS / TV / Watch / WebAssembly / …&lt;/p&gt; &lt;p&gt;Avant de se lancer dans l’utilisation de raspbian, cet article vous présente l’écosystème dotnet 5 &lt;a href=&quot;https://devblogs.microsoft.com/dotnet/introducing-net-5/&quot;&gt;ici&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;/assets/img/dotnet5-raspbian/dotnet5_platform.png&quot; alt=&quot;dotnet5&quot; /&gt;&lt;/p&gt; &lt;h2 id=&quot;installer-dotnet-5-sur-raspbian&quot;&gt;Installer DotNet 5 sur Raspbian&lt;/h2&gt; &lt;p&gt;Comme on peut le voir sur le site de Microsoft, la version ARM de DotNet 5 est déjà disponible, c’est parfait c’est la version nécessaire pour faire tourner sur Raspberry Pi 4 !&lt;/p&gt; &lt;p&gt;Les bases sont :&lt;/p&gt;...</description>
         <pubDate>Thu, 13 Feb 2020 12:38:42 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/dotnet5-raspbian/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/dotnet5-raspbian/</guid>
+        <link>https://wetry.tech/dotnet5-raspbian/</link>
+        <guid isPermaLink="true">https://wetry.tech/dotnet5-raspbian/</guid>
         
         <category>dotnet5</category>
         
@@ -153,8 +153,8 @@
         <title>Les fonctions pures au service de la lisibilité</title>
         <description>&lt;p&gt;Cet article sera donc composé marjoritèrement d’exemples afin de démontrer l’intérêt de cette bonne pratique et que vous puissiez en faire votre propre opinion. &lt;em&gt;Ces exemples sont en TypeScript et RXJS.&lt;/em&gt;&lt;/p&gt; &lt;h2 id=&quot;quest-ce-quune-fonction-pure-&quot;&gt;Qu’est-ce qu’une fonction pure ?&lt;/h2&gt; &lt;p&gt;Selon &lt;a href=&quot;https://fr.wikipedia.org/wiki/Fonction_pure&quot;&gt;Wikipédia&lt;/a&gt; :&lt;/p&gt; &lt;blockquote&gt; &lt;p&gt;Une fonction pure est une fonction qui possède les propriétés suivantes:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Sa valeur de retour est la même pour les mêmes arguments&lt;/li&gt; &lt;li&gt;Son évaluation n’a pas d’effets de bord&lt;/li&gt; &lt;/ul&gt; &lt;/blockquote&gt; &lt;p&gt;Une fonction a un scope (définit entre les accolades) le principe reflété par les deux points mis en avant par cette définition et le fait que...</description>
         <pubDate>Thu, 13 Feb 2020 12:38:42 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/des-fonctions-pures-pour-plus-de-lisibilite/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/des-fonctions-pures-pour-plus-de-lisibilite/</guid>
+        <link>https://wetry.tech/des-fonctions-pures-pour-plus-de-lisibilite/</link>
+        <guid isPermaLink="true">https://wetry.tech/des-fonctions-pures-pour-plus-de-lisibilite/</guid>
         
         <category>bonne pratique</category>
         
@@ -167,8 +167,8 @@
         <title>Le mentorat des seniors</title>
         <description>&lt;p&gt;Nous estimons le nombre de développeurs à &lt;a href=&quot;https://www.businesswire.com/news/home/20131217005316/en/IDC-Releases-2014-Worldwide-Software-Developer-ICT-Skilled&quot;&gt;18,5 millions en 2014&lt;/a&gt; et &lt;a href=&quot;https://www.daxx.com/blog/development-trends/number-software-developers-world&quot;&gt;26,4 millions en fin 2019&lt;/a&gt;. Ce qui signifie qu’il y a 7,9 millions de développeurs qui ont moins de 5 ans d’expérience. Ça représente 30% des développeurs mondiaux.&lt;/p&gt; &lt;p&gt;Ces développeurs juniors n’ont pas connaissance des bonnes pratiques. Pas de principe SOLID, ne comprennent pas l’utilité et le gain de temps qu’offrent les tests et qu’est-ce qu’un bon test, et j’en passe.&lt;/p&gt; &lt;p&gt;Nous avons tous été junior, et nous avons tous appris. Et surtout, &lt;strong&gt;nous avons tous appris des autres.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;Dans la situation où la majorité des...</description>
         <pubDate>Fri, 17 Jan 2020 12:00:00 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/mentorat-dev-senior/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/mentorat-dev-senior/</guid>
+        <link>https://wetry.tech/mentorat-dev-senior/</link>
+        <guid isPermaLink="true">https://wetry.tech/mentorat-dev-senior/</guid>
         
         <category>mentorat</category>
         
@@ -185,8 +185,8 @@
         <title>Fonctionnement d&apos;Angular: HttpClient</title>
         <description>&lt;p&gt;Dans les autres Frameworks JavaScript, il n’y a plus vraiment de système par défaut pour créer un client HTTP. Il nous faut donc choisir entre créer un service avec l’API historique &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/XMLHttpRequest&quot;&gt;XMLHttpRequest&lt;/a&gt;, l’API plus récente &lt;a href=&quot;https://developer.mozilla.org/fr/docs/Web/API/Fetch_API&quot;&gt;Fetch&lt;/a&gt; ou encore une librairie externe (utilisant une de ces APIs) comme &lt;a href=&quot;https://github.com/axios/axios&quot;&gt;Axios&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Angular 2+ vous proposant sa propre solution (cela ne vous empêche pas d’utiliser celles précédemment citées), je pense qu’il serait intéressant de se pencher sur la façon dont ils ont implémenté cet outil que vous avez probablement l’habitude d’utiliser. La première version (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpModule&lt;/code&gt;) ayant été dépréciée depuis...</description>
         <pubDate>Wed, 25 Dec 2019 18:33:43 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/fonctionnement-d-angular-httpclient/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/fonctionnement-d-angular-httpclient/</guid>
+        <link>https://wetry.tech/fonctionnement-d-angular-httpclient/</link>
+        <guid isPermaLink="true">https://wetry.tech/fonctionnement-d-angular-httpclient/</guid>
         
         <category>angular</category>
         
@@ -201,8 +201,8 @@
         <title>Du serverless avec Kubernetes</title>
         <description>&lt;p&gt;Quand on parle de “serverless”, on pense évidemment au cloud. Et pourtant il est possible de faire un serverless on-premises sur vos propres serveurs.&lt;/p&gt; &lt;p&gt;Du serverless sur un serveur ? Et oui, ça ne veut pas dire sans serveur physique!&lt;/p&gt; &lt;p&gt;Nous allons donc commencer par voir ce qu’est le serverless. Si vous vous y connaissez déjà, n’hésitez pas à regarder la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt; pour vous diriger vers les parties intéressantes pour vous de l’article.&lt;/p&gt; &lt;p&gt;Si vous avez déjà fouillé un peu sur le sujet, vous avez remarqué qu’il existe pas mal d’autres frameworks du même genre. Mais si...</description>
         <pubDate>Mon, 09 Dec 2019 18:19:36 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/du-serverless-avec-kubernetes/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/du-serverless-avec-kubernetes/</guid>
+        <link>https://wetry.tech/du-serverless-avec-kubernetes/</link>
+        <guid isPermaLink="true">https://wetry.tech/du-serverless-avec-kubernetes/</guid>
         
         <category>kubernetes</category>
         
@@ -217,8 +217,8 @@
         <title>L&apos;injection de dépendance au build</title>
         <description>&lt;h1 id=&quot;wire-pour-créer-linjection-de-dépendance-pendant-le-build&quot;&gt;Wire pour créer l’injection de dépendance pendant le build&lt;/h1&gt; &lt;p&gt;Le langage go &lt;a href=&quot;https://www.tiobe.com/tiobe-index/go/&quot;&gt;gagne de la popularité d’année en année.&lt;/a&gt; et a atteint &lt;a href=&quot;https://fr.wikipedia.org/wiki/Cycle_du_hype&quot;&gt;la pente de l’illumination&lt;/a&gt;. Avec sa volonté d’être simple, performant et scalable, la communauté de développeurs s’intéresse à ce langage moderne made in Google.&lt;/p&gt; &lt;p&gt;Pour s’aider dans le principe d’Inversion of Controls, Go a deux librairies populaires qui remplissent le même objectif avec la même méthode: construire un container et le résoudre pendant le runtime. Voyez vous-même &lt;a href=&quot;https://github.com/facebookarchive/inject&quot;&gt;inject de Facebook&lt;/a&gt; ou bien &lt;a href=&quot;https://github.com/uber-go/dig&quot;&gt;dig&lt;/a&gt;. Cette méthode est aussi populaire dans le monde C#.&lt;/p&gt; &lt;p&gt;Google...</description>
         <pubDate>Fri, 25 Oct 2019 07:00:00 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/go-wire-injection-dependance-au-build/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/go-wire-injection-dependance-au-build/</guid>
+        <link>https://wetry.tech/go-wire-injection-dependance-au-build/</link>
+        <guid isPermaLink="true">https://wetry.tech/go-wire-injection-dependance-au-build/</guid>
         
         <category>go</category>
         
@@ -233,8 +233,8 @@
         <title>Dockerisation sans limites</title>
         <description>&lt;h2 id=&quot;docker-loutil-ultime-des-développeurs&quot;&gt;Docker l’outil ultime des développeurs&lt;/h2&gt; &lt;p&gt;Docker s’est démocratisé chez les développeurs, car il nous facilite la vie quand il s’agit de créer un environnement local avec tous les outils nécessaires tel qu’une &lt;em&gt;base de données&lt;/em&gt;, un &lt;em&gt;système de message&lt;/em&gt;, un &lt;em&gt;serveur de mocks&lt;/em&gt;…&lt;/p&gt; &lt;p&gt;Cela permet à toute l’équipe d’avoir un environnement similaire tout en ayant complètement la main dessus sans impacter les autres membres. Et surtout, fini le &lt;strong&gt;&lt;em&gt;“ça fonctionne sur ma machine”&lt;/em&gt;&lt;/strong&gt; !&lt;/p&gt; &lt;p&gt;Il n’y a finalement qu’un outil que nous ne dockerisons pas encore: l’&lt;strong&gt;IDE&lt;/strong&gt;.&lt;/p&gt; &lt;p&gt;S’il y a bien une chose sur laquelle les développeurs ne sont...</description>
         <pubDate>Tue, 15 Oct 2019 15:41:08 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/dockerisation-sans-limites/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/dockerisation-sans-limites/</guid>
+        <link>https://wetry.tech/dockerisation-sans-limites/</link>
+        <guid isPermaLink="true">https://wetry.tech/dockerisation-sans-limites/</guid>
         
         <category>docker</category>
         
@@ -249,8 +249,8 @@
         <title>Azure Functions démystifions le trigger HTTP</title>
         <description>&lt;h1 id=&quot;azure-functions-démystifions-le-trigger-http&quot;&gt;Azure Functions, démystifions le trigger HTTP&lt;/h1&gt; &lt;p&gt;Dans l’article précédent, j’exposais les bases d’une Azure Functions, si vous ne savez pas du tout ce que c’est, je vous conseille de commencer par là &lt;a href=&quot;/azure-functions-les-bases/&quot;&gt;Azure Functions, les bases&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;Dans cet article, je vais démystifier le trigger HTTP, mais également montrer jusqu’où il est possible d’aller en y intégrant des principes très proches de ceux de l’ASP.NET Core. Voici dans les grandes lignes les étapes :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;Crée une Azure Functions avec Visual Studio&lt;/li&gt; &lt;li&gt;Explication du code généré&lt;/li&gt; &lt;li&gt;Modification pour renvoyer une valeur calculée par rapport à ce que la function...</description>
         <pubDate>Fri, 11 Oct 2019 11:20:00 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/azure-functions-trigger-http/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/azure-functions-trigger-http/</guid>
+        <link>https://wetry.tech/azure-functions-trigger-http/</link>
+        <guid isPermaLink="true">https://wetry.tech/azure-functions-trigger-http/</guid>
         
         <category>azure</category>
         
@@ -267,8 +267,8 @@
         <title>L&apos;immuabilité pour un code sans bug</title>
         <description>&lt;h2 id=&quot;mon-premier-titre-putaclick&quot;&gt;Mon premier titre putaclick&lt;/h2&gt; &lt;p&gt;Voilà un titre prétentieux. Je me dois déjà de préciser le contenu qui va suivre.&lt;/p&gt; &lt;p&gt;Seules les bonnes pratiques sont à l’origine de code sans bug et sans surprise. Elles sont nombreuses et toutes agissent sur différentes ficelles. Parfois sur l’extensibilité du code, sur la lisibilité, les performances …&lt;/p&gt; &lt;p&gt;Aujourd’hui, la bonne pratique que je vous partage facilite l’évolution des objets dans ses futures itérations.&lt;/p&gt; &lt;h2 id=&quot;un-exemple&quot;&gt;Un exemple&lt;/h2&gt; &lt;div class=&quot;language-ts highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_nom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_prenom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;...</description>
         <pubDate>Fri, 04 Oct 2019 07:00:00 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/oriente-objet-et-immuabilite/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/oriente-objet-et-immuabilite/</guid>
+        <link>https://wetry.tech/oriente-objet-et-immuabilite/</link>
+        <guid isPermaLink="true">https://wetry.tech/oriente-objet-et-immuabilite/</guid>
         
         <category>bonne pratique</category>
         
@@ -283,8 +283,8 @@
         <title>Une bonne doc est une doc accessible</title>
         <description>&lt;h1 id=&quot;un-article-réaction&quot;&gt;Un article réaction&lt;/h1&gt; &lt;p&gt;J’adore reddit, et j’adore &lt;a href=&quot;https://www.reddit.com/r/ProgrammerHumor&quot;&gt;r/ProgrammerHumor&lt;/a&gt;. Mais une &lt;a href=&quot;https://www.reddit.com/r/ProgrammerHumor/comments/d29xjn/documentation/&quot;&gt;publication cette semaine&lt;/a&gt; m’a soulevé une réflexion. Est-ce que swagger est une documentation ? Et si oui, est-ce une bonne documentation ?&lt;/p&gt; &lt;p&gt;&lt;img src=&quot;https://i.redd.it/frm61ch4lsl31.png&quot; alt=&quot;swaggerdoc&quot; /&gt;&lt;/p&gt; &lt;p&gt;De cette réflexion, l’envie de partager des pratiques simples pour une documentation accessible et sous différentes formes.&lt;/p&gt; &lt;h1 id=&quot;quest-ce-quune-documentation-&quot;&gt;Qu’est-ce qu’une documentation ?&lt;/h1&gt; &lt;p&gt;Penchons-nous sur la définition de la documentation selon l’association Association française de normalisation (ISO). &lt;em&gt;“la documentation est l’ensemble des techniques permettant le traitement permanent et systématique de documents ou de données, incluant la collecte, le &lt;strong&gt;signalement&lt;/strong&gt;, l’analyse, le stockage,...</description>
         <pubDate>Fri, 13 Sep 2019 07:00:00 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/une-bonne-doc-est-une-doc-accessible/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/une-bonne-doc-est-une-doc-accessible/</guid>
+        <link>https://wetry.tech/une-bonne-doc-est-une-doc-accessible/</link>
+        <guid isPermaLink="true">https://wetry.tech/une-bonne-doc-est-une-doc-accessible/</guid>
         
         <category>documentation</category>
         
@@ -297,8 +297,8 @@
         <title>Comprendre le ngModel</title>
         <description>&lt;p&gt;Si vous utilisez les formulaires de type “template driven”, vous utilisez également le ngModel, mais savez-vous ce qui se cache derrière ? Sauriez-vous créer votre propre ngModel ?&lt;/p&gt; &lt;p&gt;Dans cet article, nous allons passer en revue sa syntaxe, mais allons également voir qu’il s’agit d’un cas particulier.&lt;/p&gt; &lt;h2 id=&quot;syntaxe&quot;&gt;Syntaxe&lt;/h2&gt; &lt;p&gt;Dans Angular nous trouvons quatre (3 + l’interpolation) types de bindings:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;&lt;strong&gt;Property binding&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[]&lt;/code&gt;: permet de passer une information d’un composant parent à un composant enfant;&lt;/li&gt; &lt;li&gt;&lt;strong&gt;Event binding&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;()&lt;/code&gt;: permet d’écouter un évènement JavaScript ou de passer une information d’un composant enfant à un composant parent...</description>
         <pubDate>Tue, 03 Sep 2019 21:09:24 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/comprendre-le-ng-model/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/comprendre-le-ng-model/</guid>
+        <link>https://wetry.tech/comprendre-le-ng-model/</link>
+        <guid isPermaLink="true">https://wetry.tech/comprendre-le-ng-model/</guid>
         
         <category>angular</category>
         
@@ -311,8 +311,8 @@
         <title>Les secrets du Router d&apos;Angular</title>
         <description>&lt;p&gt;Le routing est un élément inévitable dans une Application Web. Nous allons donc nous concentrer sur cette partie du framework Angular.&lt;/p&gt; &lt;p&gt;Si vous êtes uniquement intéressé pas un point précis du routing, n’hésitez pas à aller voir la &lt;a href=&quot;#toc&quot;&gt;table des matières&lt;/a&gt;.&lt;/p&gt; &lt;h2 id=&quot;cest-quoi-le-routing-&quot;&gt;C’est quoi le routing ?&lt;/h2&gt; &lt;p&gt;Le système de routing est la gestion de l’affichage via l’URL dans le navigateur. Le fait d’avoir l’url &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/home&lt;/code&gt; affichera des informations différentes de l’url &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/contact&lt;/code&gt; par exemple.&lt;/p&gt; &lt;p&gt;Pour que cela fonctionne, il faut que ça soit le JavaScript qui ait la main sur l’url à la place...</description>
         <pubDate>Thu, 29 Aug 2019 19:22:26 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/les-secrets-du-router-d-angular/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/les-secrets-du-router-d-angular/</guid>
+        <link>https://wetry.tech/les-secrets-du-router-d-angular/</link>
+        <guid isPermaLink="true">https://wetry.tech/les-secrets-du-router-d-angular/</guid>
         
         <category>angular</category>
         
@@ -325,8 +325,8 @@
         <title>Azure Functions les bases</title>
         <description>&lt;h1 id=&quot;azure-functions--les-bases&quot;&gt;Azure Functions : Les bases&lt;/h1&gt; &lt;p&gt;Une Azure functions peut facilement se résumer en quelques points :&lt;/p&gt; &lt;ul&gt; &lt;li&gt;c’est un service de calcul dans le cloud Azure &lt;strong&gt;serverless&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;qui permet &lt;strong&gt;d’exécuter du code à la demande&lt;/strong&gt;&lt;/li&gt; &lt;li&gt;sans avoir à &lt;strong&gt;provisionner d’infrastructure&lt;/strong&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;En résumé, on va définir sur le cloud un container, dans lequelle les fonctions seront déployées, ensuite, l’exécution, le scaling, la disponibilité et tout autre problème/considérations qui pourrait être lié à l’infrastructure devient la responsabilité d’Azure, nous ne devons nous occuper de rien.&lt;/p&gt; &lt;p&gt;Une fois le code déployer et disponible, il reste une chose à comprendre, c’est comment...</description>
         <pubDate>Sun, 11 Aug 2019 18:26:40 +0000</pubDate>
-        <link>https://wetry.craftlabit.be/azure-functions-les-bases/</link>
-        <guid isPermaLink="true">https://wetry.craftlabit.be/azure-functions-les-bases/</guid>
+        <link>https://wetry.tech/azure-functions-les-bases/</link>
+        <guid isPermaLink="true">https://wetry.tech/azure-functions-les-bases/</guid>
         
         <category>azure</category>
         

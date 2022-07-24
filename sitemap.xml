@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
         <url>
-            <loc>https://wetry.craftlabit.be/404.html</loc>
+            <loc>https://wetry.tech/404.html</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -10,7 +10,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/about/</loc>
+            <loc>https://wetry.tech/about/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -18,7 +18,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/azure/</loc>
+            <loc>https://wetry.tech/category/azure/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -26,7 +26,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/blazor/</loc>
+            <loc>https://wetry.tech/category/blazor/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -34,7 +34,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/bonne-pratique/</loc>
+            <loc>https://wetry.tech/category/bonne-pratique/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -42,7 +42,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/code/</loc>
+            <loc>https://wetry.tech/category/code/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -50,7 +50,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/contact/</loc>
+            <loc>https://wetry.tech/contact/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -58,7 +58,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/craftlab-it/</loc>
+            <loc>https://wetry.tech/craftlab-it/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -66,7 +66,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/demystification/</loc>
+            <loc>https://wetry.tech/category/demystification/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -74,7 +74,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/devday2019/</loc>
+            <loc>https://wetry.tech/devday2019/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -82,7 +82,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/documentation/</loc>
+            <loc>https://wetry.tech/category/documentation/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -90,7 +90,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/dotnet/</loc>
+            <loc>https://wetry.tech/category/dotnet/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -98,7 +98,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/events/</loc>
+            <loc>https://wetry.tech/category/events/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -106,7 +106,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/experimentation/</loc>
+            <loc>https://wetry.tech/category/experimentation/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -114,7 +114,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/feed.xml</loc>
+            <loc>https://wetry.tech/feed.xml</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -122,7 +122,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/hitw2019/</loc>
+            <loc>https://wetry.tech/hitw2019/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -130,7 +130,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/</loc>
+            <loc>https://wetry.tech/</loc>
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
@@ -139,7 +139,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/merci-correcteurs/</loc>
+            <loc>https://wetry.tech/merci-correcteurs/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -147,7 +147,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/mobile/</loc>
+            <loc>https://wetry.tech/category/mobile/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -155,7 +155,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/contact/message-sent/</loc>
+            <loc>https://wetry.tech/contact/message-sent/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -163,7 +163,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/assets/img/icons/preloader.svg</loc>
+            <loc>https://wetry.tech/assets/img/icons/preloader.svg</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -171,7 +171,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/assets/img/icons/read.svg</loc>
+            <loc>https://wetry.tech/assets/img/icons/read.svg</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -179,7 +179,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/search.json</loc>
+            <loc>https://wetry.tech/search.json</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -187,7 +187,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/sitemap.xml</loc>
+            <loc>https://wetry.tech/sitemap.xml</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -195,7 +195,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/tags/</loc>
+            <loc>https://wetry.tech/tags/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -203,7 +203,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/tutorial/</loc>
+            <loc>https://wetry.tech/category/tutorial/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -211,7 +211,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/category/webdev/</loc>
+            <loc>https://wetry.tech/category/webdev/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -219,7 +219,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/wetry-conf/</loc>
+            <loc>https://wetry.tech/wetry-conf/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -227,7 +227,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/les-secrets-du-router-d'angular/</loc>
+            <loc>https://wetry.tech/les-secrets-du-router-d'angular/</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -235,7 +235,7 @@
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/redirects.json</loc>
+            <loc>https://wetry.tech/redirects.json</loc>
             
                 <changefreq>monthly</changefreq>
                 <priority>0.5</priority>
@@ -244,147 +244,147 @@
     
     
         <url>
-            <loc>https://wetry.craftlabit.be/pourquoi-faire-du-tdd/</loc>
+            <loc>https://wetry.tech/pourquoi-faire-du-tdd/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2021-01-06</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/la-puissance-des-providers-en-angular/</loc>
+            <loc>https://wetry.tech/la-puissance-des-providers-en-angular/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-11-07</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/grpc-en-node-et-c-sharp/</loc>
+            <loc>https://wetry.tech/grpc-en-node-et-c-sharp/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-10-11</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/pourquoi-deno-existe/</loc>
+            <loc>https://wetry.tech/pourquoi-deno-existe/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-08-07</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/micropaas-with-rio-from-rancher/</loc>
+            <loc>https://wetry.tech/micropaas-with-rio-from-rancher/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-05-05</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/micropaas-with-rio-from-rancher-en/</loc>
+            <loc>https://wetry.tech/micropaas-with-rio-from-rancher-en/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-05-05</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/dev-container/</loc>
+            <loc>https://wetry.tech/dev-container/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-04-10</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/hooks-caches-du-router-angular/</loc>
+            <loc>https://wetry.tech/hooks-caches-du-router-angular/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-03-31</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/dotnet5-raspbian/</loc>
+            <loc>https://wetry.tech/dotnet5-raspbian/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-02-13</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/des-fonctions-pures-pour-plus-de-lisibilite/</loc>
+            <loc>https://wetry.tech/des-fonctions-pures-pour-plus-de-lisibilite/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-02-13</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/mentorat-dev-senior/</loc>
+            <loc>https://wetry.tech/mentorat-dev-senior/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2020-01-17</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/fonctionnement-d-angular-httpclient/</loc>
+            <loc>https://wetry.tech/fonctionnement-d-angular-httpclient/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-12-25</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/du-serverless-avec-kubernetes/</loc>
+            <loc>https://wetry.tech/du-serverless-avec-kubernetes/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-12-09</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/go-wire-injection-dependance-au-build/</loc>
+            <loc>https://wetry.tech/go-wire-injection-dependance-au-build/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-10-25</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/dockerisation-sans-limites/</loc>
+            <loc>https://wetry.tech/dockerisation-sans-limites/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-10-15</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/azure-functions-trigger-http/</loc>
+            <loc>https://wetry.tech/azure-functions-trigger-http/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-10-11</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/oriente-objet-et-immuabilite/</loc>
+            <loc>https://wetry.tech/oriente-objet-et-immuabilite/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-10-04</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/une-bonne-doc-est-une-doc-accessible/</loc>
+            <loc>https://wetry.tech/une-bonne-doc-est-une-doc-accessible/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-09-13</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/comprendre-le-ng-model/</loc>
+            <loc>https://wetry.tech/comprendre-le-ng-model/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-09-03</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/les-secrets-du-router-d-angular/</loc>
+            <loc>https://wetry.tech/les-secrets-du-router-d-angular/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-08-29</lastmod>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/azure-functions-les-bases/</loc>
+            <loc>https://wetry.tech/azure-functions-les-bases/</loc>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
             <lastmod>2019-08-11</lastmod>
@@ -392,19 +392,19 @@
     
     
         <url>
-            <loc>https://wetry.craftlabit.be/authors/dgilson/</loc>
+            <loc>https://wetry.tech/authors/dgilson/</loc>
             <changefreq>monthly</changefreq>
             <priority>0.5</priority>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/authors/mscolas/</loc>
+            <loc>https://wetry.tech/authors/mscolas/</loc>
             <changefreq>monthly</changefreq>
             <priority>0.5</priority>
         </url>
     
         <url>
-            <loc>https://wetry.craftlabit.be/authors/pgrasseels/</loc>
+            <loc>https://wetry.tech/authors/pgrasseels/</loc>
             <changefreq>monthly</changefreq>
             <priority>0.5</priority>
         </url>
