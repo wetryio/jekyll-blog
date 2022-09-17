@@ -129,7 +129,7 @@ Remplaçons les tag de l'exemple fictif. Au lieu d'avoir des machines qui produi
 Cet exemple ignore encore des tas de couts cachés. J'ignore volontairement qu'ajouter un développeur ajoute de l'overhead, que le cout en espace de travail augmente, etc ... mais restons simple.
 Aussi, et nous verrons que ce modèle est trop simplifié pour une entreprise informatique. Chaque développeur ne produit pas 1 unique bien qui sera vendu à 1 personne, mais une feature qui sera vendu continuellement a une foule de personnes.
 
-Ce que je désire mettre en évidence, est qu'un développeur productif le plus vite possible permet d'accélérer cet effet d'intérêt composés. Diminuez d'un tout petit peu le salaire des développeurs, ou bien augmenter la production permet de faire des gains colossaux sur le long terme.
+Ce que je désire mettre en évidence, est qu'un développeur productif le plus vite possible permet d'accélérer cet effet d'intérêt composés. Diminuez d'un tout petit peu le salaire des développeurs, ou bien augmenter la production permet de faire des gains colossaux supplémentaire sur le long terme.
 
 J'espère que cet idée d'intérêt composés, est maintenant clair pour vous. Nous allons tirer 2 conclusions à partir de ce modèle.
 Le premier va expliquer que chaque feature développé n'est pas vendu 1 fois, mais sera constamment via un abonnement par exemple, ou une nouvelle version d'un produit. Nous verrons que l'effet composés permet à une entreprise informatique de générer beaucoup de cash sur le long terme
