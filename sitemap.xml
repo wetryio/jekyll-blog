@@ -134,7 +134,7 @@
             
                 <changefreq>weekly</changefreq>
                 <priority>1</priority>
-                <lastmod>2022-07-24</lastmod>
+                <lastmod>2023-05-28</lastmod>
             
         </url>
     
@@ -242,6 +242,13 @@
             
         </url>
     
+    
+        <url>
+            <loc>https://wetry.tech/preferer-podman-a-docker/</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+            <lastmod>2023-05-28</lastmod>
+        </url>
     
         <url>
             <loc>https://wetry.tech/pourquoi-faire-du-tdd/</loc>

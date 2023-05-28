@@ -13,7 +13,7 @@ pool:
 steps:
 
 - task: UseRubyVersion@0
-  displayName: 'Use Ruby >= 2.4'
+  displayName: 'Use Ruby >= 3.0'
 
 - script: 'gem install bundler' 
   displayName: 'Install bundler'

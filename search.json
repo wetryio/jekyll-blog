@@ -2,6 +2,14 @@
   
   
     {
+      "title"    : "Préférer podman à docker",
+      "tags"     : "podman, docker, cloud, and container",
+      "categories" : "",
+      "url"      : "/preferer-podman-a-docker/",
+      "date"     : "05/28/2023"
+    } ,
+  
+    {
       "title"    : "Pourquoi faire du TDD",
       "tags"     : "bonne pratique",
       "categories" : "bonne-pratique",
