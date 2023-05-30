@@ -5,13 +5,13 @@
     <description>Encore un autre blog de développeur.</description>
     <link>https://wetry.tech/</link>
     <atom:link href="https://wetry.tech/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 28 May 2023 17:51:24 +0000</pubDate>
-    <lastBuildDate>Sun, 28 May 2023 17:51:24 +0000</lastBuildDate>
+    <pubDate>Tue, 30 May 2023 05:47:49 +0000</pubDate>
+    <lastBuildDate>Tue, 30 May 2023 05:47:49 +0000</lastBuildDate>
     <generator>Jekyll v3.9.3</generator>
     
       <item>
         <title>Préférer podman à docker</title>
-        <description>&lt;h2 id=&quot;la-révolution-docker&quot;&gt;La révolution docker&lt;/h2&gt; &lt;p&gt;Ce n’est plus à prouvé aujourd’hui, docker a changer le monde du développement. Il permet aux développeurs de faciliter les tests, installer des éxécutables facilement, créer des POCs à une vitesse éclair. Les équipes opérationnels en profitent pour installer les applications sereinnement, diminuer la compléxité d’installation et la maintenance des dépendances. J’ose imaginer que cette introduction ne vous apprend rien. Docker est tellement populaire que la plupart d’entre nous utilisent érronément interchangeablement les mots ‘docker’ et ‘containers’, c’est pour dire à quelle point docker est ancré dans notre esprit comme a la solution première pour solutions...</description>
+        <description>&lt;h2 id=&quot;la-révolution-docker&quot;&gt;La révolution docker&lt;/h2&gt; &lt;p&gt;Ce n’est plus à prouvé aujourd’hui, docker a changer le monde du développement. Il permet aux développeurs de faciliter les tests, installer des exécutables facilement, créer des POCs à une vitesse éclair. Les équipes opérationnels en profitent pour installer les applications sereinement, diminuer la complexité d’installation et la maintenance des dépendances. J’ose imaginer que cette introduction ne vous apprend rien. Docker est tellement populaire que la plupart d’entre nous utilisent erronément interchangeablement les mots ‘docker’ et ‘containers’, c’est pour dire à quelle point docker est ancré dans notre esprit comme a la solution première pour solutions...</description>
         <pubDate>Sun, 28 May 2023 14:20:04 +0000</pubDate>
         <link>https://wetry.tech/preferer-podman-a-docker/</link>
         <guid isPermaLink="true">https://wetry.tech/preferer-podman-a-docker/</guid>

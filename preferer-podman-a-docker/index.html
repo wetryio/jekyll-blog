@@ -237,20 +237,17 @@ Mai 28, 2023
 
                 <h2 id="la-révolution-docker">La révolution docker</h2>
 
-<p>Ce n’est plus à prouvé aujourd’hui, docker a changer le monde du développement. Il permet aux développeurs de faciliter les tests, installer des éxécutables facilement, créer des POCs à une vitesse éclair. Les équipes opérationnels en profitent pour installer les applications sereinnement, diminuer la compléxité d’installation et la maintenance des dépendances. J’ose imaginer que cette introduction ne vous apprend rien. Docker est tellement populaire que la plupart d’entre nous utilisent érronément interchangeablement les mots ‘docker’ et ‘containers’, c’est pour dire à quelle point docker est ancré dans notre esprit comme a la solution première pour solutions de containerisations.</p>
+<p>Ce n’est plus à prouvé aujourd’hui, docker a changer le monde du développement. Il permet aux développeurs de faciliter les tests, installer des exécutables facilement, créer des POCs à une vitesse éclair. Les équipes opérationnels en profitent pour installer les applications sereinement, diminuer la complexité d’installation et la maintenance des dépendances. J’ose imaginer que cette introduction ne vous apprend rien. Docker est tellement populaire que la plupart d’entre nous utilisent erronément interchangeablement les mots ‘docker’ et ‘containers’, c’est pour dire à quelle point docker est ancré dans notre esprit comme a la solution première pour solutions de containerisations.</p>
 
 <p>Toutefois, aujourd’hui, je ne recommande plus Docker à mes collègues. Je recommande Podman.</p>
 
 <h2 id="le-problème-docker">Le problème docker</h2>
 
-<p>De manière extrêmement simplifié, docker a cette architecture (colonne de gauche) :
-<img src="/assets/img/podman-docker/podman-docker-run.png" alt="dockerpodmanrun" /></p>
+<p>De manière extrêmement simplifié, docker a cette architecture (colonne de gauche) :</p>
 
 <p>Le runtime de docker vit dans un daemon(=service) root(=administrateur) qui écoute sur un socket. Ce qui signifie qui a accès au socket peuvent lancer n’importe quel container avec l’utilisateur root. Ce qui n’est pas espérés dans un environnement sensible. Et l’ordinateur d’un développeur est déjà un environnement sensible.</p>
 
 <p>Podman a fait un choix différent. Celui de créer des containers sans les droits root (=rootless). De plus, une fois le container démarré, podman est stoppé. Il n’est pas un runtime pour container, seulement une couche de synchronisation pour démarré des sous-process containairisés. Observez dans l’image ci-dessous que selon l’utilisateur que je suis, la liste des containers démarrés diffèrent.</p>
-
-<p><img src="/assets/img/podman-docker/podman-ps.png" alt="podmanps" /></p>
 
 <h2 id="docker-desktop-et-podman-desktop">Docker desktop et Podman desktop</h2>
 
@@ -263,7 +260,7 @@ Mai 28, 2023
 <h2 id="utiliser-podman-cli-comme-docker-cli">Utiliser podman cli comme docker cli</h2>
 
 <p>Les créateurs de podman ont fait un choix judicieux pour permettre aux développeurs habitués à docker pour adopter podman rapidement : toutes les commandes du docker cli doivent être supportés par podman. Toute déviation de comportement est considéré comme un bug.
-<a href="https://twitter.com/ialanmoran/status/1001671953571303425">comme ce tweet de 2018 peut l’affirmer</a>, utiliser docker pour un alias pour podman ne devrait pas être un problème.</p>
+utiliser docker pour un alias pour podman ne devrait pas être un problème.</p>
 
 <hr />
 <div class="gratitude">
@@ -310,13 +307,13 @@ Mai 28, 2023
         <a href="javascript:void(0);">Revenir en haut</a>
     </div>
     
-    <a href="/azure-functions-les-bases/" class="post-preview">
+    <a href="/dev-container/" class="post-preview">
         <div class="image">
             
-                <img src="/assets/img/azure-functions/Azure-Functions.png">
+                <img src="/assets/img/dev-container/containers.jpg">
             
         </div>
-        <h3 class="title">Azure Functions les bases</h3>
+        <h3 class="title">Accès rapide à un environnement de développement</h3>
     </a>
 </div>
 
@@ -624,7 +621,7 @@ Mai 28, 2023
             "url": "https://wetry.tech/preferer-podman-a-docker/",
             "articleBody": "La révolution docker
 
-Ce n’est plus à prouvé aujourd’hui, docker a changer le monde du développement. Il permet aux développeurs de faciliter les tests, installer des éxécutables facilement, créer des POCs à une vitesse éclair. Les équipes opérationnels en profitent pour installer les applications sereinnement, diminuer la compléxité d’installation et la maintenance des dépendances. J’ose imaginer que cette introduction ne vous apprend rien. Docker est tellement populaire que la plupart d’entre nous utilisent érronément interchangeablement les mots ‘docker’ et ‘containers’, c’est pour dire à quelle point docker est ancré dans notre esprit comme a la solution première pour solutions de containerisations.
+Ce n’est plus à prouvé aujourd’hui, docker a changer le monde du développement. Il permet aux développeurs de faciliter les tests, installer des exécutables facilement, créer des POCs à une vitesse éclair. Les équipes opérationnels en profitent pour installer les applications sereinement, diminuer la complexité d’installation et la maintenance des dépendances. J’ose imaginer que cette introduction ne vous apprend rien. Docker est tellement populaire que la plupart d’entre nous utilisent erronément interchangeablement les mots ‘docker’ et ‘containers’, c’est pour dire à quelle point docker est ancré dans notre esprit comme a la solution première pour solutions de containerisations.
 
 Toutefois, aujourd’hui, je ne recommande plus Docker à mes collègues. Je recommande Podman.
 
@@ -632,12 +629,9 @@ Le problème docker
 
 De manière extrêmement simplifié, docker a cette architecture (colonne de gauche) :
 
-
 Le runtime de docker vit dans un daemon(=service) root(=administrateur) qui écoute sur un socket. Ce qui signifie qui a accès au socket peuvent lancer n’importe quel container avec l’utilisateur root. Ce qui n’est pas espérés dans un environnement sensible. Et l’ordinateur d’un développeur est déjà un environnement sensible.
 
 Podman a fait un choix différent. Celui de créer des containers sans les droits root (=rootless). De plus, une fois le container démarré, podman est stoppé. Il n’est pas un runtime pour container, seulement une couche de synchronisation pour démarré des sous-process containairisés. Observez dans l’image ci-dessous que selon l’utilisateur que je suis, la liste des containers démarrés diffèrent.
-
-
 
 Docker desktop et Podman desktop
 
@@ -650,7 +644,7 @@ J’espère ne pas vous l’apprendre, Docker Desktop est sous licence payante s
 Utiliser podman cli comme docker cli
 
 Les créateurs de podman ont fait un choix judicieux pour permettre aux développeurs habitués à docker pour adopter podman rapidement : toutes les commandes du docker cli doivent être supportés par podman. Toute déviation de comportement est considéré comme un bug.
-comme ce tweet de 2018 peut l’affirmer, utiliser docker pour un alias pour podman ne devrait pas être un problème.
+utiliser docker pour un alias pour podman ne devrait pas être un problème.
 
 
 
@@ -670,7 +664,7 @@ Table des matières
 
 
 ",
-            "wordcount": "487",
+            "wordcount": "471",
             "inLanguage": "fr",
             "dateCreated": "2023-05-28/",
             "datePublished": "2023-05-28/",
