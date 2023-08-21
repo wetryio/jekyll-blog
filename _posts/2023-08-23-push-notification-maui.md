@@ -40,8 +40,9 @@ Firebase est un ensemble de service proposé par Google qui permets de rapidemen
 - [Le code source est disponible ici](https://github.com/wetryio/maui-push)
 
 ## Création du projet
-La première chose est donc de crée un projet sur Visual Studio.
-Ici je choisit de le faire en .NET MAUI App, vous pouvez choisir le .NET MAUI Blazor  App, cela n'aura pas d'impact, car les deux peuvent reçevoir les push et la configuration est similaire.
+La première étape consiste donc à créer un projet sur Visual Studio.
+Ici, j'opte pour la création d'une application .NET MAUI, mais vous pouvez choisir l'application .NET MAUI Blazor. 
+Cela n'aura pas d'impact majeur, car les deux types d'applications peuvent recevoir les push et la configuration est similaire.
 
 ![create_project](/assets/img/firebase-push/create_project.png)
 
@@ -52,9 +53,9 @@ Une fois crée, la structure du project ressemble à ceci (si vous avez choisit 
 
 
 ## Configuration de(s) plateforme(s)
-Ici on vas nettoyer un peu le .csproj de notre projet, comme dit juste avant, le projet ici vas uniquement traiter des push sous Android.
+Ici, nous allons faire un peu de nettoyage dans le fichier .csproj de notre projet. Comme mentionné précédemment, ce projet se concentrera uniquement sur les push sous Android.
 
-Dans le .csproj, modifier les lignes suivantes :
+Dans le fichier .csproj, veuillez modifier les lignes suivantes :
 
 ```xml
 Remplacer :
@@ -135,8 +136,9 @@ Le repository du plugin est disponible à l'adresse suivante : [Plugin.Firebase.
 
 
 ## Initialiser Firebase
-La première chose à faire une fois le package installer, est de configurer les services qu'on vas utiliser. 
-Ici on vas uniquement utiliser le Cloud Messaging. Pour cela dans le MauiProgram.cs on vas crée une methode :
+La première chose à faire une fois le package installé est de configurer les services que nous allons utiliser.
+Ici, nous allons uniquement utiliser le Cloud Messaging. Pour ce faire, dans le fichier MauiProgram.cs, nous allons créer une méthode :
+
 
 ```csharp
 private static MauiAppBuilder RegisterFirebaseServices(this MauiAppBuilder builder)
@@ -151,9 +153,9 @@ private static MauiAppBuilder RegisterFirebaseServices(this MauiAppBuilder build
 }
 ```
 
-La méthode crée juste avant, vas permettre d'initialiser les services qu'on souhaite ainsi que de les injecter pour pouvoir les utiliser plus tard dans l'application.
+La méthode créée juste avant permettra d'initialiser les services que nous souhaitons, ainsi que de les injecter pour pouvoir les utiliser ultérieurement dans l'application.
 
-Une fois crée, toujours dans le MauiProgram.cs on vas utiliser cette méthode sur notre builder :
+Une fois créée, toujours dans le fichier MauiProgram.cs, nous utiliserons cette méthode sur notre builder :
 
 ```csharp
 builder
@@ -166,9 +168,9 @@ builder
     });
 ```
 
-Ensuite, dans Platforms => Android on vas avoir plusieurs petites choses à modifier :
+Ensuite, dans Platforms => Android, nous aurons plusieurs petites choses à modifier :
 
-Dans le fichier MainActivity.cs, on vas devoir ajouter une méthode pour binder l'event d'un nouvel intent avec le plugin de firebase. Mais également de vérifier qu'on à bien les permissions pour reçevoir des Push Notifications.
+Dans le fichier MainActivity.cs, nous devrons ajouter une méthode pour lier l'événement d'un nouvel intent avec le plugin de Firebase. Nous devrons également vérifier que nous avons bien les permissions pour recevoir des Push Notifications.
 
 ```csharp
 protected override void OnCreate(Bundle savedInstanceState)
@@ -200,10 +202,10 @@ public override void OnRequestPermissionsResult(int requestCode, string[] permis
 }
 ```
 
-Dés que le fichier MainActivity.cs à été modifier, il vas donc être nécessaire de modifier un second fichier qui vas justement contenir les permissions qu'on souhaite pour notre application, mais également le "receivers" qui vas écouter la réception des push et l'enregistrer au niveau du système.
-Pour cela, on vas ouvrir le fichier AndroidManifest.xml 
+Dès que le fichier MainActivity.cs a été modifié, il va donc être nécessaire de modifier un second fichier qui va précisément contenir les permissions que nous souhaitons pour notre application, ainsi que le "receiver" qui va écouter la réception des push et l'enregistrer au niveau du système.
+Pour ce faire, nous allons ouvrir le fichier AndroidManifest.xml.
 
-Sont contenu de base ressemble à ça :
+Son contenu de base ressemble à ceci :
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -214,8 +216,8 @@ Sont contenu de base ressemble à ça :
 </manifest>
 ```
 
-On vas donc commencer par le modifier pour enregistrer le receiver qui vas s'enregistrer au niveau du système pour reçevoir les push.
-Dans la balise <application> on vas donc ajouter :
+On va donc commencer par le modifier pour enregistrer le receiver qui va s'enregistrer au niveau du système pour recevoir les push.
+Dans la balise <application>, on va donc ajouter :
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -237,12 +239,12 @@ Dans la balise <application> on vas donc ajouter :
 </manifest>
 ```
 
-Niveau permission juste s'assurer que la ligne suivante est bien présente :
+En ce qui concerne les permissions, assurez-vous simplement que la ligne suivante est bien présente :
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-Une fois les étapes précédentes réaliser, il vas rester une étape cruciales à réaliser pour finaliser l'initialisation, c'est de récupérer le fichier de configuration de Firebase qui vas permettre de faire le lien entre l'application et Firebase.
+Une fois les étapes précédentes réalisées, il va rester une étape cruciale à accomplir pour finaliser l'initialisation : récupérer le fichier de configuration de Firebase qui va permettre de faire le lien entre l'application et Firebase.
 
 ## Firebase Console
 
