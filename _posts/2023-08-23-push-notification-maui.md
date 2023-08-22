@@ -248,6 +248,52 @@ Une fois les étapes précédentes réalisées, il va rester une étape cruciale
 
 ## Firebase Console
 
+Pour se rendre sur le Firebase console voici le lien : (Firebase Console)[https://console.firebase.google.com/]
+Une fois connecter, on vas crée un nouveau Projet.
+
+![firebase_create_new](/assets/img/firebase-push/firebase_create_new.png)
+
+L'étape numéro 1 vous demande de nommer le projet, ici pour l'exemple je vais le nommer : MauiPushWeTry
+
+![name_project](/assets/img/firebase-push/name_project.png)
+
+L'étape numéro deux, est la configuration de Google Analytics, ici je ne vais pas l'activer.
+
+Ensuite, je termine la création.
+
+![firebase_create_new](/assets/img/firebase-push/firebase_end.png)
+
+Une fois crée, on arrive donc sur la page d'accueil du projet fraichement crée. Cette page vas nous permettre d'ajouter et de configurer des services Firebase. 
+
+![firebase_home_project](/assets/img/firebase-push/firebase_home_project.png)
+
+Dans la colonne de droite, on peux voir plusieurs menu avec des sous-menu, c'est dans le menu "Engager", avec le sous menu "Messaging" qu'on vas pouvoir commencer à configurer les Push sous Firebase.
+
+![firebase_menu_messaging](/assets/img/firebase-push/firebase_menu_messaging.png)
+
+Une fois sur la page de Messaging, la première chose à faire est d'ajouter une application, dans notre cas ici, c'est sous Android.
+
+![firebase_add_android](/assets/img/firebase-push/firebase_add_android.png)
+
+C'est ici qu'il vas être important de configurer le nom du package de notre application Android.
+
+- Nom du package android :
+  - La valeur peux être trouvée dans le fichier .csproj : <ApplicationId>com.companyname.mauipushwetry</ApplicationId>
+
+- Pseudo de l'application :
+  - Il est facultatif, mais personnellement je mets toujours le nom de mon app : MauiPushWeTry
+
+![firebase_push_start](/assets/img/firebase-push/firebase_push_start.png)
+
+Dés que l'application est enregistrer on vas pouvoir télécharger un fichier .json qui contient la configuration que le plugin vas avoir besoin pour reçevoir les Push Notification.
+
+![firebase_push_config](/assets/img/firebase-push/firebase_push_config.png)
+
+Télécharger le fichier google-services.json et placer le à la racine du projet .NET MAUI.
+
+![maui_solution_withjson](/assets/img/firebase-push/maui_solution_withjson.png)
+
+
 ## Les événements de Plugin.Firebase.CloudMessaging
 
 ---
