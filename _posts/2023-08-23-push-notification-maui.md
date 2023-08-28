@@ -35,6 +35,7 @@ Firebase est un ensemble de service proposé par Google qui permets de rapidemen
 
 ## Les bases
 - Le project sera en .NET MAUI 7.0
+  - [Installer .NET MAUI](https://learn.microsoft.com/fr-fr/dotnet/maui/get-started/installation?tabs=vswin)
 - Avoir un compte sur Firebase
 - L'exemple ici sera pour Android
 - [Le code source est disponible ici](https://github.com/wetryio/maui-push)
@@ -126,7 +127,7 @@ Une fois nettoyer le .csproj doit ressemble à ceci :
 ## Plugin.Firebase.CloudMessaging
 Une fois le projet prêt, on vas pouvoir installer le package NuGet pour reçevoir les push notifications :
 
-```xml
+```bash
 dotnet add package Plugin.Firebase.CloudMessaging --version 2.0.3
 ```
 
@@ -295,6 +296,42 @@ Télécharger le fichier google-services.json et placer le à la racine du proje
 
 
 ## Les événements de Plugin.Firebase.CloudMessaging
+
+Quand un device s'enregistre pour reçevoir des notifications push, un token lui est attribuer, ce token peux-être utiliser pour target un utilisateur en particulier.
+Plugin.Firebase.CloudMessaging expose la possibilité d'enregistrer des méthodes qui seront utiliser lors du changement de token.
+
+Dans MainPage.xaml.cs on vas override la méthode void OnAppearing().
+```csharp
+protected override async void OnAppearing()
+{
+    CrossFirebaseCloudMessaging.Current.TokenChanged += CurrentTokenChanged;
+    await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
+    base.OnAppearing();
+}
+```
+
+La première ligne vas nous permettre de binder une méthode lors du changement de token, la seconde de vérifier qu'on à bien accès/les permissions pour reçevoir des notifications push.
+
+Ensuite, on vas crée la méthode qui vas s'éxecuter au changement de token.
+
+```csharp
+private void CurrentTokenChanged(object sender, Plugin.Firebase.CloudMessaging.EventArgs.FCMTokenChangedEventArgs e)
+{
+    Console.WriteLine(e.Token);
+}
+```
+```csharp
+private void CurrentNotificationReceived(object sender, Plugin.Firebase.CloudMessaging.EventArgs.FCMNotificationReceivedEventArgs e)
+{
+}
+```
+
+## Afficher une notification
+Pour afficher ce qu'on à reçus depuis Firebase on vas ajouter le plugin suivant Plugin.LocalNotification :
+
+```bash
+dotnet add package Plugin.LocalNotification --version 10.1.8
+```
 
 ---
 <div class="gratitude">
