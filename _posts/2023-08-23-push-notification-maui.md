@@ -320,9 +320,28 @@ private void CurrentTokenChanged(object sender, Plugin.Firebase.CloudMessaging.E
     Console.WriteLine(e.Token);
 }
 ```
+
+
+En plus d'une méthode qui écoute les changements de token, il est aussi possible d'intercepter les notifications reçues.
+
+```csharp
+protected override async void OnAppearing()
+{
+    CrossFirebaseCloudMessaging.Current.TokenChanged += CurrentTokenChanged;
+    CrossFirebaseCloudMessaging.Current.NotificationReceived += CurrentNotificationReceived; // Ajouter
+
+    await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
+    base.OnAppearing();
+}
+```
+
+On vas simplement ajouter un console write pour afficher les informations reçues.
+
 ```csharp
 private void CurrentNotificationReceived(object sender, Plugin.Firebase.CloudMessaging.EventArgs.FCMNotificationReceivedEventArgs e)
 {
+    Console.WriteLine($"{e.Notification.Title}{e.Notification.Body});
+    // Prochaine étape on vas afficher la notification reçue
 }
 ```
 
@@ -332,6 +351,93 @@ Pour afficher ce qu'on à reçus depuis Firebase on vas ajouter le plugin suivan
 ```bash
 dotnet add package Plugin.LocalNotification --version 10.1.8
 ```
+
+Dans le MauiProgram.cs on vas ajouter ceci :
+
+```csharp
+.UseLocalNotification(config =>{})
+```
+```csharp
+builder
+    .UseMauiApp<App>()
+    .RegisterFirebaseServices()
+    .UseLocalNotification(config => { })
+    .ConfigureFonts(fonts =>
+    {
+        fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+        fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+    });
+```
+
+Et ajouter quelques permissions dans le AndroidManifest.xml
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true">
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+		<receiver
+		  android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+		  android:exported="true"
+		  android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				<category android:name="${applicationId}" />
+			</intent-filter>
+		</receiver>    
+    </application>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- A ajouter -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- A ajouter -->
+	<uses-permission android:name="android.permission.VIBRATE" /> <!-- A ajouter -->
+	<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" /> <!-- A ajouter -->
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- A ajouter -->
+</manifest>
+```
+
+Une fois cela fais, on vas vérifier que notre application à bien les permissions pour afficher des notifications.
+
+Dans le MainPage.xaml dans la méthode OnAppearing.
+
+```csharp
+protected override async void OnAppearing()
+{
+    CrossFirebaseCloudMessaging.Current.TokenChanged += Current_TokenChanged;
+    CrossFirebaseCloudMessaging.Current.NotificationReceived += Current_NotificationReceived;
+    await CrossFirebaseCloudMessaging.Current.CheckIfValidAsync();
+
+    // Ajouter
+    if (await LocalNotificationCenter.Current.AreNotificationsEnabled() == false)
+    {
+        await LocalNotificationCenter.Current.RequestNotificationPermission();
+    }
+
+    base.OnAppearing();
+}
+```
+
+Une fois ce check fait, on vas pouvoir passer à l'étape suivante, qui vas nous permettre d'afficher une notification.
+Retour à la méthode CurrentNotificationReceived dans MainPage.xaml.cs
+
+```csharp
+private void CurrentNotificationReceived(object sender, Plugin.Firebase.CloudMessaging.EventArgs.FCMNotificationReceivedEventArgs e)
+{
+    var request = new NotificationRequest
+    {    
+        NotificationId = 100, // On crée un ID
+        Title = $"{e.Notification.Title}", // En title, on vas récupérer la valeur de la push reçue
+        Description = e.Notification.Body // En description, la valeur du body de la push reçue
+    };
+
+    await LocalNotificationCenter.Current.Show(request);    
+}
+```
+
+
+## On Test !
+
 
 ---
 <div class="gratitude">
